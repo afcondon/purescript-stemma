@@ -15,8 +15,8 @@ until that comparison says so.
 | Reading DOT: lexer, parser, and what the file means | done | 871 of 871 corpus files read exactly as Graphviz 14.1.2 reads them (866 the same, 5 rejected by both) |
 | Which subgraphs are clusters | done | the same as dot draws, on 865 of 865 files (1,939 subgraphs) |
 | Ranking (which layer each node is on), with `rank=same` and its relatives and with clusters | done, bar the cases below | 864 of 864 rankings proved optimal at every level; dot's own ranking equals the optimum on 860 and is worse on 4 |
-| Turning cycles round before ranking | first version | the same edges as dot on 229 of 326 graphs with cycles |
-| Ordering within layers | not started | |
+| Turning cycles round before ranking | done | the same edges as dot on 328 of 329 graphs with cycles |
+| Ordering within ranks | plain graphs; clusters and same-rank edges not yet | of 516 graphs, the same number of crossings as dot on 455, fewer on 25, more on 36; 863 crossings in all against dot's 875 |
 | Coordinates | not started | |
 | Edge routing | not started | |
 
@@ -69,8 +69,8 @@ ways from one run to the next.
 - `corpus/layout/`: 300 random graphs with plain attributes, for the layout
   passes (`bin/generate-layout.py`, seeded).
 - `corpus/ranking/`: the cases where dot's ranking is not optimal.
-- `corpus/ranksets/`, `corpus/clusters/`: small files, one per rule of
-  rank sets and of clusters.
+- `corpus/ranksets/`, `corpus/clusters/`, `corpus/cycles/`: small files, one
+  per rule of rank sets, of clusters and of cycle breaking.
 
 A further 9,000 random files from three other seeds were compared on
 2026-11-20. They found the HTML-string rule and the file in
@@ -122,6 +122,36 @@ Not yet handled, and reported as NOT RUN: a `rank=same` subgraph that
 reaches into a cluster beside it (1 corpus file), `newrank`, and graphs
 that limit the solver (`nslimit`). A graph that asks for one node to be on
 both the top and the bottom rank makes dot itself fail.
+
+## Turning cycles round
+
+A ranking needs every edge to point down, so in each cycle some edge has to
+be turned round, and it is then drawn pointing up the page. Any choice gives
+a valid ranking; the choice shows in the picture. This follows dot's:
+`core/src/Graphviz/Layout/Acyclic.purs` walks the graph depth first as dot
+does, and matching it took three details found by experiment: where the walk
+starts, that a node's edges are taken in the order of the nodes they lead
+to, and that when an edge is turned round the last edge in its node's list
+moves into the gap. The one corpus graph still different is a cluster that
+also sets `rank=same`.
+
+## Ordering within ranks
+
+Long edges are cut into chains with a bend on every rank they pass, and
+then the nodes and bends of each rank are ordered to leave few crossings:
+`core/src/Graphviz/Layout/Order.purs`, the median-and-swap search of the
+1993 paper, run on dot's schedule.
+
+Nothing is optimal here, for dot or for this, so the two are compared by
+result. Each orders the same ranking (dot's, from `dot -Gphase=2`), and the
+crossings are counted. dot says how many it left (`dot -v`); to be sure the
+two counts are of the same thing, the core's counter is run on dot's own
+order wherever that order is fully known (no long edges), and must give
+dot's number. It does on 204 of 204.
+
+Not yet handled, and reported as NOT RUN: graphs with clusters (whose nodes
+have to stay side by side) and graphs with an edge between two nodes on one
+rank.
 
 ## How the comparison is made
 

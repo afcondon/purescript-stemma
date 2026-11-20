@@ -65,7 +65,6 @@ import Data.Foldable (any, foldl, minimum)
 import Data.Map (Map)
 import Data.Map as Map
 import Data.Maybe (Maybe(..), isJust)
-import Data.Set (Set)
 import Data.Set as Set
 import Data.Traversable (traverse)
 import Data.Tuple (Tuple(..))
@@ -73,6 +72,7 @@ import Graphviz.Attributes (RankKind(..))
 import Graphviz.Attributes as Attributes
 import Graphviz.Graph (EdgeId, Graph, NodeName, Subgraph, SubgraphId)
 import Graphviz.Graph as Graph
+import Graphviz.Layout.Acyclic as Acyclic
 import Graphviz.Layout.NetworkSimplex (Assignment, Requirement, solve, value)
 
 -- | The top rank is 0.
@@ -340,10 +340,38 @@ solveLevel given asked (Level level) = do
       Nothing ->
         let
           pinnedRound = Set.fromFoldable (map _.edge (Array.filter againstPin hard))
-          order = Array.nub (Array.mapMaybe (\node -> Map.lookup node found.together) loose)
-          cycles = backEdges order (map (\pull -> if Set.member pull.edge pinnedRound then flipped pull else pull) hard)
+          afterPins = map (\pull -> if Set.member pull.edge pinnedRound then flipped pull else pull) hard
+          -- The level as dot holds it when it looks for cycles: every
+          -- variable, and the edges in the order dot makes them, which is
+          -- node by node and, for each node, by the node the edge goes
+          -- to (and for two edges to the same node, as the file has them).
+          positions = Map.fromFoldable (Array.mapWithIndex (\position node -> Tuple node position) level.nodes)
+          inFileOrder = Array.sortWith (\pull -> Tuple (Map.lookup pull.tail positions) (Tuple (Map.lookup pull.head positions) pull.edge))
+            (Array.filter (\pull -> Map.member pull.tail place && Map.member pull.head place) asked)
+          asMade = foldl
+            ( \fast pull -> case Map.lookup pull.tail place, Map.lookup pull.head place of
+                Just tail, Just head
+                  | tail.variable == head.variable -> fast
+                  | isBlock tail.variable || isBlock head.variable ->
+                      Acyclic.connect (Slack pull.edge) head.variable (Acyclic.connect (Slack pull.edge) tail.variable fast)
+                  | otherwise -> Acyclic.connect tail.variable head.variable fast
+                _, _ -> fast
+            )
+            Acyclic.empty
+            inFileOrder
+          -- Then the pins: every edge out of the bottom set and every edge
+          -- into the top set is turned round, in order.
+          bottomPinned = case found.bottom of
+            Just bottom -> foldl (\fast below -> Acyclic.turn bottom.set below fast) asMade (Acyclic.outOf bottom.set asMade)
+            Nothing -> asMade
+          pinned = case found.top of
+            Just top -> foldl (\fast above -> Acyclic.turn above top.set fast) bottomPinned (Acyclic.intoOf top.set bottomPinned)
+            Nothing -> bottomPinned
+          starts = Array.nub (map _.variable (Array.mapMaybe (\node -> Map.lookup node place) level.nodes))
+          cycles = Acyclic.breakCycles (Acyclic.searchOrder starts pinned) pinned
+          inCycle = Set.fromFoldable (map _.edge (Array.filter (\pull -> Set.member (Tuple pull.tail.variable pull.head.variable) cycles) afterPins))
         in
-          Set.union (Set.difference pinnedRound cycles) (Set.difference cycles pinnedRound)
+          Set.union (Set.difference pinnedRound inCycle) (Set.difference inCycle pinnedRound)
     oriented = map (\pull -> if Set.member pull.edge turned then flipped pull else pull) hard
     fromEdges = map (\pull -> { tail: pull.tail.variable, head: pull.head.variable, weight: pull.weight, minimum: pull.minimum }) oriented
       <> Array.concatMap soft crossing
@@ -389,25 +417,3 @@ fromTop :: Map NodeName Int -> Map NodeName Int
 fromTop ranks = case minimum ranks of
   Just top -> map (_ - top) ranks
   Nothing -> ranks
-
--- The edges a depth-first walk finds leading back into itself.
-backEdges :: Array Variable -> Array Between -> Set EdgeId
-backEdges order asked = (foldl visit { done: Set.empty, inside: Set.empty, back: Set.empty } order).back
-  where
-  outgoing :: Map Variable (Array Between)
-  outgoing = foldl (\m pull -> Map.insertWith (flip append) pull.tail.variable [ pull ] m) Map.empty asked
-
-  visit state variable =
-    if Set.member variable state.done then state
-    else
-      let
-        entered = state { done = Set.insert variable state.done, inside = Set.insert variable state.inside }
-        after = foldl follow entered (case Map.lookup variable outgoing of
-          Just found -> found
-          Nothing -> [])
-      in
-        after { inside = Set.delete variable after.inside }
-
-  follow state pull =
-    if Set.member pull.head.variable state.inside then state { back = Set.insert pull.edge state.back }
-    else visit state pull.head.variable

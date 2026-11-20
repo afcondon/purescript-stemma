@@ -1,0 +1,31 @@
+digraph ring269 {
+  v00;
+  v01 -> v02;
+  v03 -> v04 [weight=0];
+  v05 -> v06 [minlen=1];
+  v07 -> v08 [minlen=3];
+  v00 -> v09;
+  v07 -> v00;
+  v10 -> v11;
+  v12 -> v13;
+  v14 -> v15 [weight=2];
+  v06 -> v07 [weight=1];
+  v16 -> v10;
+  v17 -> v01 [weight=2];
+  v18 -> v19;
+  v13 -> v20;
+  v11 -> v14;
+  v09 -> v03 [minlen=0];
+  v20 -> v01;
+  v04 -> v16 [weight=3];
+  v21 -> v12;
+  v22 -> v17;
+  v23 -> v22;
+  v07 -> v23 [weight=2];
+  v24 -> v25;
+  v02 -> v18 [weight=1];
+  v08 -> v02;
+  v19 -> v24 [minlen=2];
+  v25 -> v21 [weight=2];
+  v15 -> v05;
+}

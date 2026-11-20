@@ -1,0 +1,43 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "q",
+   "tail": "r"
+  },
+  {
+   "attributes": {},
+   "head": "p",
+   "tail": "r"
+  },
+  {
+   "attributes": {},
+   "head": "p",
+   "tail": "q"
+  },
+  {
+   "attributes": {},
+   "head": "q",
+   "tail": "p"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "r"
+  },
+  {
+   "attributes": {},
+   "name": "q"
+  },
+  {
+   "attributes": {},
+   "name": "p"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

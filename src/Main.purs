@@ -9,7 +9,7 @@ module Main where
 
 import Prelude
 
-import Data.Argonaut.Core (Json, fromArray, fromBoolean, fromNumber, fromObject, fromString, jsonNull, stringify, toArray, toNumber)
+import Data.Argonaut.Core (Json, fromArray, fromBoolean, fromNumber, fromObject, fromString, jsonNull, stringify, toArray, toNumber, toObject)
 import Data.Argonaut.Parser (jsonParser)
 import Data.Array as Array
 import Data.Either (Either(..))
@@ -31,6 +31,8 @@ import Graphviz.Dot.Syntax (Text(..))
 import Graphviz.Graph (EdgeId(..), Graph, NodeName(..), SubgraphId(..), fromDot)
 import Graphviz.Graph as Graph
 import Graphviz.Layout.NetworkSimplex (value)
+import Graphviz.Layout.Order (Vertex(..), crossings, layered, order)
+import Graphviz.Layout.Order as Order
 import Graphviz.Layout.Rank (Rank(..), Solved(..), Variable(..), describe, levels, rank, rankGiven, rankOf, ranking, reversed)
 import Node.Encoding (Encoding(..))
 import Node.Buffer (Buffer)
@@ -53,7 +55,13 @@ main = do
       write directory file case parse text of
         Left problem -> record [ Tuple "error" (fromString problem) ]
         Right dot -> rankJson given (fromDot dot)
-    _, _ -> log "usage: (read | rank) <output directory> <file.gv>..."
+    [ "order", directory ], files -> for_ files \file -> do
+      text <- readText file
+      given <- oracleOrder (directory <> "/" <> baseName file <> ".oracle.json")
+      write directory file case parse text of
+        Left problem -> record [ Tuple "error" (fromString problem) ]
+        Right dot -> orderJson given (fromDot dot)
+    _, _ -> log "usage: (read | rank | order) <output directory> <file.gv>..."
   where
   write directory file found =
     writeTextFile UTF8 (directory <> "/" <> baseName file <> ".json") (stringify found)
@@ -136,6 +144,59 @@ rankJson oracle graph = case rank graph of
         , Tuple "values" (fromArray (map (value solved.values >>> int) variables))
         , Tuple "tree" (fromArray (map int solved.tree))
         ]
+
+-- The rank and the place in its rank that dot gave each node of this
+-- file, if bin/check.py left them beside the output: two arrays in the
+-- order of the graph's nodes.
+oracleOrder :: String -> Effect (Maybe { ranks :: Array Int, places :: Array Int })
+oracleOrder path = do
+  present <- exists path
+  if not present then pure Nothing
+  else do
+    text <- readTextFile UTF8 path
+    pure case jsonParser text of
+      Right json -> do
+        object <- toObject json
+        ranks <- Object.lookup "ranks" object >>= toArray >>= traverse (map Int.round <<< toNumber)
+        places <- Object.lookup "orders" object >>= toArray >>= traverse (map Int.round <<< toNumber)
+        pure { ranks, places }
+      Left _ -> Nothing
+
+-- What the ordering pass makes of a graph ranked as dot ranked it: how
+-- many crossings its order leaves. Where no edge spans more than one
+-- rank, dot's own order says where everything is, so its crossings are
+-- counted too, by the same count.
+orderJson :: Maybe { ranks :: Array Int, places :: Array Int } -> Graph -> Json
+orderJson oracle graph = case oracle of
+  Just given | Array.length given.ranks == Array.length names ->
+    let
+      ranks = Map.fromFoldable (Array.zip names given.ranks)
+      places = Map.fromFoldable (Array.zip names given.places)
+      rankOf node = case Map.lookup node ranks of
+        Just found -> Rank found
+        Nothing -> Rank 0
+    in
+      case layered graph rankOf of
+        Left reason -> record [ Tuple "unsupported" (fromString (Order.describe reason)) ]
+        Right cut ->
+          let
+            bends = Array.length (Array.filter isBend (Array.concat cut.ranks))
+            placeOf = case _ of
+              Node node -> Map.lookup node places
+              Bend _ _ _ -> Nothing
+          in
+            record
+              [ Tuple "crossings" (int (crossings (order cut)))
+              , Tuple "bends" (int bends)
+              , Tuple "dots" (if bends == 0 then int (crossings cut { ranks = map (Array.sortWith placeOf) cut.ranks }) else jsonNull)
+              ]
+  _ -> record [ Tuple "error" (fromString "no ranks from dot to order by") ]
+  where
+  int = Int.toNumber >>> fromNumber
+  names = map _.name (Graph.nodes graph)
+  isBend = case _ of
+    Bend _ _ _ -> true
+    Node _ -> false
 
 -- DOT files are bytes, and some of Graphviz's own examples are Latin-1.
 -- Decoding is the caller's business, not the core's: read as UTF-8, and if

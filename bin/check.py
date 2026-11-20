@@ -479,6 +479,106 @@ def check_ranking(files, record):
     return not wrong
 
 
+def ask_dot_order(path):
+    """Where dot puts each node (`phase=2` stops it after ordering and
+    leaves `rank` and `order` on every node), and how many crossings it
+    says it left (`-v` makes it say)."""
+    done = subprocess.run(["dot", "-v", "-Gphase=2", "-Tdot_json", str(path)], capture_output=True)
+    if done.returncode != 0:
+        return {"error": "dot failed"}
+    try:
+        raw = json.loads(done.stdout.decode("utf-8", "replace"))
+    except json.JSONDecodeError:
+        return {"error": "dot's output could not be read"}
+    said = [line for line in done.stderr.decode("utf-8", "replace").splitlines()
+            if line.startswith("mincross ") and line.rstrip().endswith("secs.") and " crossings, " in line]
+    if said:
+        crossings = int(said[-1].rsplit(": ", 1)[1].split(" crossings")[0])
+    elif not raw.get("edges"):
+        crossings = 0       # dot says nothing about a graph with no edges
+    else:
+        return {"error": "dot did not say how many crossings it left"}
+    ranks, orders = [], []
+    for thing in raw.get("objects", [])[raw.get("_subgraph_cnt", 0):]:
+        if "rank" not in thing or "order" not in thing:
+            return {"error": "dot gave a node no rank or no order"}
+        ranks.append(int(thing["rank"]))
+        orders.append(int(thing["order"]))
+    return {"ranks": ranks, "orders": orders, "crossings": crossings}
+
+
+def check_order(files, record):
+    """Ordering: how do the crossings the core leaves compare with dot's?
+
+    There is no optimum to hold either to: both are searches that settle
+    for a good order. So the comparison is of results. The core is given
+    dot's ranking, orders it its own way, and its crossings are counted;
+    dot says how many it left.
+
+    The two counts have to be of the same thing. Where no edge spans more
+    than one rank, dot's order of the nodes is the whole order, so the
+    core's counter is run on it and must give the number dot said.
+    """
+    usable = []
+    for path in files:
+        target = ORACLE / path.relative_to(CORPUS).with_suffix(".order.json")
+        if record:
+            target.write_text(json.dumps(ask_dot_order(path)) + "\n")
+        if target.exists():
+            usable.append((path, json.loads(target.read_text())))
+    for folder in sorted({p.parent for p, _ in usable}):
+        out = FOUND / folder.relative_to(CORPUS) / "order"
+        out.mkdir(parents=True, exist_ok=True)
+        for old in out.glob("*.json"):
+            old.unlink()
+        mine = [(p, o) for p, o in usable if p.parent == folder]
+        for path, oracle in mine:
+            if "ranks" in oracle:
+                (out / (path.name + ".oracle.json")).write_text(json.dumps(oracle))
+        for start in range(0, len(mine), 200):
+            subprocess.run(["node", "run.mjs", "order", str(out)] + [str(p) for p, _ in mine[start:start + 200]],
+                           cwd=ROOT, check=True)
+
+    fewer, same, more, not_run = [], 0, [], Counter()
+    counted, miscounted = 0, []
+    ours_total = dots_total = 0
+    for path, oracle in usable:
+        mine = json.loads((FOUND / path.relative_to(CORPUS).parent / "order" / (path.name + ".json")).read_text())
+        if "error" in oracle or "error" in mine:
+            not_run["Graphviz or the core rejects the file"] += 1
+            continue
+        if "unsupported" in mine:
+            not_run[mine["unsupported"]] += 1
+            continue
+        if mine["dots"] is not None:
+            counted += 1
+            if mine["dots"] != oracle["crossings"]:
+                miscounted.append((path.name, mine["dots"], oracle["crossings"]))
+        ours, dots = mine["crossings"], oracle["crossings"]
+        ours_total += ours
+        dots_total += dots
+        if ours < dots:
+            fewer.append((path.name, ours, dots))
+        elif ours == dots:
+            same += 1
+        else:
+            more.append((path.name, ours, dots))
+    compared = len(fewer) + same + len(more)
+    print("ordering, against dot:")
+    print(f"  {counted - len(miscounted)} of {counted} graphs with no long edges: the core counts dot's order as dot does")
+    for name, here, said in miscounted[:5]:
+        print(f"    MISCOUNT {name}: the core counts {here} crossings in dot's order; dot says {said}")
+    print(f"  of {compared} graphs ordered: the core leaves the same number of crossings as dot on {same}, "
+          f"fewer on {len(fewer)}, more on {len(more)}")
+    print(f"  crossings in all: core {ours_total}, dot {dots_total}")
+    worst = sorted(more, key=lambda x: x[2] - x[1])[:5]
+    if worst:
+        print("    most behind: " + ", ".join(f"{name} ({ours} against {dots})" for name, ours, dots in worst))
+    for reason, count in not_run.most_common():
+        print(f"  NOT RUN  {count} graphs: {reason}")
+    return not miscounted
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     record = "--record" in sys.argv
@@ -543,7 +643,8 @@ def main():
           + f", {len(differ)} differ, {len(not_run)} not run")
     clustered = check_clusters(files, record)
     ranked = check_ranking(files, record)
-    sys.exit(1 if differ or not_run or not ranked or not clustered else 0)
+    ordered = check_order(files, record)
+    sys.exit(1 if differ or not_run or not ranked or not clustered or not ordered else 0)
 
 
 if __name__ == "__main__":
