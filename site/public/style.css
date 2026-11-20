@@ -1,0 +1,271 @@
+/* Swiss style: one sans-serif family, a strict grid, black on white, one
+   accent. Hierarchy comes from size and weight, not from boxes or shadows. */
+
+:root {
+  --ink: #1a1a1a;
+  --quiet: #6b6b6b;
+  --rule: #d9d9d9;
+  --paper: #ffffff;
+  --wash: #f5f5f3;
+  --accent: #d4351c;
+  --gutter: 32px;
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.page {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) var(--gutter);
+}
+
+.masthead {
+  padding: 28px 0 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin: 8px 0 16px;
+  max-width: 62em;
+  font-size: 17px;
+  color: var(--ink);
+}
+
+/* Pinned, so that what the reader is looking at is always stated. */
+.status {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 8px var(--gutter);
+  padding: 10px 0;
+  background: var(--paper);
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+}
+
+.status p { margin: 0; }
+
+.status__main { font-size: 14px; }
+
+.status__main strong { font-weight: 700; }
+
+.status__figures { font-size: 13px; color: var(--quiet); }
+
+/* Picker ------------------------------------------------------------ */
+
+.picker {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1.4fr) minmax(0, 1.4fr);
+  gap: var(--gutter);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.picker__group { min-width: 0; }
+
+.picker__title,
+.panel__title {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.picker__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.picker__choice {
+  font: inherit;
+  font-size: 14px;
+  padding: 3px 9px;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.picker__choice:hover { border-color: var(--ink); }
+
+.picker__choice--chosen,
+.picker__choice--chosen:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* Workspace: editor | ours | Graphviz's, two columns at laptop width. */
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr) minmax(0, 1.2fr);
+  gap: var(--gutter);
+  padding-top: 20px;
+  align-items: start;
+}
+
+@media (max-width: 1500px) {
+  .workspace { grid-template-columns: minmax(300px, 1fr) minmax(0, 2fr); }
+  .panel--editor { grid-row: span 2; }
+}
+
+@media (max-width: 860px) {
+  .workspace, .status, .picker { grid-template-columns: minmax(0, 1fr); }
+  .panel--editor { grid-row: auto; }
+  .title { font-size: 30px; }
+}
+
+.panel { min-width: 0; }
+
+.panel__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 12px;
+}
+
+.panel__title { margin: 0 0 6px; }
+
+.panel__note {
+  font-size: 12px;
+  color: var(--quiet);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.link-button {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.editor {
+  display: block;
+  width: 100%;
+  min-height: 70vh;
+  padding: 12px;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  background: var(--wash);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.5;
+  tab-size: 4;
+  resize: vertical;
+}
+
+.editor:focus { outline: 2px solid var(--ink); outline-offset: -2px; }
+
+/* Drawings scale down to the column and never up past their own size. */
+.frame {
+  overflow: auto;
+  max-height: 75vh;
+}
+
+.frame svg,
+.frame img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.drawing { font-family: var(--font); }
+
+.drawing polyline { fill: none; }
+
+.arrowhead { fill: var(--ink); fill: context-stroke; }
+
+.node-label { font-size: 14px; }
+
+.edge-label { font-size: 11px; }
+
+.cluster-label { font-size: 12px; font-weight: 700; }
+
+.edge--turned polyline { stroke-width: 1.6; }
+
+.legend {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+  font-size: 13px;
+}
+
+.legend__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.legend__swatch {
+  display: inline-block;
+  width: 24px;
+  height: 0;
+  border-top: 2px solid var(--accent);
+}
+
+.legend__note { margin: 6px 0 0; color: var(--quiet); }
+
+.failure {
+  padding: 16px 0;
+  border-top: 2px solid var(--accent);
+}
+
+.failure__title { margin: 0 0 8px; font-weight: 700; color: var(--accent); }
+
+.failure__message {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  white-space: pre-wrap;
+}
+
+.absent {
+  margin: 0;
+  padding: 16px 0;
+  max-width: 34em;
+  color: var(--quiet);
+}
+
+.colophon {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  font-size: 12px;
+  color: var(--quiet);
+}

@@ -8,6 +8,28 @@ The installed Graphviz is the judge. Each stage is compared with what
 Graphviz itself does on a corpus of DOT files, and a stage is not claimed
 until that comparison says so.
 
+## Using it
+
+```purescript
+import Graphviz.Layout (layout)
+import Graphviz.Svg (render)
+
+svg :: String -> Either String String
+svg dot = render <$> layout dot
+```
+
+`layout` takes DOT text and returns a `Drawing`: boxes for the nodes, paths
+for the edges, boxes for the clusters, in points. `Graphviz.Svg.render` turns
+that into plain SVG text; a caller with its own renderer uses the `Drawing`
+itself. `layoutWith` takes the spacing and, more to the point, a function
+that measures text, since how wide a label is depends on the font and on
+what draws it.
+
+The ranks and the order within each rank are the real thing. **The
+coordinates and the edge paths are interim**: each rank is spaced out and
+centred, and edges are straight pieces through their bends. The passes that
+will replace them fill the same `Drawing`.
+
 ## Where it stands
 
 | Stage | State | Held to |
@@ -17,8 +39,8 @@ until that comparison says so.
 | Ranking (which layer each node is on), with `rank=same` and its relatives and with clusters | done, bar the cases below | 864 of 864 rankings proved optimal at every level; dot's own ranking equals the optimum on 860 and is worse on 4 |
 | Turning cycles round before ranking | done | the same edges as dot on 328 of 329 graphs with cycles |
 | Ordering within ranks, with clusters kept together and same-rank edges left to right | done; slow on large graphs | of 884 graphs, the same number of crossings as dot on 709, fewer on 92, more on 83; 12,391 crossings in all against dot's 12,855 |
-| Coordinates | not started | |
-| Edge routing | not started | |
+| Coordinates | interim: ranks spaced out and centred | nothing yet |
+| Edge routing | interim: straight pieces through the bends | nothing yet |
 
 `bin/check.py` prints the current figure; this table is only as fresh as its
 last edit.

@@ -3,6 +3,7 @@
 -- |
 -- |     node run.mjs read found/graphviz corpus/graphviz/unix.gv ...
 -- |     node run.mjs rank found/graphviz corpus/graphviz/unix.gv ...
+-- |     node run.mjs draw found/svg corpus/graphviz/unix.gv ...
 -- |
 -- | `bin/check.py` compares those files with what Graphviz reports.
 module Main where
@@ -30,8 +31,10 @@ import Graphviz.Attributes as Attributes
 import Graphviz.Dot.Syntax (Text(..))
 import Graphviz.Graph (EdgeId(..), Graph, NodeName(..), SubgraphId(..), fromDot)
 import Graphviz.Graph as Graph
+import Graphviz.Layout (layout)
 import Graphviz.Layout.NetworkSimplex (value)
 import Graphviz.Layout.Order (Vertex(..), backwards, crossings, layered, order, split)
+import Graphviz.Svg (render)
 import Graphviz.Layout.Rank (Rank(..), Solved(..), Variable(..), describe, levels, rank, rankGiven, rankOf, ranking, reversed)
 import Node.Encoding (Encoding(..))
 import Node.Buffer (Buffer)
@@ -60,7 +63,12 @@ main = do
       write directory file case parse text of
         Left problem -> record [ Tuple "error" (fromString problem) ]
         Right dot -> orderJson given (fromDot dot)
-    _, _ -> log "usage: (read | rank | order) <output directory> <file.gv>..."
+    [ "draw", directory ], files -> for_ files \file -> do
+      text <- readText file
+      writeTextFile UTF8 (directory <> "/" <> baseName file <> ".svg") case layout text of
+        Left problem -> "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"600\" height=\"40\"><text x=\"8\" y=\"24\">" <> problem <> "</text></svg>"
+        Right drawing -> render drawing
+    _, _ -> log "usage: (read | rank | order | draw) <output directory> <file.gv>..."
   where
   write directory file found =
     writeTextFile UTF8 (directory <> "/" <> baseName file <> ".json") (stringify found)

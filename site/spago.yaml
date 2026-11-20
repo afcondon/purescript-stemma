@@ -1,0 +1,23 @@
+package:
+  name: graphviz-site
+  description: >
+    A one-page demonstrator for the graphviz package: DOT text in, the
+    library's drawing out, beside Graphviz's own drawing of the bundled
+    examples. Halogen, in the browser.
+  dependencies:
+    - prelude
+    - aff
+    - arrays
+    - effect
+    - either
+    - foldable-traversable
+    - functions
+    - graphviz
+    - halogen
+    - halogen-svg-elems
+    - integers
+    - maybe
+    - numbers
+    - ordered-collections
+    - strings
+    - tuples
