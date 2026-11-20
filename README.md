@@ -149,6 +149,23 @@ reduces a file the two disagree on to a small one they still disagree on.
 
 ## Licence and provenance
 
-This is written from the published descriptions of the algorithms and from
-the behaviour of the `dot` and `gvpr` programs, not from Graphviz's source.
-The files in `corpus/graphviz/` are Graphviz's own and carry its licence.
+MIT; see `LICENSE`. That covers everything here except the files in
+`corpus/graphviz/`, which are Graphviz's (see below).
+
+No code here is copied from Graphviz, and Graphviz's source was not read
+while writing it. The algorithms come from the 1993 paper; the rules for
+what a DOT file means and how dot ranks come from running the `dot` and
+`gvpr` programs on small inputs and watching what they do, and each rule is
+held to those programs by `bin/check.py`.
+
+One qualification, so that this is not overstated: the code was written by
+a language model (Claude), which has general knowledge of how dot works
+from its training. Some of the guesses that the experiments then confirmed
+(for instance, that an edge crossing a cluster's border is a soft
+constraint) started from that knowledge and not from a blank sheet. So this
+is an independent implementation checked against behaviour, and not a
+clean-room one in the strict sense of the term.
+
+The files in `corpus/graphviz/` are Graphviz's own example graphs and carry
+its licence (EPL 1.0); see the notice there. They are test input, and could
+equally be fetched from Graphviz when the tests run.
