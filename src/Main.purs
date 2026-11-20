@@ -31,8 +31,7 @@ import Graphviz.Dot.Syntax (Text(..))
 import Graphviz.Graph (EdgeId(..), Graph, NodeName(..), SubgraphId(..), fromDot)
 import Graphviz.Graph as Graph
 import Graphviz.Layout.NetworkSimplex (value)
-import Graphviz.Layout.Order (Vertex(..), crossings, layered, order)
-import Graphviz.Layout.Order as Order
+import Graphviz.Layout.Order (Vertex(..), backwards, crossings, layered, order, split)
 import Graphviz.Layout.Rank (Rank(..), Solved(..), Variable(..), describe, levels, rank, rankGiven, rankOf, ranking, reversed)
 import Node.Encoding (Encoding(..))
 import Node.Buffer (Buffer)
@@ -163,9 +162,14 @@ oracleOrder path = do
       Left _ -> Nothing
 
 -- What the ordering pass makes of a graph ranked as dot ranked it: how
--- many crossings its order leaves. Where no edge spans more than one
--- rank, dot's own order says where everything is, so its crossings are
--- counted too, by the same count.
+-- many crossings its order leaves, how many times it splits a cluster,
+-- and how many same-rank edges it has the wrong way round (both of which
+-- should be none).
+--
+-- dot's own order is measured the same way as far as it can be. It says
+-- where the nodes are and not where the bends are, so its clusters and
+-- same-rank edges are judged among the nodes alone, and its crossings are
+-- counted only where there are no bends.
 orderJson :: Maybe { ranks :: Array Int, places :: Array Int } -> Graph -> Json
 orderJson oracle graph = case oracle of
   Just given | Array.length given.ranks == Array.length names ->
@@ -175,21 +179,23 @@ orderJson oracle graph = case oracle of
       rankOf node = case Map.lookup node ranks of
         Just found -> Rank found
         Nothing -> Rank 0
+      cut = layered graph rankOf
+      ordered = order cut
+      bends = Array.length (Array.filter isBend (Array.concat cut.ranks))
+      placeOf = case _ of
+        Node node -> Map.lookup node places
+        Bend _ _ _ -> Nothing
+      dots = cut { ranks = map (Array.sortWith placeOf <<< Array.filter (not <<< isBend)) cut.ranks }
     in
-      case layered graph rankOf of
-        Left reason -> record [ Tuple "unsupported" (fromString (Order.describe reason)) ]
-        Right cut ->
-          let
-            bends = Array.length (Array.filter isBend (Array.concat cut.ranks))
-            placeOf = case _ of
-              Node node -> Map.lookup node places
-              Bend _ _ _ -> Nothing
-          in
-            record
-              [ Tuple "crossings" (int (crossings (order cut)))
-              , Tuple "bends" (int bends)
-              , Tuple "dots" (if bends == 0 then int (crossings cut { ranks = map (Array.sortWith placeOf) cut.ranks }) else jsonNull)
-              ]
+      record
+        [ Tuple "crossings" (int (crossings ordered))
+        , Tuple "split" (int (split ordered))
+        , Tuple "backwards" (int (backwards ordered))
+        , Tuple "bends" (int bends)
+        , Tuple "dots" (if bends == 0 then int (crossings dots) else jsonNull)
+        , Tuple "dotsSplit" (int (split dots))
+        , Tuple "dotsBackwards" (int (backwards dots))
+        ]
   _ -> record [ Tuple "error" (fromString "no ranks from dot to order by") ]
   where
   int = Int.toNumber >>> fromNumber

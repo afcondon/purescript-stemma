@@ -55,6 +55,7 @@ module Graphviz.Layout.Rank
   , ranking
   , reversed
   , levels
+  , clusterPaths
   ) where
 
 import Prelude
@@ -228,6 +229,20 @@ outline graph = level Nothing (map _.name (Graph.nodes graph))
         { taken: foldl (flip Set.insert) state.taken taking
         , found: Array.snoc state.found (level (Just cluster.id) (Array.filter (\node -> Set.member node mine) taking))
         }
+
+-- | The clusters each node is in, outermost first: none for a node that is
+-- | in no cluster. A node that several clusters side by side all name is
+-- | in the first of them only.
+clusterPaths :: Graph -> Map NodeName (Array SubgraphId)
+clusterPaths graph = within [] (outline graph) Map.empty
+  where
+  within path (Level level) soFar = foldl
+    ( \found below@(Level inner) -> case inner.cluster of
+        Just id -> within (Array.snoc path id) below found
+        Nothing -> found
+    )
+    (foldl (\found node -> Map.insert node path found) soFar level.nodes)
+    level.inside
 
 -- Which of a level's loose nodes are ranked together, and the two sets
 -- that are pinned.

@@ -1,0 +1,1 @@
+digraph { subgraph cluster_a { subgraph cluster_b { b1; b2 } a1 } r -> b1; r -> a1; r -> b2; r -> q; b1 -> s; q -> s; b2 -> s; a1 -> s }

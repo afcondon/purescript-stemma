@@ -16,7 +16,7 @@ until that comparison says so.
 | Which subgraphs are clusters | done | the same as dot draws, on 865 of 865 files (1,939 subgraphs) |
 | Ranking (which layer each node is on), with `rank=same` and its relatives and with clusters | done, bar the cases below | 864 of 864 rankings proved optimal at every level; dot's own ranking equals the optimum on 860 and is worse on 4 |
 | Turning cycles round before ranking | done | the same edges as dot on 328 of 329 graphs with cycles |
-| Ordering within ranks | plain graphs; clusters and same-rank edges not yet | of 516 graphs, the same number of crossings as dot on 455, fewer on 25, more on 36; 863 crossings in all against dot's 875 |
+| Ordering within ranks, with clusters kept together and same-rank edges left to right | done; slow on large graphs | of 884 graphs, the same number of crossings as dot on 709, fewer on 92, more on 83; 12,391 crossings in all against dot's 12,855 |
 | Coordinates | not started | |
 | Edge routing | not started | |
 
@@ -59,8 +59,7 @@ library would use:
   boolean, a port or a rank kind.
 
 Known differences from Graphviz are in `known-differences/`, each with its
-reason. There is one so far: a file Graphviz itself reads two different
-ways from one run to the next.
+reason.
 
 - `corpus/graphviz/`: the 60 example graphs that ship with Graphviz.
 - `corpus/semantics/`: about 60 small files, one per rule.
@@ -69,8 +68,8 @@ ways from one run to the next.
 - `corpus/layout/`: 300 random graphs with plain attributes, for the layout
   passes (`bin/generate-layout.py`, seeded).
 - `corpus/ranking/`: the cases where dot's ranking is not optimal.
-- `corpus/ranksets/`, `corpus/clusters/`, `corpus/cycles/`: small files, one
-  per rule of rank sets, of clusters and of cycle breaking.
+- `corpus/ranksets/`, `corpus/clusters/`, `corpus/cycles/`,
+  `corpus/ordering/`: small files, one per rule.
 
 A further 9,000 random files from three other seeds were compared on
 2026-11-20. They found the HTML-string rule and the file in
@@ -142,16 +141,34 @@ then the nodes and bends of each rank are ordered to leave few crossings:
 `core/src/Graphviz/Layout/Order.purs`, the median-and-swap search of the
 1993 paper, run on dot's schedule.
 
+Two things hold in every order: the nodes of a cluster that share a rank
+stand side by side (a rank is treated as a tree, and whole clusters are
+moved and swapped as single things), and an edge between two nodes on one
+rank has its tail on the left. The second cannot always be had: such edges
+can go round in a circle, or ask for a node to stand between two nodes of
+one cluster. Then one request is given up, and what remains is consistent
+by construction. The judge checks both on every graph: 884 of 884.
+
+An edge marked `constraint=false` has no say in the order and its crossings
+are not counted, which is dot's rule too.
+
 Nothing is optimal here, for dot or for this, so the two are compared by
 result. Each orders the same ranking (dot's, from `dot -Gphase=2`), and the
 crossings are counted. dot says how many it left (`dot -v`); to be sure the
 two counts are of the same thing, the core's counter is run on dot's own
 order wherever that order is fully known (no long edges), and must give
-dot's number. It does on 204 of 204.
+dot's number. It does on 277 of 277.
 
-Not yet handled, and reported as NOT RUN: graphs with clusters (whose nodes
-have to stay side by side) and graphs with an edge between two nodes on one
-rank.
+dot's own order, judged by the same two rules, never splits a cluster. It
+does put the head of a same-rank edge on the left on some graphs
+(`known-differences/` has a five-edge example).
+
+It is slow on the largest corpus graphs (200 nodes): the crossing count and
+the swaps are written the plain way and are quadratic.
+
+Not done: an edge that passes a cluster on one side on one rank and the
+other side on the next is not discouraged beyond its ordinary crossings, so
+it can end up drawn across the cluster's box. dot discourages it heavily.
 
 ## How the comparison is made
 

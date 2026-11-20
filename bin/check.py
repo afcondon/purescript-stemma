@@ -541,6 +541,7 @@ def check_order(files, record):
 
     fewer, same, more, not_run = [], 0, [], Counter()
     counted, miscounted = 0, []
+    broken_ours, split_dots, backwards_dots = [], [], []
     ours_total = dots_total = 0
     for path, oracle in usable:
         mine = json.loads((FOUND / path.relative_to(CORPUS).parent / "order" / (path.name + ".json")).read_text())
@@ -554,6 +555,12 @@ def check_order(files, record):
             counted += 1
             if mine["dots"] != oracle["crossings"]:
                 miscounted.append((path.name, mine["dots"], oracle["crossings"]))
+        if mine["split"] or mine["backwards"]:
+            broken_ours.append((path.name, mine["split"], mine["backwards"]))
+        if mine["dotsSplit"]:
+            split_dots.append(path.name)
+        if mine["dotsBackwards"]:
+            backwards_dots.append(path.name)
         ours, dots = mine["crossings"], oracle["crossings"]
         ours_total += ours
         dots_total += dots
@@ -568,6 +575,13 @@ def check_order(files, record):
     print(f"  {counted - len(miscounted)} of {counted} graphs with no long edges: the core counts dot's order as dot does")
     for name, here, said in miscounted[:5]:
         print(f"    MISCOUNT {name}: the core counts {here} crossings in dot's order; dot says {said}")
+    print(f"  {compared - len(broken_ours)} of {compared} graphs: the core keeps every cluster together and every same-rank edge left to right")
+    for name, splits, wrong in broken_ours[:5]:
+        print(f"    BROKEN {name}: {splits} clusters split, {wrong} same-rank edges the wrong way")
+    print(f"  dot's own order, judged the same way: a cluster's nodes apart on {len(split_dots)} graphs"
+          + (f" ({', '.join(split_dots[:4])})" if split_dots else "")
+          + f"; a same-rank edge the other way on {len(backwards_dots)}"
+          + (f" ({', '.join(backwards_dots[:4])})" if backwards_dots else ""))
     print(f"  of {compared} graphs ordered: the core leaves the same number of crossings as dot on {same}, "
           f"fewer on {len(fewer)}, more on {len(more)}")
     print(f"  crossings in all: core {ours_total}, dot {dots_total}")
@@ -576,7 +590,7 @@ def check_order(files, record):
         print("    most behind: " + ", ".join(f"{name} ({ours} against {dots})" for name, ours, dots in worst))
     for reason, count in not_run.most_common():
         print(f"  NOT RUN  {count} graphs: {reason}")
-    return not miscounted
+    return not miscounted and not broken_ours
 
 
 def main():

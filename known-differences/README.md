@@ -25,3 +25,18 @@ its source.
 This library joins the newest of the candidates, every time. On the
 smallest case of the kind, `corpus/semantics/strict-joins-the-newest-of-two.gv`,
 Graphviz does the same and does so reliably, so that file is in the corpus.
+
+## `dot-draws-a-same-rank-edge-backwards.gv`
+
+An edge between two nodes on the same rank is meant to run left to right,
+tail first, and on small graphs dot does that. On this one (five edges) it
+does not: `n5 -> n4` has `minlen=0`, the two end up on one rank, and dot
+puts `n4` first, `n6` between them, and `n5` third, so the edge is drawn
+from right to left over the top of `n6`.
+
+    dot -Gphase=2 -Tdot known-differences/dot-draws-a-same-rank-edge-backwards.gv
+
+This library always puts the tail on the left, unless that cannot be had
+(the edges go round in a circle, or ask for a node to stand between two
+nodes of one cluster). On the corpus, dot's order goes against that rule
+on a few dozen graphs; `bin/check.py` prints how many.

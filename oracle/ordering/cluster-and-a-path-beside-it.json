@@ -1,0 +1,83 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "b",
+   "tail": "a"
+  },
+  {
+   "attributes": {},
+   "head": "a",
+   "tail": "x"
+  },
+  {
+   "attributes": {},
+   "head": "y",
+   "tail": "x"
+  },
+  {
+   "attributes": {},
+   "head": "q",
+   "tail": "x"
+  },
+  {
+   "attributes": {},
+   "head": "z",
+   "tail": "y"
+  },
+  {
+   "attributes": {},
+   "head": "b",
+   "tail": "q"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "x"
+  },
+  {
+   "attributes": {},
+   "name": "y"
+  },
+  {
+   "attributes": {},
+   "name": "z"
+  },
+  {
+   "attributes": {},
+   "name": "q"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "a",
+     "b"
+    ]
+   ],
+   "name": "cluster_c",
+   "nodes": [
+    "a",
+    "b"
+   ],
+   "path": [
+    "cluster_c"
+   ]
+  }
+ ]
+}
