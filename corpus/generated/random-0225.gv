@@ -1,0 +1,4 @@
+graph "g 2" {
+{ e } weight="" _x:p -- subgraph cluster_b { subgraph { Edge [k=""]
+f -- -1 } } -- é:p:sw -- subgraph { e -- g } [key=k1] d:n -- h:p -- e -- n2 d:n -- g -- n2 -- { {  } -- subgraph t { shape=2 } [color="x y"; shape=red]; subgraph s { n2 [style=1, shape="", color=2] } } [label=red; shape=same]
+}

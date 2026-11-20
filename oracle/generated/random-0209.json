@@ -1,0 +1,490 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "b",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "k": "box",
+    "label": "1",
+    "rank": "line\\nbreak",
+    "tailport": "n"
+   },
+   "head": "b",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "label": "box"
+   },
+   "head": "q\"uote",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "label": "box"
+   },
+   "head": "f",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {
+    "k": "blue",
+    "label": "box"
+   },
+   "head": "_x",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "b",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "label": "box"
+   },
+   "head": "n1",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "b",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "k": "blue",
+    "label": "box"
+   },
+   "head": "a",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "_x",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "b",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "f",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "n1",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "two words",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p",
+    "shape": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "c",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "a",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "b",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p",
+    "shape": "line\\nbreak"
+   },
+   "head": "two words",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "b",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "b",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "k": "blue",
+    "label": "box",
+    "tailport": "n"
+   },
+   "head": "f",
+   "tail": "a"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "color": "x y",
+    "k": "same",
+    "rank": "red"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "label": "1",
+    "rank": "box",
+    "shape": {
+     "html": "b"
+    },
+    "style": "x y"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "shape": "2"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%1",
+   "nodes": [],
+   "path": [
+    "%1"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "_x",
+     "b"
+    ],
+    [
+     "3.5",
+     "b"
+    ],
+    [
+     "b",
+     "q\"uote"
+    ],
+    [
+     "q\"uote",
+     "f"
+    ],
+    [
+     "f",
+     "_x"
+    ],
+    [
+     "f",
+     "b"
+    ],
+    [
+     "f",
+     "n1"
+    ],
+    [
+     "n1",
+     "b"
+    ],
+    [
+     "n1",
+     "a"
+    ],
+    [
+     "two words",
+     "_x"
+    ],
+    [
+     "two words",
+     "b"
+    ],
+    [
+     "two words",
+     "f"
+    ],
+    [
+     "two words",
+     "n1"
+    ],
+    [
+     "two words",
+     "two words"
+    ],
+    [
+     "two words",
+     "c"
+    ],
+    [
+     "two words",
+     "a"
+    ],
+    [
+     "e",
+     "b"
+    ],
+    [
+     "e",
+     "two words"
+    ],
+    [
+     "c",
+     "b"
+    ],
+    [
+     "a",
+     "b"
+    ],
+    [
+     "a",
+     "f"
+    ]
+   ],
+   "name": "%3",
+   "nodes": [
+    "_x",
+    "3.5",
+    "b",
+    "q\"uote",
+    "f",
+    "n1",
+    "two words",
+    "e",
+    "c",
+    "a"
+   ],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "3.5",
+     "b"
+    ],
+    [
+     "b",
+     "q\"uote"
+    ],
+    [
+     "q\"uote",
+     "f"
+    ],
+    [
+     "f",
+     "n1"
+    ]
+   ],
+   "name": "%5",
+   "nodes": [
+    "3.5",
+    "b",
+    "q\"uote",
+    "f",
+    "n1"
+   ],
+   "path": [
+    "%3",
+    "%5"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%17",
+   "nodes": [
+    "two words"
+   ],
+   "path": [
+    "%3",
+    "%17"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "f",
+     "_x"
+    ],
+    [
+     "n1",
+     "a"
+    ],
+    [
+     "two words",
+     "c"
+    ],
+    [
+     "e",
+     "two words"
+    ],
+    [
+     "a",
+     "f"
+    ]
+   ],
+   "name": "cluster_a",
+   "nodes": [
+    "_x",
+    "f",
+    "n1",
+    "two words",
+    "e",
+    "c",
+    "a"
+   ],
+   "path": [
+    "%3",
+    "cluster_a"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "two words",
+     "a"
+    ]
+   ],
+   "name": "%29",
+   "nodes": [
+    "two words",
+    "a"
+   ],
+   "path": [
+    "%3",
+    "%29"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "3.5",
+     "b"
+    ],
+    [
+     "b",
+     "q\"uote"
+    ],
+    [
+     "q\"uote",
+     "f"
+    ],
+    [
+     "f",
+     "n1"
+    ]
+   ],
+   "name": "%7",
+   "nodes": [
+    "3.5",
+    "b",
+    "q\"uote",
+    "f",
+    "n1"
+   ],
+   "path": [
+    "%3",
+    "%5",
+    "%7"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "s",
+   "nodes": [
+    "_x"
+   ],
+   "path": [
+    "%3",
+    "cluster_a",
+    "s"
+   ]
+  }
+ ]
+}

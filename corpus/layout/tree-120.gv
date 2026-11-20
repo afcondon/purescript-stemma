@@ -1,0 +1,33 @@
+digraph tree120 {
+  n9;
+  n11;
+  n1;
+  n8;
+  n7;
+  n10;
+  n0;
+  n4;
+  n13;
+  n6;
+  n3;
+  n5;
+  n12;
+  n14;
+  n15;
+  n2;
+  n0 -> n7 [weight=5];
+  n1 -> n13;
+  n3 -> n11 [minlen=3, constraint=false];
+  n1 -> n10;
+  n0 -> n1;
+  n9 -> n14;
+  n4 -> n6;
+  n4 -> n9 [minlen=1];
+  n3 -> n5 [minlen=3];
+  n0 -> n3;
+  n6 -> n12;
+  n11 -> n15;
+  n4 -> n8;
+  n0 -> n4;
+  n1 -> n2 [minlen=2];
+}

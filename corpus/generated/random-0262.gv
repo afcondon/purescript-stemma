@@ -1,0 +1,7 @@
+strict digraph {
+d -> c:n [label=red]; b; { Edge [label=<b>] graph [color="", style=blue] { graph [weight=""; label=same] } subgraph { c:p -> "two words" -> { _x -> "q\"uote":p -> a:n -> n2 [style=<b> label=1] label="x y" } -> subgraph {  } [style=""] subgraph {  } { é [shape=2; label="line\nbreak"] } subgraph s { g:p -> é -> n1 -> "two words":p:sw [k=same; label=1] [key=k2]; label="line\nbreak"; label=red; g } edge [weight=red] } }; edge [label=1; shape="x y"]; é [color=same; style=blue; shape=same]; subgraph s {  }; shape=1; d -> g:n [color=same]; NODE [color="x y"; rank="x y"; rank=1]; { subgraph s { subgraph { "two words"; g:p -> "two words"; 3.5 -> _x:p -> e:n -> "two words"; e -> h:p -> d:n [shape=red; style=""]; n2 -> h:p [shape="x y"] };
+3.5:p:sw -> n2 -> a:p [key=k2] } -> h -> h -> b
+é:p -> 3.5
+subgraph { n2 -> -1:p:sw [k="", rank=blue, color=same] -1 rank=2 }
+é:n -> n1 [color=blue] }; graph [style=same]
+}

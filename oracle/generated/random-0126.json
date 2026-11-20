@@ -1,0 +1,74 @@
+{
+ "attributes": {
+  "k": "box"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "k": "line\\nbreak",
+    "style": "line\\nbreak"
+   },
+   "head": "e",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "rank": "2",
+    "shape": "red",
+    "tailport": "p"
+   },
+   "head": "d",
+   "tail": "b"
+  }
+ ],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "shape": "same"
+   },
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "weight": "red"
+   },
+   "edges": [
+    [
+     "-1",
+     "e"
+    ]
+   ],
+   "name": "%1",
+   "nodes": [
+    "-1",
+    "e",
+    "c"
+   ],
+   "path": [
+    "%1"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+digraph {
+{ subgraph { { 3.5 } -> f:p -> g -> n1:p [rank=blue rank=blue color="line\nbreak"]
+a [k="", style=same]
+n2 } }; n1:n -> subgraph cluster_a { n1 [rank=""; rank="line\nbreak"] } -> f [rank=box]; -1:p -> subgraph {  } -> n2:n -> "q\"uote":n [label=box, rank=<b>, shape=box]; graph [color=1]; subgraph cluster_a { k=1; graph [color=box, k="line\nbreak", shape=same]; n1 -> g:p:sw -> g:n -> _x; rank="" }; edge [shape=same; label=box; weight=blue]; style=""; node [style=<b>]; { n1:p:sw -> _x -> "two words" [style=red]
+é -> _x:p:sw [shape=box, label=box] }; n2 -> h -> "two words":p:sw [shape="", color=2, k=blue]; {  }; n1 [k=<b>, rank=1]; shape="x y"; -1
+}

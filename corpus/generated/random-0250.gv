@@ -1,0 +1,10 @@
+graph G {
+edge [style="line\nbreak" shape="x y"] NODE [shape=blue] { 3.5:p:sw -- h:n -- f -- h [k=<b>, rank=1, weight=red] { Edge [label="x y"] } subgraph {  } { graph [weight="x y"; label="line\nbreak"; rank=box] node [k=<b>; weight=1] } "q\"uote" -- é } subgraph cluster_a { k="x y"; n1 [label=same] } 3.5 [k=2] { n1:p -- n2:p [label=blue, style="x y", shape=""]; node [style=<b>; rank=red; shape=""]; subgraph { subgraph { NODE [weight=box]
+n1
+n2 [rank=blue]
+h
+NODE [shape=1; rank=same] }; {  } } } 3.5 -- { n1 -- subgraph s {  } [style="", color=1, label=1] } [weight=1 weight=same] edge [color="line\nbreak" label="" style=""] node [color=same, rank=box, style=""] node [shape=<b>] subgraph { n2:p -- h -- "two words":p -- "q\"uote" [weight=box];
+n2 [rank=red k="line\nbreak"];
+{  };
+{ { label="x y"; NODE [color=1, weight=<b>, weight="x y"]; style=red }; a:n -- b [style="line\nbreak"; style=same; style=same] } -- _x [k=same rank=same] }
+}

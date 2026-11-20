@@ -1,0 +1,14 @@
+graph G {
+n1:p -- 3.5:p;
+d -- subgraph { "two words" [k=1] "two words" -- é [shape="x y", rank="line\nbreak", shape=red] } -- h [color="x y", shape=<b>];
+graph [style="x y" shape=box label="x y"];
+{ { edge [color=2; label="line\nbreak"]
+h -- g -- b:p:sw -- b
+Edge [color=same]
+f [color=<b>] }; subgraph t { -1 n1:p -- n1 -- 3.5:p -- { k=red é } [key=k2] }; n2 [label=1; style="x y"; color=same]; edge [color=""] };
+node [shape=blue rank="x y" rank="x y"];
+{ 3.5:p -- a -- e:p:sw -- -1 [style="line\nbreak"] [key=k2] b [rank=same, color=red, k=blue] };
+n2;
+subgraph {  };
+Edge [color="x y" rank=<b>]
+}

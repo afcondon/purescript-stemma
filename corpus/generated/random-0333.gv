@@ -1,0 +1,14 @@
+strict digraph {
+{  }
+{ subgraph { node [rank="x y"];
+subgraph cluster_b { h -> n2 -> _x:p -> _x:p
+edge [style=blue k=2] };
+d;
+é;
+subgraph {  } } }
+subgraph s { subgraph { edge [style="line\nbreak", shape="line\nbreak"] } edge [color=<b>] g -> d:p:sw -> e -> d:n [rank=1; rank=2; color=same] subgraph { n2:n -> d:n -> d -> { n1
+Edge [label=red; k=2; label=red] } [weight=2] } color=same }
+a -> subgraph {  } -> n1:n [rank=1, k=red, rank=2]
+subgraph { NODE [weight="", color=1] }
+e [label=same]
+}

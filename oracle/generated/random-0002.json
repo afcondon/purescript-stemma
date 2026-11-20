@@ -1,0 +1,343 @@
+{
+ "attributes": {
+  "color": {
+   "html": "b"
+  },
+  "rank": {
+   "html": "b"
+  },
+  "weight": "red"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "label": "box",
+    "style": "x y"
+   },
+   "head": "b",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "k": "red",
+    "weight": "2"
+   },
+   "head": "h",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "label": "box",
+    "style": "x y",
+    "tailport": "p:sw"
+   },
+   "head": "g",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "rank": "box"
+   },
+   "head": "a",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p:sw",
+    "weight": "2"
+   },
+   "head": "two words",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "weight": "box"
+   },
+   "head": "h",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p",
+    "tailport": "p:sw",
+    "weight": "2"
+   },
+   "head": "d",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "tailport": "p",
+    "weight": "2"
+   },
+   "head": "e",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "shape": "x y"
+   },
+   "head": "c",
+   "tail": "c"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "rank": {
+     "html": "b"
+    },
+    "weight": "x y"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "label": "red"
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "rank": "box"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "g",
+     "b"
+    ],
+    [
+     "b",
+     "g"
+    ],
+    [
+     "n1",
+     "a"
+    ]
+   ],
+   "name": "%1",
+   "nodes": [
+    "g",
+    "b",
+    "n1",
+    "a"
+   ],
+   "path": [
+    "%1"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "g",
+     "h"
+    ],
+    [
+     "a",
+     "two words"
+    ],
+    [
+     "n2",
+     "h"
+    ],
+    [
+     "two words",
+     "d"
+    ],
+    [
+     "d",
+     "e"
+    ]
+   ],
+   "name": "%13",
+   "nodes": [
+    "g",
+    "b",
+    "n1",
+    "a",
+    "h",
+    "n2",
+    "two words",
+    "d",
+    "e"
+   ],
+   "path": [
+    "%13"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "n1",
+     "a"
+    ]
+   ],
+   "name": "%7",
+   "nodes": [
+    "n1",
+    "a"
+   ],
+   "path": [
+    "%1",
+    "%7"
+   ]
+  },
+  {
+   "attributes": {
+    "rank": "blue"
+   },
+   "edges": [
+    [
+     "a",
+     "two words"
+    ],
+    [
+     "n2",
+     "h"
+    ],
+    [
+     "two words",
+     "d"
+    ],
+    [
+     "d",
+     "e"
+    ]
+   ],
+   "name": "%17",
+   "nodes": [
+    "b",
+    "n1",
+    "a",
+    "h",
+    "n2",
+    "two words",
+    "d",
+    "e"
+   ],
+   "path": [
+    "%13",
+    "%17"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "n1",
+     "a"
+    ]
+   ],
+   "name": "%9",
+   "nodes": [
+    "n1",
+    "a"
+   ],
+   "path": [
+    "%1",
+    "%7",
+    "%9"
+   ]
+  },
+  {
+   "attributes": {
+    "rank": "blue"
+   },
+   "edges": [],
+   "name": "s",
+   "nodes": [
+    "n1"
+   ],
+   "path": [
+    "%13",
+    "%17",
+    "s"
+   ]
+  },
+  {
+   "attributes": {
+    "rank": "blue"
+   },
+   "edges": [
+    [
+     "a",
+     "two words"
+    ],
+    [
+     "n2",
+     "h"
+    ],
+    [
+     "two words",
+     "d"
+    ],
+    [
+     "d",
+     "e"
+    ]
+   ],
+   "name": "cluster_b",
+   "nodes": [
+    "b",
+    "a",
+    "h",
+    "n2",
+    "two words",
+    "d",
+    "e"
+   ],
+   "path": [
+    "%13",
+    "%17",
+    "cluster_b"
+   ]
+  }
+ ]
+}

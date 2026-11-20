@@ -1,0 +1,13 @@
+digraph {
+graph [shape=2 k=2];
+"two words" -> subgraph {  } -> f:p:sw [label="x y"];
+subgraph { subgraph u { color=box;
+é -> n2 -> n1;
+b;
+-1:n -> subgraph cluster_a { label=1 } -> g:p -> 3.5 [shape=box, k=red] } };
+node [weight=2 weight=1];
+subgraph s { -1 -> subgraph { e -> "q\"uote":p:sw -> n1:p:sw [style=""; weight=same; style=blue] } [style=box] n2 [weight=2] { { edge [style=same, weight=""]
+d [weight=blue] } -> n1 -> "two words":p -> h:p [key=k2] } };
+{  };
+Edge [k=blue; rank="x y"; color=""]
+}

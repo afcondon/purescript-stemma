@@ -1,0 +1,7 @@
+digraph cyclic258 {
+  n2 -> n0 [weight=0];
+  n2 -> n0;
+  n0 -> n3;
+  n0 -> n1 [minlen=1];
+  n2 -> n1 [weight=5];
+}

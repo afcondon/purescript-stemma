@@ -1,0 +1,191 @@
+{
+ "attributes": {
+  "label": "x y",
+  "style": "x y"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "style": "1",
+    "tailport": "n",
+    "weight": "1"
+   },
+   "head": "q\"uote",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "1"
+   },
+   "head": "d",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {
+    "rank": "1"
+   },
+   "head": "c",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "rank": "1",
+    "tailport": "p"
+   },
+   "head": "n1",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "rank": "1",
+    "tailport": "p"
+   },
+   "head": "q\"uote",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw"
+   },
+   "head": "e",
+   "tail": "g"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "same",
+    "rank": "same",
+    "style": "box"
+   },
+   "name": "a"
+  },
+  {
+   "attributes": {
+    "weight": "blue"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "weight": "blue"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "weight": "blue"
+   },
+   "name": "d"
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "label": "same",
+    "weight": "blue"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "label": "same",
+    "weight": "blue"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "label": "same",
+    "weight": "blue"
+   },
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "label": "same",
+    "shape": "1",
+    "weight": "x y"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "label": "same",
+    "weight": "blue"
+   },
+   "name": "e"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "label": "x y",
+    "style": "x y"
+   },
+   "edges": [
+    [
+     "3.5",
+     "q\"uote"
+    ],
+    [
+     "q\"uote",
+     "d"
+    ],
+    [
+     "q\"uote",
+     "c"
+    ],
+    [
+     "_x",
+     "n1"
+    ],
+    [
+     "n1",
+     "q\"uote"
+    ],
+    [
+     "g",
+     "e"
+    ]
+   ],
+   "name": "%3",
+   "nodes": [
+    "3.5",
+    "q\"uote",
+    "d",
+    "_x",
+    "n1",
+    "c",
+    "g",
+    "e"
+   ],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {
+    "label": "x y",
+    "style": "x y"
+   },
+   "edges": [],
+   "name": "%11",
+   "nodes": [
+    "g"
+   ],
+   "path": [
+    "%3",
+    "%11"
+   ]
+  }
+ ]
+}

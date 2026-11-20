@@ -1,0 +1,16 @@
+digraph G {
+n1 [rank=red, shape=same, k=1];
+a [k=red style=red];
+{ { é [rank=red] };
+g -> g:p [k=2; shape=red];
+n2 [shape="line\nbreak"] };
+_x:n -> h -> a [style="line\nbreak" label=2 k="line\nbreak"];
+c:p -> e:n -> 3.5:p:sw;
+n1 [label=blue];
+subgraph { _x
+_x [style=same; color=blue; color=box]
+shape=red
+edge [color="line\nbreak"; rank="x y"; shape=""]
+shape=same };
+3.5 [k=same; style="line\nbreak"; rank=box]
+}

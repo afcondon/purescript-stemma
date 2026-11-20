@@ -1,0 +1,42 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "minlen": "1",
+    "weight": "0"
+   },
+   "head": "n1",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n1"
+  }
+ ],
+ "name": "cyclic158",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

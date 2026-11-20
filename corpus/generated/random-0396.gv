@@ -1,0 +1,7 @@
+digraph G {
+{ weight=<b>
+{ subgraph { f -> -1 [k=2 rank="line\nbreak"] } -> "two words" -> c:n
+c [weight=<b>, weight=same, label=""]
+Edge [rank=box label="x y"] }
+c -> c:p -> 3.5:p:sw -> b:p:sw }; f [color=2]; edge [shape=1; label=blue]; e -> subgraph cluster_a { graph [weight="x y"] } -> g:p:sw -> c:n; -1 -> f -> "two words":n [style=blue]
+}

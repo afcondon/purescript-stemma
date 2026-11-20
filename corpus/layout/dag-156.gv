@@ -1,0 +1,13 @@
+digraph dag156 {
+  n2;
+  n4;
+  n5;
+  n0;
+  n1;
+  n3;
+  n2 -> n4;
+  n3 -> n4 [minlen=1];
+  n1 -> n2;
+  n2 -> n3;
+  n0 -> n2 [minlen=2];
+}

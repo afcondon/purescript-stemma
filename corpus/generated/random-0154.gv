@@ -1,0 +1,9 @@
+graph {
+color=red
+shape=same
+{ { d:p:sw -- "q\"uote" -- f:p:sw -- c
+a
+d -- _x:p:sw -- { n2:n -- b:p:sw -- "q\"uote":p [k=red, color=same] } -- g [rank=blue, label=2, weight=red]
+node [style=<b>; label="line\nbreak"; weight=same] }; k=<b>; subgraph t { "q\"uote";
+{ _x -- e -- 3.5 -- h:p:sw [weight=blue]; é } -- é [rank=box] }; NODE [label="line\nbreak", style=red] }
+}

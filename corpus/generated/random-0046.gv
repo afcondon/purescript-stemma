@@ -1,0 +1,5 @@
+digraph "g 2" {
+Edge [label=<b>] c n1 { é;
+3.5 -> f:p -> a [style="line\nbreak" shape=box];
+d:p:sw -> b -> a } n1 [style="x y"; shape=box]
+}

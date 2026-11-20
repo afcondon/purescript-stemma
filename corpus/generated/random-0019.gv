@@ -1,0 +1,3 @@
+digraph {
+NODE [color=<b>, label=""]; graph [weight="line\nbreak"]; subgraph { f -> n1:p:sw -> 3.5:p [style=blue; color=same] h -> -1:n -> f -> e:p [shape=1] } -> a [style="line\nbreak"]; Edge [k="x y" style=blue label=1]; weight="x y"; f [shape=box label=<b> color=red]; edge [label=2]; "two words" -> c -> e [rank=2]
+}

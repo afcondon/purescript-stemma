@@ -1,0 +1,9 @@
+digraph "g 2" {
+node [style=1; rank="line\nbreak"; label=<b>];
+Edge [label=same; label=blue; shape="x y"];
+"two words";
+{ { graph [label=box weight=1] } c [color=1; label="line\nbreak"] } -> a:p -> "two words":n;
+{ e -> { "two words" [color=1; rank=2] } -> b:p:sw -> n1:n [color=blue; label=same; weight=""] };
+edge [k=<b>];
+h -> c -> { f -> {  } [style=red; shape=1] } -> d:n
+}

@@ -1,0 +1,7 @@
+digraph layered247 {
+  n1 -> n4;
+  n1 -> n3 [weight=10];
+  n1 -> n4 [weight=5];
+  n1 -> n2;
+  n1 -> n3 [weight=5];
+}

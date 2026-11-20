@@ -1,0 +1,3 @@
+graph "g 2" {
+Edge [style=same]; _x [label=2, style=1]; edge [k="", style=""]; graph [label=""; shape=blue]; graph [rank=1; rank=blue; shape="x y"]; b [weight=blue]
+}

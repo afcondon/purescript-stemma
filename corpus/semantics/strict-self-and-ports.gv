@@ -1,0 +1,1 @@
+strict digraph { a:p -> b; a:q -> b; a -> a; a -> a [k=v] }

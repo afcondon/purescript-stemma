@@ -1,0 +1,205 @@
+{
+ "attributes": {
+  "shape": {
+   "html": "b"
+  }
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p"
+   },
+   "head": "_x",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "tailport": "p"
+   },
+   "head": "b",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "rank": "1",
+    "shape": "1"
+   },
+   "head": "n1",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "rank": "1",
+    "shape": "1"
+   },
+   "head": "é",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "rank": "1",
+    "shape": "1",
+    "tailport": "p"
+   },
+   "head": "e",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "rank": "1",
+    "shape": "1",
+    "tailport": "n"
+   },
+   "head": "d",
+   "tail": "e"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak"
+   },
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "label": "box",
+    "style": "blue",
+    "weight": "x y"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "label": "box",
+    "style": "blue",
+    "weight": "x y"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "label": "box",
+    "style": "blue",
+    "weight": "x y"
+   },
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "label": "box",
+    "style": "blue",
+    "weight": "x y"
+   },
+   "name": "d"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%7",
+   "nodes": [
+    "_x"
+   ],
+   "path": [
+    "%7"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": {
+     "html": "b"
+    }
+   },
+   "edges": [
+    [
+     "n1",
+     "n1"
+    ],
+    [
+     "two words",
+     "é"
+    ],
+    [
+     "é",
+     "e"
+    ],
+    [
+     "e",
+     "d"
+    ]
+   ],
+   "name": "u",
+   "nodes": [
+    "n1",
+    "two words",
+    "é",
+    "e",
+    "d"
+   ],
+   "path": [
+    "u"
+   ]
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "shape": "same"
+   },
+   "edges": [
+    [
+     "n1",
+     "n1"
+    ],
+    [
+     "two words",
+     "é"
+    ],
+    [
+     "é",
+     "e"
+    ],
+    [
+     "e",
+     "d"
+    ]
+   ],
+   "name": "%9",
+   "nodes": [
+    "n1",
+    "two words",
+    "é",
+    "e",
+    "d"
+   ],
+   "path": [
+    "u",
+    "%9"
+   ]
+  }
+ ]
+}

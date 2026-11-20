@@ -1,0 +1,11 @@
+strict graph "g 2" {
+g -- subgraph cluster_a { subgraph s {  }
+subgraph s { d [k=box; rank=2] } -- é -- { 3.5 } -- g:p [color="" rank="line\nbreak" weight=same] } -- _x [label=<b> shape=2 weight=1] e -- b:p:sw [rank=red] g:n -- f:p -- n2:n [shape=2, style=blue, k=box] [key=k2] graph [shape=<b>; color=red; shape=2] -1 [shape="", weight=box, k=""] Edge [color=red; label=""; weight=<b>] { -1 -- { label=box;
+shape=same } } -- c -- {  } -- c edge [k=same] subgraph s { subgraph t { { g:n -- g [shape="x y"; k=same]
+a:n -- g:p:sw -- n2 -- "q\"uote" [weight=""] } -- c [color=blue; k=red; k=""] } -- subgraph { edge [label="x y"]
+subgraph cluster_b { d:n -- 3.5 -- g -- g:p [key=k2] d } -- g -- "two words":n -- "q\"uote" [style=red, color="x y", weight=<b>] } -- b [key=k1];
+3.5:p:sw -- é:p:sw -- f -- "q\"uote" [color=red, color="line\nbreak", k=<b>];
+{ NODE [k=1; style=blue; shape=blue] "q\"uote" [color="line\nbreak", label=<b>] -1:n -- { 3.5 -- n2:n [shape=<b>, rank=1, color=""] } -- n2:n -- a:p:sw };
+{  };
+n2 -- "two words":n -- subgraph s {  } -- "two words" [color=2; color=1] } node [color=blue rank=same shape=<b>] 3.5 b [label=2] "q\"uote" -- subgraph {  } -- -1 [shape=blue label="x y"]
+}

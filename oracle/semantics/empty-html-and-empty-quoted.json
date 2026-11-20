@@ -1,0 +1,51 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "",
+   "tail": {
+    "html": ""
+   }
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "1"
+   },
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": {
+    "html": ""
+   }
+  },
+  {
+   "attributes": {
+    "k": "x",
+    "l": "b"
+   },
+   "name": ""
+  },
+  {
+   "attributes": {
+    "l": {
+     "html": "b"
+    }
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "l": "b"
+   },
+   "name": "c"
+  }
+ ],
+ "strict": true,
+ "subgraphs": []
+}

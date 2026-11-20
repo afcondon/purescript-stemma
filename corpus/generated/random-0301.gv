@@ -1,0 +1,10 @@
+strict digraph {
+edge [shape=same; color=<b>] subgraph { b [label=box];
+{ subgraph { n2;
+-1 [rank=1 shape=<b> rank="x y"];
+e:p -> é -> -1 [k=box weight="x y" shape="line\nbreak"];
+e:p:sw -> n2:n -> "q\"uote" -> a:p [color="x y"; weight=same; weight="x y"];
+_x } };
+label=blue;
+style="line\nbreak" } h -> d -> é:p { graph [weight="x y"; style=red] "two words" -> "two words":n [color="x y"] }
+}

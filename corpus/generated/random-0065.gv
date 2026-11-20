@@ -1,0 +1,17 @@
+digraph {
+a [rank=same];
+shape="x y";
+g:p -> subgraph {  };
+h -> f -> _x [style=blue];
+"two words" [style=blue];
+k="x y";
+subgraph cluster_a {  };
+Edge [weight=blue];
+k="";
+edge [weight=""];
+g:p:sw -> subgraph { _x -> n2:p:sw -> é:p -> "q\"uote":p:sw } -> g:p;
+subgraph s { n2:n -> n2:p:sw [k=<b>, color=2, color=blue];
+"two words" [label=<b> shape=1 rank=blue] };
+"q\"uote" [rank="", weight=same];
+weight=""
+}

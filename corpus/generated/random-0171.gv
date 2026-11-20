@@ -1,0 +1,8 @@
+graph {
+subgraph { a -- _x:p:sw [label="line\nbreak"];
+subgraph { { "two words" [shape=red; weight=blue]; -1; a; é -- f:p:sw -- n2:n -- _x [label=1; weight=same; style=blue] } };
+n2 [style=blue];
+e -- "q\"uote":p -- e:p [key=k1] } graph [color="x y", label=red] 3.5:p:sw -- e:n -- { node [color=2] } [label=box; style=same] b:p:sw -- g -- {  } [label=blue; weight=blue] edge [color=red; k="line\nbreak"] e [color=red] { d -- {  } -- g:p:sw [rank=2];
+{ NODE [color=box; k="line\nbreak"] } -- n1:n [k=2, shape=box, label=2];
+subgraph t { 3.5 [rank=same; label=red] n1 } } 3.5 -- b:p [shape="x y"] e é -- n1:p:sw -- c:p [shape=<b> weight=<b>]
+}

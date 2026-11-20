@@ -1,0 +1,8 @@
+strict digraph G {
+a [style="x y"] c:n -> subgraph u { subgraph { color="x y" c:n -> e -> "q\"uote" [style=box] }; "q\"uote" [label=1; k="x y"] } -> e:p [label=blue; rank=red] Edge [k="", style="x y", weight="line\nbreak"] subgraph t { {  } } -> n2 -> {  } [label=<b>; rank=blue; style="x y"] subgraph { subgraph u {  }
+é -> _x
+h -> g -> "q\"uote":p -> _x:n [k="", k="line\nbreak", k=red]
+subgraph s { node [label=<b>; shape=<b>]
+edge [style=<b>, style="line\nbreak", shape=blue] }
+edge [style=box rank="line\nbreak"] }
+}

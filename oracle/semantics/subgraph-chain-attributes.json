@@ -1,0 +1,96 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "k": "v"
+   },
+   "head": "c",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "k": "v"
+   },
+   "head": "c",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "k": "v"
+   },
+   "head": "d",
+   "tail": "c"
+  },
+  {
+   "attributes": {},
+   "head": "f",
+   "tail": "e"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%3",
+   "nodes": [
+    "a",
+    "b"
+   ],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%5",
+   "nodes": [
+    "c"
+   ],
+   "path": [
+    "%5"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "s",
+   "nodes": [
+    "e"
+   ],
+   "path": [
+    "s"
+   ]
+  }
+ ]
+}

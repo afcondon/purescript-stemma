@@ -1,0 +1,16 @@
+digraph ring109 {
+  n3;
+  n0;
+  n5;
+  n2;
+  n1;
+  n4;
+  n2 -> n3 [weight=1];
+  n5 -> n0 [weight=5];
+  n4 -> n5;
+  n3 -> n4 [minlen=0];
+  n0 -> n1 [weight=2];
+  n1 -> n2;
+  n4 -> n0 [minlen=2];
+  n5 -> n2;
+}

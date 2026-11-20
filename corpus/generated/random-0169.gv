@@ -1,0 +1,3 @@
+digraph "g 2" {
+é; NODE [k=""]; n1:p -> g:p [k=<b>, style=box, rank="x y"] [key=k1]; k=2; subgraph { "q\"uote":p -> "two words":p -> 3.5 [style=blue, shape=box] subgraph u {  } { color=box } -> e [style=2, k="x y", weight="line\nbreak"] [key=k2] }
+}

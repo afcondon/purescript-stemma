@@ -1,0 +1,39 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n1",
+   "tail": "n0"
+  }
+ ],
+ "name": "layered242",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

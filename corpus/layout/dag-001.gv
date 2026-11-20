@@ -1,0 +1,33 @@
+digraph dag001 {
+  n4 -> n5;
+  n1 -> n11 [weight=2];
+  n9 -> n15;
+  n3 -> n7;
+  n1 -> n15;
+  n8 -> n14 [minlen=2];
+  n9 -> n10;
+  n0 -> n6;
+  n5 -> n10;
+  n2 -> n12;
+  n2 -> n12;
+  n7 -> n8;
+  n7 -> n11 [weight=2];
+  n1 -> n11 [weight=2];
+  n3 -> n7;
+  n14 -> n15 [weight=1];
+  n3 -> n8;
+  n8 -> n10 [constraint=false];
+  n3 -> n15 [weight=0, minlen=3];
+  n13 -> n15;
+  n0 -> n6;
+  n1 -> n3;
+  n4 -> n12;
+  n0 -> n9 [weight=2];
+  n2 -> n7;
+  n12 -> n15;
+  n4 -> n9;
+  n0 -> n14;
+  n5 -> n11 [weight=3];
+  n1 -> n9 [minlen=0];
+  n1 -> n4;
+}

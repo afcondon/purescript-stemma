@@ -1,0 +1,47 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "color": "same",
+    "rank": "blue"
+   },
+   "head": "f",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "headport": "p:sw",
+    "rank": "blue"
+   },
+   "head": "b",
+   "tail": "f"
+  }
+ ],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "1",
+    "label": "same"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

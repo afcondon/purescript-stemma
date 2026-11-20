@@ -1,0 +1,7 @@
+graph "g 2" {
+a [label=same; shape="x y"]
+d -- { NODE [rank=1];
+c [style=1] } [style=2; weight=red; style=red]
+subgraph { b -- "two words" -- é:p:sw [key=k2];
+n2 [shape="line\nbreak"; color=""; k="x y"] }
+}

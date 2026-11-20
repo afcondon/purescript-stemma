@@ -1,0 +1,11 @@
+digraph G {
+c [label=""]; é -> b:n [shape=red, weight="x y", k=box]; a:n -> f [style=red]; subgraph { a [weight=<b>]
+{ Edge [k=1; weight=1] } -> é
+b -> b
+subgraph { subgraph u { "two words" [k=1]
+label=box } -> { é } [color=red, k=1, style="line\nbreak"]
+h [color="", style=2, label="line\nbreak"]
+{ h [weight="" k="line\nbreak" label="x y"];
+"q\"uote" -> c:p:sw -> d } } }; subgraph { g [label="x y"; label=<b>]
+rank="line\nbreak" }; subgraph u {  }
+}

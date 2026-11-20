@@ -1,0 +1,5 @@
+digraph layered007 {
+  n1 -> n4 [weight=1];
+  n2 -> n5 [minlen=0];
+  n1 -> n5;
+}

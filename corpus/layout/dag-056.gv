@@ -1,0 +1,14 @@
+digraph dag056 {
+  n0;
+  n5;
+  n1;
+  n4;
+  n2;
+  n3;
+  n2 -> n4;
+  n3 -> n4 [weight=2];
+  n2 -> n5 [label=L8];
+  n1 -> n3 [label=L3];
+  n0 -> n1 [weight=2, label=L5];
+  n0 -> n1 [weight=3, minlen=1, label=L6];
+}

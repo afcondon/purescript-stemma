@@ -1,0 +1,6 @@
+digraph G {
+{  } 3.5 -> subgraph {  } "q\"uote" [shape="line\nbreak"] b [shape=1; label="x y"] subgraph u { h [label=blue, weight=1]
+g [rank=same; k=1] } -1 [k=same, label=blue] a:n -> c -> b:p:sw [key=k2] "q\"uote" [label=same, style=blue] Edge [color=red, rank=red] { Edge [shape="line\nbreak"; k=blue; style=red]; subgraph s { subgraph u { é [weight=box k="line\nbreak"] } c -> subgraph { c;
+n2 } -> -1:p:sw [label="", k=blue, k=2] f:p -> _x -> d:p -> "q\"uote" [color=same, rank=same] }; "two words" -> e [rank=2]; n1:p -> 3.5 [style=1; rank="x y"] } { subgraph { -1:n -> _x -> c:p [k=<b>; weight=1] } } -> a [color="", shape=blue, k="line\nbreak"] { c [label="x y" k=red]
+n1 -> é:p:sw [weight="line\nbreak", shape=same] } h:p:sw -> "q\"uote" [style=box style=<b>]
+}

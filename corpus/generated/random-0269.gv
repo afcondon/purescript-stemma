@@ -1,0 +1,22 @@
+strict graph {
+NODE [style=box, style=<b>, shape=""]
+subgraph { "two words" [weight=<b> weight="x y" label=same] }
+node [rank="x y", color=box, shape=red]
+subgraph { { n2:p -- f;
+c:p:sw -- c -- e:n -- a:p [color=blue weight=box];
+{  };
+Edge [weight=blue; label=2];
+subgraph { edge [k="line\nbreak", k=box] } }; "two words" [color=box] } -- b:p:sw -- d:p:sw -- {  } [shape=blue]
+subgraph cluster_a {  } -- { c:n -- f }
+b -- a:p [shape="x y"]
+NODE [k=<b> weight=same weight=2]
+c
+NODE [rank="" weight="line\nbreak"]
+{ { subgraph cluster_a { _x:n -- "two words" [shape="x y", k="x y"]; h -- _x -- h -- _x [style=<b>]; a [style=1] }
+graph [k=1 label=blue style="line\nbreak"]
+graph [rank="line\nbreak" shape=blue] } } -- "two words":p:sw -- { weight=same e [k=""] } [color=same, label=<b>]
+edge [label=box shape=2 color=red]
+_x:n -- e:p -- 3.5 -- { { n2:n -- n2:n;
+_x;
+g:n -- {  } [weight=<b>, style=box, label=<b>] }; c:n -- c [shape=box, style=1, k=box] } [shape=same]
+}

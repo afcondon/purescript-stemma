@@ -1,0 +1,14 @@
+digraph {
+graph [k=same; shape=<b>];
+h [rank=<b>, weight=<b>];
+graph [style=1; rank=box];
+node [weight=same, color=blue, color=""];
+subgraph { { n2:p:sw -> e:p -> "two words":p:sw [rank=box style=blue] [key=k2] subgraph { a c -1 } }
+NODE [color=1, shape=""] };
+h [k=2 color="line\nbreak"];
+{ shape="" };
+{ { NODE [style=blue]
+é -> { graph [shape=red; color=""; label=""] n1:p -> n1 } [shape=<b>]
+subgraph s {  } -> n1:n [shape=red, weight=red]
+edge [k="x y" shape=<b> rank=1] }; { k=1 } }
+}

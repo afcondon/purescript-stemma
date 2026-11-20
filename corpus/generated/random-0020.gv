@@ -1,0 +1,3 @@
+strict graph {
+h:n -- subgraph cluster_b { subgraph {  } -- { é:p -- c -- b:p [label=same] } -- { Edge [weight=same] } -- é } -- subgraph cluster_b {  } [color=same weight="x y"] b [shape="x y", k=2, label=box] é {  } -- a -- c node [rank="line\nbreak"] "q\"uote" -- 3.5 [shape=red; k=2; shape=box]
+}

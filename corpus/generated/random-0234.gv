@@ -1,0 +1,12 @@
+graph G {
+{ color=1;
+f:p:sw -- d [shape="", color=blue] };
+n1 -- subgraph cluster_b { node [style="line\nbreak"] } -- a:p [key=k1];
+"q\"uote" -- -1 [style=<b>];
+{ "two words" -- g:p:sw -- n2 [label=2] d -- 3.5:p:sw [weight=blue, k=2] {  } };
+h [weight=""; weight=same; weight=1];
+node [shape=blue; label=same];
+b;
+Edge [style="x y"; label=blue];
+{ h [shape=red] } -- h:p -- 3.5 -- a:p [weight=2, color=blue]
+}

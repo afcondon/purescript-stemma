@@ -1,0 +1,3 @@
+digraph G {
+node [k=same, style="line\nbreak"]; _x [shape="line\nbreak"]; graph [label=blue k=same shape=1]; label=red; -1 -> f:p [shape=<b>, style=<b>, k="line\nbreak"]; _x [rank=same]; b [weight=same]; subgraph u {  } -> { style="line\nbreak" } -> -1:p:sw -> a:p [label=same]; "q\"uote":p:sw -> "two words" [style=same]; h -> n2 -> 3.5 [k="x y", weight=2]
+}

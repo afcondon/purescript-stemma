@@ -1,0 +1,127 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n8",
+   "tail": "n9"
+  },
+  {
+   "attributes": {
+    "weight": "0"
+   },
+   "head": "n10",
+   "tail": "n9"
+  },
+  {
+   "attributes": {},
+   "head": "n9",
+   "tail": "n8"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "minlen": "0"
+   },
+   "head": "n11",
+   "tail": "n10"
+  },
+  {
+   "attributes": {},
+   "head": "n3",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n4"
+  },
+  {
+   "attributes": {
+    "minlen": "0"
+   },
+   "head": "n8",
+   "tail": "n7"
+  },
+  {
+   "attributes": {
+    "minlen": "0"
+   },
+   "head": "n7",
+   "tail": "n6"
+  }
+ ],
+ "name": "ring099",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n9"
+  },
+  {
+   "attributes": {},
+   "name": "n8"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n10"
+  },
+  {
+   "attributes": {},
+   "name": "n11"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n7"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

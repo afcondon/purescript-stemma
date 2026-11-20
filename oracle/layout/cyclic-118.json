@@ -1,0 +1,55 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "weight": "3"
+   },
+   "head": "n0",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n0",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "constraint": "false"
+   },
+   "head": "n0",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n0"
+  }
+ ],
+ "name": "cyclic118",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

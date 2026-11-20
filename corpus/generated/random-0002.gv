@@ -1,0 +1,6 @@
+graph G {
+{ g -- b:p:sw -- g [style="x y"; label=box];
+{ subgraph { n1 -- a [label=2, rank=box, k=""] } } }; subgraph { g -- h [weight=2; color=same; k=red] { rank=blue subgraph s { n1 [rank=box] } subgraph cluster_b { n2 -- h [label=<b> label=2 weight=box]
+a -- "two words":p:sw -- d:p -- e [weight=2, color=2, weight=2]
+b [label=red; k=""] } } }; color=<b>; c -- c:p:sw [shape="x y"]; weight=red; b; rank=<b>; g [rank=<b>, weight="x y"]
+}

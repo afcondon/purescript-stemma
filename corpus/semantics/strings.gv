@@ -1,0 +1,2 @@
+digraph { a [label="x" + "y", l2=<<b>h</b>>, l3="p\"q\\n\l", l4="back\\"]; "c\"d" [label="l1\nl2\
+cont"] }

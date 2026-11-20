@@ -1,0 +1,86 @@
+{
+ "attributes": {
+  "k": "x y",
+  "label": "blue",
+  "rank": "2",
+  "shape": "2"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "color": "same",
+    "k": "blue",
+    "style": "box",
+    "weight": "line\\nbreak"
+   },
+   "head": "b",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "k": "blue",
+    "rank": "2",
+    "shape": "red",
+    "style": "blue",
+    "weight": "line\\nbreak"
+   },
+   "head": "a",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "k": "blue",
+    "rank": "2",
+    "shape": "red",
+    "style": "blue",
+    "weight": "line\\nbreak"
+   },
+   "head": "q\"uote",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "k": "blue",
+    "rank": "2",
+    "shape": "red",
+    "style": "blue",
+    "weight": "line\\nbreak"
+   },
+   "head": "d",
+   "tail": "q\"uote"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

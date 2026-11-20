@@ -1,0 +1,67 @@
+{
+ "attributes": {
+  "color": "x y"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "style": "x y",
+    "tailport": "p"
+   },
+   "head": "d",
+   "tail": "b"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "blue",
+    "style": "x y"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "rank": "blue",
+    "weight": "x y"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "k": {
+     "html": "b"
+    },
+    "label": "2",
+    "rank": {
+     "html": "b"
+    },
+    "weight": "1"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "k": {
+     "html": "b"
+    },
+    "weight": "line\\nbreak"
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "k": {
+     "html": "b"
+    },
+    "weight": "line\\nbreak"
+   },
+   "name": "d"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

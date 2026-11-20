@@ -1,0 +1,11 @@
+graph "g 2" {
+{ graph [label=same] };
+NODE [label=2];
+Edge [color="line\nbreak"; label=""; shape=1];
+n2;
+n2:p -- e:n [color="x y"];
+f:p:sw -- a:p:sw -- d;
+e [color="", style=blue];
+é [style=blue];
+"q\"uote" -- "q\"uote"
+}

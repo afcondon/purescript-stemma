@@ -1,0 +1,4 @@
+digraph tree275 {
+  n0 -> n1 [weight=10, minlen=1];
+  n1 -> n2 [weight=5, minlen=0];
+}

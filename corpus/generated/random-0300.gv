@@ -1,0 +1,15 @@
+digraph "g 2" {
+rank=box
+{ color="x y";
+graph [weight=<b>; color=2];
+"two words" [color=<b>, color="x y"] }
+"two words" -> e:n -> b:p:sw -> h:p
+shape="x y"
+subgraph t { rank=""
+-1:n -> e:p -> n1:p:sw [rank="line\nbreak"] }
+"q\"uote" -> _x:p -> -1:n [rank=blue]
+_x -> f -> c
+e [weight=<b> weight="x y"]
+d -> "q\"uote" -> "two words" [weight="" style="line\nbreak"]
+{ c [style="line\nbreak", shape=blue] }
+}

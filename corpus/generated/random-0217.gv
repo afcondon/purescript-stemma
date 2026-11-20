@@ -1,0 +1,9 @@
+graph "g 2" {
+n2 -- c -- g:p:sw
+{ subgraph t {  } 3.5 -- 3.5 -- g:p:sw [k=blue rank=blue] b -- n2 -- f -- f:p:sw shape="x y" }
+g:p -- n2:n [weight=<b>; shape=<b>]
+h -- subgraph { { a:p -- c -- d:n -- -1 [color=2; style=<b>; style=""]
+Edge [k=red style="line\nbreak" label=blue] } } -- n1:n [weight=blue; rank=blue]
+graph [color=same color=same]
+label=<b>
+}

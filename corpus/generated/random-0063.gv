@@ -1,0 +1,14 @@
+strict digraph {
+a -> "two words":p -> b -> -1:p:sw;
+n1 -> "q\"uote" -> b:p [style=red];
+d [rank="" k=""];
+h -> g [style=1];
+d [k="x y"; shape=same; weight=""];
+g [weight=blue shape=red];
+Edge [k=2];
+b -> f;
+{ 3.5:p:sw -> -1:n -> {  } [style=2]
+color="line\nbreak"
+node [label=<b>, shape=same, weight=same] };
+{  }
+}

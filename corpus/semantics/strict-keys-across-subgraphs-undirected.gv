@@ -1,0 +1,1 @@
+strict graph { a -- b; subgraph s { b -- a [key=k1, x=1]; a:p -- b } subgraph t { a -- b [key=k1, y=2] } }

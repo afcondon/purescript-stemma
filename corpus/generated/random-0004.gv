@@ -1,0 +1,10 @@
+graph "g 2" {
+c:p:sw -- -1:p:sw -- "q\"uote":p -- é:n;
+"q\"uote" [color="", shape="x y", label=<b>];
+g -- {  } -- a:p [k="line\nbreak" rank=same color=red];
+"two words":n -- { subgraph cluster_a { e -- b:p -- "q\"uote":n [shape="line\nbreak"]; -1 -- _x:p:sw -- h -- b:p; a [style=blue; color=same; color=blue] } } -- b:p -- h [rank=2; color=red];
+f:p -- "two words":p:sw [weight=red, color=same, style="x y"];
+n2;
+node [color=red];
+color=""
+}

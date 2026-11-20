@@ -1,0 +1,11 @@
+digraph dag041 {
+  n4 -> n10;
+  n15 -> n17 [weight=10, minlen=1];
+  n20 -> n24;
+  n5 -> n11;
+  n2 -> n11 [minlen=2];
+  n16 -> n24;
+  n16 -> n23;
+  n5 -> n8;
+  n12 -> n21;
+}

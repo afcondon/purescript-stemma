@@ -1,0 +1,107 @@
+{
+ "attributes": {
+  "label": {
+   "html": "b"
+  },
+  "weight": "box"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "shape": "blue",
+    "tailport": "p:sw"
+   },
+   "head": "c",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "shape": "blue",
+    "tailport": "p"
+   },
+   "head": "é",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "k": "box",
+    "shape": "x y"
+   },
+   "head": "f",
+   "tail": "q\"uote"
+  }
+ ],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "shape": "1",
+    "weight": "x y"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "style": {
+     "html": "b"
+    }
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "style": {
+     "html": "b"
+    }
+   },
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "style": {
+     "html": "b"
+    }
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "weight": "x y"
+   },
+   "edges": [
+    [
+     "n1",
+     "c"
+    ],
+    [
+     "c",
+     "é"
+    ]
+   ],
+   "name": "%1",
+   "nodes": [
+    "n1",
+    "c",
+    "é"
+   ],
+   "path": [
+    "%1"
+   ]
+  }
+ ]
+}

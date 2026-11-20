@@ -1,0 +1,12 @@
+graph {
+subgraph cluster_a { shape=same }
+h:p:sw -- -1 [shape=blue, shape="x y", rank=box]
+"two words" [label=<b>; k=same]
+{ subgraph { { e -- d -- g [label=<b> k=blue shape=same] [key=k1] }
+node [style="x y" shape="x y" k="x y"]
+{  }
+a [style=1 label=same] }; subgraph cluster_a { node [color=blue k=2 k="line\nbreak"]
+NODE [shape=same, rank="", rank=box] }; f [label=2 weight=2] }
+"two words" [shape=red style="" style=red]
+h [label=2 k=same]
+}

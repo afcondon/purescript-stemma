@@ -1,0 +1,19 @@
+digraph G {
+{ { h -> g [k=2, k="x y"]
+3.5 [shape=blue; weight=red; shape=box]
+c [shape=2; label=<b>] };
+é -> "q\"uote":p -> g:p -> "two words" [label=box];
+{ -1:p -> -1:p -> f [rank=2] color=same };
+-1 [color="x y"] }
+e [k="line\nbreak", rank=box, color=""]
+node [weight=same, k=blue, rank=blue]
+n1 [k=""; rank=""; style="x y"]
+NODE [k="x y", color="x y"]
+f -> _x -> 3.5 [color=blue]
+c [rank=red]
+{ weight=box;
+e -> d:n -> é -> h:n [style="x y", style=same, label=same] }
+é -> f:p:sw [k=1 weight=""]
+node [shape="", k="line\nbreak"]
+n2 -> e [style="" shape="line\nbreak"]
+}

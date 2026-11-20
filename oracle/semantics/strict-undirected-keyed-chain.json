@@ -1,0 +1,174 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "g",
+   "tail": "g"
+  },
+  {
+   "attributes": {},
+   "head": "x",
+   "tail": "g"
+  },
+  {
+   "attributes": {},
+   "head": "e",
+   "tail": "g"
+  },
+  {
+   "attributes": {},
+   "head": "p",
+   "tail": "g"
+  },
+  {
+   "attributes": {},
+   "head": "b",
+   "tail": "g"
+  },
+  {
+   "attributes": {},
+   "head": "g",
+   "tail": "w"
+  },
+  {
+   "attributes": {},
+   "head": "x",
+   "tail": "w"
+  },
+  {
+   "attributes": {},
+   "head": "e",
+   "tail": "w"
+  },
+  {
+   "attributes": {},
+   "head": "p",
+   "tail": "w"
+  },
+  {
+   "attributes": {},
+   "head": "g",
+   "tail": "x"
+  },
+  {
+   "attributes": {},
+   "head": "x",
+   "tail": "x"
+  },
+  {
+   "attributes": {},
+   "head": "e",
+   "tail": "x"
+  },
+  {
+   "attributes": {},
+   "head": "p",
+   "tail": "x"
+  },
+  {
+   "attributes": {},
+   "head": "b",
+   "tail": "x"
+  },
+  {
+   "attributes": {},
+   "head": "b",
+   "tail": "e"
+  },
+  {
+   "attributes": {},
+   "head": "g",
+   "tail": "p"
+  },
+  {
+   "attributes": {},
+   "head": "b",
+   "tail": "p"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "w"
+  },
+  {
+   "attributes": {},
+   "name": "x"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {},
+   "name": "p"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "w",
+     "x"
+    ]
+   ],
+   "name": "%3",
+   "nodes": [
+    "g",
+    "w",
+    "x"
+   ],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "g",
+     "x"
+    ],
+    [
+     "p",
+     "g"
+    ]
+   ],
+   "name": "%7",
+   "nodes": [
+    "g",
+    "x",
+    "e",
+    "p"
+   ],
+   "path": [
+    "%7"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%9",
+   "nodes": [
+    "p"
+   ],
+   "path": [
+    "%7",
+    "%9"
+   ]
+  }
+ ]
+}

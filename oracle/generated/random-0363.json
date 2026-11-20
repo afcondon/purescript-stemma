@@ -1,0 +1,36 @@
+{
+ "attributes": {
+  "color": "1",
+  "k": "blue"
+ },
+ "directed": false,
+ "edges": [],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "k": {
+     "html": "b"
+    },
+    "style": "line\\nbreak",
+    "weight": "red"
+   },
+   "name": "two words"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {
+    "color": "1",
+    "k": "blue"
+   },
+   "edges": [],
+   "name": "%1",
+   "nodes": [],
+   "path": [
+    "%1"
+   ]
+  }
+ ]
+}

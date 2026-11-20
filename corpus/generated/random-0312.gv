@@ -1,0 +1,3 @@
+digraph "g 2" {
+edge [color="line\nbreak"]; subgraph {  }; label="x y"
+}

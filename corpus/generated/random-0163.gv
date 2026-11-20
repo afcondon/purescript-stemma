@@ -1,0 +1,6 @@
+digraph {
+{ 3.5 -> n2 -> 3.5:n -> 3.5 [weight="" color=2 color="line\nbreak"];
+d:p -> g -> { n1 -> _x -> é:p [style="x y"] } -> g:n [rank=<b>, weight=<b>];
+n2;
+d:p -> "q\"uote" -> "q\"uote":p:sw -> g }; subgraph {  }; color="x y"
+}

@@ -1,0 +1,190 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "rank": "blue",
+    "tailport": "p"
+   },
+   "head": "e",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "tailport": "n"
+   },
+   "head": "_x",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "rank": "blue",
+    "tailport": "p"
+   },
+   "head": "_x",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "rank": "blue",
+    "tailport": "p"
+   },
+   "head": "q\"uote",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "color": "blue",
+    "label": "same"
+   },
+   "head": "n2",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "tailport": "p:sw"
+   },
+   "head": "q\"uote",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "tailport": "p:sw"
+   },
+   "head": "e",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {
+    "k": "box"
+   },
+   "head": "h",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "color": "blue",
+    "label": "same"
+   },
+   "head": "b",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "k": "box"
+   },
+   "head": "é",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "k": "box"
+   },
+   "head": "d",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "color": "blue",
+    "label": "same"
+   },
+   "head": "-1",
+   "tail": "n2"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "-1"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "d"
+  },
+  {
+   "attributes": {
+    "shape": "same"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "shape": "same"
+   },
+   "name": "b"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "e",
+     "_x"
+    ],
+    [
+     "_x",
+     "q\"uote"
+    ],
+    [
+     "q\"uote",
+     "e"
+    ]
+   ],
+   "name": "%3",
+   "nodes": [
+    "e",
+    "_x",
+    "q\"uote"
+   ],
+   "path": [
+    "%3"
+   ]
+  }
+ ]
+}

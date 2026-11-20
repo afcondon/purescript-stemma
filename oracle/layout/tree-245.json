@@ -1,0 +1,70 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n3",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n6",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n4"
+  }
+ ],
+ "name": "tree245",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n7"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

@@ -1,0 +1,46 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n3",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n1",
+   "tail": "n0"
+  }
+ ],
+ "name": "tree010",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

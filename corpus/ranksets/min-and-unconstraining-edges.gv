@@ -1,0 +1,1 @@
+digraph { a -> b [constraint=false]; {rank=min; b} c -> b [constraint=false] }

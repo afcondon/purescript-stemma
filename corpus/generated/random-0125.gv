@@ -1,0 +1,11 @@
+graph {
+weight=<b>; subgraph { subgraph {  }
+g [k=box rank="line\nbreak"]
+d -- -1:n [weight=red; style=same; rank="x y"]
+{ subgraph { Edge [style=red; style="x y"; style=box]
+c
+edge [shape=1, shape=same]
+d:n -- e -- "two words" [k="x y"] } _x -- n2:p -- { g } [color=red; label=<b>] } -- subgraph t { { k=2 };
+graph [shape="line\nbreak"; rank=1] }
+_x -- f [k="x y" rank=same] }; subgraph s { b:p:sw -- -1; c -- _x -- d:p -- g:n [rank="line\nbreak", rank=same]; edge [label=blue, style=2]; node [shape=""] }
+}

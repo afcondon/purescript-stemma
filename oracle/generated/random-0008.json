@@ -1,0 +1,186 @@
+{
+ "attributes": {
+  "shape": "box"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "color": {
+     "html": "b"
+    },
+    "tailport": "p:sw",
+    "weight": "x y"
+   },
+   "head": "f",
+   "tail": "é"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "head": "two words",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "rank": "x y",
+    "style": "line\\nbreak"
+   },
+   "head": "_x",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "headport": "p:sw",
+    "rank": "x y",
+    "style": "line\\nbreak"
+   },
+   "head": "3.5",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "rank": "x y",
+    "style": "line\\nbreak",
+    "tailport": "p:sw"
+   },
+   "head": "d",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "rank": "x y",
+    "style": "line\\nbreak",
+    "tailport": "n"
+   },
+   "head": "b",
+   "tail": "h"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "color": "1",
+    "k": "line\\nbreak",
+    "label": "1",
+    "rank": "box"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak"
+   },
+   "name": "f"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "k": "line\\nbreak",
+    "style": "same"
+   },
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "k": "line\\nbreak",
+    "style": "same"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "k": "line\\nbreak",
+    "style": "same"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "k": "line\\nbreak",
+    "style": "same"
+   },
+   "name": "d"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "k": "line\\nbreak",
+    "style": "same"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "k": "line\\nbreak",
+    "style": "same"
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "k": "line\\nbreak",
+    "label": "2",
+    "style": {
+     "html": "b"
+    }
+   },
+   "name": "n1"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%3",
+   "nodes": [],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%11",
+   "nodes": [
+    "c"
+   ],
+   "path": [
+    "%11"
+   ]
+  }
+ ]
+}

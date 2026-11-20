@@ -1,0 +1,20 @@
+graph {
+{ c:p:sw -- é:p [label=same shape="" style=blue];
+_x:n -- 3.5 -- f [rank=box style="line\nbreak" style=blue];
+subgraph { g:p:sw -- g -- "q\"uote" -- _x [shape="line\nbreak", weight=<b>];
+Edge [weight=<b>];
+f;
+e -- g:p -- 3.5 [label="x y" weight=<b>] };
+n2 -- subgraph {  } -- d -- é [color=1; color=2];
+subgraph { é [style=<b>; weight="line\nbreak"];
+label=red;
+"q\"uote" [style="x y", weight="x y", weight=<b>] } };
+{ f f:p:sw -- g:n -- "q\"uote":p };
+shape=box;
+{ 3.5 };
+n1:n -- g:p:sw -- n2:n -- "q\"uote" [color=red; k=red; rank=<b>];
+Edge [label=box];
+e -- "two words":p:sw [k=""] [key=k2];
+é -- é:p [shape=<b>; label=2; rank="x y"];
+graph [color=box style=1]
+}

@@ -1,0 +1,3 @@
+graph {
+node [weight="x y", shape=box]; -1 [k=same]; node [rank=<b>; k=<b>]
+}

@@ -1,0 +1,86 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n3"
+  },
+  {
+   "attributes": {
+    "minlen": "0",
+    "weight": "5"
+   },
+   "head": "n4",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "constraint": "false"
+   },
+   "head": "n4",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "weight": "1"
+   },
+   "head": "n0",
+   "tail": "n7"
+  }
+ ],
+ "name": "layered082",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n7"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

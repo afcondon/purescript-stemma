@@ -1,0 +1,5 @@
+digraph G {
+f [label=<b>; shape=<b>];
+{ { NODE [weight=2]; { h; n1; k=box; é }; a [weight=1; style="x y"] }; e [label=1, weight="line\nbreak"]; e:n -> d:p [color=2; shape=box]; node [weight=1 weight="x y"]; b -> b };
+{ c [color="x y", label=red, label=""] color=1 graph [k=1; color="line\nbreak"] g [label=2, color=1, color=<b>] }
+}

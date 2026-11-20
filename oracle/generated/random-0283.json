@@ -1,0 +1,189 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "tailport": "p",
+    "weight": "line\\nbreak"
+   },
+   "head": "é",
+   "tail": "c"
+  },
+  {
+   "attributes": {},
+   "head": "e",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "weight": "line\\nbreak"
+   },
+   "head": "f",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw"
+   },
+   "head": "a",
+   "tail": "f"
+  },
+  {
+   "attributes": {},
+   "head": "f",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p:sw",
+    "label": "line\\nbreak"
+   },
+   "head": "_x",
+   "tail": "e"
+  },
+  {
+   "attributes": {},
+   "head": "3.5",
+   "tail": "e"
+  },
+  {
+   "attributes": {},
+   "head": "two words",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "h",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "n",
+    "label": "line\\nbreak",
+    "tailport": "p:sw"
+   },
+   "head": "two words",
+   "tail": "_x"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n1"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "é"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {
+    "k": "1",
+    "weight": "box"
+   },
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak",
+    "shape": "2"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "color": "red"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "shape": "same"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "rank": "box"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "label": "1",
+    "weight": "1"
+   },
+   "edges": [],
+   "name": "%5",
+   "nodes": [
+    "e",
+    "g"
+   ],
+   "path": [
+    "%5"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%7",
+   "nodes": [],
+   "path": [
+    "%7"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "t",
+   "nodes": [
+    "n2"
+   ],
+   "path": [
+    "t"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "u",
+   "nodes": [
+    "two words"
+   ],
+   "path": [
+    "u"
+   ]
+  }
+ ]
+}

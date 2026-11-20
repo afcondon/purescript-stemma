@@ -1,0 +1,15 @@
+digraph {
+_x -> e -> _x:p:sw; { NODE [rank=2]; 3.5 -> b -> h:p [label=blue, style=2]; 3.5 -> "q\"uote" -> c:p -> -1:p:sw [style="x y"] }; { subgraph cluster_a { subgraph {  } -> a:p:sw -> "q\"uote":p -> n1:p:sw [weight=blue shape=1 shape="line\nbreak"] }
+shape=""
+Edge [color=red; style=red]
+a -> b [shape=box]
+b -> a -> -1:p:sw }; c -> e:p -> subgraph { subgraph s { {  };
+subgraph t { shape=red -1 k=2 };
+{ d
+n1 -> c:p:sw -> a:p:sw [rank=<b> color=same]
+h:n -> n1:p [weight=<b>]
+3.5
+Edge [color=box weight=blue weight=red] };
+e:n -> 3.5 [label=<b>];
+k=2 } -1:p -> h [k=red label="x y" style=blue] } -> n1 [rank=1]; { f -> n1 -> "q\"uote" -> -1 [weight=2 rank=<b> weight=blue] [key=k2] }
+}

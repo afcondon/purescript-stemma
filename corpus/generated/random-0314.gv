@@ -1,0 +1,3 @@
+digraph G {
+h [color=2; label=1; rank=2] { edge [weight=blue style="" shape="line\nbreak"] } subgraph { subgraph { c }; n2:p -> 3.5:p:sw -> 3.5:n -> é [color=red weight=same] [key=k1]; _x [k=blue; weight=red; k=1] }
+}

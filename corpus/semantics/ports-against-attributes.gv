@@ -1,0 +1,1 @@
+digraph { a:x -> b:y [tailport=t, headport=h]; edge [tailport=d]; c -> d:e }

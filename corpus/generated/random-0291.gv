@@ -1,0 +1,3 @@
+digraph {
+n2:p -> a [k=same]; shape=<b>; n1; -1:n -> b:p:sw -> a:p:sw -> -1 [shape="line\nbreak"] [key=k1]; c:n -> subgraph { d:n -> e [rank=same] } [label=box; shape=1]; Edge [label="x y", style=1]; NODE [shape=2; weight="line\nbreak"; style=""]; NODE [label=red]
+}

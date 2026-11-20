@@ -1,0 +1,10 @@
+digraph G {
+Edge [style=box]
+g [color="x y"]
+_x [k="", label=same]
+node [k=blue; shape="x y"; shape=<b>]
+subgraph {  }
+n2:p:sw -> subgraph { c } -> { n1 [shape=red] a -> n2 -> 3.5:n }
+e -> é:n -> subgraph { b:p:sw -> d -> a:n [weight="x y", style=2] [key=k1] }
+"two words" [rank=box]
+}

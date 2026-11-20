@@ -1,0 +1,6 @@
+strict digraph "g 2" {
+node [weight=<b> weight="line\nbreak" k=same] { d:n -> f -> d:p:sw -> subgraph s { "two words" -> a -> { f } -> subgraph t { label=box;
+b:p -> n2 -> 3.5 [rank="x y"; weight=blue] [key=k1] } [weight="line\nbreak"] } [shape=2, style=box, rank=box]
+node [shape=<b> label=same]
+a [label=<b> rank=box color=box] } h -> -1:n -> subgraph cluster_a { graph [label=2 shape=2 rank=same] } -> n1 [style=1 label=<b>] h -> h [shape=2]
+}

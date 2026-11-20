@@ -1,0 +1,13 @@
+strict digraph "g 2" {
+edge [weight=box color=same]
+subgraph u { style=2 k=red }
+"q\"uote":p:sw -> n1 [style=""; color="x y"]
+Edge [style="x y"; label=""; color=""]
+edge [rank="x y"; label="line\nbreak"]
+label=<b>
+rank=blue
+Edge [label=box]
+subgraph { g -> 3.5:n -> "two words":p:sw [rank=1 shape=""] } -> g -> n2:n -> -1:p [color=red shape=2 shape=2] [key=k1]
+NODE [weight=<b>]
+é:p:sw -> a [rank=same]
+}

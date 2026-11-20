@@ -1,0 +1,94 @@
+{
+ "attributes": {
+  "label": "box",
+  "shape": "box"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p"
+   },
+   "head": "f",
+   "tail": "3.5"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "3.5"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "label": "box",
+    "shape": "box"
+   },
+   "edges": [],
+   "name": "%3",
+   "nodes": [],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {
+    "label": "box",
+    "shape": "box"
+   },
+   "edges": [
+    [
+     "3.5",
+     "f"
+    ]
+   ],
+   "name": "s",
+   "nodes": [
+    "3.5",
+    "f"
+   ],
+   "path": [
+    "s"
+   ]
+  },
+  {
+   "attributes": {
+    "label": "box",
+    "shape": "box"
+   },
+   "edges": [],
+   "name": "%7",
+   "nodes": [],
+   "path": [
+    "%7"
+   ]
+  },
+  {
+   "attributes": {
+    "label": "box",
+    "shape": "box"
+   },
+   "edges": [],
+   "name": "%9",
+   "nodes": [],
+   "path": [
+    "%9"
+   ]
+  }
+ ]
+}

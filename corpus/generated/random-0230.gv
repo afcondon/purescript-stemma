@@ -1,0 +1,8 @@
+digraph {
+rank=<b>
+b
+k=blue
+h -> d
+{ h -> -1; "two words" -> a:p; { NODE [k="line\nbreak", color=same] shape=<b> c [shape=""; k="line\nbreak"] graph [style="x y"] a -> 3.5:p:sw [k=2; rank=2; k=<b>] }; subgraph { c -> {  } -> "two words" [rank=box]; -1:p:sw -> a:n -> "q\"uote" [color=""; color=red; style=1]; "q\"uote" [style=2, rank=same, color=same]; f [k=same] }; f -> {  } -> f [color=2; label=<b>; style=red] }
+e:n -> n1:p -> "two words" -> "two words" [rank=same]
+}

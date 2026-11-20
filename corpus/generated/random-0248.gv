@@ -1,0 +1,8 @@
+graph "g 2" {
+graph [weight=box] {  } -- _x [label="line\nbreak"; weight=red; weight="line\nbreak"] { { subgraph { é [shape=<b> k=same rank=""] } -- subgraph { e:p -- é:p:sw -- n2:n -- b;
+_x [color=2, label=red, k="x y"] } -- subgraph {  } -- b:p:sw [color=<b>];
+g [k=same];
+é [k=blue; label="x y"; rank=1];
+a:p -- 3.5 [rank="line\nbreak"; rank=blue] }; graph [k=red; weight=""; k=<b>]; b } weight=blue "two words" -- d:n -- { b [shape=red, label=blue] } -- a [key=k2] f [shape=""] d -- e [rank=2, color=same, label=""] Edge [rank=blue; label=same; k=box] _x -- f:p -- { -1 -- h:n -- a:p:sw -- c:n [color=<b>; style=same; label=blue]
+{ shape="" } } -- subgraph cluster_a {  } "two words" [shape=blue; label="line\nbreak"]
+}

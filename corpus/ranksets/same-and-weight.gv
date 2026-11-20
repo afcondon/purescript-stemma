@@ -1,0 +1,1 @@
+digraph { a -> b; b -> c [weight=5]; a -> d [minlen=3]; d -> e; {rank=same; c; e} }

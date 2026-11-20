@@ -1,0 +1,152 @@
+{
+ "attributes": {
+  "rank": "x y"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "c",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw"
+   },
+   "head": "g",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "tailport": "p:sw"
+   },
+   "head": "h",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "style": {
+     "html": "b"
+    },
+    "tailport": "p:sw"
+   },
+   "head": "é",
+   "tail": "é"
+  }
+ ],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "weight": {
+     "html": "b"
+    }
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {
+    "label": "x y"
+   },
+   "edges": [
+    [
+     "f",
+     "c"
+    ],
+    [
+     "c",
+     "g"
+    ],
+    [
+     "g",
+     "h"
+    ],
+    [
+     "é",
+     "é"
+    ]
+   ],
+   "name": "cluster_a",
+   "nodes": [
+    "f",
+    "c",
+    "g",
+    "h",
+    "é",
+    "a"
+   ],
+   "path": [
+    "cluster_a"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%9",
+   "nodes": [],
+   "path": [
+    "%9"
+   ]
+  },
+  {
+   "attributes": {
+    "style": "same"
+   },
+   "edges": [
+    [
+     "f",
+     "c"
+    ],
+    [
+     "c",
+     "g"
+    ],
+    [
+     "g",
+     "h"
+    ],
+    [
+     "é",
+     "é"
+    ]
+   ],
+   "name": "t",
+   "nodes": [
+    "f",
+    "c",
+    "g",
+    "h",
+    "é"
+   ],
+   "path": [
+    "cluster_a",
+    "t"
+   ]
+  }
+ ]
+}

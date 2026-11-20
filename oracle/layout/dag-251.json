@@ -1,0 +1,51 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "weight": "0"
+   },
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "weight": "1"
+   },
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "weight": "0"
+   },
+   "head": "n2",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "minlen": "0"
+   },
+   "head": "n1",
+   "tail": "n0"
+  }
+ ],
+ "name": "dag251",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

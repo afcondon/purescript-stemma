@@ -1,0 +1,5 @@
+strict digraph {
+style=1 subgraph u {  } subgraph { weight="line\nbreak" } -> a:p:sw -> d -> a [style=blue] { subgraph { _x:p -> n1 [color=same; weight=<b>] } } "two words" f -> h:p:sw [shape="", shape="x y", shape="line\nbreak"] subgraph t { Edge [label="" rank=same];
+NODE [weight=same; style=same];
+a } _x:n -> f:p [shape=box; k=<b>]
+}

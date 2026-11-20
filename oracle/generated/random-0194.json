@@ -1,0 +1,73 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "rank": {
+     "html": "b"
+    },
+    "shape": {
+     "html": "b"
+    },
+    "style": "2"
+   },
+   "head": "q\"uote",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "rank": {
+     "html": "b"
+    },
+    "shape": {
+     "html": "b"
+    },
+    "style": "2",
+    "tailport": "p"
+   },
+   "head": "two words",
+   "tail": "q\"uote"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "label": "red",
+    "style": "same"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "label": "red",
+    "style": "same"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "label": "red",
+    "style": "same"
+   },
+   "name": "two words"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "color": "blue"
+   },
+   "edges": [],
+   "name": "cluster_a",
+   "nodes": [],
+   "path": [
+    "cluster_a"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+digraph "g 2" {
+g:p -> subgraph cluster_a {  } [weight="x y"];
+subgraph {  } -> h:n [label=blue color="" weight=red] [key=k2];
+b [rank=red]
+}

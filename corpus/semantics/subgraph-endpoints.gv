@@ -1,0 +1,1 @@
+digraph { subgraph s { a -> b } subgraph s { rank=same } {c d} -> {e; f} -> g }

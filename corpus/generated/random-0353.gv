@@ -1,0 +1,11 @@
+digraph {
+subgraph u { 3.5 -> f:p:sw [color=2; shape=2] }
+style="x y"
+e [shape=2 k="line\nbreak" shape=same]
+é:p -> a:p -> "q\"uote" [color="x y"]
+3.5
+d [weight=blue]
+style=box
+é [k=<b>]
+d [style=blue, color="line\nbreak", shape=box]
+}

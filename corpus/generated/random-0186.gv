@@ -1,0 +1,6 @@
+graph {
+c [rank="x y"]; a [shape="" style=red]; subgraph cluster_a { -1 -- g -- b:p -- subgraph u {  } [label=red];
+{ label=2 };
+subgraph { e:p -- n1 -- subgraph cluster_a { weight=2 n1 } [style=red] subgraph { d:n -- _x -- 3.5; f:p -- b:n -- 3.5:p:sw; f [k=same; weight=box; style=1]; h } color=same };
+b:n -- é -- g -- b [rank=same] }; k=box; a; {  } -- é:n -- "two words" -- {  } [rank=same]
+}

@@ -1,0 +1,5 @@
+graph "g 2" {
+n2 [rank=<b> label=""]
+Edge [shape=red]
+-1:n -- h -- é:p [rank="line\nbreak"; weight=""]
+}

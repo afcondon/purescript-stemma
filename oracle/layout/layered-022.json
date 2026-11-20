@@ -1,0 +1,40 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "minlen": "0"
+   },
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n0"
+  }
+ ],
+ "name": "layered022",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

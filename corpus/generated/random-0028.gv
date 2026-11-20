@@ -1,0 +1,4 @@
+graph {
+{ k=1;
+e [rank=<b>] } -- h -- e -- h:p; g:p -- "q\"uote":n -- e -- f [k=2]; a [shape=blue]; "q\"uote" [style=box; style=box]; graph [style="line\nbreak"]; Edge [color=2, shape=<b>]; subgraph { d:p:sw -- {  } -- "q\"uote":p:sw; g -- é -- "two words" -- _x [color=same]; label=2 }; é -- h [label=1]; graph [k="", label=2, label=same]; color=box; { _x [rank=2; label="x y"]; n2 [weight=2; rank=blue; label=box] }
+}

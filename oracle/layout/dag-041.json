@@ -1,0 +1,117 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n10",
+   "tail": "n4"
+  },
+  {
+   "attributes": {
+    "minlen": "1",
+    "weight": "10"
+   },
+   "head": "n17",
+   "tail": "n15"
+  },
+  {
+   "attributes": {},
+   "head": "n24",
+   "tail": "n20"
+  },
+  {
+   "attributes": {},
+   "head": "n11",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n8",
+   "tail": "n5"
+  },
+  {
+   "attributes": {
+    "minlen": "2"
+   },
+   "head": "n11",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n24",
+   "tail": "n16"
+  },
+  {
+   "attributes": {},
+   "head": "n23",
+   "tail": "n16"
+  },
+  {
+   "attributes": {},
+   "head": "n21",
+   "tail": "n12"
+  }
+ ],
+ "name": "dag041",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n10"
+  },
+  {
+   "attributes": {},
+   "name": "n15"
+  },
+  {
+   "attributes": {},
+   "name": "n17"
+  },
+  {
+   "attributes": {},
+   "name": "n20"
+  },
+  {
+   "attributes": {},
+   "name": "n24"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n11"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n16"
+  },
+  {
+   "attributes": {},
+   "name": "n23"
+  },
+  {
+   "attributes": {},
+   "name": "n8"
+  },
+  {
+   "attributes": {},
+   "name": "n12"
+  },
+  {
+   "attributes": {},
+   "name": "n21"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

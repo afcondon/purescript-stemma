@@ -1,0 +1,19 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "v",
+    "k2": "v2",
+    "k3": "v3",
+    "k4": "v4"
+   },
+   "name": "a"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

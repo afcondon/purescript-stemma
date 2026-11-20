@@ -1,0 +1,1 @@
+digraph { a; <a>; <a> -> a [label=<x>, l2=x]; subgraph <s> { p } subgraph s { q } subgraph s { r } }

@@ -1,0 +1,14 @@
+strict digraph {
+{  };
+edge [color=box; rank=2];
+h [k=same label=2 weight=<b>];
+graph [k=2, weight="line\nbreak"];
+node [style=same; rank=box];
+subgraph { Edge [style=""]; subgraph { "two words" -> c:n shape="x y" } -> c:p:sw -> 3.5 -> subgraph { n1 }; é:p -> "two words" -> _x -> n1:n; subgraph { h [shape=box] subgraph { Edge [shape=same]; é:p:sw -> "two words" -> a [weight=<b>]; b; node [color=2]; -1 } graph [color="", rank="x y"] label=blue { d;
+label="";
+"q\"uote" } }; 3.5:p:sw -> "q\"uote" -> b:p -> n1 [style=1] };
+g:p:sw -> g:p:sw -> c -> c [shape=<b>, style=<b>];
+node [weight="line\nbreak"; color=blue; weight=2];
+n2 -> _x:n -> "q\"uote" -> n1:n;
+b:n -> e:p:sw -> f:n -> b:n [rank=same color=blue]
+}

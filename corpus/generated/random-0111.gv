@@ -1,0 +1,7 @@
+digraph {
+style=box
+f [label=red]
+"q\"uote":p:sw -> d:p -> subgraph cluster_a { shape=box } -> "q\"uote":p [rank=2; shape=same; weight=blue]
+c -> -1:p [shape=2; color=<b>; color=blue]
+subgraph cluster_b {  } -> e -> é -> n1 [style=red, color=box, label=<b>]
+}

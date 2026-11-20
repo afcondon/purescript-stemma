@@ -1,0 +1,8 @@
+digraph "g 2" {
+n1 -> g:p:sw -> f -> c:n [label="line\nbreak"; label=box] [key=k1]; Edge [style=2, k=2, k="line\nbreak"]; "two words":p:sw -> d -> n2:p [shape="x y"]; { node [k=blue; k=""];
+{ d [rank=blue] n1 [label=red, k=<b>] } -> { Edge [shape=1]; c [label=same; k=red; label=""] };
+color="";
+subgraph cluster_a { Edge [label=1; style="x y"; k=<b>] } }; { subgraph { a; "two words" -> n1:n [key=k1] } -> {  } -> g:n [label=<b>, style="line\nbreak"] } -> subgraph u { g:p -> subgraph cluster_a { 3.5:p -> c:p:sw -> d [weight=2]
+color=box } -> n2:p:sw [rank=1 shape="x y" shape="line\nbreak"]
+subgraph { graph [style=1, shape=1] k=red b -> n2 -> h -> subgraph t {  } [rank=blue; color=box] } } -> d:p:sw -> _x [shape=2 k=red color=""]; n2 [label="x y"; weight=blue; rank=box]; a [weight=<b> color=box weight=red]; b [shape=<b>]; -1 -> _x:p:sw -> e:n -> _x
+}

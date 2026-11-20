@@ -1,0 +1,11 @@
+digraph ring104 {
+  n3;
+  n1;
+  n2;
+  n0;
+  n1 -> n2;
+  n2 -> n3 [minlen=2];
+  n3 -> n0;
+  n2 -> n2;
+  n0 -> n1 [constraint=false];
+}

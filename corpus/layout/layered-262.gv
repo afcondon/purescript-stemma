@@ -1,0 +1,16 @@
+digraph layered262 {
+  n1 -> n7 [weight=1, minlen=1];
+  n5 -> n7 [minlen=3];
+  n6 -> n8 [label=L7];
+  n0 -> n7;
+  n9 -> n4;
+  n5 -> n4 [label=L5];
+  n6 -> n8;
+  n0 -> n7;
+  n1 -> n4;
+  n6 -> n8;
+  n6 -> n3 [minlen=1];
+  n5 -> n7 [label=L6];
+  n9 -> n4 [weight=2, minlen=2, constraint=false];
+  n5 -> n4 [label=L3];
+}

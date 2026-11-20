@@ -1,0 +1,8 @@
+strict digraph "g 2" {
+weight=blue;
+{ { 3.5:n -> e:p:sw -> b -> h:n -1:n -> a -> _x -> b [weight="x y", color=<b>, shape=""] } -> b -> d [label="" style=2] };
+subgraph t { 3.5:p:sw -> n1:n [k=<b> shape="line\nbreak" shape="x y"] };
+Edge [shape="x y" style=<b>];
+NODE [shape=red];
+{  }
+}

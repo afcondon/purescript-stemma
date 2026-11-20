@@ -1,0 +1,11 @@
+digraph layered122 {
+  n3;
+  n1;
+  n4;
+  n0;
+  n2;
+  n1 -> n2 [minlen=0];
+  n1 -> n2;
+  n4 -> n0;
+  n4 -> n3 [weight=1];
+}

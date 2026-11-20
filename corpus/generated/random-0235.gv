@@ -1,0 +1,10 @@
+graph {
+_x [label=blue color="x y" k="line\nbreak"];
+3.5:p -- g:p -- d:p:sw -- g:p:sw [style=<b> weight=""];
+e -- "two words" -- n1:n [weight=1 rank=1];
+{ { weight=1
+subgraph { d } -- _x:p:sw -- h:n
+{ edge [label="line\nbreak", color="line\nbreak", k=2] b:n -- n1:p -- -1:n [k="" color=same] } } };
+_x:n -- subgraph cluster_a {  } -- 3.5:n -- { 3.5 [rank="x y"]; Edge [weight="line\nbreak" color=blue] };
+label=2
+}

@@ -1,0 +1,13 @@
+digraph cyclic228 {
+  n1;
+  n2;
+  n0;
+  n0 -> n1 [minlen=3];
+  n0 -> n2;
+  n0 -> n1;
+  n0 -> n2 [constraint=false];
+  n1 -> n1 [weight=1, minlen=0, constraint=false];
+  n1 -> n1;
+  n1 -> n1 [minlen=0];
+  n0 -> n1;
+}

@@ -1,0 +1,3 @@
+digraph {
+_x [rank=2, k=red, k=same] é [rank="line\nbreak"] edge [rank="line\nbreak"] { n1 } color="" subgraph { { subgraph { "two words":n -> h -> -1:p -> d:p [k="line\nbreak"; style=same] [key=k1]; c:p:sw -> b -> a -> e:p; b [k=2]; f }; a:p -> "q\"uote" -> a -> 3.5:n [style="x y"] } c:p -> b [weight=blue, shape="x y", color=blue] } n1:p:sw -> f -> _x NODE [color=1 shape=red style=red] b -> "two words":n -> "two words" -> é [weight=2 weight=red] [key=k1]
+}

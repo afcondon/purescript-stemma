@@ -1,0 +1,28 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "c",
+   "tail": {
+    "html": "b"
+   }
+  }
+ ],
+ "name": "html",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": {
+    "html": "b"
+   }
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

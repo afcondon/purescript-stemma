@@ -1,0 +1,3 @@
+digraph {
+weight=blue { "two words" -> n2 -> d:p:sw [k="x y" weight="x y" k=red] } graph [weight=same] k=red Edge [k=same; weight=same; weight=2] node [label=same, color=<b>, k=blue] node [style="x y"] weight=box n1:p:sw -> {  } -> n2 -1 -> a:n [rank=2 label=<b> weight=<b>] "q\"uote" subgraph s { {  } } -> é -> -1 -> é:n [shape=1; k=red; style=<b>] node [label=""] é -> _x:p:sw -> h:n
+}

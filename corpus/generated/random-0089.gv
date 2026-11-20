@@ -1,0 +1,7 @@
+digraph G {
+é:p:sw -> "two words" -> c:n -> 3.5:p:sw 3.5 [k="line\nbreak"] { a [weight=""];
+node [k=same weight=2];
+Edge [rank=same];
+g [color="line\nbreak", weight=box];
+3.5 [color=<b> style=red] } "two words" [style=1, k="x y", weight=blue] n1:p -> n2:p -> "two words" -> d [rank=blue, label=red, label=<b>] e [color=red label=box] n2 -> {  } -> n2 -> {  } subgraph u { { "q\"uote":p -> a -> a:n -> _x } h -> _x:p { a } -> é:p:sw -> e:p -> b [rank=""; k=red; style="x y"] color=2 }
+}

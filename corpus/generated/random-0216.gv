@@ -1,0 +1,3 @@
+digraph G {
+_x -> d:p [style="x y", rank=box, color=box] f [k="line\nbreak"] subgraph { -1 -> "q\"uote" -> _x:p } _x:n -> g -> "two words" [rank=same; rank=""; label="x y"] é:p -> é -> f graph [label="line\nbreak"] graph [style=box; style=""]
+}

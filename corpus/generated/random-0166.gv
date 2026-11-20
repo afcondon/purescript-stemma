@@ -1,0 +1,15 @@
+digraph {
+h [k="" shape=1];
+a -> 3.5:n [style="x y" weight="x y"];
+NODE [label=<b>];
+n1 [label=<b>];
+é:p:sw -> {  } -> d -> n2:p:sw [key=k1];
+d [k=same; rank=box; weight="line\nbreak"];
+c [style=<b>];
+a -> h -> { style=""
+subgraph { style=2
+n2 [style="line\nbreak"; color=red]
+"q\"uote"
+NODE [shape=blue; label=""; rank="x y"] } };
+n1
+}

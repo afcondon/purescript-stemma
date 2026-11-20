@@ -1,0 +1,17 @@
+digraph {
+n2:p:sw -> a:p -> "two words" -> a:n [weight=1]; Edge [style=box; label=blue; rank="x y"]; "two words":p:sw -> n1 [weight=box; rank=2]; color=same; color=1; a; { a -> "q\"uote" [label="line\nbreak"] [key=k2];
+-1 -> c:p -> g -> g:n [color=same k=red] }; { { n1:p -> n1 -> -1:p -> _x [weight=<b> label=box];
+{ 3.5 [style=1] };
+n2 -> 3.5 [rank=same, label="line\nbreak"] [key=k2];
+node [shape=1] }
+c -> e:n [weight=2]
+-1:p:sw -> h -> g:p -> { { b:p:sw -> "two words":p:sw -> n1 -> "two words":p:sw [label=same];
+h;
+-1 [k=1, label=<b>];
+é [weight="line\nbreak", style="line\nbreak"];
+edge [k="x y" shape="line\nbreak" label=2] } } [style="x y" label=red shape=""]
+subgraph { e:n -> {  } -> n1 -> e [k="line\nbreak"; rank=box; weight=""] [key=k1]; e } -> c -> n2 [k=red, rank=same]
+f [shape=<b>; color=same] }; { subgraph { { n1 [style=<b>, label=same, label="x y"]; _x -> n1:n -> f:p [color=red]; shape=1 }; edge [color=box; color=<b>]; g [style="line\nbreak"; label=1] } }; Edge [weight="x y"; rank=1]; subgraph { n1
+{ h [shape=2] { edge [weight=same; label=<b>; weight=2] } Edge [shape=<b> color=blue label=red] }
+"q\"uote" -> subgraph s { _x:p:sw -> h } -> "two words":p:sw [weight=red] }; 3.5 [style=1 k=""]; -1 [style=1]; b [label=""]
+}

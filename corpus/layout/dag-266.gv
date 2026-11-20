@@ -1,0 +1,29 @@
+digraph dag266 {
+  n16 -> n18 [constraint=false];
+  n4 -> n12;
+  n15 -> n18 [weight=3];
+  n4 -> n9 [weight=0];
+  n1 -> n7;
+  n5 -> n9;
+  n3 -> n12;
+  n2 -> n12;
+  n2 -> n9 [weight=2];
+  n0 -> n16;
+  n13 -> n19 [weight=1];
+  n14 -> n18 [weight=1];
+  n10 -> n11;
+  n2 -> n14;
+  n3 -> n8;
+  n1 -> n11;
+  n8 -> n19 [minlen=2];
+  n2 -> n17 [minlen=2];
+  n6 -> n17 [constraint=false];
+  n5 -> n10 [weight=1, minlen=3];
+  n12 -> n13;
+  n1 -> n18;
+  n5 -> n8 [weight=0];
+  n7 -> n14 [weight=10];
+  n18 -> n19;
+  n11 -> n12 [minlen=2];
+  n0 -> n6;
+}

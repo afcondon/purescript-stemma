@@ -1,0 +1,13 @@
+digraph {
+3.5:n -> -1 [rank=box, color=same]
+subgraph { { d [rank=box; shape=red; color="x y"]
+NODE [color=""; rank=same]
+n1 -> { e
+-1 } -> -1 -> _x:p }
+style=blue
+{ subgraph s {  } } -> g:p -> b:p:sw
+weight=red }
+é -> subgraph { h -> a -> {  } [k=blue] } -> b -> g [color="x y"]
+{ n2 [style=box]
+n1 [color=box, label=red] }
+}

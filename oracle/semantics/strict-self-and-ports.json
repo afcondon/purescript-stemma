@@ -1,0 +1,33 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "k": "v"
+   },
+   "head": "a",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "tailport": "q"
+   },
+   "head": "b",
+   "tail": "a"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  }
+ ],
+ "strict": true,
+ "subgraphs": []
+}

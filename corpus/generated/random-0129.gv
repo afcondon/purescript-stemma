@@ -1,0 +1,5 @@
+digraph {
+subgraph cluster_a {  }; subgraph u { subgraph s { NODE [style=1, label="x y", k="line\nbreak"];
+d [style=<b>];
+g }; graph [color=<b> k="x y" weight="line\nbreak"]; {  } -> e:p:sw [k=<b>, k=box, shape="line\nbreak"]; node [shape="x y", label="line\nbreak", label=2] }; h:p -> "two words" -> subgraph { subgraph { weight=same } } -> f [weight=red weight=<b> color=box]; _x; Edge [label="x y" weight=<b> shape="line\nbreak"]
+}

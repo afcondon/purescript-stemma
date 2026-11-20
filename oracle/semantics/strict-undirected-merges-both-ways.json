@@ -1,0 +1,32 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "a",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "color": "red",
+    "style": "dashed"
+   },
+   "head": "b",
+   "tail": "a"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  }
+ ],
+ "strict": true,
+ "subgraphs": []
+}

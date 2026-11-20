@@ -1,0 +1,36 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "label": "L1",
+    "weight": "1"
+   },
+   "head": "n1",
+   "tail": "n0"
+  }
+ ],
+ "name": "dag051",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

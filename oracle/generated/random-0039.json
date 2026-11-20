@@ -1,0 +1,59 @@
+{
+ "attributes": {
+  "k": "blue"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "k": "blue",
+    "shape": "line\\nbreak"
+   },
+   "head": "d",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "k": "blue",
+    "shape": "line\\nbreak"
+   },
+   "head": "3.5",
+   "tail": "d"
+  }
+ ],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "d",
+     "d"
+    ],
+    [
+     "d",
+     "3.5"
+    ]
+   ],
+   "name": "%1",
+   "nodes": [
+    "d",
+    "3.5"
+   ],
+   "path": [
+    "%1"
+   ]
+  }
+ ]
+}

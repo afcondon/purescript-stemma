@@ -1,0 +1,12 @@
+strict digraph "g 2" {
+-1 [shape=same, style=2, label="x y"]
+{  } -> g -> {  } -> 3.5:p [rank=<b>] [key=k2]
+a
+Edge [k=blue style=box k=blue]
+-1 [style=1 shape=""]
+"two words" [weight="line\nbreak"]
+graph [style=box]
+color=blue
+e:p -> "q\"uote":p -> a -> e:p:sw [label=same; shape=2]
+"q\"uote" [shape=""; shape=""; label=same]
+}

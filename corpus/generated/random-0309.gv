@@ -1,0 +1,3 @@
+strict graph "g 2" {
+style=box; color=blue; "q\"uote" [shape=<b> color=same shape=2]; b:n -- d:n -- n2:p:sw [label=2 color=box label=blue]; graph [weight="" label=box weight=same]; { "two words" -- {  } [style=""; weight=blue]; NODE [shape=2; weight="line\nbreak"]; e -- _x -- d [style=1; style="x y"]; edge [style=2, color=box]; weight="x y" }; c:p:sw -- { node [rank=box shape="" shape="line\nbreak"] } -- 3.5 [weight=box; k="x y"; shape="x y"]; Edge [k="line\nbreak", rank=""]; n1:p:sw -- -1 -- 3.5:p:sw -- é:p:sw [style=<b>; label="x y"; k=red] [key=k1]; a:p -- subgraph {  } [rank=1 k=same]; weight=1
+}

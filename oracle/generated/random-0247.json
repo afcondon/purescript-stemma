@@ -1,0 +1,52 @@
+{
+ "attributes": {
+  "shape": "red",
+  "style": "line\\nbreak"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "rank": "2",
+    "tailport": "p",
+    "weight": "same"
+   },
+   "head": "-1",
+   "tail": "f"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "k": "box",
+    "rank": {
+     "html": "b"
+    }
+   },
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "rank": "1",
+    "weight": "same"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

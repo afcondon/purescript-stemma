@@ -1,0 +1,11 @@
+digraph {
+edge [shape=1; k=blue];
+n1 [color="", shape=1];
+d;
+{ "two words" };
+{  };
+NODE [rank="line\nbreak" color=<b> color="line\nbreak"];
+e -> h:p -> n2:p:sw -> -1;
+Edge [weight="line\nbreak"; shape=red; k=""];
+{  }
+}

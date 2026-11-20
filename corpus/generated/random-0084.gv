@@ -1,0 +1,5 @@
+digraph G {
+{  }; a -> { color="";
+b -> { graph [weight=red] } -> g [k=blue; weight=blue] } [label=same color=blue]; subgraph { 3.5 [weight=1];
+e [shape=same] }
+}

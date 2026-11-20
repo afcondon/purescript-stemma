@@ -1,0 +1,29 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "g",
+   "tail": "p"
+  },
+  {
+   "attributes": {},
+   "head": "p",
+   "tail": "g"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "p"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  }
+ ],
+ "strict": true,
+ "subgraphs": []
+}

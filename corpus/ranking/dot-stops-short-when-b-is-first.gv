@@ -1,0 +1,1 @@
+digraph { b -> c [weight=30]; a -> b; a -> c [minlen=3] }

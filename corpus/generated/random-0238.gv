@@ -1,0 +1,6 @@
+graph {
+graph [color=box; color=2; label=same];
+b [style=red];
+edge [color=red, style="line\nbreak", weight=red];
+d [label=1]
+}

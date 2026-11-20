@@ -1,0 +1,3 @@
+graph "g 2" {
+d -- n2 -- n2:p:sw -- n2 [rank=<b>; style=blue; k=red]; g -- "q\"uote" -- "two words":p -- subgraph { h:p -- b:p }; rank=same
+}

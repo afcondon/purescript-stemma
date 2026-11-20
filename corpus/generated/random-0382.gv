@@ -1,0 +1,3 @@
+graph G {
+style=2; h [shape=blue, rank=2, label=<b>]; NODE [weight=2]; style=""; subgraph cluster_a { e [weight=red] }; 3.5 [rank=1]
+}

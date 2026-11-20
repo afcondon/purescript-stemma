@@ -1,0 +1,21 @@
+package:
+  name: graphviz
+  description: >
+    Graphviz's DOT language and its `dot` layout, written in PureScript from
+    the published algorithms. Pure: no foreign code, so it runs wherever
+    PureScript does.
+  dependencies:
+    - prelude
+    - arrays
+    - control
+    - either
+    - enums
+    - foldable-traversable
+    - integers
+    - lists
+    - maybe
+    - ordered-collections
+    - strings
+    - tailrec
+    - transformers
+    - tuples

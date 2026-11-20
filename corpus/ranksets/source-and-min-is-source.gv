@@ -1,0 +1,1 @@
+digraph { a; b; x -> y; {rank=source; b} {rank=min; a} }

@@ -1,0 +1,52 @@
+{
+ "attributes": {
+  "shape": "x y",
+  "style": "1"
+ },
+ "directed": true,
+ "edges": [],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "color": "red",
+    "shape": "line\\nbreak",
+    "weight": "x y"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {
+    "shape": "blue",
+    "weight": "box"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "k": "box",
+    "label": "red",
+    "rank": "line\\nbreak",
+    "shape": "x y"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "k": "blue",
+    "label": "x y",
+    "shape": {
+     "html": "b"
+    },
+    "style": "1"
+   },
+   "name": "q\"uote"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

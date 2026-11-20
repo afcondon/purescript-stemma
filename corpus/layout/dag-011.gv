@@ -1,0 +1,12 @@
+digraph dag011 {
+  n7 -> n9;
+  n1 -> n7 [minlen=3];
+  n3 -> n7 [minlen=2];
+  n2 -> n9 [minlen=3];
+  n2 -> n4;
+  n1 -> n4;
+  n6 -> n7 [minlen=2];
+  n1 -> n4;
+  n2 -> n5;
+  n3 -> n9;
+}

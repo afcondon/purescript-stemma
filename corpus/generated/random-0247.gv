@@ -1,0 +1,3 @@
+digraph {
+f:p -> -1 [weight=same; rank=2] [key=k1]; style="line\nbreak"; c [k=box color=box rank=<b>]; shape=red; h [weight=same rank=1]; _x [k=""]
+}

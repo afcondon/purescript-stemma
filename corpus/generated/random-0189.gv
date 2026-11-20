@@ -1,0 +1,28 @@
+strict graph {
+a [weight=red]; subgraph { { { label=blue "q\"uote":n -- f };
+é [rank=same; style=2; style=blue] }
+{ c:p -- n2:n -- {  } [k=1, shape=2]
+a [rank=red, color=1, k=""]
+graph [label=1] }
+graph [color="x y"; color=same; k="x y"]
+style=1
+f:p -- n2 -- f:p -- "two words" [style="x y"; color=blue] }; "two words" -- f -- c -- "two words":n; a [weight=<b>; label="x y"]; { n2 -- subgraph {  } -- subgraph s {  } [weight=box, style=<b>, label=2];
+{ { b [style=box]; Edge [k=2; shape=blue; k="x y"]; f }
+a:n -- a -- h:p:sw -- e [shape=red; label=red]
+{ "q\"uote"
+_x:p -- -1 -- g -- d [k=1, k=1] }
+a -- g -- c:n [rank=<b>; style=""; style="x y"]
+n1:n -- e -- h:p -- -1 [weight="line\nbreak", k="line\nbreak", color=""] };
+node [shape=blue];
+subgraph cluster_b { g [weight=1; style=1]
+rank=same } -- n1 -- d:n;
+g:p:sw -- g:n -- _x -- {  } [weight=blue] }; _x -- _x [key=k2]; { e;
+h [label=box shape=same shape=blue];
+subgraph s { c:p -- c:p:sw -- c [color=1];
+{ label=blue b [weight="" label="line\nbreak"] } -- é [color="x y"; rank=<b>; k=box];
+"two words":n -- e [k="line\nbreak" shape="x y"] };
+{ NODE [rank=same; shape=1]
+f:p:sw -- 3.5 [rank=<b>]
+subgraph s {  } -- { b b } [label=box] };
+edge [color=<b> style=1 style=2] }; rank=same; "q\"uote" [style="x y"]; -1 -- {  } [weight=<b>, shape=box]; {  }; style="line\nbreak"; edge [color=same; color=red]
+}

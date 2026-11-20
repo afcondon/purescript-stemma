@@ -1,0 +1,15 @@
+digraph G {
+subgraph t {  };
+é:n -> -1 -> _x -> n1;
+{ b:n -> g:n [shape="x y"; label=1];
+subgraph { 3.5; c -> {  } [color=box] [key=k2]; "two words" [style=box] };
+n1 [shape=blue, rank="x y"];
+c -> _x [color=red] };
+edge [k=box; rank=2];
+"q\"uote" -> 3.5 -> n1:n -> e:n [shape=<b>];
+node [rank=same; weight="line\nbreak"; style="x y"];
+d -> d [rank=box];
+b:p -> f -> n1:n [weight=box; rank=2];
+a [shape="line\nbreak"];
+NODE [style=blue]
+}

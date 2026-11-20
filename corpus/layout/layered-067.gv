@@ -1,0 +1,33 @@
+digraph layered067 {
+  n14 -> n23;
+  n16 -> n17 [constraint=false];
+  n0 -> n5;
+  n14 -> n8;
+  n22 -> n1;
+  n14 -> n4 [weight=10];
+  n21 -> n17;
+  n12 -> n4;
+  n24 -> n13;
+  n8 -> n15;
+  n5 -> n15 [weight=5];
+  n17 -> n13 [constraint=false];
+  n14 -> n24 [weight=1];
+  n12 -> n18 [weight=10];
+  n7 -> n13 [weight=1];
+  n21 -> n5;
+  n12 -> n0;
+  n16 -> n23;
+  n14 -> n6 [weight=5];
+  n22 -> n11;
+  n3 -> n6 [minlen=3];
+  n12 -> n11 [weight=0];
+  n18 -> n13;
+  n3 -> n19;
+  n17 -> n1;
+  n14 -> n0 [minlen=2];
+  n24 -> n5;
+  n14 -> n7;
+  n22 -> n10;
+  n24 -> n1 [weight=3];
+  n14 -> n17 [weight=0];
+}

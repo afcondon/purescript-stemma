@@ -1,0 +1,18 @@
+digraph G {
+subgraph { h:n -> "two words":n -> h:n -> n2:p [weight="", shape=box, weight="x y"] }; {  }; subgraph { graph [k="x y"]
+{ e [shape=2; rank=blue; style=red]; { c
+Edge [weight=blue]
+d
+é
+3.5 -> c [shape="x y"; shape=box] } }
+edge [style=""; weight=2]
+-1 [k=red, style=red]
+g:p:sw -> _x -> _x [weight=same; rank=2] }; "two words":n -> { { -1 [shape=<b>; rank=same; color=1] rank="x y" é [weight=<b>] "two words" [weight=<b>] a:n -> _x:p -> a:p:sw }; { { Edge [k=2; weight=2; weight=1]
+graph [weight=<b> k=""]
+h };
+subgraph { _x style="x y" b edge [style="x y"] };
+{ f [label=""; weight=<b>; style=""] } -> d:p [weight=2];
+edge [rank="x y", weight=1];
+g [label=<b>, label="line\nbreak", k=blue] } } -> c -> { {  } -> "q\"uote":p [color=same];
+edge [weight="" shape=blue weight=same] } [shape="line\nbreak"; k=blue]; NODE [rank=same, shape=same]; NODE [style=box; style=""; k=red]; Edge [style=1; rank=blue; rank=<b>]; subgraph cluster_b { subgraph u {  } edge [k=same; style=""; style=same] "two words" _x }; subgraph t {  } -> subgraph { n1 [k=box, label=1, style=red] } -> a:p:sw [label=same, k=2]; _x:p -> c:p:sw -> d:p:sw [weight="x y"]; g -> e:p:sw [rank=<b>; k=<b>; label=2]; {  } -> "q\"uote" -> -1:p:sw [shape=red]; {  }
+}

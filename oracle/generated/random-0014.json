@@ -1,0 +1,163 @@
+{
+ "attributes": {
+  "k": "same",
+  "label": "red",
+  "shape": "1"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "shape": {
+     "html": "b"
+    },
+    "style": {
+     "html": "b"
+    }
+   },
+   "head": "f",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "label": "same",
+    "tailport": "p:sw"
+   },
+   "head": "a",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "style": "same",
+    "tailport": "p:sw"
+   },
+   "head": "two words",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {
+    "k": "x y",
+    "weight": "2"
+   },
+   "head": "n2",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "k": "x y",
+    "weight": "2"
+   },
+   "head": "3.5",
+   "tail": "n2"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "same",
+    "rank": "same",
+    "shape": "line\\nbreak",
+    "style": "line\\nbreak"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "style": "line\\nbreak"
+   },
+   "name": "-1"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "style": "line\\nbreak"
+   },
+   "name": "f"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "style": "line\\nbreak",
+    "weight": "same"
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "style": "line\\nbreak"
+   },
+   "name": "a"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "style": "line\\nbreak"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "style": "line\\nbreak"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "style": "line\\nbreak"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "style": "line\\nbreak"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "style": "line\\nbreak"
+   },
+   "name": "3.5"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "k": "same",
+    "label": "red",
+    "shape": "1"
+   },
+   "edges": [],
+   "name": "u",
+   "nodes": [],
+   "path": [
+    "u"
+   ]
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "label": "red",
+    "shape": "1",
+    "style": "line\\nbreak"
+   },
+   "edges": [],
+   "name": "%3",
+   "nodes": [],
+   "path": [
+    "%3"
+   ]
+  }
+ ]
+}

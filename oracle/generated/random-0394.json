@@ -1,0 +1,193 @@
+{
+ "attributes": {
+  "k": "red"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "n",
+    "tailport": "p"
+   },
+   "head": "n2",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "tailport": "n",
+    "weight": {
+     "html": "b"
+    }
+   },
+   "head": "n1",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "tailport": "n"
+   },
+   "head": "a",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "rank": "box",
+    "weight": "line\\nbreak"
+   },
+   "head": "b",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "headport": "p"
+   },
+   "head": "c",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "rank": "box",
+    "tailport": "p:sw",
+    "weight": "line\\nbreak"
+   },
+   "head": "f",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {
+    "rank": "box",
+    "tailport": "p:sw",
+    "weight": "line\\nbreak"
+   },
+   "head": "n2",
+   "tail": "f"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "rank": "2"
+   },
+   "name": "d"
+  },
+  {
+   "attributes": {
+    "style": "x y"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "k": "box",
+    "style": "line\\nbreak"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%7",
+   "nodes": [],
+   "path": [
+    "%7"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "n2",
+     "b"
+    ],
+    [
+     "q\"uote",
+     "f"
+    ],
+    [
+     "f",
+     "n2"
+    ]
+   ],
+   "name": "%9",
+   "nodes": [
+    "n2",
+    "two words",
+    "q\"uote",
+    "f",
+    "b",
+    "-1"
+   ],
+   "path": [
+    "%9"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%17",
+   "nodes": [
+    "two words",
+    "b"
+   ],
+   "path": [
+    "%9",
+    "%17"
+   ]
+  },
+  {
+   "attributes": {
+    "label": "line\\nbreak",
+    "rank": "box"
+   },
+   "edges": [],
+   "name": "cluster_b",
+   "nodes": [
+    "b"
+   ],
+   "path": [
+    "%9",
+    "%17",
+    "cluster_b"
+   ]
+  }
+ ]
+}

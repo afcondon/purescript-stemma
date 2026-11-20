@@ -1,0 +1,8 @@
+digraph dag206 {
+  n1;
+  n0;
+  n0 -> n1 [minlen=1];
+  n0 -> n1 [minlen=1];
+  n0 -> n1;
+  n0 -> n1 [minlen=0];
+}

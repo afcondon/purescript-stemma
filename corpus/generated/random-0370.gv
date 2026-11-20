@@ -1,0 +1,7 @@
+digraph G {
+subgraph {  }
+b:p -> _x [color=box label="" color="x y"]
+{ -1:p:sw -> { 3.5:p -> 3.5 -> subgraph { e:p -> g -> g:p:sw
+edge [label=2, k=blue] } [label="x y"; label=<b>; shape=""];
+é:p -> n1:p -> -1:p:sw } -> "two words":p:sw -> é [shape=2 shape="x y" rank=<b>] }
+}

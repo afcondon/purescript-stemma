@@ -1,0 +1,19 @@
+strict digraph {
+{ h -> f:p -> b:p:sw
+subgraph { h [style=same];
+subgraph { "q\"uote" e -> c:p [key=k1] } -> subgraph { h;
+e } [k=red rank="x y" weight=""];
+node [k=1, label="", label=2] }
+{ e -> subgraph { edge [label=<b>, rank="x y", shape=<b>] d -> a:n } -> "two words":p { e:p -> c [color=red; shape=<b>] } shape=same style=red {  } }
+_x -> n2 -> c:n -> n2:p:sw [style="x y"; k="line\nbreak"]
+_x [color="x y"] }
+é [style=same]
+shape=1
+subgraph {  }
+é:p:sw -> a:p:sw -> c -> -1:p [shape=2, color=red]
+f -> h -> {  } [rank=1, shape="x y", shape=1]
+shape=red
+h:p:sw -> "q\"uote"
+weight=box
+a [style=box, label="x y", style=box]
+}

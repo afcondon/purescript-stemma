@@ -1,0 +1,14 @@
+strict graph {
+k=<b>;
+g:p:sw -- é -- n1:p -- e [rank=box label=""];
+_x [k=2 label=""];
+edge [style=<b> color=2];
+shape="line\nbreak";
+_x [weight=box style="x y" color=""];
+subgraph cluster_a { subgraph { edge [k=1] edge [rank=blue] } "q\"uote" [style=2; color=blue] rank=<b> _x:p:sw -- a:p:sw -- n1 -- h [style="x y"] [key=k1] };
+{  };
+-1 -- { weight="" Edge [style=blue] } -- f -- d [shape="x y" rank="line\nbreak" k=same];
+NODE [style="", k=""];
+"two words":p -- a [label=1, shape=same];
+h:p:sw -- b:n -- _x:p
+}

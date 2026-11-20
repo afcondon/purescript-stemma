@@ -1,0 +1,291 @@
+{
+ "attributes": {
+  "rank": "box"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "headport": "p",
+    "label": "red",
+    "tailport": "p:sw"
+   },
+   "head": "q\"uote",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "style": "blue",
+    "tailport": "p:sw"
+   },
+   "head": "n1",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "label": "same"
+   },
+   "head": "n1",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p",
+    "label": "blue",
+    "rank": "line\\nbreak",
+    "tailport": "p",
+    "weight": "x y"
+   },
+   "head": "b",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "style": "blue",
+    "tailport": "p:sw"
+   },
+   "head": "_x",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "style": "blue"
+   },
+   "head": "-1",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "label": "blue",
+    "rank": "line\\nbreak",
+    "weight": "x y"
+   },
+   "head": "é",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "headport": "p"
+   },
+   "head": "n1",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p:sw",
+    "label": "box",
+    "rank": "1",
+    "tailport": "p:sw",
+    "weight": "1"
+   },
+   "head": "3.5",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p:sw",
+    "label": "box",
+    "rank": "1",
+    "weight": "1"
+   },
+   "head": "é",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "label": "blue",
+    "rank": "line\\nbreak",
+    "tailport": "p",
+    "weight": "x y"
+   },
+   "head": "_x",
+   "tail": "b"
+  }
+ ],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "box"
+   },
+   "name": "-1"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "box"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "k": "x y",
+    "rank": "red",
+    "shape": "line\\nbreak",
+    "weight": "box"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "k": "box",
+    "style": {
+     "html": "b"
+    },
+    "weight": "box"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "box"
+   },
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "box"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "box"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "box"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "box"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak",
+    "label": "box",
+    "style": "same",
+    "weight": "box"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "box"
+   },
+   "name": "f"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "box"
+   },
+   "name": "b"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "-1",
+     "q\"uote"
+    ],
+    [
+     "-1",
+     "n1"
+    ],
+    [
+     "e",
+     "_x"
+    ],
+    [
+     "_x",
+     "-1"
+    ]
+   ],
+   "name": "%1",
+   "nodes": [
+    "-1",
+    "q\"uote",
+    "two words",
+    "n2",
+    "e",
+    "_x",
+    "n1"
+   ],
+   "path": [
+    "%1"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "t",
+   "nodes": [],
+   "path": [
+    "t"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%9",
+   "nodes": [],
+   "path": [
+    "%9"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%11",
+   "nodes": [],
+   "path": [
+    "%11"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "u",
+   "nodes": [],
+   "path": [
+    "u"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%3",
+   "nodes": [],
+   "path": [
+    "%1",
+    "%3"
+   ]
+  }
+ ]
+}

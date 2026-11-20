@@ -1,0 +1,3 @@
+strict digraph "g 2" {
+"q\"uote":p -> n1:p:sw -> e [weight="line\nbreak"; color=same] [key=k2] -1:p:sw -> _x:p:sw -> _x:n -> { n1:p -> e -> a:n -> "two words":p [weight=red] } [weight=same; label="line\nbreak"] color=1
+}

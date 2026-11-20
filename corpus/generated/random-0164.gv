@@ -1,0 +1,10 @@
+strict graph "g 2" {
+Edge [color="" k=box] { {  }
+-1:p -- { {  } -- c -- é:n [weight=box, label=same] subgraph u { a
+n1
+node [rank=<b>, weight=box]
+color=red } } -- g [color=same; rank=red]
+subgraph u {  }
+e [k="line\nbreak" label=<b>]
+b:p -- n2:n -- f:p -- d:n [label=same rank="line\nbreak"] } color=2 3.5:p -- "two words":p:sw -- n2:p:sw subgraph { d:p -- 3.5 -- _x:p:sw [rank=1] [key=k2] c [weight="line\nbreak"] weight=same } d
+}

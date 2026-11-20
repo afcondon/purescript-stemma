@@ -1,0 +1,9 @@
+graph {
+c -- "q\"uote":n -- "two words" -- f:p [rank=red; color="line\nbreak"];
+d:n -- d:p -- e -- { b [label="x y" shape=box]; k="" } [shape=2 style=""];
+k=<b>;
+subgraph cluster_a { node [style=box; weight=""]
+"q\"uote" [color=2, rank="", k=same]
+Edge [color=red]
+edge [label="x y", style="x y"] }
+}

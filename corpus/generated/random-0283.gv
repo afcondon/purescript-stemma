@@ -1,0 +1,15 @@
+digraph G {
+c:p -> é -> f [weight="line\nbreak"; weight="line\nbreak"];
+{ e [weight=box]
+weight="x y"
+graph [weight=red weight=1 label=1]
+g [k="line\nbreak", shape=2] };
+{ edge [rank=box] };
+subgraph t {  } -> n2 -> subgraph u { "two words" [rank=same, shape=same, rank=""] };
+e -> f -> a:p:sw;
+e -> _x:p:sw -> "two words":n [label="line\nbreak" color=2];
+n1 -> subgraph t { n2 [color=red] } -> h [key=k1];
+h [rank=box];
+e [k=1];
+c -> e -> 3.5
+}

@@ -1,0 +1,158 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n15",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n9",
+   "tail": "n5"
+  },
+  {
+   "attributes": {
+    "minlen": "2"
+   },
+   "head": "n13",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n8",
+   "tail": "n5"
+  },
+  {
+   "attributes": {
+    "weight": "1"
+   },
+   "head": "n5",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "constraint": "false"
+   },
+   "head": "n2",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n3",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n7",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n12",
+   "tail": "n9"
+  },
+  {
+   "attributes": {},
+   "head": "n14",
+   "tail": "n6"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n10",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n11",
+   "tail": "n2"
+  }
+ ],
+ "name": "tree000",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n15"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n9"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n14"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n10"
+  },
+  {
+   "attributes": {},
+   "name": "n12"
+  },
+  {
+   "attributes": {},
+   "name": "n11"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n13"
+  },
+  {
+   "attributes": {},
+   "name": "n8"
+  },
+  {
+   "attributes": {},
+   "name": "n7"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

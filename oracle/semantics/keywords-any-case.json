@@ -1,0 +1,40 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "v"
+   },
+   "name": "a"
+  },
+  {
+   "attributes": {
+    "k": "v"
+   },
+   "name": "node"
+  },
+  {
+   "attributes": {
+    "k": "v"
+   },
+   "name": "b"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "X",
+   "nodes": [
+    "b"
+   ],
+   "path": [
+    "X"
+   ]
+  }
+ ]
+}

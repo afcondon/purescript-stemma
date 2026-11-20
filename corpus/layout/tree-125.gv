@@ -1,0 +1,26 @@
+digraph tree125 {
+  n34 -> n39;
+  n3 -> n14;
+  n15 -> n16 [minlen=2, label=L6];
+  n3 -> n4 [weight=2, minlen=3];
+  n5 -> n10;
+  n9 -> n19;
+  n6 -> n13 [weight=2];
+  n28 -> n36;
+  n2 -> n5;
+  n21 -> n23 [weight=1];
+  n7 -> n8 [weight=5];
+  n5 -> n6;
+  n4 -> n17;
+  n1 -> n12;
+  n22 -> n31 [minlen=2];
+  n10 -> n15 [label=L4];
+  n20 -> n30;
+  n4 -> n7;
+  n8 -> n18 [minlen=3];
+  n2 -> n3;
+  n0 -> n1 [label=L6];
+  n3 -> n11 [weight=1];
+  n0 -> n9 [weight=3, minlen=0, label=L4];
+  n1 -> n2;
+}

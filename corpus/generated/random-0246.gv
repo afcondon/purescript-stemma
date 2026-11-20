@@ -1,0 +1,23 @@
+graph {
+{ d [color="line\nbreak"; label=""; weight="line\nbreak"]
+e:p:sw -- _x -- n2 [style=red] };
+{ g [shape=""];
+subgraph s { a [label=2; shape=box; weight=box]; NODE [color=1, rank=2]; Edge [shape=box] };
+Edge [shape=<b>];
+a:n -- é -- "q\"uote":p:sw [weight=blue] };
+node [k="line\nbreak" color=red rank=red];
+e [rank=1; color=same; style=2];
+NODE [rank=1; k=<b>];
+rank="x y";
+f [k="", color=same];
+{  };
+subgraph cluster_a {  };
+{ e [color=blue, label=red];
+{ c [k=red; rank="x y"]
+"q\"uote"
+Edge [color=box label=box] } };
+style=same;
+{ a -- "q\"uote":p:sw [shape="x y"];
+Edge [label=red] };
+NODE [style=1 rank=same style=1]
+}

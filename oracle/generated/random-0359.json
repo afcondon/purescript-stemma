@@ -1,0 +1,57 @@
+{
+ "attributes": {
+  "k": "x y",
+  "shape": "line\\nbreak"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "b",
+   "tail": "h"
+  },
+  {
+   "attributes": {},
+   "head": "c",
+   "tail": "b"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "shape": "box",
+    "style": "blue",
+    "weight": "1"
+   },
+   "name": "é"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "k": "x y",
+    "shape": "line\\nbreak"
+   },
+   "edges": [],
+   "name": "%3",
+   "nodes": [],
+   "path": [
+    "%3"
+   ]
+  }
+ ]
+}

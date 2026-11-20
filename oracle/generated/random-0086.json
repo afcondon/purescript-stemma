@@ -1,0 +1,124 @@
+{
+ "attributes": {
+  "color": "x y",
+  "rank": "red"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "2",
+    "shape": "red",
+    "style": "line\\nbreak",
+    "tailport": "p:sw"
+   },
+   "head": "é",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "k": "2",
+    "shape": "red",
+    "style": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "two words",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "shape": "red",
+    "style": "line\\nbreak",
+    "tailport": "n"
+   },
+   "head": "é",
+   "tail": "two words"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "1",
+    "label": "same",
+    "shape": "line\\nbreak",
+    "weight": "1"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "k": "1",
+    "label": "same",
+    "shape": "line\\nbreak",
+    "weight": "1"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "k": "1",
+    "label": "same",
+    "shape": "line\\nbreak",
+    "weight": "1"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "color": "x y",
+    "rank": {
+     "html": "b"
+    },
+    "shape": "box"
+   },
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "rank": "2",
+    "shape": "box",
+    "weight": "1"
+   },
+   "name": "h"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "rank": "red"
+   },
+   "edges": [
+    [
+     "n1",
+     "é"
+    ],
+    [
+     "é",
+     "two words"
+    ],
+    [
+     "two words",
+     "é"
+    ]
+   ],
+   "name": "%3",
+   "nodes": [
+    "n1",
+    "é",
+    "two words"
+   ],
+   "path": [
+    "%3"
+   ]
+  }
+ ]
+}

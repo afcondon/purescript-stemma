@@ -1,0 +1,3 @@
+digraph "g 2" {
+a [weight=2]; edge [label=blue, rank=1]; { n2:n -> -1 -> g [color="line\nbreak" label=blue] } -> h -> 3.5 -> b:p:sw [weight=red color=1 weight=""]
+}

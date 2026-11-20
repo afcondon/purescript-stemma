@@ -1,0 +1,20 @@
+digraph {
+n1:p:sw -> b:p -> subgraph s { node [color=2, k=2, weight=<b>] } [style=red]
+e [k=red weight=red]
+node [rank=blue]
+-1 [color=<b>, weight=<b>, label=<b>]
+"two words" -> 3.5 -> 3.5:p
+weight=blue
+f -> f -> _x:p [weight=red, label=red]
+{ graph [shape="x y"; rank=2]; n2:p:sw -> -1 [rank="line\nbreak"; style=red; weight="line\nbreak"]; label=<b>; _x [weight=2; rank="x y"; label=red]; é -> a:p:sw [rank=blue, shape=1, color=blue] }
+3.5 -> f -> e -> é [color=blue]
+d:n -> é -> h:p:sw [rank=""]
+{ style=box;
+subgraph u { h [label=blue]; shape=<b>; d:p -> a -> subgraph { e } -> h:n [color=blue color=<b> shape=1]; _x [label=2, shape=2] };
+e:p -> n1:n -> "two words" [k="line\nbreak"];
+graph [weight=1, label="x y", rank=same];
+e:p:sw -> -1:p [label=<b>] }
+{ h [weight="" rank=1 shape=box] } -> _x:p [style=box rank=box color="x y"]
+style=same
+subgraph {  }
+}

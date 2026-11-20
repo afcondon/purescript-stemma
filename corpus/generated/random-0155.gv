@@ -1,0 +1,8 @@
+digraph "g 2" {
+{  } -> "two words" [k=<b> rank="line\nbreak"]; n2 [weight=2 label=box]; subgraph u { rank=blue
+node [rank="x y", style="line\nbreak"] }; subgraph { h [weight=<b>]; weight=box }; c:p -> h:p:sw -> "q\"uote":n -> h:n [weight=2 style=""]; edge [style=same]; subgraph cluster_b { NODE [style=same]
+_x -> "q\"uote":p:sw -> subgraph {  }
+weight=""
+c
+d:p:sw -> "two words" -> _x -> -1 [color=blue] }; k=<b>; "two words" [weight=blue, color=2]; style=same; node [weight=""]
+}

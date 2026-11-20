@@ -1,0 +1,1 @@
+graph { a -- b [key=k1, c=1]; b -- a [key=k1, d=2] }

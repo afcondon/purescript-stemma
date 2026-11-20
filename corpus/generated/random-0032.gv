@@ -1,0 +1,16 @@
+graph "g 2" {
+-1 [style=red weight=red style=""];
+c:n -- a:p:sw -- "two words" -- e:p:sw [k="" color="x y" weight=same];
+3.5:n -- subgraph {  } -- a -- c [shape=box; rank=red; shape=<b>];
+graph [color=2, shape=red];
+subgraph { edge [color="x y"; rank="x y"; style="x y"] };
+n2:p:sw -- "two words" -- f [k="", color=same, shape=blue];
+Edge [color=2];
+subgraph { subgraph { é:p -- "q\"uote" _x } };
+n1 -- 3.5 [label=blue style="x y" k=box];
+3.5 -- g [rank=box, label=same, weight=same];
+_x [rank=""; rank=red];
+k="";
+Edge [label=box];
+n2 -- 3.5 -- f -- "q\"uote":p [style=box style="line\nbreak" shape=""]
+}

@@ -1,0 +1,11 @@
+strict graph "g 2" {
+subgraph cluster_a {  }
+subgraph cluster_a { subgraph t { f -- c -- g:p:sw -- h;
+style=same;
+é:p:sw -- é:p [style=<b>] };
+a;
+label="x y";
+é [k=red; weight=<b>] }
+subgraph {  }
+rank="x y"
+}

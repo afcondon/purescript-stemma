@@ -1,0 +1,1 @@
+strict graph { { g; w -- x } -- { e; {p} -- g -- x } -- b [key=1] }

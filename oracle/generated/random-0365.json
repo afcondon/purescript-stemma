@@ -1,0 +1,42 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "same"
+   },
+   "name": "d"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%1",
+   "nodes": [
+    "d"
+   ],
+   "path": [
+    "%1"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "blue"
+   },
+   "edges": [],
+   "name": "cluster_a",
+   "nodes": [
+    "d"
+   ],
+   "path": [
+    "%1",
+    "cluster_a"
+   ]
+  }
+ ]
+}

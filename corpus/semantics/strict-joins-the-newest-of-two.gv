@@ -1,0 +1,1 @@
+strict graph { n1 -- 3.5; subgraph { n1 -- 3.5 [key=k, made=second] } n1 -- 3.5 [joined=here] }

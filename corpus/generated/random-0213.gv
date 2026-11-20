@@ -1,0 +1,8 @@
+graph {
+c -- n2:n [shape=""];
+{  };
+-1 -- a -- _x [style=blue, rank=red, k=red];
+-1 -- c:p:sw -- f [color=red, style=red];
+NODE [color=2 rank="" label=red];
+Edge [k="", color=red, style=1]
+}

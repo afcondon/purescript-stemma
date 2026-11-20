@@ -1,0 +1,4 @@
+graph G {
+b [color=box; weight=""]; n2 -- "q\"uote":p:sw [label="x y" k="" rank="line\nbreak"]; {  }; graph [label=<b>; color="line\nbreak"; style=2]; {  }; { b;
+label=same }; f -- {  } -- h -- -1:n [style=1]; graph [shape=2 style=red style=<b>]; e -- -1:n -- {  } [rank="x y"]; _x -- e -- "q\"uote" -- g:n [shape=<b>, rank=1]; graph [shape=""; label=same]
+}

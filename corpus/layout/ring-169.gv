@@ -1,0 +1,10 @@
+digraph ring169 {
+  n5 -> n0 [minlen=2];
+  n1 -> n5;
+  n0 -> n1;
+  n4 -> n2;
+  n1 -> n2 [minlen=3];
+  n4 -> n5 [minlen=1];
+  n2 -> n3;
+  n3 -> n4;
+}

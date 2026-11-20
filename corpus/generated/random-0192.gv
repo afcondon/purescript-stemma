@@ -1,0 +1,3 @@
+strict digraph "g 2" {
+"q\"uote" [label="line\nbreak"]; subgraph { a:n -> e:n -> f -> a:p }; Edge [label=same, label=box, weight="line\nbreak"]; a [rank=2]; b -> é -> 3.5 [k=same label="line\nbreak"]; n1 -> subgraph {  } -> b -> n2:n [rank=red style=same k=same] [key=k2]
+}

@@ -1,0 +1,5 @@
+graph "g 2" {
+n2:p -- a:p -- d:p:sw [label="x y"] [key=k1]
+graph [rank=box; shape="x y"]
+c -- é -- é -- é:p [k=blue shape=same color=<b>]
+}

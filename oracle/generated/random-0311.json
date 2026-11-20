@@ -1,0 +1,86 @@
+{
+ "attributes": {
+  "rank": "box",
+  "shape": "x y"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "label": "x y",
+    "tailport": "p"
+   },
+   "head": "a",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "label": "x y",
+    "tailport": "p"
+   },
+   "head": "d",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "color": {
+     "html": "b"
+    },
+    "k": "blue",
+    "shape": "same"
+   },
+   "head": "é",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "color": {
+     "html": "b"
+    },
+    "k": "blue",
+    "shape": "same"
+   },
+   "head": "é",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "color": {
+     "html": "b"
+    },
+    "headport": "p",
+    "k": "blue",
+    "shape": "same"
+   },
+   "head": "é",
+   "tail": "é"
+  }
+ ],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "é"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

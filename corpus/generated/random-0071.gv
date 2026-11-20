@@ -1,0 +1,12 @@
+digraph {
+"q\"uote" -> n2:p:sw -> -1 -> é:n [k=box, weight=1, rank="line\nbreak"]
+{ _x -> -1:p:sw -> "q\"uote" -> é n2 color=blue b -> h:n -> n1:p:sw [k="x y"; rank=<b>; style="line\nbreak"] }
+{ 3.5:p:sw -> "q\"uote" -> é [k=2 k=red];
+NODE [label=""];
+subgraph t {  };
+Edge [style="x y" style=same shape=same] }
+label="line\nbreak"
+d -> n1:n [label=blue; k=same; k=red]
+-1 -> b -> "two words":p -> d [rank=box color="" color=red]
+Edge [style=1]
+}

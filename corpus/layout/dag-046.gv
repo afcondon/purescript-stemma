@@ -1,0 +1,3 @@
+digraph dag046 {
+  n0 -> n1 [weight=5, minlen=2];
+}

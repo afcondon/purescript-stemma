@@ -1,0 +1,182 @@
+{
+ "attributes": {
+  "shape": {
+   "html": "b"
+  }
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "é",
+   "tail": "é"
+  },
+  {
+   "attributes": {},
+   "head": "f",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "color": "blue",
+    "tailport": "p:sw"
+   },
+   "head": "-1",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "color": {
+     "html": "b"
+    },
+    "headport": "n",
+    "tailport": "n"
+   },
+   "head": "3.5",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "3.5",
+   "tail": "d"
+  },
+  {
+   "attributes": {},
+   "head": "d",
+   "tail": "d"
+  }
+ ],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "style": "box"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "color": "blue",
+    "shape": "blue",
+    "style": "1"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {
+    "rank": "same",
+    "shape": {
+     "html": "b"
+    }
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "weight": "same"
+   },
+   "name": "-1"
+  },
+  {
+   "attributes": {
+    "weight": "same"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "weight": "same"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "color": "1"
+   },
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%1",
+   "nodes": [],
+   "path": [
+    "%1"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": {
+     "html": "b"
+    }
+   },
+   "edges": [
+    [
+     "-1",
+     "-1"
+    ],
+    [
+     "n2",
+     "3.5"
+    ]
+   ],
+   "name": "%5",
+   "nodes": [
+    "b",
+    "-1",
+    "n2",
+    "3.5"
+   ],
+   "path": [
+    "%5"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": {
+     "html": "b"
+    },
+    "style": "red"
+   },
+   "edges": [
+    [
+     "-1",
+     "-1"
+    ],
+    [
+     "n2",
+     "3.5"
+    ]
+   ],
+   "name": "%7",
+   "nodes": [
+    "-1",
+    "n2",
+    "3.5"
+   ],
+   "path": [
+    "%5",
+    "%7"
+   ]
+  }
+ ]
+}

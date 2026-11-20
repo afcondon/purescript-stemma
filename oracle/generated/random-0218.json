@@ -1,0 +1,60 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "rank": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "q\"uote",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "rank": "line\\nbreak",
+    "tailport": "p:sw"
+   },
+   "head": "a",
+   "tail": "q\"uote"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {
+    "rank": "1"
+   },
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "color": "blue"
+   },
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "color": "blue"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "color": "blue"
+   },
+   "name": "a"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

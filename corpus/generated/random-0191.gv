@@ -1,0 +1,7 @@
+graph G {
+edge [label=<b>];
+graph [rank="x y", k=red];
+3.5 [style=1 weight=box];
+label=blue;
+3.5 -- "two words" [shape=blue, label=same, color=box]
+}

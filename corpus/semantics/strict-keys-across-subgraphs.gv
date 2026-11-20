@@ -1,0 +1,1 @@
+strict digraph { a -> b; subgraph s { a -> b [key=k1, x=1] } subgraph t { a -> b [key=k2, y=2]; a -> b [z=3] } a -> b [key=k1, w=4]; a -> b [key=k3] }

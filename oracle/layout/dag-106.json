@@ -1,0 +1,24 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n0"
+  }
+ ],
+ "name": "dag106",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

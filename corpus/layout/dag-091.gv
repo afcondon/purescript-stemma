@@ -1,0 +1,8 @@
+digraph dag091 {
+  n1 -> n2;
+  n0 -> n1;
+  n1 -> n2;
+  n1 -> n2 [constraint=false];
+  n0 -> n2;
+  n0 -> n2 [minlen=3];
+}

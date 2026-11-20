@@ -1,0 +1,10 @@
+digraph layered082 {
+  n3 -> n6;
+  n5 -> n4 [weight=5, minlen=0];
+  n2 -> n6;
+  n2 -> n0;
+  n3 -> n4;
+  n3 -> n0;
+  n2 -> n4 [constraint=false];
+  n7 -> n0 [weight=1];
+}

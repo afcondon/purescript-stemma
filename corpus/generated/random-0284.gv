@@ -1,0 +1,5 @@
+digraph G {
+_x
+{ b -> g:p -> _x:p -> é:p }
+node [color="line\nbreak"; style=blue]
+}

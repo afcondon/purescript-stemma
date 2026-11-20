@@ -1,0 +1,322 @@
+{
+ "attributes": {
+  "style": "blue"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "rank": "same",
+    "shape": "1",
+    "tailport": "p:sw"
+   },
+   "head": "h",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "color": {
+     "html": "b"
+    },
+    "headport": "n",
+    "label": "same",
+    "tailport": "n"
+   },
+   "head": "é",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "rank": {
+     "html": "b"
+    },
+    "tailport": "n"
+   },
+   "head": "_x",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "color": {
+     "html": "b"
+    },
+    "label": "same",
+    "tailport": "n"
+   },
+   "head": "e",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "color": {
+     "html": "b"
+    },
+    "headport": "p",
+    "label": "same"
+   },
+   "head": "h",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "rank": "same",
+    "shape": "1",
+    "tailport": "p"
+   },
+   "head": "_x",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "headport": "p",
+    "rank": {
+     "html": "b"
+    }
+   },
+   "head": "d",
+   "tail": "h"
+  },
+  {
+   "attributes": {},
+   "head": "two words",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "rank": {
+     "html": "b"
+    }
+   },
+   "head": "h",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "rank": "same",
+    "shape": "1"
+   },
+   "head": "-1",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "color": "x y",
+    "k": "1"
+   },
+   "head": "q\"uote",
+   "tail": "f"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "k": "blue",
+    "label": "line\\nbreak",
+    "shape": "1"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "label": "2"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "k": "box",
+    "label": "2"
+   },
+   "edges": [
+    [
+     "n2",
+     "é"
+    ],
+    [
+     "é",
+     "e"
+    ],
+    [
+     "e",
+     "h"
+    ]
+   ],
+   "name": "%3",
+   "nodes": [
+    "b",
+    "n2",
+    "g",
+    "é",
+    "e",
+    "h"
+   ],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "cluster_b",
+   "nodes": [
+    "h"
+   ],
+   "path": [
+    "cluster_b"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%13",
+   "nodes": [],
+   "path": [
+    "%13"
+   ]
+  },
+  {
+   "attributes": {
+    "style": "red"
+   },
+   "edges": [],
+   "name": "%31",
+   "nodes": [],
+   "path": [
+    "%31"
+   ]
+  },
+  {
+   "attributes": {
+    "k": "box",
+    "label": "2",
+    "weight": "red"
+   },
+   "edges": [
+    [
+     "n2",
+     "é"
+    ],
+    [
+     "é",
+     "e"
+    ],
+    [
+     "e",
+     "h"
+    ]
+   ],
+   "name": "%5",
+   "nodes": [
+    "b",
+    "n2",
+    "g",
+    "é",
+    "e",
+    "h"
+   ],
+   "path": [
+    "%3",
+    "%5"
+   ]
+  },
+  {
+   "attributes": {
+    "style": "red"
+   },
+   "edges": [],
+   "name": "%33",
+   "nodes": [],
+   "path": [
+    "%31",
+    "%33"
+   ]
+  },
+  {
+   "attributes": {
+    "k": "box",
+    "label": "2"
+   },
+   "edges": [
+    [
+     "n2",
+     "é"
+    ],
+    [
+     "é",
+     "e"
+    ],
+    [
+     "e",
+     "h"
+    ]
+   ],
+   "name": "s",
+   "nodes": [
+    "b",
+    "n2",
+    "g",
+    "é",
+    "e",
+    "h"
+   ],
+   "path": [
+    "%3",
+    "%5",
+    "s"
+   ]
+  }
+ ]
+}

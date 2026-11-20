@@ -1,0 +1,14 @@
+graph {
+rank="";
+edge [label=same, rank=red];
+h [color=""; style=blue; color=red];
+Edge [weight="x y" rank=box style=box];
+n1:p:sw -- n2 -- subgraph {  } -- "two words":p [label="" style=same style=blue];
+NODE [k=red, style=box, label=2];
+{ "q\"uote" -- -1:p:sw -- -1 -- h [k=red; color=""] };
+e -- subgraph { { n1 -- subgraph { a
+graph [label="", label=box] } [color=same, color=blue] { shape=same; e; h:p:sw -- b:p:sw -- c:p:sw -- d:p [color="x y" color=<b> k=box]; "q\"uote":n -- "q\"uote" -- 3.5:n -- "q\"uote" [label=same; label=blue; style="x y"]; shape=<b> } };
+"two words":p -- -1:p [color="x y" label=blue k=<b>] } -- e [k="line\nbreak"; k="x y"];
+3.5 [shape=1; color=""; shape="line\nbreak"];
+n2:p:sw -- e:n -- "q\"uote" -- a [shape=box; shape="line\nbreak"; shape=same]
+}

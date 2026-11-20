@@ -1,0 +1,17 @@
+digraph dag016 {
+  n6;
+  n0;
+  n1;
+  n7;
+  n4;
+  n2;
+  n5;
+  n3;
+  n4 -> n6;
+  n3 -> n4;
+  n2 -> n6 [minlen=1];
+  n3 -> n6 [constraint=false];
+  n4 -> n7;
+  n0 -> n4 [weight=10];
+  n1 -> n7 [constraint=false];
+}

@@ -1,0 +1,3 @@
+graph {
+node [style="x y"] label="line\nbreak" NODE [label=1, k=2]
+}

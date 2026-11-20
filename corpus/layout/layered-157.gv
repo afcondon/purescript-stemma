@@ -1,0 +1,20 @@
+digraph layered157 {
+  n7 -> n1;
+  n20 -> n15 [weight=10];
+  n0 -> n9;
+  n7 -> n6 [minlen=2];
+  n13 -> n5 [minlen=3];
+  n19 -> n29;
+  n5 -> n14;
+  n10 -> n4;
+  n13 -> n1 [minlen=3];
+  n2 -> n14 [weight=3];
+  n7 -> n14;
+  n6 -> n4 [weight=3];
+  n16 -> n29;
+  n26 -> n22;
+  n18 -> n26;
+  n20 -> n23 [constraint=false];
+  n6 -> n14 [weight=0, minlen=1];
+  n10 -> n14;
+}

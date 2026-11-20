@@ -1,0 +1,15 @@
+digraph G {
+node [shape=<b>]; graph [k=same]; { label="" }; Edge [rank=1, k=1]; d; { n1 -> h -> e:p [shape="line\nbreak"]; { "two words":p:sw -> "q\"uote" -> {  } subgraph { e -> "two words" -> f:n -> d:n [label=""] a graph [k="x y", k=<b>] color=same b [color=red, weight="line\nbreak", weight="line\nbreak"] } edge [rank=blue; weight=blue; rank=same] } }; subgraph u {  }; é:p -> _x; { node [style="line\nbreak"; shape=blue; style=1]; subgraph { f [shape=<b>; label=blue];
+k=<b>;
+shape=1;
+{  };
+f -> "q\"uote":n [style=blue] }; { subgraph u { b [color=<b> rank=2 color="x y"];
+-1;
+"two words";
+a:n -> c [style=box] [key=k2];
+e }
+{ f:n -> 3.5:p:sw [shape=blue, label=blue, rank=2] [key=k1]; node [color=2, color="line\nbreak"]; b [k=2, rank="line\nbreak"]; "two words"; d:n -> e -> f:n -> 3.5:p:sw }
+n1:n -> subgraph t { h [color=<b>, shape=2, weight=<b>]
+NODE [color=<b>] } -> é:p:sw }; { subgraph t {  } } -> subgraph {  } [k=red; style=same; color="line\nbreak"] }; 3.5:p -> subgraph { d:n -> d:n [color=box; color=2; rank=1] [key=k2];
+NODE [k="x y", style=blue, color=""] } [label=same] [key=k2]; b:p:sw -> n2 -> {  } -> -1 [style=""]
+}

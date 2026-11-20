@@ -1,0 +1,8 @@
+digraph {
+3.5 -> h [k=1, color=box, shape="line\nbreak"]
+e
+rank=blue
+{  } -> -1:p -> n1 -> _x:n
+f:p:sw -> b:p:sw [weight=same rank=red style=blue]
+g:n -> a -> g:p:sw [weight=2]
+}

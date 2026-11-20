@@ -1,0 +1,77 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "n",
+    "tailport": "p:sw"
+   },
+   "head": "f",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p:sw",
+    "tailport": "n"
+   },
+   "head": "_x",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "k": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "_x",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "color": {
+     "html": "b"
+    },
+    "label": "red"
+   },
+   "head": "-1",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "f",
+   "tail": "3.5"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

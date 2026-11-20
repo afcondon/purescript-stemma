@@ -1,0 +1,35 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "color": "red"
+   },
+   "name": "a"
+  },
+  {
+   "attributes": {
+    "color": "red"
+   },
+   "name": "b"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "s",
+   "nodes": [
+    "a",
+    "b"
+   ],
+   "path": [
+    "s"
+   ]
+  }
+ ]
+}

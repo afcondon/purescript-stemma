@@ -1,0 +1,3 @@
+strict digraph G {
+{ k=box; k=""; edge [rank=2 k=1 k=1]; n1 [rank=blue] }; b [k=same weight=blue]; h:p -> "q\"uote":p [weight=same shape=<b> rank=same] [key=k1]
+}

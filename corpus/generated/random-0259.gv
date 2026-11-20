@@ -1,0 +1,3 @@
+strict graph G {
+g:n -- é -- b [rank="x y", label=same]; NODE [style="line\nbreak" shape="line\nbreak" rank=same]; é [style=red weight=2]; "two words" -- "two words" -- "q\"uote":p -- n2 [color=<b>, shape="line\nbreak", weight=1]
+}

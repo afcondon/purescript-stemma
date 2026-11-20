@@ -1,0 +1,12 @@
+digraph {
+{ subgraph { "q\"uote" [label="" shape=2 shape=2] }; _x [style="line\nbreak", k="line\nbreak", style=red]; subgraph cluster_b { style=blue } -> é -> g -> e:p:sw; e [rank=1]; k=red };
+rank=<b>;
+edge [weight=red label="x y" style="x y"];
+edge [label=""; weight=2];
+"q\"uote":p:sw -> subgraph t { _x -> 3.5:p [color=1] } -> d -> g [label="x y"];
+d:n -> e:n -> _x -> e [rank=red; shape=blue; label="x y"];
+f -> _x:n -> c:n [rank="x y", label="x y"];
+graph [rank=same; style=red];
+é -> g -> f -> -1:p [color=1];
+subgraph cluster_b { subgraph {  } g [style="", k=<b>] }
+}

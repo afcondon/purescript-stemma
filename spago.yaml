@@ -1,0 +1,26 @@
+package:
+  name: graphviz-harness
+  description: >
+    Runs the core over a corpus of DOT files on Node and writes what it
+    found, for bin/check.py to compare with what Graphviz itself reports.
+  dependencies:
+    - prelude
+    - aff
+    - argonaut-core
+    - arrays
+    - console
+    - effect
+    - either
+    - foldable-traversable
+    - foreign-object
+    - graphviz
+    - maybe
+    - node-buffer
+    - node-fs
+    - node-process
+    - ordered-collections
+    - strings
+    - tuples
+workspace:
+  packageSet:
+    registry: 57.1.0

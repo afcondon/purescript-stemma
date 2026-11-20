@@ -1,0 +1,8 @@
+strict digraph "g 2" {
+"two words":p -> { c
+_x:p -> d [rank=box, weight=red, weight=same] } -> "q\"uote":p [weight=<b>]
+NODE [rank="x y"]
+3.5 [rank=2; weight=""]
+subgraph { subgraph s { "q\"uote" [shape=box color=1 style=2] } "two words" -> a:n -> b:p a -> a:p:sw -> _x:p:sw c [rank=<b> style=red rank=box] h:p -> c -> a [color=red weight=same] }
+"q\"uote" -> "q\"uote" -> é:p:sw -> d [key=k1]
+}

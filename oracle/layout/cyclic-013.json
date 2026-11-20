@@ -1,0 +1,38 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "weight": "3"
+   },
+   "head": "n1",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "weight": "1"
+   },
+   "head": "n0",
+   "tail": "n1"
+  }
+ ],
+ "name": "cyclic013",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

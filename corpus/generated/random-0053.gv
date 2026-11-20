@@ -1,0 +1,15 @@
+graph {
+b:n -- é:p -- b [shape=<b>]
+n2:p -- b:p -- {  } [key=k2]
+style=1
+node [weight=""; rank=""; rank=2]
+Edge [label="x y", rank="line\nbreak"]
+{ { subgraph {  };
+g [weight=1] } graph [weight="line\nbreak" label=1 style=<b>] -1:n -- n1:p:sw [rank=<b>, k="x y"] {  } }
+{ {  }; g [k=blue shape=""]; Edge [weight=red rank=same]; subgraph s { n1 [weight=""] Edge [label="line\nbreak"] c -- -1 -- e [style=same] subgraph s { Edge [style=same];
+f [label="x y", label=""];
+"q\"uote" -- a:n [k=1];
+n2 -- é:p -- n1:p [label="x y", style="", k="line\nbreak"];
+k=<b> } } }
+3.5
+}

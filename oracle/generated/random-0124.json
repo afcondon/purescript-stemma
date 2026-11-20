@@ -1,0 +1,64 @@
+{
+ "attributes": {
+  "color": "red",
+  "k": "line\\nbreak"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "shape": "line\\nbreak",
+    "tailport": "p:sw"
+   },
+   "head": "n1",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "g",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "a",
+   "tail": "g"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {
+    "k": "line\\nbreak"
+   },
+   "edges": [],
+   "name": "cluster_b",
+   "nodes": [],
+   "path": [
+    "cluster_b"
+   ]
+  }
+ ]
+}

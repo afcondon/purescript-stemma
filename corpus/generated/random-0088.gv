@@ -1,0 +1,12 @@
+digraph G {
+g [k=<b> style="x y" k=blue];
+color="";
+edge [style="x y"];
+n2 [rank=blue, weight="x y"];
+color="x y";
+NODE [k=<b> shape="" weight="line\nbreak"];
+é [weight=1; label=2; rank=<b>];
+g;
+é;
+b:p -> d:p [label=""]
+}

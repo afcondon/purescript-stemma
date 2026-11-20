@@ -1,0 +1,5 @@
+strict digraph G {
+Edge [style="", color=1];
+a [shape="line\nbreak" k=blue];
+-1:n -> -1 -> d -> a [label=<b> rank=same]
+}

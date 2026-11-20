@@ -1,0 +1,10 @@
+strict graph G {
+-1:n -- c [k=red, color=2] subgraph cluster_b { subgraph { n2 -- a:p:sw -- subgraph cluster_a { n2:p -- -1 [label=1]
+Edge [shape=blue] }; Edge [shape=1; rank="line\nbreak"; label=<b>] }
+subgraph cluster_a { "q\"uote" -- b -- 3.5:p -- { color=<b>
+f -- "q\"uote":n } [label=1; style=2; style=2];
+{ _x;
+rank="" } -- n2:p:sw -- c [rank=1] }
+graph [k="", k=red, weight="x y"]
+c [style=<b>] } é:p:sw -- {  } -- h:p [weight=2 k="line\nbreak" k=<b>] n2 [rank="line\nbreak"; label=2]
+}

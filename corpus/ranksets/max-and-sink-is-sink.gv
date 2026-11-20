@@ -1,0 +1,1 @@
+digraph { a; b; x -> y; {rank=max; a} {rank=sink; b} }

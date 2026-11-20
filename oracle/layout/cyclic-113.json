@@ -1,0 +1,216 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "weight": "10"
+   },
+   "head": "n5",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n8",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n9",
+   "tail": "n4"
+  },
+  {
+   "attributes": {
+    "minlen": "3",
+    "weight": "3"
+   },
+   "head": "n3",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n6"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n0",
+   "tail": "n10"
+  },
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n10"
+  },
+  {
+   "attributes": {
+    "weight": "2"
+   },
+   "head": "n10",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "weight": "1"
+   },
+   "head": "n9",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n9"
+  },
+  {
+   "attributes": {},
+   "head": "n9",
+   "tail": "n9"
+  },
+  {
+   "attributes": {},
+   "head": "n9",
+   "tail": "n9"
+  },
+  {
+   "attributes": {
+    "minlen": "0"
+   },
+   "head": "n2",
+   "tail": "n9"
+  },
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "weight": "3"
+   },
+   "head": "n7",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n11",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "minlen": "0",
+    "weight": "2"
+   },
+   "head": "n7",
+   "tail": "n7"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n11"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n11"
+  },
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n0",
+   "tail": "n8"
+  },
+  {
+   "attributes": {
+    "minlen": "1"
+   },
+   "head": "n7",
+   "tail": "n8"
+  },
+  {
+   "attributes": {},
+   "head": "n7",
+   "tail": "n8"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n3"
+  }
+ ],
+ "name": "cyclic113",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n10"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n9"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n7"
+  },
+  {
+   "attributes": {},
+   "name": "n11"
+  },
+  {
+   "attributes": {},
+   "name": "n8"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

@@ -1,0 +1,15 @@
+digraph {
+"q\"uote":n -> _x:p:sw -> g:p [rank=1];
+b [rank=2];
+b [weight=blue];
+{ d -> subgraph s {  } -> "two words":p -> d { é
+b [color="line\nbreak" style=<b>]
+_x [style=1; weight=""; k=1]
+label="x y"
+{ d;
+e -> g -> d:n [rank="line\nbreak" style=<b> style=blue];
+3.5;
+d -> "two words" -> n1:p:sw -> 3.5 [weight=1, label=blue, style=1] } } -1 [shape=red] };
+g [weight=box; color=""; color=2];
+n1 [color=box label=<b> rank=red]
+}

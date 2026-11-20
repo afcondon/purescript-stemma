@@ -1,0 +1,184 @@
+{
+ "attributes": {
+  "color": "line\\nbreak",
+  "label": "same",
+  "style": {
+   "html": "b"
+  }
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "label": "x y",
+    "rank": "line\\nbreak"
+   },
+   "head": "q\"uote",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "rank": "1",
+    "shape": {
+     "html": "b"
+    }
+   },
+   "head": "g",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "style": "1"
+   },
+   "head": "-1",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "rank": "1",
+    "shape": {
+     "html": "b"
+    }
+   },
+   "head": "q\"uote",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "rank": "x y"
+   },
+   "head": "-1",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "rank": "1",
+    "shape": {
+     "html": "b"
+    }
+   },
+   "head": "e",
+   "tail": "_x"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "color": "box"
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%3",
+   "nodes": [],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "label": {
+     "html": "b"
+    },
+    "style": "2"
+   },
+   "edges": [],
+   "name": "%5",
+   "nodes": [],
+   "path": [
+    "%5"
+   ]
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "label": "same",
+    "style": "2"
+   },
+   "edges": [],
+   "name": "%7",
+   "nodes": [
+    "b"
+   ],
+   "path": [
+    "%7"
+   ]
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "label": {
+     "html": "b"
+    },
+    "style": "2"
+   },
+   "edges": [],
+   "name": "%9",
+   "nodes": [],
+   "path": [
+    "%9"
+   ]
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "label": {
+     "html": "b"
+    },
+    "shape": "2",
+    "style": {
+     "html": "b"
+    }
+   },
+   "edges": [],
+   "name": "%13",
+   "nodes": [],
+   "path": [
+    "%13"
+   ]
+  }
+ ]
+}

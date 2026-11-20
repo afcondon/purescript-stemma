@@ -1,0 +1,28 @@
+digraph G {
+d:n -> { { graph [label=""]
+_x [shape=blue weight=blue]
+graph [style="line\nbreak" k="line\nbreak" label=1] }
+node [shape=<b>] } [rank=1];
+f [style=<b>];
+d [label="" color=box shape=red];
+subgraph { {  } -> c -> _x:n -> b:n
+g:p:sw -> f -> "q\"uote":p [label=<b>, k=""] [key=k1]
+{ subgraph { "q\"uote" [weight=""; rank=1; style=""]
+f
+b [label=1 rank=2]
+f [shape=box, rank=""]
+n2 };
+graph [color=same] }
+n1 [style=blue]
+subgraph u { n1 [weight=same]; rank=same; label=<b>; { "q\"uote";
+style=same;
+b;
+n1;
+é:p -> é -> c [style=""; shape=same; shape=""] }; style=2 } };
+_x:p -> _x -> f;
+node [rank=2, k="line\nbreak", shape=<b>];
+edge [k=same; shape="line\nbreak"; k=2];
+weight=same;
+{  } -> "q\"uote":n -> f:p:sw -> d:n [rank=blue];
+NODE [rank="line\nbreak" style=blue]
+}

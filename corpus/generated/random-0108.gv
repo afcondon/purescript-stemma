@@ -1,0 +1,5 @@
+graph "g 2" {
+"q\"uote" [rank=blue]; shape=box; { subgraph { k="x y" }
+é -- g -- d [style=2, label=box]
+style="line\nbreak" }; n1:p:sw -- h:p:sw -- 3.5 [label=<b>, color="", label=same] [key=k1]; shape=2; Edge [weight=1, label=2]; -1 -- h -- { h -- -1:n -- _x -- "q\"uote":p }; label=1; subgraph t {  }
+}

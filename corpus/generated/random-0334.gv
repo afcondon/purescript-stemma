@@ -1,0 +1,11 @@
+graph "g 2" {
+subgraph { { "two words" } } subgraph cluster_a { "two words" -- -1 -- n2:p:sw -- e:p [shape=1, color="x y", rank="line\nbreak"] } node [color=red, weight=<b>] subgraph { Edge [style=1]
+{ node [k="x y"] }
+3.5:p -- e -- subgraph {  } -- -1:n [style=""; label="line\nbreak"]
+weight=1 } subgraph { f [shape=blue];
+{ n1 [label=2]; node [rank=same, weight=blue, label="x y"] };
+g -- c -- b [rank="x y", weight="line\nbreak", k=blue];
+f:n -- f:p:sw -- subgraph cluster_a { subgraph { label=red };
+weight=same } [k=2, rank=<b>, rank=blue];
+e } shape=""
+}

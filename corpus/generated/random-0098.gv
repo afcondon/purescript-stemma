@@ -1,0 +1,3 @@
+digraph G {
+graph [label=<b> rank=same k=""] é:n -> e -> "q\"uote" -> "q\"uote":p:sw node [color=1, style=1] 3.5 [label="line\nbreak", label=box] shape=blue b:p -> n1:p -> e:p -> n1 [weight="" color=box label="x y"] d [k="line\nbreak"; style=2]
+}

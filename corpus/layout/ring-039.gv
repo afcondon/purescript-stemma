@@ -1,0 +1,6 @@
+digraph ring039 {
+  n0;
+  n1;
+  n0 -> n1;
+  n1 -> n0 [minlen=0];
+}

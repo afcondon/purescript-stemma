@@ -1,0 +1,30 @@
+digraph ring094 {
+  n2;
+  n3;
+  n10;
+  n11;
+  n7;
+  n6;
+  n0;
+  n4;
+  n1;
+  n9;
+  n5;
+  n8;
+  n8 -> n5;
+  n10 -> n11 [weight=1, minlen=1];
+  n2 -> n0;
+  n4 -> n5;
+  n8 -> n9 [weight=1];
+  n7 -> n8 [weight=3];
+  n0 -> n1;
+  n11 -> n0 [constraint=false];
+  n0 -> n0 [weight=2];
+  n3 -> n4 [minlen=3];
+  n2 -> n3;
+  n9 -> n10 [weight=0];
+  n1 -> n2;
+  n5 -> n6;
+  n9 -> n5 [weight=1, minlen=2];
+  n6 -> n7;
+}

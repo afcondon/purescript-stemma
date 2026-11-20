@@ -1,0 +1,7 @@
+graph "g 2" {
+_x [style=box] h {  } é [style=1, color=blue, shape=blue] shape=<b> "two words" -- f { b [shape=2 shape=<b> rank=same]; { NODE [weight=same];
+-1:p:sw -- -1 [k="" color=blue] [key=k2];
+n2:n -- 3.5:n [color=<b>];
+Edge [style=blue];
+style=red } } é -- é a [color=1] d -- d -- 3.5
+}

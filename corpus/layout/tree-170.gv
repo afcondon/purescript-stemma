@@ -1,0 +1,21 @@
+digraph tree170 {
+  n0;
+  n5;
+  n6;
+  n9;
+  n8;
+  n1;
+  n3;
+  n2;
+  n4;
+  n7;
+  n0 -> n8;
+  n2 -> n4;
+  n0 -> n2;
+  n5 -> n6 [weight=5];
+  n0 -> n3;
+  n3 -> n5 [weight=1];
+  n1 -> n7;
+  n7 -> n9;
+  n0 -> n1;
+}

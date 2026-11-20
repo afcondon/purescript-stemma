@@ -1,0 +1,21 @@
+strict graph G {
+b:n -- "q\"uote":p:sw -- -1 [shape="line\nbreak"]
+b:p -- f:n [color=2]
+"q\"uote"
+g:p -- e:p:sw -- "two words":p:sw -- f [shape=1 shape="x y" color=blue]
+graph [rank="x y"; style="x y"]
+e:n -- _x:p -- h -- f [color="", weight="line\nbreak"]
+{  }
+c:n -- a [weight=same, color=<b>]
+f [k=blue]
+n1 -- h
+n1 [shape="x y"]
+subgraph { node [shape="", weight=same];
+e -- 3.5:n -- e:p:sw [weight=1 rank="x y" k=red];
+g [label="line\nbreak", k="line\nbreak"];
+k=box;
+{ b:n -- { NODE [rank="line\nbreak" shape=same k=same] 3.5:p -- e -- n2:n } -- _x:p:sw [rank="line\nbreak", weight=red, color="x y"] } -- subgraph { { "two words" -- _x -- "two words":n;
+n2 -- f [weight="", weight=blue, color="x y"];
+NODE [weight=<b>, color="line\nbreak", weight=2];
+"q\"uote" [style=blue] } } -- 3.5 [style=red, k="", weight=same] }
+}

@@ -1,0 +1,6 @@
+graph "g 2" {
+n1 graph [weight=red] "q\"uote" -- b -- e [k=""] NODE [shape="line\nbreak"] subgraph t { -1:p:sw -- a:n -- e:p [color=<b>, color=red, rank="line\nbreak"];
+subgraph cluster_a { é:n -- 3.5:p:sw [label=box]; n2 -- f:p [rank=same, shape="line\nbreak"] };
+h -- g:p -- c [k=2; color="x y"; rank="line\nbreak"];
+{ é:p -- n2 [shape=1; color=box] } -- 3.5:n -- _x [weight=red] }
+}

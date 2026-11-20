@@ -1,0 +1,6 @@
+digraph {
+k=""; node [color=same; weight=same]; k="line\nbreak"; NODE [k=1 label=1]; n1:n -> subgraph { d [k=2, style="x y"] } -> {  } -> "two words" [style=<b> k=1 label=""]; subgraph { { graph [shape=box];
+{ n2:p -> 3.5:p:sw [shape="line\nbreak", shape=1, label=1]; weight=blue; graph [rank=1 label=2 k=blue]; -1 -> "two words" [rank=2, shape="", shape=2] };
+é [k=2, rank=""];
+{ f -> a [key=k1] a:p:sw -> _x:n [k=red] -1 weight="" } }; é:n -> f:p:sw -> _x:n [k=box; shape=""]; e; label="x y" }; label=2; h -> n2 -> b:n -> e [style="x y" style=red]; Edge [style=box, rank=1]; "q\"uote":p -> d:p:sw -> "two words" -> n1:n [shape="x y", rank=1, style=blue]; rank=<b>; { a:p:sw -> é -> "two words":p:sw -> "q\"uote":p:sw [weight=""] }; weight="x y"; é [label=red, style="line\nbreak"]
+}

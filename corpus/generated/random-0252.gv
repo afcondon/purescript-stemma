@@ -1,0 +1,6 @@
+digraph "g 2" {
+n1 [label=same, k=1]
+h -> f -> b:p:sw [color=same; rank=blue; weight=""]
+NODE [rank=<b> rank=red]
+node [rank=1; shape="line\nbreak"; k=<b>]
+}

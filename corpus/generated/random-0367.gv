@@ -1,0 +1,9 @@
+digraph "g 2" {
+graph [weight=""; weight="x y"; style=box];
+{ d -> n1:p [shape="x y", label=blue, color="line\nbreak"]; subgraph t {  }; style=same; b -> n1:n };
+{  };
+node [rank=red];
+c -> a:p -> g:p [style=same, color="x y"] [key=k2];
+b;
+c -> é -> g [color=red; shape=""; k=blue]
+}

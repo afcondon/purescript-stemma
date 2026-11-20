@@ -1,0 +1,111 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "tailport": "n"
+   },
+   "head": "b",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "two words",
+   "tail": "b"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "rank": "red"
+   },
+   "name": "a"
+  },
+  {
+   "attributes": {
+    "rank": "blue",
+    "weight": "1"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "rank": "red"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "rank": "red"
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "rank": "red"
+   },
+   "name": "two words"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "n1",
+     "b"
+    ],
+    [
+     "b",
+     "two words"
+    ]
+   ],
+   "name": "s",
+   "nodes": [
+    "a",
+    "3.5",
+    "n1",
+    "b",
+    "two words"
+   ],
+   "path": [
+    "s"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%5",
+   "nodes": [],
+   "path": [
+    "%5"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "n1",
+     "b"
+    ],
+    [
+     "b",
+     "two words"
+    ]
+   ],
+   "name": "%3",
+   "nodes": [
+    "n1",
+    "b",
+    "two words"
+   ],
+   "path": [
+    "s",
+    "%3"
+   ]
+  }
+ ]
+}

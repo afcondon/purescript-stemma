@@ -1,0 +1,3 @@
+digraph G {
+3.5 "two words" [label=2] "two words" [k=2, color=box] subgraph t { g [rank=box] } -> 3.5 [label="line\nbreak" style=red style=blue] node [style="line\nbreak", rank=<b>] f g:n -> "q\"uote" -> d
+}

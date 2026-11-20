@@ -1,0 +1,11 @@
+graph G {
+"q\"uote" [rank=same; shape=red; color=2]
+rank=blue
+Edge [rank=<b> color=same k=1]
+shape=blue
+{ rank=1 }
+b [color=<b>, rank=same, label=2]
+n2 [rank=2 shape="" label=<b>]
+3.5
+node [shape=red]
+}

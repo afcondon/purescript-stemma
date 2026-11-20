@@ -1,0 +1,1 @@
+digraph { {rank=min; a; b} b -> a; c -> a; a -> d [minlen=2] }

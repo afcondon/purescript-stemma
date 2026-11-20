@@ -1,0 +1,65 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "color": "box",
+    "label": "blue",
+    "shape": "blue",
+    "tailport": "p"
+   },
+   "head": "é",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "label": "blue",
+    "shape": "blue"
+   },
+   "head": "b",
+   "tail": "é"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "shape": "2",
+    "weight": {
+     "html": "b"
+    }
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "é"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "label": "1"
+   },
+   "edges": [],
+   "name": "%1",
+   "nodes": [
+    "n1"
+   ],
+   "path": [
+    "%1"
+   ]
+  }
+ ]
+}

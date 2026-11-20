@@ -1,0 +1,12 @@
+digraph {
+g;
+e [color=<b>, label=2];
+{  } -> a -> e:p:sw -> d [rank=2, rank="line\nbreak"] [key=k2];
+k=blue;
+d:p:sw -> _x -> subgraph { subgraph s { Edge [k=1] label=1 subgraph { g } -> n2:n [shape=blue] graph [color=1, shape=blue] } } [shape=blue];
+_x [style=1];
+subgraph {  };
+graph [k=red color=red style="x y"];
+NODE [shape=blue color=box style=blue];
+"q\"uote":n -> subgraph u { b:p:sw -> a:p -> "two words":n [rank=1; rank=<b>] } -> subgraph { Edge [style=<b>; color=same] } -> d [weight="x y", color=blue, color="x y"]
+}

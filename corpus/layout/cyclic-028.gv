@@ -1,0 +1,26 @@
+digraph cyclic028 {
+  n10 -> n1 [constraint=false];
+  n5 -> n6 [minlen=2];
+  n6 -> n2 [label=L5];
+  n4 -> n7 [label=L4];
+  n4 -> n6 [weight=3];
+  n9 -> n1 [weight=5];
+  n7 -> n11 [minlen=1];
+  n9 -> n10;
+  n11 -> n8 [label=L2];
+  n9 -> n0 [weight=2, minlen=0];
+  n6 -> n8 [minlen=3];
+  n6 -> n2 [label=L3];
+  n4 -> n6 [label=L6];
+  n8 -> n9 [label=L9];
+  n2 -> n11 [minlen=2, label=L0];
+  n1 -> n9;
+  n9 -> n4;
+  n5 -> n9 [minlen=1, constraint=false];
+  n2 -> n11;
+  n11 -> n3 [label=L6];
+  n6 -> n7;
+  n7 -> n2 [weight=3];
+  n6 -> n8 [weight=1];
+  n3 -> n3;
+}

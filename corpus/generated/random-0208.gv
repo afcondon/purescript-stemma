@@ -1,0 +1,10 @@
+digraph G {
+subgraph { subgraph t {  };
+NODE [rank=1];
+subgraph u { { n2 [weight="", shape="", color=1];
+é }; é [k="line\nbreak", style=same, label="x y"]; f [style=blue, color=box]; node [style=blue]; subgraph s { Edge [k=""] } };
+-1 [label="x y"];
+_x [shape=box, style=red, weight=""] }
+g -> a:p -> n1 [label="" weight=2 style=red]
+a -> a:p [rank=box]
+}

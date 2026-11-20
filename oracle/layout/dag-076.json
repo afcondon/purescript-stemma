@@ -1,0 +1,82 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "constraint": "false",
+    "weight": "5"
+   },
+   "head": "n4",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n4"
+  }
+ ],
+ "name": "dag076",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

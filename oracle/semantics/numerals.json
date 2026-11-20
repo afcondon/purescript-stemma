@@ -1,0 +1,50 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "-3",
+   "tail": "1.5"
+  },
+  {
+   "attributes": {},
+   "head": ".5",
+   "tail": "-3"
+  },
+  {
+   "attributes": {},
+   "head": "7.",
+   "tail": "7"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "1.5"
+  },
+  {
+   "attributes": {},
+   "name": "-3"
+  },
+  {
+   "attributes": {},
+   "name": ".5"
+  },
+  {
+   "attributes": {},
+   "name": "7"
+  },
+  {
+   "attributes": {},
+   "name": "7."
+  },
+  {
+   "attributes": {},
+   "name": "-.25"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

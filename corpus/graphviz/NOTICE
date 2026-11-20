@@ -1,0 +1,6 @@
+These files are the example graphs that ship with Graphviz
+(share/graphviz/graphs/directed and .../undirected, version 14.1.2),
+copied unchanged. They are part of Graphviz, which is distributed under the
+Eclipse Public License 1.0: https://graphviz.org/license/
+
+They are here as test input only. Nothing in core/ derives from them.

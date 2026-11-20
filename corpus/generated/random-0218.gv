@@ -1,0 +1,7 @@
+graph G {
+_x;
+f [rank=same; rank=1];
+3.5;
+node [color=blue];
+c:p -- "q\"uote":p:sw -- a [rank="line\nbreak"]
+}

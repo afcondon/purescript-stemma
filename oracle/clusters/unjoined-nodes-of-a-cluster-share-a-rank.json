@@ -1,0 +1,46 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "x",
+   "tail": "a1"
+  },
+  {
+   "attributes": {},
+   "head": "a2",
+   "tail": "x"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "a1"
+  },
+  {
+   "attributes": {},
+   "name": "a2"
+  },
+  {
+   "attributes": {},
+   "name": "x"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "cluster_a",
+   "nodes": [
+    "a1",
+    "a2"
+   ],
+   "path": [
+    "cluster_a"
+   ]
+  }
+ ]
+}

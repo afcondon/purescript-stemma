@@ -1,0 +1,37 @@
+{
+ "attributes": {
+  "label": "red",
+  "shape": "1"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "rank": "box",
+    "style": "blue",
+    "tailport": "p"
+   },
+   "head": "_x",
+   "tail": "a"
+  }
+ ],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "style": "x y"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  }
+ ],
+ "strict": true,
+ "subgraphs": []
+}

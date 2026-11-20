@@ -1,0 +1,18 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "same",
+    "shape": "box",
+    "weight": "x y"
+   },
+   "name": "-1"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

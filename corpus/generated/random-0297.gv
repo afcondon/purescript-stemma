@@ -1,0 +1,4 @@
+digraph {
+d [label=1]; f -> subgraph {  } -> g -> f:p:sw [k=blue, weight=blue]; "q\"uote" -> a:n -> c:p:sw -> é [color=box k=""]; subgraph cluster_b { é; a; { subgraph s { edge [style=blue]
+rank="" } "two words":p:sw -> 3.5:p -> h:n -> d [key=k2] } }; {  }; Edge [label=red; color=same; style=box]; d:p -> { e:p:sw -> c -> _x -> b [color=same; k="x y"] [key=k2] } -> { c:p:sw -> é:n [weight=""] é [color=box, shape=blue] } [k=blue weight=""]; {  }; subgraph cluster_b { NODE [rank=<b>]; d:p:sw -> -1 [color="" weight=red] } -> _x:p -> _x [rank=blue shape=same] [key=k2]; shape=red
+}

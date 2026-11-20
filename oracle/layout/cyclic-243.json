@@ -1,0 +1,37 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "minlen": "2"
+   },
+   "head": "n5",
+   "tail": "n4"
+  },
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n1",
+   "tail": "n1"
+  }
+ ],
+ "name": "cyclic243",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

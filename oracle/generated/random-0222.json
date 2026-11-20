@@ -1,0 +1,56 @@
+{
+ "attributes": {
+  "weight": "same"
+ },
+ "directed": true,
+ "edges": [],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "color": "1",
+    "shape": "red",
+    "style": "x y"
+   },
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "label": "2",
+    "rank": "line\\nbreak",
+    "shape": "2"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "style": "x y"
+   },
+   "name": "a"
+  },
+  {
+   "attributes": {
+    "style": "x y"
+   },
+   "name": "h"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "weight": "same"
+   },
+   "edges": [],
+   "name": "u",
+   "nodes": [
+    "a"
+   ],
+   "path": [
+    "u"
+   ]
+  }
+ ]
+}

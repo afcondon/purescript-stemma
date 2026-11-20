@@ -1,0 +1,10 @@
+graph "g 2" {
+subgraph { c } -- a:p -- subgraph {  } -- subgraph t { -1 [rank=2]; graph [weight=""; rank=blue] } subgraph { f { style=<b>;
+subgraph { e:p:sw -- d -- c:n [label="" k=red label=""];
+"q\"uote";
+f;
+d };
+style=red } color="line\nbreak" f:p:sw -- n2:n -- a -- f [k=red] } n2 subgraph { c
+node [k="x y"]
+{  } -- n2 -- é:p -- f }
+}

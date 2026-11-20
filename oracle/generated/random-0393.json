@@ -1,0 +1,47 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "tailport": "n"
+   },
+   "head": "b",
+   "tail": "b"
+  },
+  {
+   "attributes": {},
+   "head": "q\"uote",
+   "tail": "b"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "weight": "x y"
+   },
+   "name": "-1"
+  },
+  {
+   "attributes": {
+    "k": "box",
+    "label": {
+     "html": "b"
+    },
+    "shape": "blue"
+   },
+   "name": "e"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

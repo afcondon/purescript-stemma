@@ -1,0 +1,47 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "constraint": "false"
+   },
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n2",
+   "tail": "n1"
+  }
+ ],
+ "name": "ring074",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

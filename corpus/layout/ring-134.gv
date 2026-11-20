@@ -1,0 +1,15 @@
+digraph ring134 {
+  n4 -> n5 [weight=3, minlen=2];
+  n3 -> n4 [minlen=2, constraint=false];
+  n3 -> n7 [minlen=2];
+  n7 -> n4;
+  n6 -> n7;
+  n1 -> n2;
+  n9 -> n0;
+  n0 -> n1 [minlen=0, constraint=false];
+  n8 -> n1;
+  n7 -> n8 [weight=2];
+  n2 -> n3;
+  n8 -> n9;
+  n5 -> n6;
+}

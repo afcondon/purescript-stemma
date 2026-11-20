@@ -1,0 +1,7 @@
+strict graph {
+-1; NODE [k=same label=blue]; b:p:sw -- n1:n; label=same; node [rank=red, label=red, color=<b>]; subgraph s { e -- e -- n1:n [weight="x y"; style=red; rank=box]; b [color=red]; e [color=red weight="" color="x y"]; { c [color=<b>];
+c;
+{ n1;
+graph [shape="x y"] };
+_x [k="line\nbreak", style=same] } }; _x; label="x y"
+}

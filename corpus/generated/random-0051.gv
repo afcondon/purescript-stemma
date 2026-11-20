@@ -1,0 +1,3 @@
+digraph G {
+g -> c:p -> _x -> e:n [k=blue] [key=k2]; "two words":n -> h:p:sw -> "q\"uote" -> "q\"uote"; _x:p:sw -> a:n -> subgraph {  }; g [label="line\nbreak" rank=red]; g:p -> subgraph cluster_a {  } [label="", style=same] [key=k1]
+}

@@ -1,0 +1,27 @@
+graph "g 2" {
+{ g [style="x y"]
+{ "q\"uote" [style=<b>] n1 [rank=blue, shape="line\nbreak"] }
+{ graph [weight=same shape="" label=""];
+edge [rank=blue color=red k=""];
+{ n2;
+Edge [label=1];
+-1;
+e -- c -- 3.5 [weight=2];
+a };
+a:p:sw -- "two words" -- c -- { d:n -- _x -- n2 [weight=2] } [shape=blue];
+subgraph { c:p:sw -- h:p:sw -- é:p:sw -- _x:p [shape=red, label=1] } }
+node [rank=<b> style=2 shape=<b>]
+subgraph s {  } };
+{  };
+a -- "two words":n -- n2:n;
+{  } -- a [color=blue style=1 label=1];
+"two words":p -- f:p:sw [color=""];
+n1;
+rank="";
+subgraph { h:p:sw -- c -- e -- c:p:sw [color="x y" rank=2 style=1]
+f:p -- f -- "two words":p [color=blue rank=same label=<b>] } -- "two words" -- b:n -- n1 [weight=<b> rank=red] [key=k2];
+subgraph s { subgraph {  } é -- a -- c [rank=2; style="x y"] subgraph u { b edge [k=blue] { -1 -- c:p:sw; k=same; -1:p:sw -- n1 -- -1:p -- a:p:sw [k=2]; node [style=2]; 3.5:p -- d } } };
+shape=same;
+f:p:sw -- "q\"uote" -- h:p:sw -- é:p [k=2 k=red label=2];
+d:n -- "q\"uote":n -- d:p -- "two words" [label=""]
+}

@@ -1,0 +1,9 @@
+digraph G {
+label=2 e [color=blue; style=red] { shape="x y";
+{ label=blue
+subgraph u { node [k=<b>]; e -> n1:p:sw -> b [style=2; style=red]; k=1; Edge [weight="line\nbreak", style=<b>]; a }
+weight=<b>
+graph [label="x y"]
+-1 [shape=<b>] };
+b [weight=blue] } -1:p -> h -> _x [color=1; k=same; weight=<b>] b:p -> d:p [style=1, shape=blue, k=2] NODE [weight="x y"] edge [k=same]
+}

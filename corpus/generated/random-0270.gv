@@ -1,0 +1,3 @@
+digraph G {
+edge [shape=box] subgraph { label=1 n1 [shape=2 weight=<b>] } -1:p -> é -> b [color=box shape=blue label=blue] edge [style=""]
+}

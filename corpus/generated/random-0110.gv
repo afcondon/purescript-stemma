@@ -1,0 +1,10 @@
+digraph {
+g:n -> "two words":n -> _x:p [rank=red] subgraph cluster_a { weight="x y" } h -> "two words":p:sw a rank="x y" "two words" a -> e -> a [shape=2] [key=k1] n1 { { d
+e [weight=same color="x y" style=2]
+subgraph { -1:p -> n2:p:sw [k=same k=blue shape=1];
+f -> f:p:sw -> n2:p:sw -> h [label=2] } };
+é [style=1 weight=box label=blue];
+{  };
+"q\"uote" -> {  } -> n1 -> g:n [label=blue, shape="line\nbreak", label=box];
+{ -1 [k=<b>, rank="", color=2]; c [color=box, rank=same] } } h -> _x:n -> e:p -> subgraph cluster_a {  } [style=same, weight=2, style=blue] n1 -> _x:p:sw -> 3.5 [color=box] 3.5 -> { subgraph { subgraph cluster_b {  } é -> -1:n -> é -> _x:p:sw [shape="x y"] }; 3.5 [weight=box, label=<b>] } -> d -> 3.5 [style=same, color=2]
+}

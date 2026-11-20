@@ -1,0 +1,8 @@
+digraph "g 2" {
+e [color=1, style="x y", shape=red]
+3.5 [rank="line\nbreak", k="", shape=2]
+weight=same
+3.5 [label="line\nbreak" label=2 color=1]
+subgraph u { a [rank="", k=red, style="x y"] }
+h [style="x y"]
+}

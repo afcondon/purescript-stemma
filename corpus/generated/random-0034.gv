@@ -1,0 +1,3 @@
+digraph "g 2" {
+g [weight=blue; weight="x y"; shape=1] subgraph { NODE [weight=""; style=<b>] weight="x y" n1:p:sw -> c:p -> é:p [shape=blue] } graph [weight=box; label=<b>] "q\"uote" -> f:p:sw [k=same, k=box, shape="x y"]
+}

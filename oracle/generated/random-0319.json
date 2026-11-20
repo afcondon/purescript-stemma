@@ -1,0 +1,74 @@
+{
+ "attributes": {
+  "k": "red",
+  "weight": "box"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p:sw",
+    "label": "same",
+    "tailport": "n",
+    "weight": "same"
+   },
+   "head": "-1",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "headport": "p",
+    "label": "same",
+    "tailport": "p:sw",
+    "weight": "same"
+   },
+   "head": "a",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "label": "same",
+    "tailport": "p",
+    "weight": "same"
+   },
+   "head": "two words",
+   "tail": "a"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "rank": "blue",
+    "style": "blue"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "rank": "blue",
+    "style": "blue"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "rank": "blue",
+    "style": "blue"
+   },
+   "name": "-1"
+  },
+  {
+   "attributes": {
+    "rank": "blue",
+    "style": "blue"
+   },
+   "name": "a"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

@@ -1,0 +1,88 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "label": "line\\nbreak",
+    "style": "blue"
+   },
+   "head": "3.5",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "tailport": "n"
+   },
+   "head": "q\"uote",
+   "tail": "g"
+  },
+  {
+   "attributes": {},
+   "head": "d",
+   "tail": "q\"uote"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "k": "2",
+    "label": "2"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "rank": "box"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "rank": {
+     "html": "b"
+    },
+    "style": "line\\nbreak"
+   },
+   "name": "f"
+  },
+  {
+   "attributes": {
+    "rank": {
+     "html": "b"
+    },
+    "style": "line\\nbreak"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "rank": {
+     "html": "b"
+    },
+    "style": "line\\nbreak"
+   },
+   "name": "d"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "t",
+   "nodes": [
+    "g"
+   ],
+   "path": [
+    "t"
+   ]
+  }
+ ]
+}

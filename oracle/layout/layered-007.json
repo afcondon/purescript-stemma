@@ -1,0 +1,46 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "weight": "1"
+   },
+   "head": "n4",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "minlen": "0"
+   },
+   "head": "n5",
+   "tail": "n2"
+  }
+ ],
+ "name": "layered007",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

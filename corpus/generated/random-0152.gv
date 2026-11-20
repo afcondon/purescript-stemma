@@ -1,0 +1,5 @@
+digraph "g 2" {
+3.5 [weight=blue; weight=""; color=same];
+c [style=same, color=1];
+graph [weight=1, shape=same, weight=box]
+}

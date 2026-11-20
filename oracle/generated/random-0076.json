@@ -1,0 +1,67 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "style": "same"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {
+    "style": "red"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "k": "1",
+    "style": "blue"
+   },
+   "name": "_x"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "s",
+   "nodes": [
+    "two words"
+   ],
+   "path": [
+    "s"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%1",
+   "nodes": [
+    "two words"
+   ],
+   "path": [
+    "%1"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%3",
+   "nodes": [
+    "_x"
+   ],
+   "path": [
+    "%3"
+   ]
+  }
+ ]
+}

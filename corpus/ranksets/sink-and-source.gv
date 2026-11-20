@@ -1,0 +1,1 @@
+digraph { x -> y -> z; a; {rank=sink; a}; {rank=source; z} }

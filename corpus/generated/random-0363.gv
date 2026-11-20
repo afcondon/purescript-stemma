@@ -1,0 +1,5 @@
+strict graph "g 2" {
+graph [k=blue; color=1];
+subgraph {  };
+"two words" [style="line\nbreak", weight=red, k=<b>]
+}

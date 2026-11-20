@@ -1,0 +1,16 @@
+graph "g 2" {
+Edge [k=box; k=1];
+subgraph u { { k=<b>
+_x -- n2:p -- g:p:sw -- n2:p [color=box; shape=2; k=red]
+n2 -- f:p:sw -- "two words":n [color=2 color=box label=1] } node [rank=1] -1:n -- é:n -- n2 [color=same k="" shape=same] [key=k2] };
+subgraph u { subgraph u {  }; subgraph { "two words" -- "q\"uote" -- g:p:sw } -- 3.5 [shape=red] };
+shape=box;
+subgraph { Edge [shape=red] };
+node [style=red, k=same];
+color=<b>;
+{ label="" n2:p:sw -- subgraph cluster_a { f -- f:p:sw -- g:p -- h [style=<b> k=same] } -- "two words":n -- g:p:sw [k="x y" k=same] [key=k2] e:n -- "two words":n [style="x y"] };
+b [label=blue color=""];
+subgraph cluster_a {  };
+"two words" [shape="x y" k=""];
+n2:n -- h -- c -- n2 [label=1]
+}

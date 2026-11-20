@@ -1,0 +1,15 @@
+digraph ring129 {
+  n0 -> n4;
+  n1 -> n2;
+  n8 -> n9 [weight=10, minlen=2];
+  n9 -> n0 [minlen=1];
+  n6 -> n7;
+  n0 -> n1 [minlen=2];
+  n2 -> n3;
+  n2 -> n6;
+  n3 -> n4;
+  n5 -> n6 [weight=2];
+  n4 -> n5 [weight=0];
+  n1 -> n8 [minlen=1];
+  n7 -> n8 [weight=3];
+}

@@ -1,0 +1,52 @@
+{
+ "attributes": {
+  "label": {
+   "html": "b"
+  },
+  "rank": "line\\nbreak"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "label": "red"
+   },
+   "head": "h",
+   "tail": "n1"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "color": {
+     "html": "b"
+    }
+   },
+   "name": "e"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "cluster_a",
+   "nodes": [
+    "e"
+   ],
+   "path": [
+    "cluster_a"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+strict digraph G {
+NODE [weight="", label=<b>, style=same]
+{ b -> f [label=blue]
+e -> -1 -> f:n -> é [rank=same] }
+"q\"uote":p -> -1 [shape=2] [key=k1]
+style=2
+"two words":n -> {  } [rank=2; style="line\nbreak"]
+é -> _x -> subgraph { d:p:sw -> a -> "q\"uote" -> 3.5:p [k=""];
+c:p:sw -> g -> e -> _x:p:sw } -> n1:p [style=blue; rank="x y"] [key=k2]
+}

@@ -1,0 +1,3 @@
+graph {
+subgraph { color=<b>; rank=blue; g -- n2:n -- h -- d:n [k=<b>; shape=box; style=blue]; c [k="x y"; label=blue] } node [color=blue] n2 -- "q\"uote":n [weight=red; weight=blue; k=red] { { e [weight=blue] }; Edge [rank=red; rank=1]; label="x y"; edge [weight=box color=<b>]; "two words" } graph [color=red, weight=<b>] 3.5 -- "two words":n -- e [label=blue, k=2, label="line\nbreak"] d [rank=box]
+}

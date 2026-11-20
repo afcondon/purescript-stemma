@@ -1,0 +1,365 @@
+{
+ "attributes": {
+  "weight": {
+   "html": "b"
+  }
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "n",
+    "rank": "same",
+    "tailport": "p"
+   },
+   "head": "g",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "rank": "x y",
+    "style": "same",
+    "weight": "red"
+   },
+   "head": "-1",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "k": "x y",
+    "shape": "same",
+    "style": "box",
+    "tailport": "n"
+   },
+   "head": "e",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "rank": "same"
+   },
+   "head": "_x",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "k": "x y",
+    "shape": "same",
+    "style": "box"
+   },
+   "head": "two words",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "rank": "same"
+   },
+   "head": "d",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "color": "red",
+    "headport": "p",
+    "label": {
+     "html": "b"
+    }
+   },
+   "head": "n2",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "k": "x y",
+    "rank": "same"
+   },
+   "head": "f",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "color": "red",
+    "label": {
+     "html": "b"
+    },
+    "tailport": "p"
+   },
+   "head": "g",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "tailport": "p:sw"
+   },
+   "head": "-1",
+   "tail": "b"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "box",
+    "rank": "line\\nbreak"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "weight": {
+     "html": "b"
+    }
+   },
+   "edges": [
+    [
+     "d",
+     "-1"
+    ],
+    [
+     "d",
+     "e"
+    ],
+    [
+     "e",
+     "two words"
+    ],
+    [
+     "_x",
+     "n2"
+    ],
+    [
+     "_x",
+     "f"
+    ],
+    [
+     "n2",
+     "g"
+    ]
+   ],
+   "name": "%3",
+   "nodes": [
+    "g",
+    "d",
+    "-1",
+    "c",
+    "e",
+    "two words",
+    "_x",
+    "n2",
+    "f"
+   ],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {
+    "weight": {
+     "html": "b"
+    }
+   },
+   "edges": [
+    [
+     "d",
+     "g"
+    ],
+    [
+     "c",
+     "_x"
+    ],
+    [
+     "_x",
+     "d"
+    ],
+    [
+     "b",
+     "-1"
+    ]
+   ],
+   "name": "s",
+   "nodes": [
+    "g",
+    "d",
+    "-1",
+    "c",
+    "_x",
+    "b"
+   ],
+   "path": [
+    "s"
+   ]
+  },
+  {
+   "attributes": {
+    "weight": {
+     "html": "b"
+    }
+   },
+   "edges": [],
+   "name": "%5",
+   "nodes": [],
+   "path": [
+    "%3",
+    "%5"
+   ]
+  },
+  {
+   "attributes": {
+    "weight": {
+     "html": "b"
+    }
+   },
+   "edges": [
+    [
+     "d",
+     "e"
+    ],
+    [
+     "e",
+     "two words"
+    ],
+    [
+     "_x",
+     "n2"
+    ],
+    [
+     "n2",
+     "g"
+    ]
+   ],
+   "name": "%9",
+   "nodes": [
+    "g",
+    "d",
+    "c",
+    "e",
+    "two words",
+    "_x",
+    "n2"
+   ],
+   "path": [
+    "%3",
+    "%9"
+   ]
+  },
+  {
+   "attributes": {
+    "rank": "1",
+    "shape": "line\\nbreak",
+    "weight": {
+     "html": "b"
+    }
+   },
+   "edges": [],
+   "name": "t",
+   "nodes": [],
+   "path": [
+    "%3",
+    "t"
+   ]
+  },
+  {
+   "attributes": {
+    "weight": {
+     "html": "b"
+    }
+   },
+   "edges": [
+    [
+     "d",
+     "e"
+    ],
+    [
+     "e",
+     "two words"
+    ]
+   ],
+   "name": "%11",
+   "nodes": [
+    "d",
+    "c",
+    "e",
+    "two words"
+   ],
+   "path": [
+    "%3",
+    "%9",
+    "%11"
+   ]
+  },
+  {
+   "attributes": {
+    "weight": {
+     "html": "b"
+    }
+   },
+   "edges": [],
+   "name": "%17",
+   "nodes": [
+    "g"
+   ],
+   "path": [
+    "%3",
+    "%9",
+    "%17"
+   ]
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "weight": {
+     "html": "b"
+    }
+   },
+   "edges": [],
+   "name": "%23",
+   "nodes": [],
+   "path": [
+    "%3",
+    "t",
+    "%23"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,69 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "weight": "1"
+   },
+   "head": "n3",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "weight": "2"
+   },
+   "head": "n3",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "minlen": "1",
+    "weight": "10"
+   },
+   "head": "n3",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "constraint": "false"
+   },
+   "head": "n0",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "minlen": "1",
+    "weight": "10"
+   },
+   "head": "n1",
+   "tail": "n2"
+  }
+ ],
+ "name": "cyclic073",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

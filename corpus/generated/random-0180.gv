@@ -1,0 +1,3 @@
+digraph "g 2" {
+{ h:n -> {  } -> _x [k="x y", k=same]; graph [color="line\nbreak" weight=""]; color=blue; é:p:sw -> { node [k=<b>] } [k=1 color=<b>] } a node [label=same] é [rank=blue; k=red] a:n -> a -> h [k=same shape=box k=same] subgraph { n2:p:sw -> 3.5 [weight=same, color="x y"]; "q\"uote" [color="line\nbreak"; rank=<b>; color="x y"] } -> d -> n1:n -> _x:p:sw [style=red color="" label=blue] e -> b -> b -> h [shape=same]
+}

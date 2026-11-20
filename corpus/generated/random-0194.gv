@@ -1,0 +1,6 @@
+graph {
+NODE [label=<b>; style=same; label=red];
+Edge [style=<b>, rank=<b>, style=2];
+subgraph cluster_a { color=blue };
+n1 -- "q\"uote":p -- "two words":p [shape="x y", shape=<b>]
+}

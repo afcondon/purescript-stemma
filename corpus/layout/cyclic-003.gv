@@ -1,0 +1,33 @@
+digraph cyclic003 {
+  n14 -> n0 [label=L5];
+  n0 -> n6 [minlen=0];
+  n6 -> n1;
+  n5 -> n0 [minlen=1];
+  n9 -> n0 [weight=2, label=L7];
+  n5 -> n9;
+  n12 -> n13 [label=L3];
+  n15 -> n7 [weight=1];
+  n7 -> n7;
+  n1 -> n6;
+  n4 -> n4 [label=L0];
+  n9 -> n3 [minlen=0];
+  n2 -> n7;
+  n15 -> n15;
+  n1 -> n9;
+  n9 -> n13;
+  n2 -> n3;
+  n14 -> n10 [label=L8];
+  n12 -> n4;
+  n8 -> n13;
+  n2 -> n3;
+  n4 -> n14 [label=L3];
+  n1 -> n6 [label=L2];
+  n0 -> n10;
+  n8 -> n12;
+  n14 -> n9 [minlen=3];
+  n8 -> n8;
+  n15 -> n15 [label=L0];
+  n13 -> n9 [weight=0];
+  n4 -> n14;
+  n11 -> n7;
+}

@@ -1,0 +1,3 @@
+graph G {
+d [rank=1] edge [shape=box] c Edge [k=<b>, rank=2] g -- f [shape=same k=<b>] a -- n2:p:sw -- "two words":p:sw -- b:p:sw 3.5:n -- d -- f h:p -- "q\"uote" -- n1:p:sw -- a [weight="x y" style="line\nbreak"] a [k=1 rank=2 weight=same] "q\"uote":p -- e -- b:p:sw -- {  } [label="line\nbreak"]
+}

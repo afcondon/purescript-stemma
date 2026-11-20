@@ -1,0 +1,6 @@
+strict digraph G {
+{  } h:p:sw -> g:n f -> { { "q\"uote":n -> g -> "two words":p -> {  }; n1:p:sw -> subgraph {  }; e [k="x y"; rank="x y"; shape=blue] } } [weight=""] -1 n1 -> é:p:sw -> subgraph s { NODE [color=1, color=same] {  } -> -1 } -> d [color="line\nbreak"; weight=same; color="x y"] { graph [k=red, label="line\nbreak"] } -> -1:p:sw [color=1, shape="", style=box] { a:p -> 3.5:p:sw [shape=<b>];
+f:n -> f -> subgraph { "q\"uote" g [style=same] } [k=same; style=2; shape=red] } -> n1:n [weight=<b>; color=blue; weight=same] { NODE [label=blue];
+color="";
+h -> b -> b -> -1:n [shape="x y"] } a -> { label=box } -> a [label=<b>; k=blue] NODE [style=red; rank=2]
+}

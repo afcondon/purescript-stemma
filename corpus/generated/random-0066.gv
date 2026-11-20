@@ -1,0 +1,14 @@
+graph G {
+g [label=red; shape=<b>; rank=1]
+-1 [shape="x y" rank=1]
+NODE [label=""; rank=1; color=<b>]
+_x:p -- subgraph s {  } -- "q\"uote":n [shape=same rank="line\nbreak"]
+{ NODE [style=2] NODE [k=1 k=box k=1] { d -- d [weight=<b>]
+Edge [shape=1; shape=2; k=same]
+"two words" [color=blue, style=<b>] } n2 [label=1] { { b [shape=box, rank=1, label=2];
+_x;
+node [style=box, color=1];
+graph [shape="x y"; weight="line\nbreak"; style="line\nbreak"] };
+{ e "q\"uote" [weight=same] };
+{ d } } }
+}

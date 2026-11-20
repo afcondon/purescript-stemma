@@ -1,0 +1,8 @@
+graph {
+subgraph { weight=box }; "two words" -- subgraph s { subgraph s { subgraph t { NODE [weight=2; shape="line\nbreak"]
+n2:n -- f [label=<b>; label=red; rank=2]
+h:p -- "q\"uote" -- -1 -- c:n [label=blue] }; f } } [style=same]; a [k="line\nbreak" k="line\nbreak" color="x y"]; n1 -- n1 [color=red, k=<b>]; f; n1:n -- e [style="line\nbreak" weight=""]; { subgraph t { color="line\nbreak" }
+é -- e:p:sw [label=<b> k=2 shape="x y"]
+-1 -- "q\"uote":p [rank="x y" rank=<b>]
+c:n -- g -- "two words" [rank=red, color=box] }; d; n2:n -- e:p
+}

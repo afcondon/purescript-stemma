@@ -1,0 +1,13 @@
+strict digraph G {
+c -> f:p:sw -> d:p -> a
+é [label=""]
+f [style="", rank=1]
+{ subgraph { k=2;
+{ 3.5:p:sw -> 3.5:n;
+g -> g:p:sw [shape=<b> style=box k=<b>];
+"q\"uote" };
+shape="line\nbreak";
+a:p -> { 3.5 [style="line\nbreak"; style=red] } [label=blue; label="x y"] }; d [shape=""] }
+label=1
+h
+}

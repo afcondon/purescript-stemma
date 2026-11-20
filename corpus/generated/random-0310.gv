@@ -1,0 +1,13 @@
+digraph "g 2" {
+node [color=red];
+{  };
+edge [rank=1; k="line\nbreak"];
+f;
+shape="";
+-1 [style=<b>; style=1];
+c [style=2 color=same];
+h [rank="line\nbreak"; weight="x y"];
+-1 [k="x y", shape=same, k=red];
+subgraph { Edge [weight=1] };
+subgraph { _x:n -> _x:n [label=1] } -> "two words":n -> n1:p:sw -> _x:p [label="", label=box, rank=""]
+}

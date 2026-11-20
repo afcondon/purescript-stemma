@@ -1,0 +1,16 @@
+digraph G {
+rank=blue
+k=""
+b:p -> n2
+"two words"
+NODE [shape=2]
+h [weight="x y"; style="line\nbreak"; label=box]
+{  }
+é -> "q\"uote" [weight=box]
+a [rank="line\nbreak"]
+"two words":n -> f:p -> h:n -> 3.5 [color=same, label=2]
+subgraph t { color=box b:n -> a } -> 3.5:n [shape="" shape=same]
+b:p:sw -> { n1 [k=2, color=box] } -> b:p:sw -> n2 [color=2]
+node [style=1; color=red; shape=""]
+subgraph t {  }
+}

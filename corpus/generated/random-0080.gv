@@ -1,0 +1,22 @@
+strict digraph {
+Edge [weight=red, k="line\nbreak", k="x y"];
+b [weight=box];
+subgraph cluster_a {  };
+{  };
+{ { n1:p -> é -> subgraph cluster_b { color=2 } [weight="x y"]; subgraph { 3.5 [style=1 label=blue] "two words" n2 n2 }; 3.5:p:sw -> é -> a:n [style=2 weight=red color=box]; 3.5:p:sw -> b };
+rank=2;
+{  };
+subgraph cluster_b { { e [weight=1 shape="line\nbreak"] };
+{ 3.5 [shape=<b>, weight=same] };
+e -> c -> f:p [style=box style=""];
+g [weight=same label=blue style=same];
+{  } -> h [style=1] } };
+edge [shape="", rank=box, shape=same];
+subgraph { style="" { { rank=2;
+3.5;
+d:p -> "two words" -> g:p;
+-1 -> é:p -> c:p [k=<b> shape="" weight="x y"];
+graph [shape=blue] }; subgraph { n2 [k=same] a:p -> e:p -> "q\"uote" [shape=box] }; shape=same; _x -> h:n -> a:p [style=1 label=box] } };
+d -> subgraph cluster_b {  } [weight="x y"; style=same; rank=blue];
+f [shape=blue, k="line\nbreak"]
+}

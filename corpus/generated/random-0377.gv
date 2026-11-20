@@ -1,0 +1,6 @@
+digraph {
+graph [k=box; color=box] label=box {  } subgraph { c [shape="x y" label=2 rank=box];
+"q\"uote" [k=red weight="x y" color=""];
+n2 -> d -> c -> "two words";
+d -> -1:p:sw [shape=blue weight=1 weight=blue] [key=k1] } style=blue Edge [weight=""]
+}

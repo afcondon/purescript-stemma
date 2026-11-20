@@ -1,0 +1,4 @@
+graph {
+n1 { e:p:sw -- f:n -- g -- "two words" [style="line\nbreak", color=blue] } graph [k=blue] style="" {  } -- c:p -- n1 [label=blue weight=same color="line\nbreak"] [key=k1] c -- n2:p [k=<b>; weight=2] subgraph t { n1 [label="x y", shape=red, rank=<b>] } -- f:p -- d:n _x:p:sw -- f:n [color=red] h:p:sw -- "q\"uote" subgraph s { n1 [k=box k=blue weight=blue]
+a [rank=same] } -- d:p [color="", k=red, rank=box]
+}

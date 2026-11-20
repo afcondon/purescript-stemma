@@ -1,0 +1,7 @@
+digraph "g 2" {
+subgraph { subgraph cluster_a { shape=blue
+d [k=same] } }
+node [weight=box shape=2 shape=red]
+node [k="line\nbreak"; color=same]
+node [style=box, weight=<b>]
+}

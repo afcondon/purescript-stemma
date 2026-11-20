@@ -1,0 +1,143 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "constraint": "false",
+    "weight": "2"
+   },
+   "head": "n0",
+   "tail": "n5"
+  },
+  {
+   "attributes": {
+    "constraint": "false",
+    "minlen": "0"
+   },
+   "head": "n1",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n7",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n3"
+  },
+  {
+   "attributes": {
+    "minlen": "1"
+   },
+   "head": "n2",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n3"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n5",
+   "tail": "n6"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n7"
+  },
+  {
+   "attributes": {},
+   "head": "n3",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "weight": "2"
+   },
+   "head": "n4",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "minlen": "0"
+   },
+   "head": "n1",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n4"
+  },
+  {
+   "attributes": {
+    "minlen": "3",
+    "weight": "3"
+   },
+   "head": "n4",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n4"
+  },
+  {
+   "attributes": {
+    "constraint": "false",
+    "weight": "0"
+   },
+   "head": "n4",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n3",
+   "tail": "n1"
+  }
+ ],
+ "name": "cyclic058",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n7"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

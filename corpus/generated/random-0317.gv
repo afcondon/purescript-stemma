@@ -1,0 +1,23 @@
+digraph G {
+subgraph { 3.5:p:sw -> subgraph t {  } [weight=box k=""] -1 [rank="line\nbreak"] subgraph { weight=1; { a -> "two words":n -> d [rank="line\nbreak"; shape=blue; weight=same] [key=k1]; style=2; "q\"uote" -> g [label=1, color=blue, weight=""] [key=k2]; f }; d [label=blue, style=1, shape=""]; d:n -> _x:p -> n1 -> 3.5:p [shape=1 k="" label=""]; graph [color=box, rank="x y"] } } f Edge [shape=<b> rank="line\nbreak" color=box] { subgraph { { _x -> e:p:sw [color=same; weight=2] [key=k2]
+_x:n -> h:p:sw -> é:p [weight=1] } c -> d:p [rank=1 k=1 style=""] é [weight=1 weight=box] }
+subgraph {  } -> "q\"uote" -> e -> d
+label=1
+"q\"uote" [rank=blue label=1 shape=<b>] } g:p:sw -> n2:n -> c:p:sw { _x:p:sw -> f:n -> e [label=red]; subgraph cluster_b { f [k="" k="" color="line\nbreak"];
+a [color=same; weight="x y"];
+k=<b>;
+n2 }; c [weight=1 rank=blue]; é [k=red, shape=same, weight="line\nbreak"]; Edge [rank="x y"] } "two words" -> b:p 3.5 -> _x:n [rank=same] [key=k1] { rank=blue;
+{ { a
+"q\"uote"
+b:p:sw -> d -> "two words" -> f [key=k1] }; edge [style=box weight="x y"] } -> n1 [label="x y"];
+node [color=1, k=box] } { Edge [k="x y"; color="line\nbreak"]
+graph [shape="line\nbreak"]
+node [weight="line\nbreak"]
+subgraph { { h; c }
+edge [style=<b>; rank=2; style="line\nbreak"]
+n1 [k=red]
+k=blue
+-1 [weight=<b>] } } subgraph { "two words" [weight=blue, style=<b>];
+d [color=red, shape=red];
+"two words" [color=blue; shape=same; label="line\nbreak"] } -1 [color=blue] _x [k=red style=blue]
+}

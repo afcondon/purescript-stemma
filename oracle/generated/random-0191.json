@@ -1,0 +1,35 @@
+{
+ "attributes": {
+  "k": "red",
+  "label": "blue",
+  "rank": "x y"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "color": "box",
+    "label": "same",
+    "shape": "blue"
+   },
+   "head": "two words",
+   "tail": "3.5"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "box"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

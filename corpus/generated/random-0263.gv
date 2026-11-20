@@ -1,0 +1,5 @@
+strict graph G {
+c:p:sw -- "two words":p:sw -- n2:p:sw -- h:p:sw shape="" subgraph { subgraph u { NODE [weight=1, k="x y"]; NODE [color=blue]; n2:n -- subgraph { weight=""
+edge [shape="" shape="" style=<b>] } [weight=<b> k=same] } a -- { Edge [color="line\nbreak", label="x y"] é:n -- { NODE [weight="x y"] } -- c:n [label=2] } -- _x:p [style="x y", k=2, rank=<b>] b -- b:n -- { weight=<b>
+{ é [shape="x y"; color="line\nbreak"] label="line\nbreak" edge [weight="line\nbreak"; weight=<b>] d:p:sw -- "two words":n [weight=2] } } [weight=box] rank="line\nbreak" } 3.5 -- h
+}

@@ -1,0 +1,8 @@
+graph G {
+graph [k=1, shape=1];
+3.5;
+edge [k=same; label=same];
+n2 -- e:p -- _x:p -- é:n;
+g [label="", label="", label="x y"];
+subgraph u { shape=box; é:p -- h:p -- c:p }
+}

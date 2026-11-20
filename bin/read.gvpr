@@ -1,0 +1,87 @@
+// What cgraph, Graphviz's own graph library, makes of a DOT file, with no
+// layout run on it: one record per line, fields separated by tabs.
+//
+//   G  name  directed  strict  (key value)*
+//   S  path  (key value)*        a subgraph; path is its ancestry, / joined
+//   M  path  node                a node that is a member of that subgraph
+//   F  path  tail  head          an edge that is a member of that subgraph
+//   N  name  (key value)*
+//   E  tail  head  (key value)*
+//
+// Backslash, tab and newline inside a field are written \\, \t and \n.
+// A name or value that was written as an HTML string (<...>) starts \H.
+BEGIN {
+  string esc(string s) {
+    s = gsub(s, "\\\\", "\\\\");
+    s = gsub(s, "\t", "\\t");
+    s = gsub(s, "\n", "\\n");
+    s = gsub(s, "\r", "\\r");
+    return s;
+  }
+  // Whether a string is an HTML string is lost as soon as it is copied
+  // into a variable or passed to a function here, so ishtml is always
+  // asked of the graph's own string, in place.
+  string h(int flag) {
+    if (flag) return "\\H";
+    return "";
+  }
+  void attrs(obj_t o, graph_t top, string kind) {
+    string a;
+    string v;
+    a = fstAttr(top, kind);
+    while (a != "") {
+      v = aget(o, a);
+      if (v != "") printf("\t%s\t%s%s", esc(a), h(ishtml(aget(o, a))), esc(v));
+      a = nxtAttr(top, kind, a);
+    }
+  }
+}
+BEG_G {
+  // Subgraphs, breadth first. (A gvpr function cannot call itself: its
+  // locals are shared between calls.)
+  graph_t queue[int];
+  string paths[int];
+  graph_t g;
+  graph_t s;
+  node_t n;
+  edge_t e;
+  int next;
+  int count;
+
+  printf("G\t%s%s\t%d\t%d", h(ishtml($G.name)), esc($G.name), $G.directed, $G.strict);
+  attrs($G, $G, "G");
+  printf("\n");
+
+  queue[0] = $G;
+  paths[0] = "";
+  count = 1;
+  for (next = 0; next < count; next++) {
+    g = queue[next];
+    for (s = fstsubg(g); s; s = nxtsubg(s)) {
+      queue[count] = s;
+      paths[count] = paths[next] + "/" + h(ishtml(s.name)) + esc(s.name);
+      count++;
+    }
+  }
+  for (next = 1; next < count; next++) {
+    s = queue[next];
+    printf("S\t%s", paths[next]);
+    attrs(s, $G, "G");
+    printf("\n");
+    for (n = fstnode(s); n; n = nxtnode_sg(s, n)) {
+      printf("M\t%s\t%s%s\n", paths[next], h(ishtml(n.name)), esc(n.name));
+      for (e = fstout_sg(s, n); e; e = nxtout_sg(s, e))
+        printf("F\t%s\t%s%s\t%s%s\n", paths[next], h(ishtml(e.tail.name)), esc(e.tail.name), h(ishtml(e.head.name)), esc(e.head.name));
+    }
+  }
+}
+N {
+  printf("N\t%s%s", h(ishtml($.name)), esc($.name));
+  attrs($, $G, "N");
+  printf("\n");
+}
+E {
+  printf("E\t%s%s\t%s%s", h(ishtml($.tail.name)), esc($.tail.name), h(ishtml($.head.name)), esc($.head.name));
+  attrs($, $G, "E");
+  printf("\n");
+}

@@ -1,0 +1,19 @@
+digraph {
+k=1
+subgraph u { subgraph {  };
+a:n -> é -> b -> n2 [label=red];
+h }
+a:n -> e -> "q\"uote":p:sw -> subgraph s { b a -> { a [rank=2 label=2 color=""] } -> f -> "two words":n }
+3.5 [k=blue, k="line\nbreak", k=blue]
+{ color=1
+_x [shape=same, k=1, style="x y"] } -> n2:n -> g:p -> _x:n
+a [label=blue, weight=1]
+3.5 [shape="x y", weight=same, label=box]
+subgraph s { weight=red
+"q\"uote":p:sw -> -1:p:sw -> "two words":p:sw [key=k2]
+f [label=box rank=red k="x y"]
+c -> { label="x y"; g [color=box style="line\nbreak"] } [color=<b>]
+_x [shape="x y", label=same, weight=""] }
+rank=<b>
+f -> -1:p -> "q\"uote":n [k=red style=blue]
+}

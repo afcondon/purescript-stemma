@@ -1,0 +1,8 @@
+digraph G {
+Edge [k=""] graph [label=2 label=2] graph [weight=""; style=2; color=box] subgraph u { Edge [k=<b> rank=same]
+{  }
+{  }
+{ edge [weight=2; color="line\nbreak"; style=box]
+3.5 [shape=same; rank=""]
+"q\"uote" [k=blue, shape=red, style=2] } } rank=box { "two words":p:sw -> f:p } -> n2 -> h:p:sw -> b:p:sw [shape=2] node [label=1]
+}

@@ -1,0 +1,178 @@
+{
+ "attributes": {
+  "rank": {
+   "html": "b"
+  }
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "n",
+    "rank": "line\\nbreak",
+    "style": "1",
+    "tailport": "p"
+   },
+   "head": "two words",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "rank": "line\\nbreak",
+    "style": "1",
+    "tailport": "n"
+   },
+   "head": "g",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "k": "x y",
+    "tailport": "n",
+    "weight": "1"
+   },
+   "head": "n2",
+   "tail": "two words"
+  },
+  {
+   "attributes": {},
+   "head": "b",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {
+    "color": "blue",
+    "tailport": "p"
+   },
+   "head": "_x",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "color": "blue"
+   },
+   "head": "two words",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "rank": "line\\nbreak",
+    "style": "1",
+    "tailport": "p:sw"
+   },
+   "head": "n1",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw"
+   },
+   "head": "e",
+   "tail": "c"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "label": "line\\nbreak"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "k": "x y",
+    "label": "2",
+    "style": "same",
+    "weight": "box"
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {
+    "label": "same",
+    "shape": "box"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "style": "same"
+   },
+   "edges": [
+    [
+     "q\"uote",
+     "b"
+    ]
+   ],
+   "name": "%1",
+   "nodes": [
+    "two words",
+    "q\"uote",
+    "b"
+   ],
+   "path": [
+    "%1"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%15",
+   "nodes": [],
+   "path": [
+    "%15"
+   ]
+  },
+  {
+   "attributes": {
+    "rank": {
+     "html": "b"
+    }
+   },
+   "edges": [],
+   "name": "%19",
+   "nodes": [],
+   "path": [
+    "%19"
+   ]
+  }
+ ]
+}

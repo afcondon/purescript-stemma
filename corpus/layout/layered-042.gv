@@ -1,0 +1,4 @@
+digraph layered042 {
+  n1 -> n2 [minlen=3];
+  n1 -> n2 [minlen=2];
+}

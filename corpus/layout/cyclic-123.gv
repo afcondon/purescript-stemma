@@ -1,0 +1,10 @@
+digraph cyclic123 {
+  n3 -> n3 [minlen=2];
+  n6 -> n6;
+  n3 -> n3;
+  n0 -> n0;
+  n6 -> n6 [minlen=2];
+  n0 -> n3;
+  n6 -> n4;
+  n1 -> n2;
+}

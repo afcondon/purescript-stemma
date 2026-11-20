@@ -1,0 +1,17 @@
+digraph dag031 {
+  n3 -> n5 [weight=10];
+  n6 -> n7;
+  n1 -> n2 [weight=2];
+  n0 -> n11;
+  n4 -> n5;
+  n6 -> n8 [weight=3];
+  n3 -> n8;
+  n0 -> n7 [weight=5];
+  n1 -> n5 [weight=1];
+  n2 -> n6;
+  n0 -> n1;
+  n3 -> n6;
+  n8 -> n9 [weight=2];
+  n4 -> n5;
+  n2 -> n3 [constraint=false];
+}

@@ -1,0 +1,152 @@
+{
+ "attributes": {
+  "label": {
+   "html": "b"
+  }
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "rank": "x y",
+    "tailport": "n",
+    "weight": "1"
+   },
+   "head": "d",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "rank": "x y",
+    "tailport": "p:sw",
+    "weight": "1"
+   },
+   "head": "-1",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "rank": "x y",
+    "weight": "1"
+   },
+   "head": "é",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "label": "x y",
+    "rank": {
+     "html": "b"
+    },
+    "tailport": "p:sw"
+   },
+   "head": "3.5",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "label": "x y",
+    "rank": {
+     "html": "b"
+    }
+   },
+   "head": "f",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "label": "x y",
+    "rank": "1",
+    "shape": "red"
+   },
+   "head": "two words",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "label": "x y",
+    "rank": "1",
+    "shape": "red"
+   },
+   "head": "q\"uote",
+   "tail": "two words"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "shape": "1"
+   },
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "é"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {
+    "rank": "blue",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "rank": "blue",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "rank": "blue",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "name": "q\"uote"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "label": {
+     "html": "b"
+    }
+   },
+   "edges": [],
+   "name": "%13",
+   "nodes": [
+    "two words"
+   ],
+   "path": [
+    "%13"
+   ]
+  }
+ ]
+}

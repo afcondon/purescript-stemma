@@ -1,0 +1,5 @@
+digraph G {
+node [style=1, shape="", label=same]; subgraph cluster_a { 3.5 [weight="x y"] }; weight=blue; "two words" -> d [weight=blue shape="x y" rank="x y"]; weight=same; d [k=1; weight=""]; e; subgraph cluster_a { c -> h -> subgraph { 3.5 [label=same, style=red] } [style="x y"];
+{  };
+"two words" [label=1] }; weight="x y"; a -> a -> b [rank=box label=box]
+}

@@ -1,0 +1,1 @@
+digraph { subgraph s { g; h -> n2 } [weight=red]; edge [w=1]; x -> y; {p q} [w=5]; x -> y }

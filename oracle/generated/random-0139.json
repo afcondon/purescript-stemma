@@ -1,0 +1,163 @@
+{
+ "attributes": {
+  "style": "1"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "style": "blue",
+    "tailport": "p:sw"
+   },
+   "head": "d",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "style": "blue"
+   },
+   "head": "a",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "tailport": "p",
+    "weight": {
+     "html": "b"
+    }
+   },
+   "head": "n1",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": {
+     "html": "b"
+    },
+    "shape": "box",
+    "tailport": "n"
+   },
+   "head": "f",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "shape": "line\\nbreak"
+   },
+   "head": "h",
+   "tail": "f"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {
+    "style": "1"
+   },
+   "edges": [],
+   "name": "u",
+   "nodes": [],
+   "path": [
+    "u"
+   ]
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "line\\nbreak"
+   },
+   "edges": [],
+   "name": "%3",
+   "nodes": [],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {
+    "style": "1"
+   },
+   "edges": [
+    [
+     "_x",
+     "n1"
+    ]
+   ],
+   "name": "%9",
+   "nodes": [
+    "_x",
+    "n1"
+   ],
+   "path": [
+    "%9"
+   ]
+  },
+  {
+   "attributes": {
+    "style": "1"
+   },
+   "edges": [],
+   "name": "t",
+   "nodes": [
+    "a"
+   ],
+   "path": [
+    "t"
+   ]
+  },
+  {
+   "attributes": {
+    "style": "1"
+   },
+   "edges": [
+    [
+     "_x",
+     "n1"
+    ]
+   ],
+   "name": "%11",
+   "nodes": [
+    "_x",
+    "n1"
+   ],
+   "path": [
+    "%9",
+    "%11"
+   ]
+  }
+ ]
+}

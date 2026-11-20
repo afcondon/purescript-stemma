@@ -1,0 +1,13 @@
+digraph {
+subgraph u {  }
+shape=""
+é:p -> e:p -> { subgraph { shape=blue; é [style=red; shape=<b>; weight=""]; subgraph u { "q\"uote":n -> "q\"uote":n -> d:p [color=red; rank="line\nbreak"];
+3.5 } } }
+"two words" [weight=2]
+3.5
+f
+edge [label=same; rank="line\nbreak"; k=red]
+f:p:sw -> d:p -> subgraph s {  } -> b [k=box]
+"two words":p -> subgraph { é [style="" weight=same] } -> "two words" -> a:p [weight=blue]
+{  }
+}

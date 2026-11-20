@@ -1,0 +1,89 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "label": "1",
+    "style": "x y",
+    "tailport": "p"
+   },
+   "head": "3.5",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "label": "line\\nbreak",
+    "rank": "line\\nbreak",
+    "style": "red",
+    "tailport": "p:sw",
+    "weight": "2"
+   },
+   "head": "g",
+   "tail": "b"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "style": "1",
+    "weight": "same"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {
+    "label": "red",
+    "weight": "red"
+   },
+   "edges": [
+    [
+     "b",
+     "g"
+    ]
+   ],
+   "name": "%5",
+   "nodes": [
+    "q\"uote",
+    "g",
+    "b"
+   ],
+   "path": [
+    "%5"
+   ]
+  },
+  {
+   "attributes": {
+    "label": "red",
+    "weight": "red"
+   },
+   "edges": [],
+   "name": "%7",
+   "nodes": [],
+   "path": [
+    "%5",
+    "%7"
+   ]
+  }
+ ]
+}

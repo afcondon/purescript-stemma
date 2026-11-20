@@ -1,0 +1,22 @@
+strict digraph "g 2" {
+n2:p -> 3.5 -> é:n -> e:p:sw [shape=2, shape=box];
+subgraph { c:p -> "q\"uote" -> _x -> b:p [color="x y"; rank=2] h -> n1 -> { e; a [style=<b> color=blue style="line\nbreak"] } -> é [color=2, k=blue] };
+{ { e -> _x -> subgraph {  } -> a [style=<b>]
+g -> a:p -> subgraph {  }
+NODE [color=red]
+{ -1;
+-1 [color=2, rank=same];
+edge [k=2];
+é }
+Edge [k="" shape=box] };
+c [k="line\nbreak"; style=box; label="x y"] };
+b [rank=1, style=2];
+subgraph u { { label=<b>;
+é [label="x y" label=2 k=blue];
+{ shape=box g style=same "q\"uote" [weight=box] k=<b> } }
+Edge [rank=<b> shape=blue]
+c };
+node [color="line\nbreak"];
+graph [color=box; weight=same];
+{  } -> f [color=red, style=red]
+}

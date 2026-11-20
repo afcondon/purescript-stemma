@@ -1,0 +1,4 @@
+digraph {
+subgraph u {  } -> é -> {  } [label="", color=<b>]; { {  }
+subgraph s {  } }; Edge [style=<b> color=1 label="x y"]; f -> -1:p -> subgraph { {  } } [weight=2, shape="x y"]
+}

@@ -1,0 +1,59 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "minlen": "2"
+   },
+   "head": "d",
+   "tail": "a"
+  },
+  {
+   "attributes": {},
+   "head": "a",
+   "tail": "b"
+  },
+  {
+   "attributes": {},
+   "head": "a",
+   "tail": "c"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "rank": "min"
+   },
+   "edges": [],
+   "name": "%3",
+   "nodes": [
+    "a",
+    "b"
+   ],
+   "path": [
+    "%3"
+   ]
+  }
+ ]
+}

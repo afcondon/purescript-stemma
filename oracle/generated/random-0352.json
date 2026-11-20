@@ -1,0 +1,160 @@
+{
+ "attributes": {
+  "label": "red"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "n",
+    "label": "box",
+    "style": "box",
+    "weight": {
+     "html": "b"
+    }
+   },
+   "head": "3.5",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "label": "box",
+    "style": "box",
+    "tailport": "n",
+    "weight": {
+     "html": "b"
+    }
+   },
+   "head": "-1",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "label": "box",
+    "style": "box",
+    "weight": {
+     "html": "b"
+    }
+   },
+   "head": "two words",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "k": "x y",
+    "rank": "1",
+    "style": "x y",
+    "tailport": "n"
+   },
+   "head": "e",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "k": "box",
+    "rank": "blue",
+    "shape": "2",
+    "tailport": "n"
+   },
+   "head": "_x",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "k": "box",
+    "rank": "blue",
+    "shape": "2",
+    "tailport": "p:sw"
+   },
+   "head": "é",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "k": "box",
+    "rank": "blue",
+    "shape": "2",
+    "tailport": "n"
+   },
+   "head": "c",
+   "tail": "é"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "rank": "1"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "rank": "1"
+   },
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "rank": "1"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {
+    "rank": "1"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {
+    "rank": "1"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "rank": "1",
+    "shape": "x y",
+    "weight": "red"
+   },
+   "name": "c"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "label": "red"
+   },
+   "edges": [],
+   "name": "%9",
+   "nodes": [
+    "c"
+   ],
+   "path": [
+    "%9"
+   ]
+  }
+ ]
+}

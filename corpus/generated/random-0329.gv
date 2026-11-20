@@ -1,0 +1,3 @@
+strict graph G {
+edge [label=2; rank=box] -1:p -- 3.5 [label=2] { h:n -- e -- { e [rank=same] } [k=""]; é:n -- b:n -- h; edge [color=blue]; _x; { n2 -- b -- "two words" [color=box; weight=""] } } subgraph { Edge [style=<b>; k="line\nbreak"; color="x y"] } k="x y"
+}

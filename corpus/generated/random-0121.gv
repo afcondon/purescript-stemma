@@ -1,0 +1,3 @@
+graph G {
+Edge [rank="" shape=box] node [color="x y"] a:p -- e -- h [label=box] [key=k1] a [shape=2; color=1; label=red] h:n -- n1:p -- g:n [color=<b>] [key=k2] { color=2 Edge [k=1] }
+}

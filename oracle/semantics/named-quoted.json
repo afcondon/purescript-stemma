@@ -1,0 +1,14 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [],
+ "name": "my graph",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "a"
+  }
+ ],
+ "strict": true,
+ "subgraphs": []
+}

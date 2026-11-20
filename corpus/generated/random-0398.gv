@@ -1,0 +1,6 @@
+strict digraph {
+label=blue
+"two words" -> -1 [weight=blue; k="x y"]
+n1
+"two words":n -> "two words":p -> é -> "two words" [weight=blue weight=box]
+}

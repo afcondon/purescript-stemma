@@ -1,0 +1,78 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "label": "L5",
+    "weight": "2"
+   },
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "label": "L6",
+    "minlen": "1",
+    "weight": "3"
+   },
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "label": "L3"
+   },
+   "head": "n3",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "label": "L8"
+   },
+   "head": "n5",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "weight": "2"
+   },
+   "head": "n4",
+   "tail": "n3"
+  }
+ ],
+ "name": "dag056",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

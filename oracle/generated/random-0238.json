@@ -1,0 +1,25 @@
+{
+ "attributes": {
+  "color": "2",
+  "label": "same"
+ },
+ "directed": false,
+ "edges": [],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "style": "red"
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {
+    "label": "1"
+   },
+   "name": "d"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

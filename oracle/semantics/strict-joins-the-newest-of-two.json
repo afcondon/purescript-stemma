@@ -1,0 +1,50 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "3.5",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "joined": "here",
+    "made": "second"
+   },
+   "head": "3.5",
+   "tail": "n1"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "n1",
+     "3.5"
+    ]
+   ],
+   "name": "%5",
+   "nodes": [
+    "n1",
+    "3.5"
+   ],
+   "path": [
+    "%5"
+   ]
+  }
+ ]
+}

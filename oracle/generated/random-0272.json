@@ -1,0 +1,163 @@
+{
+ "attributes": {
+  "style": "same"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "tailport": "p:sw"
+   },
+   "head": "f",
+   "tail": "é"
+  },
+  {
+   "attributes": {},
+   "head": "_x",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "label": "red",
+    "rank": "1",
+    "shape": "x y",
+    "tailport": "p"
+   },
+   "head": "_x",
+   "tail": "f"
+  },
+  {
+   "attributes": {},
+   "head": "a",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "blue",
+    "label": "x y",
+    "rank": "1",
+    "shape": "x y",
+    "tailport": "n"
+   },
+   "head": "-1",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "k": "blue",
+    "label": "x y",
+    "rank": "1",
+    "shape": "x y",
+    "tailport": "p"
+   },
+   "head": "e",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "label": "x y",
+    "rank": "1",
+    "shape": "x y",
+    "tailport": "p:sw",
+    "weight": "same"
+   },
+   "head": "a",
+   "tail": "g"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "é"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {
+    "color": "x y"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "weight": "blue"
+   },
+   "edges": [],
+   "name": "%7",
+   "nodes": [],
+   "path": [
+    "%7"
+   ]
+  },
+  {
+   "attributes": {
+    "color": "same"
+   },
+   "edges": [],
+   "name": "%9",
+   "nodes": [
+    "a"
+   ],
+   "path": [
+    "%9"
+   ]
+  },
+  {
+   "attributes": {
+    "style": "same"
+   },
+   "edges": [],
+   "name": "%11",
+   "nodes": [
+    "_x"
+   ],
+   "path": [
+    "%11"
+   ]
+  }
+ ]
+}

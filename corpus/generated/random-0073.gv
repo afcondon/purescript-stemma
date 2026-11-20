@@ -1,0 +1,16 @@
+strict graph G {
+graph [shape=red]
+n2
+subgraph {  } -- _x:p
+graph [weight=1]
+é -- f -- subgraph { c -- subgraph { {  } -- n1 -- _x:n -- h:p [style=same style=2] } [color=same, rank=red] } -- g [weight=red; weight=<b>; style=same]
+subgraph cluster_a { k=<b>
+graph [rank=box, style=box] } -- a:p:sw -- é -- { NODE [label=2 style=""] } [style=same]
+n1 [weight="", style="x y", color=same]
+edge [style=red, shape=""]
+a:p -- n2 [shape="x y"; style=""]
+{ n2 rank=box Edge [shape=<b> k=box] }
+"two words" [rank=same rank=2 style=red]
+Edge [label=box; shape=blue]
+{ rank=same rank=1 }
+}

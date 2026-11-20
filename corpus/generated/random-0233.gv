@@ -1,0 +1,3 @@
+strict digraph "g 2" {
+n2 [style="x y"]; Edge [style=blue; rank=box]; graph [label=same shape="" shape=1]; a:p -> _x; label=red
+}

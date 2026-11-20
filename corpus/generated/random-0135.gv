@@ -1,0 +1,13 @@
+digraph {
+graph [weight=red rank="x y"]; { n1 [shape=red; rank=box; k=blue]
+k=<b> }; {  }; graph [rank=1, color="line\nbreak"]; color="x y"; e [rank=2; style=box]; b:p -> f:p -> a:n [rank=red weight=red]; subgraph u { { edge [weight=blue style=red];
+node [weight="" weight=<b>] } -> 3.5:p:sw -> f:p:sw [label=1; shape=""; shape=<b>] "q\"uote" [label=red style=red] subgraph t { color=2
+subgraph cluster_a { n2;
+graph [shape="x y"];
+label=red;
+é }
+{ d }
+"two words" [style=1 k=box]
+h [rank=same; shape=2] } edge [label=<b> rank="x y"] }; g [weight="line\nbreak"]; -1:p -> g -> { "two words" -> n2 -> _x -> _x:p:sw
+n2:n -> -1 -> g:n [rank=1] } -> g [weight="" k=2]; k="line\nbreak"; c [k=2 shape=<b>]; f -> n1 -> {  } [color=2]; _x [rank="line\nbreak" k=same label="x y"]
+}

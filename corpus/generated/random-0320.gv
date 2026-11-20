@@ -1,0 +1,7 @@
+digraph G {
+é graph [color=same, color=same] NODE [weight=1] node [label=1] color=1 { subgraph { edge [shape=<b> k="line\nbreak"]
+_x [weight=blue color="line\nbreak" k=2]
+n1:p:sw -> "two words":n -> "two words":n [rank=box k=<b>] [key=k1]
+f -> a:p:sw -> g:n [color="x y"]
+a -> "two words" -> { "q\"uote":n -> "two words":n -> a "two words":n -> n1 } -> f:n [shape="x y"] } } f -> g [color=2; weight="line\nbreak"; style=1] b
+}

@@ -1,0 +1,21 @@
+digraph tree265 {
+  n1 -> n10;
+  n0 -> n1;
+  n11 -> n16 [constraint=false];
+  n1 -> n3 [weight=2];
+  n9 -> n11;
+  n5 -> n17;
+  n7 -> n9;
+  n5 -> n8 [weight=1];
+  n1 -> n2;
+  n5 -> n6;
+  n1 -> n13;
+  n10 -> n12;
+  n1 -> n4;
+  n1 -> n5 [minlen=3];
+  n12 -> n19 [minlen=2];
+  n1 -> n7;
+  n7 -> n14;
+  n0 -> n18;
+  n6 -> n15;
+}

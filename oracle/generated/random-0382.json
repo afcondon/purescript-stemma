@@ -1,0 +1,45 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "label": {
+     "html": "b"
+    },
+    "rank": "2",
+    "shape": "blue"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "weight": "red"
+   },
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "rank": "1",
+    "weight": "2"
+   },
+   "name": "3.5"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "cluster_a",
+   "nodes": [
+    "e"
+   ],
+   "path": [
+    "cluster_a"
+   ]
+  }
+ ]
+}

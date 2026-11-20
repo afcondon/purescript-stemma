@@ -1,0 +1,19 @@
+strict graph "g 2" {
+f;
+"q\"uote";
+g [rank="line\nbreak", label=""];
+k=2;
+n2 [rank=same];
+Edge [k="" label=red];
+"q\"uote":n -- 3.5:p:sw -- g:n -- d [key=k2];
+NODE [k=1];
+é;
+-1:p -- f [weight="x y", shape=blue, k=blue] [key=k1];
+subgraph { subgraph u { e -- d:p -- é:p [k=<b>]
+graph [weight=box; weight=2] };
+"q\"uote" [label=2];
+{ "two words";
+d [label=red; style=blue; style=""];
+é:p -- n2 -- é;
+b [k=1, rank=same] } }
+}

@@ -1,0 +1,6 @@
+digraph G {
+b:n -> b -> "q\"uote"
+Edge [weight=1; k=box; rank=red]
+-1 [weight="line\nbreak" weight="x y"]
+e [k=box, label=<b>, shape=blue]
+}

@@ -1,0 +1,158 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "2",
+    "shape": "red"
+   },
+   "head": "g",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak",
+    "label": "2",
+    "style": "line\\nbreak",
+    "tailport": "n"
+   },
+   "head": "h",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak",
+    "label": "2",
+    "style": "line\\nbreak"
+   },
+   "head": "a",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "tailport": "p"
+   },
+   "head": "e",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "tailport": "n"
+   },
+   "head": "3.5",
+   "tail": "e"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "1",
+    "label": "blue",
+    "rank": "red",
+    "shape": "same"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "style": "red"
+   },
+   "name": "a"
+  },
+  {
+   "attributes": {
+    "rank": "red"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "style": "same"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "rank": "box",
+    "style": "line\\nbreak"
+   },
+   "name": "3.5"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "g",
+     "g"
+    ]
+   ],
+   "name": "%1",
+   "nodes": [
+    "é",
+    "g",
+    "n2"
+   ],
+   "path": [
+    "%1"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "same"
+   },
+   "edges": [],
+   "name": "%15",
+   "nodes": [
+    "_x"
+   ],
+   "path": [
+    "%15"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%3",
+   "nodes": [
+    "é"
+   ],
+   "path": [
+    "%1",
+    "%3"
+   ]
+  }
+ ]
+}

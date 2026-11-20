@@ -1,0 +1,1 @@
+digraph { edge [w=1] subgraph s { edge [w=2] } subgraph s { a -> b } a -> c }

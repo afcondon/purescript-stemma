@@ -1,0 +1,8 @@
+digraph layered242 {
+  n3;
+  n1;
+  n0;
+  n2;
+  n0 -> n1;
+  n0 -> n1 [weight=5];
+}

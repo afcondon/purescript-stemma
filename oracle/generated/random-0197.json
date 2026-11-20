@@ -1,0 +1,207 @@
+{
+ "attributes": {
+  "label": "1"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p:sw"
+   },
+   "head": "f",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "tailport": "p:sw"
+   },
+   "head": "d",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "tailport": "p"
+   },
+   "head": "a",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "label": "x y",
+    "tailport": "p"
+   },
+   "head": "3.5",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "tailport": "p:sw"
+   },
+   "head": "3.5",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "k": {
+     "html": "b"
+    },
+    "shape": {
+     "html": "b"
+    },
+    "style": "box"
+   },
+   "head": "g",
+   "tail": "g"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "rank": "1"
+   },
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "style": "red"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "a",
+     "3.5"
+    ],
+    [
+     "3.5",
+     "3.5"
+    ],
+    [
+     "g",
+     "g"
+    ]
+   ],
+   "name": "%7",
+   "nodes": [
+    "d",
+    "a",
+    "3.5",
+    "g",
+    "q\"uote"
+   ],
+   "path": [
+    "%7"
+   ]
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "shape": "line\\nbreak"
+   },
+   "edges": [
+    [
+     "a",
+     "3.5"
+    ],
+    [
+     "3.5",
+     "3.5"
+    ],
+    [
+     "g",
+     "g"
+    ]
+   ],
+   "name": "%9",
+   "nodes": [
+    "a",
+    "3.5",
+    "g",
+    "q\"uote"
+   ],
+   "path": [
+    "%7",
+    "%9"
+   ]
+  },
+  {
+   "attributes": {
+    "k": "2"
+   },
+   "edges": [
+    [
+     "3.5",
+     "3.5"
+    ],
+    [
+     "g",
+     "g"
+    ]
+   ],
+   "name": "%11",
+   "nodes": [
+    "3.5",
+    "g",
+    "q\"uote"
+   ],
+   "path": [
+    "%7",
+    "%9",
+    "%11"
+   ]
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "shape": "line\\nbreak"
+   },
+   "edges": [],
+   "name": "%17",
+   "nodes": [
+    "3.5"
+   ],
+   "path": [
+    "%7",
+    "%9",
+    "%17"
+   ]
+  }
+ ]
+}

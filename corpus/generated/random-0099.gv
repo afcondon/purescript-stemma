@@ -1,0 +1,3 @@
+graph "g 2" {
+n1 -- -1:n [rank="" rank="x y"]; n2:p:sw -- d [k=box; color=box; rank="x y"]; "q\"uote" -- é:n [weight="line\nbreak"]; h [color=2]; { h:n -- g:p:sw -- "two words":n -- 3.5:p:sw [shape=blue]; NODE [weight=1, rank=""] }; n1:p:sw -- é:p:sw -- e -- b:p [k=red rank=blue shape=2]; c; node [shape=""]; é:p -- g -- g [weight=box; shape=""]; n2:p -- _x:p -- "two words":p -- e [rank=2]; NODE [style=1; shape=2]; { graph [label=<b> style="x y" label=same] Edge [k="x y"] é:n -- e:n -- h [shape=2 color=same shape=<b>] }
+}

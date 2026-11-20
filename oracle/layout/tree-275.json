@@ -1,0 +1,39 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "minlen": "1",
+    "weight": "10"
+   },
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "minlen": "0",
+    "weight": "5"
+   },
+   "head": "n2",
+   "tail": "n1"
+  }
+ ],
+ "name": "tree275",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

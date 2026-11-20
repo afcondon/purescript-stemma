@@ -1,0 +1,3 @@
+digraph G {
+f -> 3.5:n -> -1 -> "two words":p:sw [style=box, label=box, weight=<b>]; NODE [rank=1]; g:n -> e:n [rank=1, style="x y", k="x y"]; "two words"; label="line\nbreak"; label=red; "q\"uote":n -> _x:p:sw -> é:n -> subgraph { c [shape="x y" weight=red] } [k=box, rank=blue, shape=2]
+}

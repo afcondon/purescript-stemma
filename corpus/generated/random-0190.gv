@@ -1,0 +1,4 @@
+strict digraph G {
+{ graph [rank=box k="line\nbreak" label="line\nbreak"]
+subgraph {  } }; weight="line\nbreak"; f -> e:p:sw [key=k2]; subgraph t {  }; { 3.5 n1 -> b -> "q\"uote":p:sw [label=<b>, shape=blue, style=blue] }; Edge [style="x y"; style=blue; color="line\nbreak"]; { {  } -> subgraph {  } -> -1:p:sw [style=red; style=red; rank=box] }; 3.5 [color=""; rank=red; style=2]; c; é -> _x; subgraph u { g:p -> e:p -> é -> -1 edge [k=box, color="x y"] }
+}

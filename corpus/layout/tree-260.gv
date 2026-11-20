@@ -1,0 +1,13 @@
+digraph tree260 {
+  n0 -> n1 [label=L6];
+  n2 -> n3;
+  n1 -> n2;
+  n5 -> n8 [weight=1];
+  n3 -> n6;
+  n5 -> n7 [minlen=1];
+  n2 -> n4 [weight=0, minlen=1, label=L6];
+  n2 -> n10 [weight=0];
+  n2 -> n5 [minlen=2];
+  n9 -> n11 [weight=2, label=L9];
+  n8 -> n9;
+}

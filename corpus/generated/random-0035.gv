@@ -1,0 +1,16 @@
+strict digraph {
+{ style=1; Edge [style=blue; shape="line\nbreak"]; g:n -> c -> 3.5:p [weight="" style="x y" weight=same] [key=k1]; _x [label="" weight="x y" weight=<b>]; edge [color="line\nbreak" weight=<b>] }; { g:n -> subgraph {  } b -> b [weight="x y" rank="x y" rank=same] rank=2 NODE [style=blue; weight=""; weight="line\nbreak"] }; _x [weight=blue]; {  }; { edge [style="" color=2] label="" subgraph { é; node [shape=<b>] } }; { { graph [shape=red] edge [rank="" color="line\nbreak"] { rank=2
+graph [label=1; shape=""] } -> b [style="x y"; k=""] -1 [label=""] node [label=red] }
+subgraph cluster_a { subgraph cluster_b { e [style=same] edge [style="x y"] };
+n2 [label=2 label=2];
+color=blue;
+{ é:p -> _x:n -> f -> "q\"uote":p [style="line\nbreak" rank=2 color=<b>]
+c [weight=""; shape=2]
+-1
+edge [k=red; weight=red; weight="x y"] } }
+{ Edge [shape=same label=same label=blue];
+edge [label=blue, rank=blue, label="x y"];
+subgraph {  } } }; "q\"uote" -> "two words" -> e -> f [color=same]; subgraph cluster_a {  } -> "two words" -> "q\"uote" [key=k2]; k=<b>; "two words":p:sw -> f:p [style=1 style=blue color="line\nbreak"]; subgraph { c:n -> "two words":p:sw -> subgraph u {  } [label=same; rank=box; shape=same] é:p -> b:p -> é:n [weight=red, rank=1, k=<b>] subgraph { subgraph { k=<b> } -> b [weight=1; weight=red; weight=""] [key=k1]; g [style=blue style="x y" k="x y"]; { é -> "q\"uote" [k=blue] } -> "two words":p:sw -> {  } -> -1:p [rank=<b>, k=red]; NODE [label="x y" style=same] } subgraph u { { _x }; _x -> _x -> a [k="x y"]; subgraph {  } -> _x:p:sw -> n2:p:sw; {  } -> c -> _x [k=blue rank=<b> shape=1]; edge [weight=blue] } }; subgraph u { rank=red;
+n1 [weight="x y"];
+subgraph { h [k=""] { g [rank=<b>]; n2 } -> 3.5 [rank="x y"] Edge [color=box; weight="line\nbreak"; rank=2] subgraph cluster_a { NODE [weight=box, shape=2] } -> n1 -> g:p a [weight=2] } }; subgraph s { n2:p:sw -> subgraph s { n2 -> 3.5; "two words":p:sw -> n1:p:sw -> {  } [k=2, weight="", k="x y"] } -> "two words":p -> subgraph s { edge [k=1 label=2 color=2] } [shape=2, weight=blue] } -> c
+}

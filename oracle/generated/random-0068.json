@@ -1,0 +1,173 @@
+{
+ "attributes": {
+  "color": "box",
+  "label": "2",
+  "rank": "box",
+  "style": "2"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "tailport": "p:sw"
+   },
+   "head": "f",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "shape": "2"
+   },
+   "head": "n2",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "shape": "2"
+   },
+   "head": "n2",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "shape": "2"
+   },
+   "head": "h",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "shape": "2",
+    "tailport": "p:sw"
+   },
+   "head": "b",
+   "tail": "h"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "shape": "same"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "k": "blue",
+    "shape": "red",
+    "style": "2"
+   },
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "color": "box",
+    "label": "2",
+    "style": "2"
+   },
+   "edges": [],
+   "name": "u",
+   "nodes": [
+    "3.5",
+    "q\"uote"
+   ],
+   "path": [
+    "u"
+   ]
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "label": "2",
+    "rank": "box",
+    "style": "2"
+   },
+   "edges": [
+    [
+     "two words",
+     "f"
+    ]
+   ],
+   "name": "%7",
+   "nodes": [
+    "two words",
+    "f"
+   ],
+   "path": [
+    "%7"
+   ]
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "label": "2",
+    "style": "2"
+   },
+   "edges": [],
+   "name": "%1",
+   "nodes": [],
+   "path": [
+    "u",
+    "%1"
+   ]
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "label": "2",
+    "style": "2"
+   },
+   "edges": [],
+   "name": "%3",
+   "nodes": [],
+   "path": [
+    "u",
+    "%3"
+   ]
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "label": "2",
+    "style": "2"
+   },
+   "edges": [],
+   "name": "%5",
+   "nodes": [
+    "3.5",
+    "q\"uote"
+   ],
+   "path": [
+    "u",
+    "%5"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+strict digraph "g 2" {
+"two words" [rank=""; weight=<b>; rank=""];
+edge [shape=1 label="x y"];
+NODE [weight=same];
+k="x y";
+graph [label=""; color=2];
+"q\"uote" [label=box, label="x y"];
+{ subgraph s { graph [rank=<b>] }
+{ NODE [k=""];
+a [color=box, weight=blue, shape=same] } };
+subgraph s { { n1:p:sw -> d [k=blue; shape="line\nbreak"] "two words":p -> subgraph u { é [rank="" k="line\nbreak" rank="line\nbreak"]
+"q\"uote" } [style=""; style=box; label=1] é [rank="line\nbreak", rank=1] node [rank=box rank=same weight=box] -1:p -> "two words" -> e };
+g -> c:p:sw -> 3.5;
+weight=2;
+{  };
+graph [style="line\nbreak"] };
+rank=same;
+f -> _x [color=box, label=blue];
+c [color="line\nbreak", color="", shape=2]
+}

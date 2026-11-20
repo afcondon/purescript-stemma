@@ -1,0 +1,3 @@
+digraph {
+a:p:sw -> f:n -> _x:p:sw [color=2]; 3.5:p -> f:p -> _x:p:sw [k=red k="line\nbreak"]; Edge [label="line\nbreak"]; _x -> -1 [label=red; color=<b>]
+}

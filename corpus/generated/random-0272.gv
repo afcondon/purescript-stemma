@@ -1,0 +1,14 @@
+digraph G {
+é:p:sw -> f -> _x -> a;
+n2:p -> { weight=blue } -> d:p [k=1];
+shape="";
+subgraph { color=same; node [rank=box]; a [style=""] };
+graph [shape="" style=same];
+h [color="x y"];
+{ _x };
+3.5;
+Edge [shape="x y"; rank=1; label="x y"];
+f:p -> _x [label=red];
+n1:n -> -1:p -> e:n [k=blue];
+g:p:sw -> a [weight=same]
+}

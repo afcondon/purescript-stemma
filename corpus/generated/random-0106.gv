@@ -1,0 +1,24 @@
+graph G {
+-1 -- b -- "two words" [k=box rank="" weight=1];
+Edge [label=box; k=box; style=box];
+é [color=blue label="x y" rank=""];
+{ { { e;
+NODE [style=red k=<b>];
+Edge [shape=same, label=red];
+d;
+Edge [shape=red label=box label=1] };
+weight=<b>;
+Edge [rank="x y"];
+d -- d:p:sw -- -1 -- b:p:sw [label=red shape=2] }
+d [shape="" rank=same shape=box]
+graph [shape=red, color=blue, k="line\nbreak"]
+a -- a:p:sw -- g
+h [shape=blue; rank=<b>] };
+graph [rank=<b>];
+subgraph { -1:n -- e:p -- _x:p -- e:p [style="" rank="line\nbreak" rank=2]
+subgraph { Edge [style=1]; e:p:sw -- f [style="x y", k=blue, shape=box]; color="x y"; NODE [color=same] }
+graph [weight="x y" shape=2 rank=2]
+color=blue
+é [label=""] };
+subgraph { color="" node [style=blue rank=<b>] {  } {  } -- subgraph { d; edge [shape=same] } }
+}

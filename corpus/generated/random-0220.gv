@@ -1,0 +1,3 @@
+graph G {
+-1:n -- c -- n2:p:sw a:n -- é:p -- subgraph {  } [label="" k="x y"] rank=2 n2:p -- f:p:sw -- h -- h:n [style=2 label=blue rank=box] "two words" "two words" -- _x -- h -- f [rank=1 k=<b>] Edge [k="x y", weight="line\nbreak"]
+}

@@ -1,0 +1,33 @@
+{
+ "attributes": {
+  "label": "red"
+ },
+ "directed": true,
+ "edges": [],
+ "name": "g 2",
+ "nodes": [],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "label": "red"
+   },
+   "edges": [],
+   "name": "%1",
+   "nodes": [],
+   "path": [
+    "%1"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "cluster_a",
+   "nodes": [],
+   "path": [
+    "%1",
+    "cluster_a"
+   ]
+  }
+ ]
+}

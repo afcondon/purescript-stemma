@@ -1,0 +1,5 @@
+digraph "g 2" {
+edge [k=<b>; weight=""];
+label=red;
+subgraph { subgraph cluster_a { label="" } NODE [k=same] }
+}

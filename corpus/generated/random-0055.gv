@@ -1,0 +1,8 @@
+digraph G {
+{ { subgraph cluster_a { "q\"uote" [k=""; style=""; k=2] e }; color="line\nbreak" };
+a:n -> subgraph cluster_b {  } [weight=2; style=<b>] }
+Edge [color="x y" weight=box]
+c:n -> 3.5
+node [color="line\nbreak"]
+{ node [label=""; weight=red; color=same]; é [weight="x y"]; c [label="x y", label=1]; a [label="line\nbreak", weight="line\nbreak", weight=<b>] }
+}

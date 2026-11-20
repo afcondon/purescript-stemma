@@ -1,0 +1,9 @@
+digraph G {
+Edge [label=red]
+"q\"uote" [k="line\nbreak"; k=""; k="line\nbreak"]
+graph [style=blue, color=2, weight=""]
+color=1
+edge [weight=<b>]
+subgraph { subgraph t { subgraph cluster_a { Edge [style=blue] };
+subgraph { n2 "two words" f } } -1 -> n1:p -> "q\"uote":p [rank="x y" style=same] a -> h -> n2:p [weight=2 weight=<b>] b:n -> e }
+}

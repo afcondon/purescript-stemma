@@ -1,0 +1,3 @@
+digraph {
+style="x y"; label="x y"; a [rank=same style=box]; node [weight=blue weight=blue]; { 3.5:n -> "q\"uote" -> d [style=1, weight=1] [key=k2]; node [label="x y"; k=2; label=same]; _x:p -> n1:p -> "q\"uote" -> c [rank=1]; d; subgraph { g [weight=same, shape=1, weight="x y"]; NODE [label=red color=1] } -> e:p:sw }; a [weight="", shape="", k=same]
+}

@@ -1,0 +1,7 @@
+strict digraph {
+Edge [k="x y", style=""] "two words":n -> a:p [label=blue] Edge [rank="line\nbreak"] subgraph cluster_b { n2 [color="x y", shape=""] } "q\"uote":n -> "two words":n -> "two words":p:sw -> h [k=2; weight="x y"] g -> d [rank=2; k="x y"; k=2] { a [weight="line\nbreak"]
+rank=""
+a -> "q\"uote" -> {  }
+f:p -> c:n -> h
+subgraph u {  } -> d:p:sw [label="line\nbreak"] }
+}

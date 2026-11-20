@@ -1,0 +1,9 @@
+digraph {
+{ style=2 };
+_x -> d -> c:n -> _x:n [k=box, k=<b>, rank="x y"];
+h;
+{ label=same; color=""; a; c:n -> h:n -> "two words" [k="x y"]; a };
+{ é -> { Edge [k=red; weight=same] } [k=same] [key=k1] };
+{ subgraph { f -> é -> {  } } -> n1 -> n2:p:sw { g -> {  } -> -1 -> _x:p [rank=<b>, weight=same, style=blue]; { edge [k=box] } -> h:p -> _x [style=same; shape=""; color=blue] } style=blue "two words" -> n1:p [k=blue] };
+Edge [k="line\nbreak"; k=box; label="x y"]
+}

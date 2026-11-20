@@ -1,0 +1,26 @@
+{
+ "attributes": {
+  "shape": "same",
+  "weight": "box"
+ },
+ "directed": true,
+ "edges": [],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "color": "same"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "style": "same"
+   },
+   "name": "c"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

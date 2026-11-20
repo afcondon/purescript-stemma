@@ -1,0 +1,30 @@
+{
+ "attributes": {
+  "clusterrank": "global"
+ },
+ "directed": true,
+ "edges": [],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "d"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "clusterrank": "global"
+   },
+   "edges": [],
+   "name": "cluster_z",
+   "nodes": [
+    "d"
+   ],
+   "path": [
+    "cluster_z"
+   ]
+  }
+ ]
+}

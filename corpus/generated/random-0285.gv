@@ -1,0 +1,3 @@
+graph {
+label=box; shape=box; subgraph {  } -- subgraph s { 3.5 -- f:p } [label="", color=<b>, rank=""]; NODE [k=""]; n2 -- {  } -- "two words":p -- subgraph {  }
+}

@@ -1,0 +1,13 @@
+digraph G {
+{  };
+"q\"uote":n -> { c:p:sw -> -1:n [weight=2] } -> b:p:sw -> n1:n;
+b:n -> é [shape=red; color=1; k=1];
+{ { style=<b>; { label=box; node [weight=2, color=box, color=1]; "two words" [style=1] } } -> f -> f [rank=blue k="" color="line\nbreak"];
+subgraph { Edge [shape="x y" weight="" color="line\nbreak"];
+subgraph { graph [color="", shape=<b>] b -> 3.5 -> h [shape=1, k=<b>, style=box] h -> n2 [style=red rank="line\nbreak"] n1 "two words" };
+n1:n -> f -> e -> d;
+n2 };
+graph [weight=2; shape=red; color=blue];
+edge [color=blue shape="line\nbreak" shape=box] };
+edge [style=2 style=same color=1]
+}

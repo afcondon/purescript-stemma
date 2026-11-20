@@ -1,0 +1,3 @@
+strict digraph "g 2" {
+g:p:sw -> subgraph { _x:p:sw -> n1:p:sw -> h [label="" shape=box] } [k=<b>; rank=1]; graph [shape="x y" style=<b> color=box]; 3.5 [label=""]
+}

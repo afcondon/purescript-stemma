@@ -1,0 +1,25 @@
+digraph tree055 {
+  n9;
+  n5;
+  n3;
+  n6;
+  n4;
+  n1;
+  n0;
+  n7;
+  n10;
+  n11;
+  n2;
+  n8;
+  n5 -> n6;
+  n2 -> n4 [weight=10];
+  n1 -> n2 [weight=5];
+  n0 -> n1 [minlen=1];
+  n1 -> n7 [minlen=3];
+  n0 -> n10;
+  n1 -> n9;
+  n4 -> n8;
+  n0 -> n5 [minlen=1];
+  n2 -> n11 [minlen=2];
+  n1 -> n3 [minlen=2];
+}

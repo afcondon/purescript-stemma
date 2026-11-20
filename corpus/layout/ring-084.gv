@@ -1,0 +1,7 @@
+digraph ring084 {
+  n1 -> n2 [weight=0];
+  n3 -> n4;
+  n4 -> n5 [minlen=3];
+  n0 -> n2;
+  n0 -> n1;
+}

@@ -1,0 +1,1 @@
+strict graph { a -- b [color=red]; b -- a [style=dashed]; a -- a; a -- a }

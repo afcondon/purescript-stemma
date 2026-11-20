@@ -1,0 +1,198 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n7"
+  },
+  {
+   "attributes": {
+    "minlen": "2"
+   },
+   "head": "n6",
+   "tail": "n7"
+  },
+  {
+   "attributes": {},
+   "head": "n14",
+   "tail": "n7"
+  },
+  {
+   "attributes": {
+    "weight": "10"
+   },
+   "head": "n15",
+   "tail": "n20"
+  },
+  {
+   "attributes": {
+    "constraint": "false"
+   },
+   "head": "n23",
+   "tail": "n20"
+  },
+  {
+   "attributes": {},
+   "head": "n9",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "minlen": "1",
+    "weight": "0"
+   },
+   "head": "n14",
+   "tail": "n6"
+  },
+  {
+   "attributes": {
+    "weight": "3"
+   },
+   "head": "n4",
+   "tail": "n6"
+  },
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n1",
+   "tail": "n13"
+  },
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n5",
+   "tail": "n13"
+  },
+  {
+   "attributes": {},
+   "head": "n14",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n29",
+   "tail": "n19"
+  },
+  {
+   "attributes": {},
+   "head": "n14",
+   "tail": "n10"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n10"
+  },
+  {
+   "attributes": {
+    "weight": "3"
+   },
+   "head": "n14",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n29",
+   "tail": "n16"
+  },
+  {
+   "attributes": {},
+   "head": "n22",
+   "tail": "n26"
+  },
+  {
+   "attributes": {},
+   "head": "n26",
+   "tail": "n18"
+  }
+ ],
+ "name": "layered157",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n7"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n20"
+  },
+  {
+   "attributes": {},
+   "name": "n15"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n9"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n13"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n19"
+  },
+  {
+   "attributes": {},
+   "name": "n29"
+  },
+  {
+   "attributes": {},
+   "name": "n14"
+  },
+  {
+   "attributes": {},
+   "name": "n10"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n16"
+  },
+  {
+   "attributes": {},
+   "name": "n26"
+  },
+  {
+   "attributes": {},
+   "name": "n22"
+  },
+  {
+   "attributes": {},
+   "name": "n18"
+  },
+  {
+   "attributes": {},
+   "name": "n23"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

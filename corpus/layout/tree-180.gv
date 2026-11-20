@@ -1,0 +1,13 @@
+digraph tree180 {
+  n7;
+  n2;
+  n3;
+  n4;
+  n0;
+  n6;
+  n5;
+  n1;
+  n0 -> n2;
+  n0 -> n1 [weight=10];
+  n0 -> n3;
+}

@@ -1,0 +1,9 @@
+digraph tree140 {
+  n0;
+  n2;
+  n1;
+  n3;
+  n1 -> n2;
+  n0 -> n1 [label=L9];
+  n0 -> n3;
+}

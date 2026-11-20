@@ -1,0 +1,48 @@
+{
+ "attributes": {
+  "clusterrank": "none"
+ },
+ "directed": true,
+ "edges": [],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "clusterrank": "none"
+   },
+   "edges": [],
+   "name": "cluster_z",
+   "nodes": [
+    "d"
+   ],
+   "path": [
+    "cluster_z"
+   ]
+  },
+  {
+   "attributes": {
+    "cluster": "true",
+    "clusterrank": "none"
+   },
+   "edges": [],
+   "name": "x",
+   "nodes": [
+    "a"
+   ],
+   "path": [
+    "x"
+   ]
+  }
+ ]
+}

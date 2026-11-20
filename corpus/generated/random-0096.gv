@@ -1,0 +1,20 @@
+graph G {
+é -- "two words" -- _x:p [color=<b>, k=<b>, shape=""]
+e [label="", weight="line\nbreak", weight=1]
+graph [label=box, shape="line\nbreak"]
+{ subgraph { subgraph u { "two words" [label="" label=1 rank=red] } -- -1:p -- "q\"uote":n [k=blue]
+3.5 [weight=2, color=red]
+subgraph cluster_b {  } -- a -- "q\"uote":p:sw [label=<b>] }; { a [shape="x y"]
+b:n -- c:p [label=<b>, label=2] [key=k1]
+b -- a [weight=1 weight="" label=""]
+g [rank=red color=red]
+b:n -- d:p:sw [rank=""] }; 3.5:n -- n1:p:sw [color=blue style=""]; h [shape=blue; style=blue; shape=blue] }
+{ edge [rank=1, color="line\nbreak"];
+rank=2;
+c;
+rank=<b>;
+f -- g:p:sw -- f:p:sw -- d }
+{ graph [color=<b>]
+a [style=1] }
+e:p -- subgraph u {  } -- _x:p:sw [shape="x y" style=1 color="x y"]
+}

@@ -1,0 +1,15 @@
+digraph G {
+h -> { graph [style=<b>, color=blue]; h -> n1:n -> _x:n [weight=box rank=same k="line\nbreak"] } -> { subgraph cluster_a { Edge [label="line\nbreak", color=1];
+subgraph cluster_a { "two words" -> n1 -> h
+graph [weight="", k=box]
+f -> f:p -> b -> "two words" [color=blue]
+-1 } } } [weight=""];
+color="x y";
+n1 [rank=box, weight="line\nbreak"];
+Edge [style=red, shape=<b>, style=<b>];
+f [rank=box];
+subgraph cluster_b { weight=<b> };
+k=<b>;
+label=1;
+e -> -1:n -> "q\"uote":p -> 3.5:n [rank=<b>]
+}

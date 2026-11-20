@@ -1,0 +1,11 @@
+strict digraph "g 2" {
+_x -> g
+"two words" [color=red, rank=box]
+NODE [weight=same]
+{ Edge [label=""] subgraph cluster_a { f [label=same] } }
+_x [color=<b>]
+Edge [color="x y"; color=""; weight=red]
+a [color=2]
+subgraph { { "q\"uote" [k=box, shape=""] subgraph s { "q\"uote" -> é:p:sw -> d -> _x:n [shape=<b>; k=<b>; weight="line\nbreak"] } -> f:p:sw -> "two words":n _x [weight=1 style=2 rank=same] c:p -> n2 [k="x y", style=1, label=blue] subgraph { c -> 3.5:n -> g:p:sw [weight="line\nbreak"]; edge [style="line\nbreak" weight="" weight=1]; h [shape=<b>] } } } -> subgraph {  } -> -1:n -> e [color=box style=red] [key=k1]
+g -> b -> "two words" [style=<b>; k=<b>]
+}

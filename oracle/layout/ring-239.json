@@ -1,0 +1,102 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "constraint": "false"
+   },
+   "head": "n6",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n6"
+  },
+  {
+   "attributes": {},
+   "head": "n7",
+   "tail": "n6"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "constraint": "false"
+   },
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "minlen": "3",
+    "weight": "2"
+   },
+   "head": "n5",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n3",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n3"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n0",
+   "tail": "n7"
+  }
+ ],
+ "name": "ring239",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n7"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

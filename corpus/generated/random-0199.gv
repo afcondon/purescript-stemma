@@ -1,0 +1,16 @@
+strict graph {
+Edge [label=blue];
+rank=<b>;
+{ label=red;
+color=<b> };
+c:n -- subgraph {  } -- b -- d:n;
+edge [rank="line\nbreak", label="", style="x y"];
+subgraph { d:p -- h -- b [k=""; color=blue] node [color=red] graph [rank="x y"; style=<b>] subgraph {  } Edge [color=red color=blue color=2] };
+_x:n -- é:p:sw -- _x [weight=blue, shape=same, style=box];
+{ graph [style=same] k=box n2:p:sw -- é:p:sw [k=box k=red] };
+weight=red;
+style="";
+b:p:sw -- n1 -- "two words";
+c [k=blue, shape=2, rank=box];
+e
+}

@@ -1,0 +1,4 @@
+graph G {
+n1 -- { rank="";
+é -- 3.5 -- _x:n -- e } [color="x y" label=red label=""] subgraph cluster_a {  } edge [shape=red]
+}

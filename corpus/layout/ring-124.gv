@@ -1,0 +1,24 @@
+digraph ring124 {
+  n13 -> n14 [weight=3];
+  n12 -> n13;
+  n1 -> n2 [minlen=0, label=L5];
+  n14 -> n15 [weight=5, minlen=3];
+  n0 -> n1;
+  n15 -> n10;
+  n15 -> n16 [minlen=2];
+  n11 -> n12 [constraint=false];
+  n4 -> n5;
+  n10 -> n11;
+  n2 -> n3;
+  n7 -> n8 [weight=0, label=L9];
+  n3 -> n4;
+  n6 -> n7;
+  n13 -> n10 [weight=2];
+  n5 -> n6 [weight=5, minlen=3];
+  n18 -> n19 [minlen=1, label=L9];
+  n2 -> n9;
+  n17 -> n18 [weight=10, minlen=3, label=L8];
+  n16 -> n17 [minlen=2, label=L9];
+  n8 -> n9 [weight=2];
+  n2 -> n1 [weight=10];
+}

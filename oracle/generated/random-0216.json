@@ -1,0 +1,119 @@
+{
+ "attributes": {
+  "label": "line\\nbreak"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "color": "box",
+    "headport": "p",
+    "rank": "box",
+    "style": "x y"
+   },
+   "head": "d",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "label": "x y",
+    "tailport": "n"
+   },
+   "head": "g",
+   "tail": "_x"
+  },
+  {
+   "attributes": {},
+   "head": "q\"uote",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "headport": "p"
+   },
+   "head": "_x",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {
+    "label": "x y"
+   },
+   "head": "two words",
+   "tail": "g"
+  },
+  {
+   "attributes": {},
+   "head": "f",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "tailport": "p"
+   },
+   "head": "é",
+   "tail": "é"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak"
+   },
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "-1"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "é"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [
+    [
+     "-1",
+     "q\"uote"
+    ],
+    [
+     "q\"uote",
+     "_x"
+    ]
+   ],
+   "name": "%3",
+   "nodes": [
+    "_x",
+    "-1",
+    "q\"uote"
+   ],
+   "path": [
+    "%3"
+   ]
+  }
+ ]
+}

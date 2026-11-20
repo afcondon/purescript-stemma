@@ -1,0 +1,13 @@
+digraph {
+_x [shape=blue; label="x y"; color=2]
+-1:n -> n2
+{  }
+e [shape="" k="x y" style="x y"]
+{  }
+graph [style=red label=red k="line\nbreak"]
+d [rank="x y", rank=""]
+a -> c:p:sw -> "q\"uote":p -> -1:p
+f [k=blue rank=""]
+weight=blue
+g [label=red color=box]
+}

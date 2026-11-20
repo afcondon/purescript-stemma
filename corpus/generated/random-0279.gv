@@ -1,0 +1,5 @@
+strict digraph {
+-1:p -> 3.5 [style="line\nbreak", style="x y", label=1];
+Edge [style=red rank="line\nbreak"];
+{ "q\"uote" g [weight=same; style=1] graph [label=red weight=2 weight=red] {  } -> b:p:sw -> g [weight=2, label="line\nbreak"] }
+}

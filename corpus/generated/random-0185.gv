@@ -1,0 +1,7 @@
+digraph {
+subgraph u { _x [rank="x y"]; d [style=blue; weight=1]; { {  }; n2 -> n1 -> b [color="" weight=box style="line\nbreak"]; weight=""; é [weight=box; color=red; style="line\nbreak"]; graph [label=<b> color=red] }; 3.5 -> h:p:sw -> subgraph u { "q\"uote":p:sw -> { graph [k=box; style=red] } -> c [shape=same; style="line\nbreak"] [key=k2] -1 -> h:n [k="line\nbreak", shape=box, style=box] } -> f:p [rank=red; weight=same] }
+d
+{ k="x y" subgraph u {  } -> "two words":n [label="x y"] graph [label=<b> weight="line\nbreak" label=same] }
+n2 -> e:p -> 3.5:p:sw [label="" k=1] [key=k2]
+a [weight=""; label=blue; shape=2]
+}

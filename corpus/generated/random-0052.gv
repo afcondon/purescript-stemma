@@ -1,0 +1,3 @@
+strict graph G {
+n1; graph [shape=1 k=red k="x y"]; c -- n1:n -- h:p; edge [style=box rank=same weight=2]; b -- e:n -- d:p:sw -- 3.5 [label=<b>, k=box]; Edge [style=same]
+}

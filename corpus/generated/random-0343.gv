@@ -1,0 +1,19 @@
+digraph {
+3.5 [label=blue; shape="line\nbreak"; color=blue]
+_x
+shape="line\nbreak"
+Edge [k="line\nbreak"; rank="line\nbreak"]
+"two words" [color=box; shape=box; rank=2]
+{  }
+e:p:sw -> subgraph t { 3.5 -> a -> subgraph { Edge [rank=<b>];
+3.5 -> c [color="x y"; label=2; style=box] } [style="x y" rank=red];
+Edge [color=<b>] } -> "two words":p:sw
+d -> f:n -> é:n [weight=blue; color=2]
+a
+{ edge [label=<b> style="" shape=<b>];
+"two words" [k="" rank=same style=box];
+b [shape=blue, color="", color=""];
+{ subgraph { e:p:sw -> "q\"uote" -> _x:n [k=2]
+d } -> b
+"two words":p:sw -> f [k=""] } }
+}

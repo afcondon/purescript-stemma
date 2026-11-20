@@ -1,0 +1,5 @@
+digraph "g 2" {
+NODE [shape=box label="x y"]
+-1 [k="line\nbreak" style=blue shape="line\nbreak"]
+subgraph {  }
+}

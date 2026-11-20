@@ -1,0 +1,301 @@
+{
+ "attributes": {
+  "weight": "red"
+ },
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "b",
+   "tail": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "head": "e",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "color": "red",
+    "headport": "n",
+    "rank": "line\\nbreak",
+    "tailport": "p:sw"
+   },
+   "head": "a",
+   "tail": "-1"
+  },
+  {
+   "attributes": {
+    "color": "red",
+    "headport": "p",
+    "rank": "line\\nbreak",
+    "tailport": "n"
+   },
+   "head": "e",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "label": "box",
+    "tailport": "n"
+   },
+   "head": "3.5",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "weight": "red"
+   },
+   "head": "3.5",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "shape": "1",
+    "tailport": "p"
+   },
+   "head": "n2",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "tailport": "n",
+    "weight": "red"
+   },
+   "head": "_x",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "weight": "red"
+   },
+   "head": "3.5",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "rank": "same",
+    "shape": "line\\nbreak"
+   },
+   "head": "f",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "color": "x y",
+    "headport": "p",
+    "k": "2",
+    "rank": "line\\nbreak"
+   },
+   "head": "g",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "color": "x y",
+    "k": "2",
+    "rank": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "c",
+   "tail": "g"
+  }
+ ],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "-1"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "a"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "3.5"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "f"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "name": "_x"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "weight": "red"
+   },
+   "edges": [
+    [
+     "-1",
+     "a"
+    ],
+    [
+     "a",
+     "e"
+    ],
+    [
+     "é",
+     "3.5"
+    ],
+    [
+     "é",
+     "3.5"
+    ],
+    [
+     "é",
+     "n2"
+    ],
+    [
+     "3.5",
+     "_x"
+    ],
+    [
+     "n2",
+     "3.5"
+    ],
+    [
+     "n2",
+     "f"
+    ],
+    [
+     "h",
+     "g"
+    ],
+    [
+     "g",
+     "c"
+    ]
+   ],
+   "name": "t",
+   "nodes": [
+    "e",
+    "-1",
+    "a",
+    "é",
+    "3.5",
+    "n2",
+    "f",
+    "h",
+    "g",
+    "c",
+    "_x"
+   ],
+   "path": [
+    "t"
+   ]
+  },
+  {
+   "attributes": {
+    "weight": "red"
+   },
+   "edges": [
+    [
+     "é",
+     "3.5"
+    ],
+    [
+     "n2",
+     "f"
+    ]
+   ],
+   "name": "cluster_a",
+   "nodes": [
+    "é",
+    "3.5",
+    "n2",
+    "f"
+   ],
+   "path": [
+    "t",
+    "cluster_a"
+   ]
+  },
+  {
+   "attributes": {
+    "weight": "red"
+   },
+   "edges": [
+    [
+     "é",
+     "n2"
+    ]
+   ],
+   "name": "%17",
+   "nodes": [
+    "é",
+    "n2"
+   ],
+   "path": [
+    "t",
+    "%17"
+   ]
+  }
+ ]
+}

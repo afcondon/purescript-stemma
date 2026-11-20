@@ -1,0 +1,3 @@
+graph {
+n1 -- h:p:sw [label=red] subgraph cluster_a { e [color=<b>] } Edge [style=1 style=<b> k="x y"] graph [label=<b>; rank="line\nbreak"]
+}

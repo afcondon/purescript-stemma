@@ -1,0 +1,82 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "weight": "10"
+   },
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "minlen": "1"
+   },
+   "head": "n3",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "constraint": "false"
+   },
+   "head": "n1",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n3",
+   "tail": "n3"
+  }
+ ],
+ "name": "cyclic143",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

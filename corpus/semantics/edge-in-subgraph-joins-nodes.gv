@@ -1,0 +1,1 @@
+digraph { p; subgraph s { p -> q } subgraph cluster_k { subgraph inner { p } } }

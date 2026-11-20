@@ -1,0 +1,137 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n11",
+   "tail": "n10"
+  },
+  {
+   "attributes": {
+    "weight": "0"
+   },
+   "head": "n19",
+   "tail": "n10"
+  },
+  {
+   "attributes": {},
+   "head": "n16",
+   "tail": "n11"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "minlen": "0"
+   },
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n4",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "weight": "10"
+   },
+   "head": "n3",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n9",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n8",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n7",
+   "tail": "n3"
+  }
+ ],
+ "name": "tree065",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n10"
+  },
+  {
+   "attributes": {},
+   "name": "n11"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n8"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n7"
+  },
+  {
+   "attributes": {},
+   "name": "n16"
+  },
+  {
+   "attributes": {},
+   "name": "n9"
+  },
+  {
+   "attributes": {},
+   "name": "n19"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

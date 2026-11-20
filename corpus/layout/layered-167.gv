@@ -1,0 +1,10 @@
+digraph layered167 {
+  n6 -> n8 [weight=1];
+  n3 -> n4;
+  n1 -> n2;
+  n5 -> n4;
+  n10 -> n7;
+  n5 -> n4 [weight=10, minlen=1];
+  n11 -> n7;
+  n2 -> n4;
+}

@@ -1,0 +1,3 @@
+strict graph G {
+graph [k="line\nbreak"]; h:p:sw -- n1 -- subgraph cluster_b {  } -- a:p:sw [shape=same]; n1 -- h -- g -- a [shape=same, shape="line\nbreak"]; color=red; edge [weight=<b>, k="", style=2]
+}

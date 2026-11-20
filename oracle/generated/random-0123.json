@@ -1,0 +1,1259 @@
+{
+ "attributes": {
+  "shape": "red"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "k": "x y",
+    "shape": "x y",
+    "tailport": "p",
+    "weight": "red"
+   },
+   "head": "two words",
+   "tail": "g"
+  },
+  {
+   "attributes": {
+    "k": "x y",
+    "shape": "x y",
+    "weight": "red"
+   },
+   "head": "e",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "shape": "blue",
+    "style": {
+     "html": "b"
+    }
+   },
+   "head": "e",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "headport": "p",
+    "shape": "line\\nbreak"
+   },
+   "head": "e",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "shape": "line\\nbreak",
+    "tailport": "n"
+   },
+   "head": "d",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "shape": "line\\nbreak",
+    "weight": "x y"
+   },
+   "head": "f",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "shape": "blue",
+    "style": {
+     "html": "b"
+    }
+   },
+   "head": "e",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "k": "x y",
+    "shape": "x y",
+    "weight": "red"
+   },
+   "head": "d",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "shape": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "d",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "shape": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "é",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "shape": "line\\nbreak",
+    "weight": "x y"
+   },
+   "head": "f",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "shape": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "b",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "shape": "blue",
+    "style": {
+     "html": "b"
+    }
+   },
+   "head": "e",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "headport": "p",
+    "shape": "line\\nbreak"
+   },
+   "head": "e",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "color": "x y",
+    "headport": "p:sw",
+    "shape": "same"
+   },
+   "head": "h",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "shape": "line\\nbreak",
+    "tailport": "p:sw",
+    "weight": "red"
+   },
+   "head": "3.5",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "head": "3.5",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "shape": "line\\nbreak",
+    "weight": "x y"
+   },
+   "head": "f",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "shape": "line\\nbreak",
+    "tailport": "p:sw"
+   },
+   "head": "b",
+   "tail": "d"
+  },
+  {
+   "attributes": {
+    "color": "box",
+    "headport": "n",
+    "shape": "line\\nbreak",
+    "tailport": "n"
+   },
+   "head": "two words",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "headport": "p",
+    "shape": "line\\nbreak"
+   },
+   "head": "e",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "head": "two words",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "shape": "line\\nbreak",
+    "tailport": "p",
+    "weight": "red"
+   },
+   "head": "e",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "shape": "blue",
+    "style": {
+     "html": "b"
+    }
+   },
+   "head": "e",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "headport": "p",
+    "shape": "line\\nbreak"
+   },
+   "head": "e",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "head": "e",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "head": "d",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "head": "h",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "head": "3.5",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "_x",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "head": "é",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "shape": "line\\nbreak",
+    "weight": "x y"
+   },
+   "head": "f",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "head": "b",
+   "tail": "3.5"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "shape": "blue",
+    "style": {
+     "html": "b"
+    }
+   },
+   "head": "e",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "é",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "head": "c",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "shape": "line\\nbreak"
+   },
+   "head": "two words",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "shape": "line\\nbreak"
+   },
+   "head": "d",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "shape": "line\\nbreak"
+   },
+   "head": "h",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "color": "same",
+    "shape": "line\\nbreak"
+   },
+   "head": "3.5",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "shape": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "b",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "shape": "blue",
+    "style": {
+     "html": "b"
+    }
+   },
+   "head": "e",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "shape": "line\\nbreak",
+    "tailport": "p:sw",
+    "weight": "x y"
+   },
+   "head": "two words",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "shape": "line\\nbreak",
+    "tailport": "p:sw",
+    "weight": "x y"
+   },
+   "head": "e",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "shape": "blue",
+    "style": {
+     "html": "b"
+    }
+   },
+   "head": "e",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "shape": "line\\nbreak",
+    "tailport": "p:sw",
+    "weight": "x y"
+   },
+   "head": "d",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "shape": "line\\nbreak",
+    "tailport": "p:sw",
+    "weight": "x y"
+   },
+   "head": "3.5",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "shape": "blue",
+    "style": {
+     "html": "b"
+    }
+   },
+   "head": "e",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "label": "2",
+    "shape": "line\\nbreak",
+    "weight": "x y"
+   },
+   "head": "_x",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "line\\nbreak",
+    "shape": "blue",
+    "style": {
+     "html": "b"
+    }
+   },
+   "head": "e",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "k": "red",
+    "label": "line\\nbreak",
+    "rank": "1",
+    "shape": "line\\nbreak",
+    "tailport": "p"
+   },
+   "head": "d",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "shape": "line\\nbreak",
+    "tailport": "n"
+   },
+   "head": "d",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "k": "red",
+    "shape": "box",
+    "style": "line\\nbreak"
+   },
+   "head": "3.5",
+   "tail": "b"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "k": "line\\nbreak"
+   },
+   "name": "d"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "label": "x y",
+    "rank": "same",
+    "shape": "x y"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "color": "1",
+    "label": "red",
+    "style": "1"
+   },
+   "name": "c"
+  },
+  {
+   "attributes": {
+    "label": "box",
+    "rank": {
+     "html": "b"
+    },
+    "shape": "2"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {
+    "rank": {
+     "html": "b"
+    },
+    "shape": "line\\nbreak",
+    "style": "x y"
+   },
+   "name": "b"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "edges": [
+    [
+     "g",
+     "two words"
+    ],
+    [
+     "two words",
+     "e"
+    ],
+    [
+     "e",
+     "d"
+    ],
+    [
+     "d",
+     "h"
+    ]
+   ],
+   "name": "%1",
+   "nodes": [
+    "g",
+    "two words",
+    "e",
+    "d",
+    "h"
+   ],
+   "path": [
+    "%1"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "cluster_b",
+   "nodes": [],
+   "path": [
+    "cluster_b"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%17",
+   "nodes": [],
+   "path": [
+    "%17"
+   ]
+  },
+  {
+   "attributes": {
+    "rank": "x y",
+    "shape": "red"
+   },
+   "edges": [
+    [
+     "3.5",
+     "_x"
+    ],
+    [
+     "_x",
+     "é"
+    ],
+    [
+     "_x",
+     "c"
+    ]
+   ],
+   "name": "%19",
+   "nodes": [
+    "3.5",
+    "q\"uote",
+    "_x",
+    "é",
+    "c"
+   ],
+   "path": [
+    "%19"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "red"
+   },
+   "edges": [
+    [
+     "two words",
+     "f"
+    ],
+    [
+     "e",
+     "f"
+    ],
+    [
+     "d",
+     "3.5"
+    ],
+    [
+     "d",
+     "f"
+    ],
+    [
+     "3.5",
+     "e"
+    ],
+    [
+     "3.5",
+     "f"
+    ],
+    [
+     "a",
+     "two words"
+    ],
+    [
+     "a",
+     "e"
+    ],
+    [
+     "a",
+     "d"
+    ],
+    [
+     "a",
+     "3.5"
+    ],
+    [
+     "f",
+     "_x"
+    ],
+    [
+     "b",
+     "d"
+    ]
+   ],
+   "name": "t",
+   "nodes": [
+    "two words",
+    "e",
+    "d",
+    "3.5",
+    "_x",
+    "c",
+    "a",
+    "f",
+    "b"
+   ],
+   "path": [
+    "t"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "red"
+   },
+   "edges": [
+    [
+     "d",
+     "b"
+    ]
+   ],
+   "name": "cluster_a",
+   "nodes": [
+    "d",
+    "b"
+   ],
+   "path": [
+    "cluster_a"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "red"
+   },
+   "edges": [
+    [
+     "two words",
+     "e"
+    ],
+    [
+     "two words",
+     "d"
+    ],
+    [
+     "e",
+     "d"
+    ],
+    [
+     "e",
+     "é"
+    ],
+    [
+     "e",
+     "b"
+    ],
+    [
+     "d",
+     "e"
+    ],
+    [
+     "h",
+     "two words"
+    ],
+    [
+     "h",
+     "e"
+    ],
+    [
+     "3.5",
+     "e"
+    ],
+    [
+     "é",
+     "two words"
+    ],
+    [
+     "é",
+     "d"
+    ],
+    [
+     "é",
+     "h"
+    ],
+    [
+     "é",
+     "3.5"
+    ],
+    [
+     "é",
+     "b"
+    ],
+    [
+     "b",
+     "d"
+    ]
+   ],
+   "name": "%77",
+   "nodes": [
+    "two words",
+    "e",
+    "d",
+    "h",
+    "3.5",
+    "é",
+    "b"
+   ],
+   "path": [
+    "%77"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "edges": [
+    [
+     "g",
+     "two words"
+    ],
+    [
+     "two words",
+     "e"
+    ],
+    [
+     "e",
+     "d"
+    ],
+    [
+     "d",
+     "h"
+    ]
+   ],
+   "name": "%3",
+   "nodes": [
+    "g",
+    "two words",
+    "e",
+    "d",
+    "h"
+   ],
+   "path": [
+    "%1",
+    "%3"
+   ]
+  },
+  {
+   "attributes": {
+    "rank": "x y",
+    "shape": "red"
+   },
+   "edges": [],
+   "name": "cluster_b",
+   "nodes": [
+    "3.5"
+   ],
+   "path": [
+    "%19",
+    "cluster_b"
+   ]
+  },
+  {
+   "attributes": {
+    "rank": "x y",
+    "shape": "red"
+   },
+   "edges": [],
+   "name": "s",
+   "nodes": [
+    "é",
+    "c"
+   ],
+   "path": [
+    "%19",
+    "s"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "red"
+   },
+   "edges": [
+    [
+     "two words",
+     "f"
+    ],
+    [
+     "e",
+     "f"
+    ],
+    [
+     "d",
+     "3.5"
+    ],
+    [
+     "d",
+     "f"
+    ],
+    [
+     "3.5",
+     "e"
+    ],
+    [
+     "3.5",
+     "f"
+    ],
+    [
+     "a",
+     "two words"
+    ],
+    [
+     "a",
+     "e"
+    ],
+    [
+     "a",
+     "d"
+    ],
+    [
+     "a",
+     "3.5"
+    ],
+    [
+     "f",
+     "_x"
+    ]
+   ],
+   "name": "%27",
+   "nodes": [
+    "two words",
+    "e",
+    "d",
+    "3.5",
+    "_x",
+    "a",
+    "f"
+   ],
+   "path": [
+    "t",
+    "%27"
+   ]
+  },
+  {
+   "attributes": {
+    "label": "same",
+    "shape": "red"
+   },
+   "edges": [
+    [
+     "b",
+     "d"
+    ]
+   ],
+   "name": "%53",
+   "nodes": [
+    "d",
+    "c",
+    "b"
+   ],
+   "path": [
+    "t",
+    "%53"
+   ]
+  },
+  {
+   "attributes": {
+    "label": "line\\nbreak",
+    "shape": "red"
+   },
+   "edges": [],
+   "name": "%73",
+   "nodes": [],
+   "path": [
+    "cluster_a",
+    "%73"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "red"
+   },
+   "edges": [
+    [
+     "two words",
+     "e"
+    ],
+    [
+     "two words",
+     "d"
+    ],
+    [
+     "e",
+     "d"
+    ],
+    [
+     "e",
+     "é"
+    ],
+    [
+     "e",
+     "b"
+    ],
+    [
+     "d",
+     "e"
+    ],
+    [
+     "h",
+     "two words"
+    ],
+    [
+     "h",
+     "e"
+    ],
+    [
+     "3.5",
+     "e"
+    ],
+    [
+     "é",
+     "two words"
+    ],
+    [
+     "é",
+     "d"
+    ],
+    [
+     "é",
+     "h"
+    ],
+    [
+     "é",
+     "3.5"
+    ],
+    [
+     "é",
+     "b"
+    ],
+    [
+     "b",
+     "d"
+    ]
+   ],
+   "name": "t",
+   "nodes": [
+    "two words",
+    "e",
+    "d",
+    "h",
+    "3.5",
+    "é",
+    "b"
+   ],
+   "path": [
+    "%77",
+    "t"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak"
+   },
+   "edges": [],
+   "name": "t",
+   "nodes": [],
+   "path": [
+    "%1",
+    "%3",
+    "t"
+   ]
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "shape": "line\\nbreak"
+   },
+   "edges": [
+    [
+     "g",
+     "two words"
+    ],
+    [
+     "two words",
+     "e"
+    ],
+    [
+     "e",
+     "d"
+    ]
+   ],
+   "name": "%5",
+   "nodes": [
+    "g",
+    "two words",
+    "e",
+    "d"
+   ],
+   "path": [
+    "%1",
+    "%3",
+    "%5"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "line\\nbreak",
+    "style": "same"
+   },
+   "edges": [
+    [
+     "d",
+     "h"
+    ]
+   ],
+   "name": "%13",
+   "nodes": [
+    "d",
+    "h"
+   ],
+   "path": [
+    "%1",
+    "%3",
+    "%13"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "red"
+   },
+   "edges": [
+    [
+     "d",
+     "3.5"
+    ],
+    [
+     "3.5",
+     "e"
+    ]
+   ],
+   "name": "%29",
+   "nodes": [
+    "two words",
+    "e",
+    "d",
+    "3.5"
+   ],
+   "path": [
+    "t",
+    "%27",
+    "%29"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "red"
+   },
+   "edges": [],
+   "name": "%79",
+   "nodes": [],
+   "path": [
+    "%77",
+    "t",
+    "%79"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "red"
+   },
+   "edges": [
+    [
+     "two words",
+     "d"
+    ],
+    [
+     "h",
+     "two words"
+    ]
+   ],
+   "name": "%81",
+   "nodes": [
+    "two words",
+    "d",
+    "h",
+    "3.5"
+   ],
+   "path": [
+    "%77",
+    "t",
+    "%81"
+   ]
+  },
+  {
+   "attributes": {
+    "shape": "red"
+   },
+   "edges": [
+    [
+     "é",
+     "b"
+    ],
+    [
+     "b",
+     "d"
+    ]
+   ],
+   "name": "%87",
+   "nodes": [
+    "d",
+    "é",
+    "b"
+   ],
+   "path": [
+    "%77",
+    "t",
+    "%87"
+   ]
+  }
+ ]
+}

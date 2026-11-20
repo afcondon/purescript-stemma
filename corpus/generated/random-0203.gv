@@ -1,0 +1,10 @@
+graph {
+n1:p -- é -- a:n [color=box; weight=2; color=same] [key=k1];
+3.5:p:sw -- c:p:sw -- h:p [color=red; style="line\nbreak"];
+{ a
+"two words" -- -1 -- e:p:sw
+{ subgraph { NODE [style=2]; d; NODE [weight=same]; e -- 3.5:n [color=<b>] } d -- e [style=same rank="" shape=same] } -- c -- {  } -- "two words":p [style=<b>, rank=<b>, style="line\nbreak"]
+edge [label="line\nbreak" style=blue weight="x y"] };
+{ shape=1 };
+subgraph u { edge [shape=2 color=1 shape=<b>] edge [color="x y"] }
+}

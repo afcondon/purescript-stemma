@@ -1,0 +1,15 @@
+strict graph "g 2" {
+Edge [rank=red]
+{ "q\"uote" -- é -- subgraph { label=1 NODE [color=""; rank=2] } -- b [k="line\nbreak", style=<b>] h [color=2 label=red] }
+a:p:sw -- e -- a [weight=box]
+-1:p:sw -- {  } -- n1:p:sw [color=red; weight=""; weight=red]
+NODE [weight=red, shape="x y", color=2]
+NODE [shape="line\nbreak"]
+rank=blue
+a:p:sw -- g:n
+label=2
+color=box
+d [style="x y", weight=box]
+{ e:n -- g -- d:p:sw -- -1:p [color=blue; shape=""; rank=red]; _x [k=1]; n1 [shape="x y"]; c; color="" }
+_x -- subgraph {  } -- n1 -- a [color=same]
+}

@@ -1,0 +1,26 @@
+{
+ "attributes": {
+  "rank": "blue",
+  "shape": "x y"
+ },
+ "directed": false,
+ "edges": [],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "label": "2",
+    "style": "1"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {
+    "weight": "blue"
+   },
+   "name": "b"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

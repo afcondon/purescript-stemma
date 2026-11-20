@@ -1,0 +1,15 @@
+digraph G {
+{ style=same "two words" [label="line\nbreak"] "q\"uote" -> b };
+f:p -> _x -> "two words" [color=blue];
+"two words":p -> "two words":n -> g:p:sw -> n1:n [style=1; rank="line\nbreak"];
+{ edge [color=box, rank="", style=same] };
+rank=<b>;
+-1;
+"two words":n -> n2 [weight=1, k="x y"];
+b [label=2; weight=box; k="x y"];
+{  };
+c -> e:p:sw [color="", shape=""];
+b [style=same];
+n2 [shape=box label=same];
+Edge [style=2; label=2]
+}

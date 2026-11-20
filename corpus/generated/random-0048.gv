@@ -1,0 +1,6 @@
+strict digraph "g 2" {
+c [shape=<b>];
+label="line\nbreak";
+NODE [weight="line\nbreak"; weight="line\nbreak"];
+"q\"uote" -> {  } [rank=box]
+}

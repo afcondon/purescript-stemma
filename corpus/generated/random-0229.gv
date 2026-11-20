@@ -1,0 +1,7 @@
+digraph {
+g -> _x:p -> b:n [label=""]; Edge [shape=1]; subgraph { _x
+edge [color="x y"] }; shape=<b>; f [k="line\nbreak"]; subgraph u { edge [rank=1]
+Edge [label=""; color=""]
+{ n1 -> n1 node [style=blue; weight="x y"; label=box] "two words" -> é:p -> e:n -> d:n graph [shape="line\nbreak"; shape=same] k=2 }
+NODE [style=2 shape="line\nbreak" rank=1] }
+}

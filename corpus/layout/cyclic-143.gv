@@ -1,0 +1,16 @@
+digraph cyclic143 {
+  n1;
+  n0;
+  n2;
+  n4;
+  n3;
+  n2 -> n3 [minlen=1];
+  n4 -> n2;
+  n3 -> n3;
+  n1 -> n1;
+  n4 -> n1 [constraint=false];
+  n0 -> n1 [weight=10];
+  n1 -> n1;
+  n4 -> n2;
+  n4 -> n1;
+}

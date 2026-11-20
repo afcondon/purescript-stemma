@@ -1,0 +1,16 @@
+graph {
+a [color="line\nbreak", shape=2, color=box];
+shape="";
+color=blue;
+_x:p:sw -- "q\"uote":p -- "two words" -- b:p [color=1, k=blue];
+n1 -- e -- n2 -- _x:p [style=red, color=1, color=blue] [key=k1];
+graph [shape=same, style=same];
+subgraph { graph [label=1] g:p:sw -- n1 [rank=red; color="line\nbreak"] } -- "two words":p:sw -- g -- subgraph { graph [rank=box weight="line\nbreak" label=2] } [k=<b>];
+g -- e:n -- b -- f;
+shape="line\nbreak";
+f -- g [color=blue shape=blue];
+f [color=blue, k=2, style=2];
+subgraph { d:n -- _x };
+a:p -- "q\"uote" [weight=blue; weight=""];
+b:p:sw -- -1:n -- a
+}

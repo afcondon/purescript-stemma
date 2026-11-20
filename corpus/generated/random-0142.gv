@@ -1,0 +1,4 @@
+graph {
+NODE [shape="line\nbreak", rank=""]; n1; e:p -- subgraph { _x:p:sw -- "q\"uote":p:sw -- e:n -- _x
+edge [color=""; weight=2; weight=1] } [label=""; rank=blue]; -1 -- h -- é -- d [k=box]; node [shape=same]; e -- n2 -- -1 -- b [color=blue rank="" label=same]
+}

@@ -1,0 +1,13 @@
+digraph dag141 {
+  n0;
+  n3;
+  n4;
+  n2;
+  n1;
+  n2 -> n3;
+  n0 -> n4 [minlen=0];
+  n0 -> n4 [weight=3];
+  n0 -> n2;
+  n1 -> n4 [minlen=0];
+  n1 -> n2;
+}

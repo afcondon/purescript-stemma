@@ -1,0 +1,1 @@
+digraph { a -> b [key=k1, c=1]; a -> b [key=k1, d=2]; a -> b [key=k2]; a -> b }

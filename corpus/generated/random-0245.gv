@@ -1,0 +1,3 @@
+digraph {
+g [color=red weight="x y" shape="line\nbreak"] f h [shape="line\nbreak" shape=blue weight=box] NODE [shape="x y", label=<b>] "two words" [label=red, k=box, rank="line\nbreak"] node [k=blue, label="x y"] graph [shape=<b> style=1 shape="x y"] Edge [shape="x y", k="", shape=""] "q\"uote" [style=1 shape=<b>] label=""
+}

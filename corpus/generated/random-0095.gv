@@ -1,0 +1,6 @@
+digraph "g 2" {
+{ g;
+c:n -> g:n -> n2:p;
+b -> _x:n -> n2 [rank=1];
+"two words":p:sw -> n2:p:sw -> n2 [rank=2, shape=red, label=""] } subgraph { n1:p -> n1:n [shape=red k=2] [key=k1] "two words" [color="line\nbreak", rank="line\nbreak", style="line\nbreak"] c -> n1:p:sw -> f [shape=red, shape=1] } edge [shape="" color=""] subgraph cluster_b {  } -> f
+}

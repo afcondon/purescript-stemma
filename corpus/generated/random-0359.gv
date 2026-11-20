@@ -1,0 +1,3 @@
+digraph {
+h -> b -> c [key=k2] node [shape=box] é [weight=box, style=blue, weight=1] NODE [color=box, k=box, style=2] k="x y" shape="line\nbreak" {  } h
+}

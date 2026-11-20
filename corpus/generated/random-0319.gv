@@ -1,0 +1,7 @@
+graph G {
+NODE [rank="line\nbreak" style=blue rank=blue]
+n1
+"two words":n -- -1:p:sw -- a:p -- "two words" [weight=same, color=2, label=same]
+weight=box
+k=red
+}

@@ -1,0 +1,3 @@
+digraph {
+node [rank=same]; NODE [color=1; style=box]; { style="line\nbreak"; 3.5:n -> f [weight=2] }; n1 [color=<b> rank="" style=""]; style="line\nbreak"; NODE [label=1; rank=2; rank=box]; n1 [label=1]; { c -> 3.5:p [color=2] [key=k2] c -> "two words":p:sw -> g [weight=blue label=1 color=same] } -> b:p:sw [weight="x y"; style=red]; { c:p -> b:n -> f [color=same; style=blue; label=2] } -> { style=red } [weight=red; rank=red; color=blue]
+}

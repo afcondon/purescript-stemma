@@ -1,0 +1,30 @@
+digraph dag171 {
+  n3;
+  n8;
+  n7;
+  n10;
+  n4;
+  n9;
+  n11;
+  n0;
+  n5;
+  n2;
+  n1;
+  n6;
+  n1 -> n7 [weight=3];
+  n8 -> n10;
+  n7 -> n10 [weight=5, minlen=0];
+  n0 -> n1;
+  n0 -> n1 [weight=2];
+  n0 -> n6 [weight=5];
+  n1 -> n7;
+  n4 -> n6 [minlen=2];
+  n3 -> n5 [weight=2];
+  n3 -> n7;
+  n2 -> n9;
+  n2 -> n8;
+  n6 -> n8 [weight=1];
+  n7 -> n10;
+  n6 -> n10 [minlen=0];
+  n6 -> n10 [weight=5, minlen=1];
+}

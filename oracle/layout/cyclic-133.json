@@ -1,0 +1,77 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "label": "L4",
+    "minlen": "1"
+   },
+   "head": "n2",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "minlen": "1"
+   },
+   "head": "n3",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "label": "L5"
+   },
+   "head": "n0",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n3"
+  },
+  {
+   "attributes": {
+    "label": "L0"
+   },
+   "head": "n3",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n4"
+  },
+  {
+   "attributes": {
+    "label": "L7"
+   },
+   "head": "n3",
+   "tail": "n1"
+  }
+ ],
+ "name": "cyclic133",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

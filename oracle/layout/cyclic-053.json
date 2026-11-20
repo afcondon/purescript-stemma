@@ -1,0 +1,52 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n0",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "weight": "3"
+   },
+   "head": "n2",
+   "tail": "n2"
+  }
+ ],
+ "name": "cyclic053",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

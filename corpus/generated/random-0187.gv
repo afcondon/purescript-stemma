@@ -1,0 +1,9 @@
+digraph G {
+d -> n2 -> subgraph { 3.5 [color="line\nbreak"]
+style=red } -> e [color=""] { c [weight=red; color=box; weight=box];
+_x [k=<b> style=same] } subgraph { rank=<b>;
+h:n -> h [key=k2];
+graph [style=red k=blue weight=<b>] } graph [style="line\nbreak"] subgraph s {  } e:p -> subgraph { { NODE [rank=box]; weight="x y"; Edge [k="" weight="" color=2]; subgraph cluster_b { "two words"
+b
+-1 } } } -> -1 -> {  } [rank=blue] 3.5 [weight=1 style=red shape=same] h [weight=<b>]
+}

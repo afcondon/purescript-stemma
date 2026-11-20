@@ -1,0 +1,17 @@
+digraph ring274 {
+  n4;
+  n1;
+  n7;
+  n6;
+  n3;
+  n5;
+  n0;
+  n2;
+  n2 -> n3;
+  n6 -> n7;
+  n4 -> n6;
+  n0 -> n1 [weight=5];
+  n1 -> n2 [label=L4];
+  n5 -> n6 [weight=0, minlen=2];
+  n4 -> n5;
+}

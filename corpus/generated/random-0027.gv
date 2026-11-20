@@ -1,0 +1,3 @@
+digraph {
+graph [shape=2; k="x y"; rank=2] label=blue edge [k=blue; color=""; label=""] Edge [style=box color=same weight="line\nbreak"] h -> b _x -> a -> "q\"uote" -> d [style=blue, rank=2, shape=red] _x
+}

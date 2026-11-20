@@ -1,0 +1,1 @@
+strict digraph { h -> n2 [a=1]; h -> n2 [weight=red, key=k2]; h -> n2 [b=2] }

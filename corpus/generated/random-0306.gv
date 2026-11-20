@@ -1,0 +1,7 @@
+strict digraph {
+graph [weight="line\nbreak" rank=same] g [shape="x y"; label=""] subgraph u {  } style="" e -> -1:p [style=1 shape=""] subgraph { color=2; graph [color=<b> rank="line\nbreak" k="line\nbreak"] } style=same c:p -> n2:p [label=""] style="" { e -> 3.5 -> d:p [weight=same, k="", style=box] [key=k2];
+"q\"uote" [weight="x y" label=box rank=red];
+"q\"uote":p:sw -> g -> d:n -> h;
+c [color=2; weight=<b>];
+weight="line\nbreak" } d [rank=<b>] d -> b [k=box; k=blue] é -> h:n -> e:p:sw -> b node [k=box weight="line\nbreak"]
+}

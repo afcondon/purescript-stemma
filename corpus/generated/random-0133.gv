@@ -1,0 +1,10 @@
+digraph "g 2" {
+_x [style=<b>] node [label=<b>] { b } -> d [k="line\nbreak"; style=""; label=""] subgraph { node [shape=red, label=box]; { subgraph u { edge [shape=<b> weight=box];
+node [label=red color=red];
+color=<b>;
+a [k=1 k=red] }
+"q\"uote" [weight="x y", k="x y"]
+k=box
+3.5 [label="" color="" weight=blue]
+subgraph u { NODE [k=1, shape=<b>] } } } -> é:n -> 3.5:p:sw -> g:n [weight="x y", color=red, shape="line\nbreak"]
+}

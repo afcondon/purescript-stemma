@@ -1,0 +1,12 @@
+graph G {
+3.5 [style=1]
+rank=2
+f:p:sw -- d -- h [key=k2]
+"q\"uote":p -- { n2 [k=box] } -- c -- n2 [weight=same]
+{ NODE [weight=<b>; label=red]; "two words" [label="line\nbreak"]; NODE [weight="line\nbreak"]; n2 [weight=box, weight="line\nbreak", color=blue] }
+b -- "two words" [key=k1]
+k=""
+graph [rank=<b>; weight="x y"]
+node [label=blue, color=2]
+f:p:sw -- "two words":n -- c [color="line\nbreak"]
+}

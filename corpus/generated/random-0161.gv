@@ -1,0 +1,11 @@
+digraph G {
+n1 [color=1 shape="line\nbreak"];
+edge [color=red];
+a:n -> b:p:sw [shape="line\nbreak"; color=""; color=1] [key=k2];
+subgraph {  } -> 3.5:p:sw [rank=red, weight=box];
+node [label=2 style=2];
+{ c -> 3.5:p -> f:p:sw
+{  } };
+NODE [shape="x y"];
+b
+}

@@ -1,0 +1,4 @@
+graph {
+"q\"uote" [k=box k="" k="x y"]; g -- h; -1:n -- c:n -- subgraph {  } [color=1 weight=2 k=2]; { {  }; "two words" -- é:n -- _x [style=2 shape=blue k=<b>] }; {  }; label=""; h -- "q\"uote":n -- c; {  }; g [k="x y", rank=blue]; Edge [color=2, weight=blue]; subgraph {  }; _x [weight="line\nbreak" shape="line\nbreak"]; g [k=1]; { subgraph { "q\"uote":n -- e -- g:p [shape=<b>, k="x y"]; { node [shape=box label="x y"] }; f:p:sw -- subgraph { b [k=box];
+shape=blue } -- é:p -- a:p:sw [style=2, k=red]; subgraph cluster_b { Edge [shape=box]; "q\"uote" } } }
+}

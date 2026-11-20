@@ -1,0 +1,10 @@
+digraph layered232 {
+  n5 -> n6;
+  n2 -> n7 [minlen=1];
+  n2 -> n7;
+  n5 -> n7 [weight=10];
+  n4 -> n1 [weight=1, minlen=1];
+  n2 -> n3 [weight=5, minlen=0];
+  n5 -> n0 [weight=5, constraint=false];
+  n4 -> n7 [minlen=3, constraint=false];
+}

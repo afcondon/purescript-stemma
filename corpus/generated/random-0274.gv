@@ -1,0 +1,16 @@
+digraph {
+subgraph s { e [style="x y"] f -> 3.5:p:sw -> d -> c:p:sw [label="x y" shape=blue] subgraph s { { n1;
+-1;
+k="" }
+style=1
+subgraph t { 3.5; e }
+style=same
+e -> "q\"uote":p:sw [k=<b> color=red] } label=blue }
+f [style=""]
+g -> { { Edge [color=blue; shape=blue] graph [style=same; rank=<b>] } } -> h -> n1 [weight=<b>, color="x y", label=blue]
+a [label=1 style=red]
+n1 [k=blue; color="x y"; color="x y"]
+style=<b>
+graph [label=box; weight=""]
+Edge [label="x y" weight=same color="line\nbreak"]
+}

@@ -1,0 +1,3 @@
+graph "g 2" {
+Edge [shape="x y"]; b -- h -- { subgraph {  } } [key=k1]; g -- _x -- h [key=k1]; b [label=<b>, label=2, rank=1]
+}

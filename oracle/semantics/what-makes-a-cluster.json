@@ -1,0 +1,138 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "b",
+   "tail": "a"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "e"
+  },
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {
+    "cluster": "true"
+   },
+   "edges": [
+    [
+     "a",
+     "b"
+    ]
+   ],
+   "name": "x",
+   "nodes": [
+    "a",
+    "b"
+   ],
+   "path": [
+    "x"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "y",
+   "nodes": [
+    "c"
+   ],
+   "path": [
+    "y"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "cluster_z",
+   "nodes": [
+    "d"
+   ],
+   "path": [
+    "cluster_z"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "Cluster_w",
+   "nodes": [
+    "e"
+   ],
+   "path": [
+    "Cluster_w"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "clusters",
+   "nodes": [
+    "f"
+   ],
+   "path": [
+    "clusters"
+   ]
+  },
+  {
+   "attributes": {
+    "cluster": "false"
+   },
+   "edges": [],
+   "name": "q",
+   "nodes": [
+    "g"
+   ],
+   "path": [
+    "q"
+   ]
+  },
+  {
+   "attributes": {
+    "cluster": "false"
+   },
+   "edges": [],
+   "name": "cluster_n",
+   "nodes": [
+    "h"
+   ],
+   "path": [
+    "cluster_n"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,3 @@
+strict digraph {
+b:p -> 3.5 -> subgraph {  } -> g:p:sw [weight=box; color=box]; "two words" -> c [rank=2]; n2 [weight=<b>; weight=""]; a [k=<b>; style=<b>; rank=2]; -1 [shape=red, label=<b>]; { é [color="x y", k=red] }
+}

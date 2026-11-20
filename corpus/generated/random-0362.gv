@@ -1,0 +1,5 @@
+strict digraph {
+NODE [rank=red]; subgraph s { a [color="line\nbreak", color=""];
+3.5 [rank=blue];
+{ n1:n -> b -> "two words" [key=k2] } }; Edge [rank=<b>]; subgraph { node [style=""] }; k=""; 3.5 [weight=1]
+}

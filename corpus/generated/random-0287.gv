@@ -1,0 +1,16 @@
+digraph G {
+Edge [rank=blue; color="line\nbreak"; color=1];
+{  };
+d [k=1];
+d -> "q\"uote":p:sw [weight=blue];
+weight=red;
+edge [rank="", rank="", color=<b>];
+d -> _x:p [label=1; rank=2];
+{ _x };
+rank=same;
+g -> e:p:sw -> f:n [k=same, weight=same];
+c [rank="line\nbreak"];
+Edge [k=<b>, label=<b>];
+subgraph { node [shape=red, color=1] { shape=2
+{  } } -> 3.5:p -> 3.5:p -> _x:p:sw [weight="", shape=box, label=red] Edge [weight=same color=1 shape=1] }
+}

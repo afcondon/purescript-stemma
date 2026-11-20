@@ -1,0 +1,13 @@
+digraph {
+c:n -> c:p:sw [style="x y"; rank=<b>; color=2]
+subgraph t {  }
+b [weight=red]
+subgraph t { shape=blue
+Edge [k=<b>, label=same] }
+{ n2 -> f
+e [style=same]
+"q\"uote" -> subgraph u {  } [color="line\nbreak", style="", weight=<b>] }
+c:n -> c:p:sw -> h:p:sw [k=1, shape="x y"]
+{ rank="line\nbreak" {  } }
+"two words" [label=same]
+}

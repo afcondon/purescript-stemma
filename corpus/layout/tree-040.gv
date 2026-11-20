@@ -1,0 +1,11 @@
+digraph tree040 {
+  n0 -> n4;
+  n1 -> n5 [weight=1, label=L2];
+  n8 -> n9 [minlen=3];
+  n5 -> n8 [weight=2];
+  n0 -> n2 [minlen=0];
+  n4 -> n6;
+  n0 -> n1 [label=L7];
+  n4 -> n7;
+  n2 -> n3 [weight=10];
+}

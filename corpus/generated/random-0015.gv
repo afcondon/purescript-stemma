@@ -1,0 +1,16 @@
+digraph G {
+label=<b>
+subgraph { 3.5 [label=red k=""]
+_x:p -> b:n -> g [rank="line\nbreak"]
+subgraph { g -> f -> f [k=""];
+3.5;
+subgraph { b
+g
+e:n -> d -> b:n -> é [color="x y"; color=1; rank=2] };
+edge [k=blue] } }
+subgraph { n2; b -> {  } -> f [weight=red; color=""]; é -> a -> n1 [color=1, k=same, color="line\nbreak"]; subgraph t { subgraph { c;
+Edge [shape=red];
+f [style=1];
+"two words";
+c }; f:n -> _x:n -> "two words" [shape=<b>] } -> _x:n [style=blue, label=blue, shape=<b>]; graph [style="x y"] }
+}

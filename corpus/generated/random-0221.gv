@@ -1,0 +1,7 @@
+digraph "g 2" {
+-1 -> { "q\"uote":p:sw -> -1 [k=box] [key=k2] } [rank=<b> shape="line\nbreak"]
+f
+edge [style=<b>]
+graph [weight=box]
+b:p -> h:p -> { { NODE [shape=<b> color=2 style=2] { é:p:sw -> a:n -> -1 -> "two words"; -1 [weight=blue; style=1]; shape=box; g:n -> "two words":n -> "two words" -> e:n [style=box] } d [k=2 label=blue style=red] Edge [label=<b> label=1] {  } } 3.5 [rank=<b>] } [label=same]
+}

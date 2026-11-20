@@ -1,0 +1,323 @@
+{
+ "attributes": {},
+ "directed": false,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "tailport": "p:sw"
+   },
+   "head": "two words",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "2",
+    "rank": {
+     "html": "b"
+    },
+    "style": "x y"
+   },
+   "head": "_x",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "tailport": "p:sw"
+   },
+   "head": "n2",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "tailport": "p:sw"
+   },
+   "head": "h",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "rank": {
+     "html": "b"
+    },
+    "style": "x y"
+   },
+   "head": "c",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "k": "2",
+    "rank": {
+     "html": "b"
+    },
+    "style": "x y"
+   },
+   "head": "é",
+   "tail": "a"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "2",
+    "rank": {
+     "html": "b"
+    },
+    "style": "x y"
+   },
+   "head": "_x",
+   "tail": "é"
+  },
+  {
+   "attributes": {
+    "tailport": "n",
+    "weight": "box"
+   },
+   "head": "two words",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "tailport": "n",
+    "weight": "box"
+   },
+   "head": "é",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "weight": "box"
+   },
+   "head": "b",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "tailport": "n",
+    "weight": "box"
+   },
+   "head": "d",
+   "tail": "b"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "tailport": "p:sw",
+    "weight": "2"
+   },
+   "head": "two words",
+   "tail": "d"
+  },
+  {
+   "attributes": {},
+   "head": "h",
+   "tail": "3.5"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "a"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "shape": "x y"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {},
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "3.5"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {
+    "rank": "line\\nbreak"
+   },
+   "edges": [
+    [
+     "c",
+     "_x"
+    ],
+    [
+     "a",
+     "c"
+    ],
+    [
+     "a",
+     "é"
+    ],
+    [
+     "é",
+     "_x"
+    ],
+    [
+     "b",
+     "two words"
+    ],
+    [
+     "b",
+     "é"
+    ],
+    [
+     "b",
+     "b"
+    ],
+    [
+     "b",
+     "d"
+    ],
+    [
+     "d",
+     "two words"
+    ]
+   ],
+   "name": "%7",
+   "nodes": [
+    "c",
+    "two words",
+    "n2",
+    "a",
+    "é",
+    "_x",
+    "b",
+    "d"
+   ],
+   "path": [
+    "%7"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "u",
+   "nodes": [
+    "n2"
+   ],
+   "path": [
+    "%7",
+    "u"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%11",
+   "nodes": [
+    "c",
+    "é"
+   ],
+   "path": [
+    "%7",
+    "%11"
+   ]
+  },
+  {
+   "attributes": {
+    "weight": {
+     "html": "b"
+    }
+   },
+   "edges": [
+    [
+     "d",
+     "two words"
+    ]
+   ],
+   "name": "%23",
+   "nodes": [
+    "two words",
+    "é",
+    "d"
+   ],
+   "path": [
+    "%7",
+    "%23"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%9",
+   "nodes": [],
+   "path": [
+    "%7",
+    "u",
+    "%9"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%13",
+   "nodes": [],
+   "path": [
+    "%7",
+    "%11",
+    "%13"
+   ]
+  },
+  {
+   "attributes": {
+    "label": "line\\nbreak",
+    "weight": {
+     "html": "b"
+    }
+   },
+   "edges": [
+    [
+     "d",
+     "two words"
+    ]
+   ],
+   "name": "%25",
+   "nodes": [
+    "two words",
+    "é",
+    "d"
+   ],
+   "path": [
+    "%7",
+    "%23",
+    "%25"
+   ]
+  }
+ ]
+}

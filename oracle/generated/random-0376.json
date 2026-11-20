@@ -1,0 +1,57 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "rank": "same",
+    "shape": {
+     "html": "b"
+    },
+    "tailport": "p",
+    "weight": "same"
+   },
+   "head": "q\"uote",
+   "tail": "h"
+  }
+ ],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "rank": "blue"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {
+    "k": "same",
+    "weight": "blue"
+   },
+   "name": "b"
+  },
+  {
+   "attributes": {},
+   "name": "h"
+  },
+  {
+   "attributes": {},
+   "name": "q\"uote"
+  }
+ ],
+ "strict": true,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%1",
+   "nodes": [
+    "n1"
+   ],
+   "path": [
+    "%1"
+   ]
+  }
+ ]
+}

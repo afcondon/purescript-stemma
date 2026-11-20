@@ -1,0 +1,21 @@
+{
+ "attributes": {
+  "label": "x y"
+ },
+ "directed": true,
+ "edges": [],
+ "name": "g 2",
+ "nodes": [],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%1",
+   "nodes": [],
+   "path": [
+    "%1"
+   ]
+  }
+ ]
+}

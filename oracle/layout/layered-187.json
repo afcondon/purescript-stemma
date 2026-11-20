@@ -1,0 +1,88 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n3"
+  },
+  {
+   "attributes": {
+    "weight": "2"
+   },
+   "head": "n0",
+   "tail": "n3"
+  },
+  {
+   "attributes": {
+    "label": "L8"
+   },
+   "head": "n6",
+   "tail": "n7"
+  },
+  {
+   "attributes": {
+    "label": "L5"
+   },
+   "head": "n0",
+   "tail": "n7"
+  },
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n0",
+   "tail": "n7"
+  },
+  {
+   "attributes": {
+    "weight": "3"
+   },
+   "head": "n0",
+   "tail": "n4"
+  }
+ ],
+ "name": "layered187",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n7"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

@@ -1,0 +1,9 @@
+digraph "g 2" {
+subgraph t { c:p -> g:n -> a -> { { "q\"uote" 3.5 [shape=blue k=blue] g:p:sw -> e -> 3.5 [rank=blue, weight=blue, color=""] c -> c:p [color=box; weight="line\nbreak"; rank=blue] };
+d -> d:n -> c:p:sw [k=red style=""] } [style=<b>; weight=""] [key=k1] subgraph t {  } a:p:sw -> a:p -> d graph [weight="x y"] };
+label=<b>;
+b:p -> "q\"uote" -> g -> c:p [rank=blue weight=1];
+n1 [rank=box, weight=box, weight="x y"];
+graph [color=red];
+b [color=<b>]
+}

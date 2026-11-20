@@ -1,0 +1,15 @@
+strict digraph {
+subgraph {  }
+shape=""
+node [k="line\nbreak"]
+é [color=1 rank=box label=1]
+"q\"uote" -> n2 -> "two words" [rank=box; rank=""]
+é:p:sw -> f [color=<b> weight="x y"]
+edge [rank="x y"; style="line\nbreak"]
+node [shape="" style=same color=1]
+{ c } -> _x -> 3.5:p:sw -> d [color=box]
+h:n -> b:n
+edge [rank=box]
+n1 [style=<b> label=2]
+graph [shape=<b>; label=""; shape=box]
+}

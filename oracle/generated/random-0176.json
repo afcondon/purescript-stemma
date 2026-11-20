@@ -1,0 +1,111 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p",
+    "k": "blue",
+    "shape": "1"
+   },
+   "head": "h",
+   "tail": "e"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "k": "blue",
+    "shape": "1",
+    "tailport": "p"
+   },
+   "head": "n2",
+   "tail": "h"
+  },
+  {
+   "attributes": {
+    "k": "blue",
+    "shape": "1",
+    "tailport": "p:sw"
+   },
+   "head": "-1",
+   "tail": "n2"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {
+    "shape": "1"
+   },
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "d"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "rank": "line\\nbreak"
+   },
+   "name": "e"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "rank": "line\\nbreak"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "rank": "line\\nbreak"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {
+    "color": "line\\nbreak",
+    "rank": "line\\nbreak"
+   },
+   "name": "-1"
+  }
+ ],
+ "strict": false,
+ "subgraphs": [
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%3",
+   "nodes": [
+    "two words"
+   ],
+   "path": [
+    "%3"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%5",
+   "nodes": [],
+   "path": [
+    "%5"
+   ]
+  },
+  {
+   "attributes": {},
+   "edges": [],
+   "name": "%13",
+   "nodes": [],
+   "path": [
+    "%13"
+   ]
+  }
+ ]
+}

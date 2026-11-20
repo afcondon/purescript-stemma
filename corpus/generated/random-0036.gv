@@ -1,0 +1,26 @@
+digraph {
+{ subgraph { -1 [label="x y"; color=1; k=<b>]; { n2 [k="" k=same] } } -> { c:n -> c:n -> n2 -> e:n };
+subgraph { a; style=red; NODE [k=1]; subgraph { g }; node [rank=2, shape="line\nbreak", color=""] };
+subgraph cluster_b { b:p:sw -> e:n -> 3.5:p:sw [color="line\nbreak", shape=same] };
+{ edge [color=box style=2 shape=same]
+label="x y"
+edge [weight=blue]
+subgraph { "q\"uote" -> "two words" -> b:p -> é
+node [k="line\nbreak" rank=blue rank="x y"]
+Edge [color=same; color=2; shape="line\nbreak"] } };
+a [color="x y"; label=red] };
+node [style=<b>];
+subgraph t { n1:n -> "q\"uote":p:sw [shape="line\nbreak"] };
+graph [label=2, label=blue];
+d [shape=blue];
+e:p:sw -> n2 -> _x -> g [weight=blue, color=""];
+{  };
+h -> a -> 3.5:p -> a:n [label="" rank="" label=blue];
+NODE [label=red, shape=same];
+weight=same;
+subgraph t { b -> c:p:sw -> { { f [style=2; style=box] b _x -> -1 -> c -> "two words":p:sw } f -> f:n -> e:p [shape="x y" weight=box] }
+-1 [color=blue, label=blue] };
+color="x y";
+n1 -> f:p:sw [weight=blue weight=<b> color=same];
+graph [style=same; k=2; rank="line\nbreak"]
+}

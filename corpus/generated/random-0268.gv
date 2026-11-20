@@ -1,0 +1,17 @@
+digraph {
+n2 -> subgraph {  } [style=same, shape=<b>]
+{ subgraph {  };
+subgraph { d -> n2 -> _x -> {  } [weight=2 style=2] } } -> a -> g:p:sw -> "q\"uote":p [k=2; color="line\nbreak"; weight=2]
+k=blue
+n1:p -> subgraph { "two words" -> a:n -> c:p -> n2 [label=box] } -> "two words":p:sw [shape=1 k="line\nbreak"]
+3.5 -> "q\"uote":p:sw -> é:p:sw [label=blue, rank=blue, weight=blue]
+n2
+Edge [style="x y"]
+graph [k=blue]
+edge [label=<b>; rank="x y"]
+e:p:sw -> "q\"uote" [k=blue] [key=k1]
+b -> h -> n1 [label=2 k=same]
+subgraph {  } -> é:p -> subgraph { c -> c:p -> {  };
+NODE [weight=blue] } -> e:p [rank=<b> weight=2 shape=2]
+3.5 [rank=red, shape=blue]
+}

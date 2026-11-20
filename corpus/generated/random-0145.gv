@@ -1,0 +1,3 @@
+strict digraph {
+shape=2 f -> g:p:sw [shape="x y" style=red] style=1 c -> "two words":n [rank="x y", label=box] NODE [label="line\nbreak"; style="x y"] "two words":n -> _x:p -> h:p:sw -> _x é -> n1 _x [weight=2] graph [rank="", color="", color="x y"] color=red
+}

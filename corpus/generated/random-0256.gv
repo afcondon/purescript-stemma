@@ -1,0 +1,26 @@
+digraph {
+k="x y";
+-1 -> a [color="line\nbreak"; k=1];
+3.5 -> a -> _x [k=blue];
+b [style=box color=2 label=blue];
+3.5:n -> f [rank="x y" rank=1];
+"two words":p:sw -> é -> b:p [k=""; style="x y"];
+NODE [k=blue label=red];
+{ 3.5:p:sw -> c -> a -> subgraph {  }
+d:p:sw -> a -> n2 -> n1 [color="line\nbreak"; rank=red]
+subgraph cluster_a { d -> subgraph {  } -> e:n }
+h
+_x:p -> b -> "two words" [weight=1 shape=box] [key=k1] };
+{ subgraph t { Edge [color=same; k=box];
+"q\"uote" -> _x -> d:p -> a [weight="line\nbreak"; color="x y"; color="x y"];
+é -> n1:p -> a:p:sw -> 3.5 [weight=same];
+{  } -> e:n -> d -> "two words":p:sw [style=same];
+{ h:p -> a [color=<b> color=2]; 3.5 -> 3.5:p:sw -> n1:p:sw; Edge [label=blue, k=2, color=""]; c [rank="x y"; k=<b>; color=<b>]; n1 -> g -> f:p:sw -> g:p:sw [style=<b> rank="" label=blue] } }
+weight=box
+subgraph {  }
+"q\"uote" [style=same, shape=same, k=<b>]
+subgraph { subgraph {  } -> e -> _x -> n2:p [shape="line\nbreak" style=2];
+color=blue } };
+graph [k=red];
+"two words":p:sw -> n2 -> "q\"uote":n [label=box; k=1]
+}

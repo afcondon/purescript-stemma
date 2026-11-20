@@ -1,0 +1,10 @@
+digraph cyclic038 {
+  n9 -> n9;
+  n4 -> n4 [constraint=false];
+  n6 -> n5;
+  n3 -> n2 [minlen=2];
+  n2 -> n2;
+  n3 -> n1 [minlen=0];
+  n9 -> n7;
+  n6 -> n7;
+}

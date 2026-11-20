@@ -1,0 +1,6 @@
+digraph {
+rank=red; { node [shape="line\nbreak", weight=1]
+node [k=1 label=same]
+edge [shape=red, k=2]
+n1:p:sw -> é:p -> "two words":n -> é [style=blue; style="x y"; style="line\nbreak"] }; color="x y"; b; c [color="x y" rank=<b> shape=box]; h [rank=2; weight=1; shape=box]
+}

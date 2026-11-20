@@ -1,0 +1,4 @@
+graph "g 2" {
+graph [k=<b>]; é [label=same; rank=2; label=1]; { n1:n -- c -- -1:p -- h [k=<b> rank=blue]
+n2:p:sw -- é:p:sw -- b:p -- g [color=<b>, weight="line\nbreak", color=box] }
+}

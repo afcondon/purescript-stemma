@@ -1,0 +1,3 @@
+strict digraph "g 2" {
+subgraph {  } {  } -> a -> g:p:sw -> h [color=box] _x
+}

@@ -1,0 +1,1 @@
+strict graph { a [k=1]; <> ; "" [l=b]; "" [k=x]; <> -- ""; b [l=<b>]; c [l=b] }

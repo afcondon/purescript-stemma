@@ -1,0 +1,8 @@
+digraph G {
+3.5 [rank=1; shape=<b>; k=1] edge [k=box, shape="", style=2] e -> a -> é [rank=box] { subgraph { 3.5;
+"q\"uote":p:sw -> c -> d:n -> _x [label=<b> color="x y"];
+node [k=box; shape=<b>; weight=""];
+_x [rank=<b>];
+n2 }
+subgraph { c -> é [rank=blue, style="x y"] } } a [color=<b>, rank=""] b:n -> n1:n [label=blue rank=same]
+}

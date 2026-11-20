@@ -1,0 +1,4 @@
+digraph G { /* c */ a // x
+# pre
+b /* multi
+line */ c }

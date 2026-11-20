@@ -1,0 +1,16 @@
+digraph G {
+é
+h -> _x -> _x:p -> "two words" [label="x y"]
+subgraph {  } -> _x:p -> f:p:sw -> -1 [weight=same; rank=red]
+edge [label="line\nbreak"; label=2; label=red]
+_x -> "two words"
+node [shape=red]
+{ b [shape=blue] color=<b> c:p -> { subgraph { 3.5
+c:n -> b -> e:p:sw -> c:p:sw [k=same]
+"two words"
+_x
+3.5:n -> n2:p:sw };
+weight=blue } [k=blue style=""] c -> 3.5:p:sw -> d }
+{ h [style=blue]; rank=blue; edge [style=red color="x y"]; n2:p -> f:p:sw -> c -> n2 [color=box k=box label=same] }
+h -> é [k=box; k=<b>]
+}

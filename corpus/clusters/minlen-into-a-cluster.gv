@@ -1,0 +1,1 @@
+digraph { subgraph cluster_a { a1 -> a2 } x -> a2 [minlen=3]; x -> a1 }

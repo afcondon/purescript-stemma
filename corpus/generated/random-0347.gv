@@ -1,0 +1,6 @@
+digraph {
+n2 -> h -> g:p -> g [shape=2, k=""]; subgraph cluster_a { a:p:sw -> c:n [label=""; style=""; rank="line\nbreak"];
+{  } -> 3.5:n -> g:p [color="x y", shape=box];
+n2:p -> d:p:sw -> 3.5 -> h [color="line\nbreak" rank=<b>];
+{ graph [color=1, shape=2] } }; graph [weight=box; shape=box]
+}

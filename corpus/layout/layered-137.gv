@@ -1,0 +1,20 @@
+digraph layered137 {
+  n4 -> n12 [minlen=0];
+  n13 -> n5 [minlen=1];
+  n13 -> n10 [minlen=3];
+  n4 -> n9;
+  n13 -> n1 [minlen=0];
+  n14 -> n1;
+  n1 -> n7 [minlen=2];
+  n1 -> n12 [weight=0];
+  n5 -> n0 [weight=3];
+  n10 -> n7 [weight=3];
+  n14 -> n6 [weight=0];
+  n15 -> n7;
+  n10 -> n3;
+  n1 -> n6;
+  n8 -> n10;
+  n15 -> n3 [weight=0];
+  n11 -> n4 [minlen=3];
+  n10 -> n9;
+}

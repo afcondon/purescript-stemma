@@ -1,0 +1,14 @@
+digraph G {
+{  }; subgraph { Edge [label=1; color=2] }; 3.5; { node [k="line\nbreak" weight=same]
+{ color="x y"
+e -> f -> _x [k=2]
+d
+3.5:n -> "two words":p:sw [style=""] }
+e [label=1; color=<b>]
+"q\"uote" -> 3.5 -> a [label=same; weight=same]
+subgraph t {  } }; k="x y"; e -> a -> subgraph { rank="line\nbreak" } -> subgraph {  } [style=<b>; color=same] [key=k2]; n1 -> subgraph { { subgraph { edge [rank=box; k=2];
+"two words" [shape=1 rank=2];
+rank="line\nbreak" }
+subgraph { h:p -> n2:p:sw [rank=red, rank=""]; e } -> a [style=<b>]
+Edge [color="x y"] } } -> -1:p:sw -> "q\"uote" [rank=blue; label=same] [key=k2]; 3.5 -> a [style=1; style=2]
+}

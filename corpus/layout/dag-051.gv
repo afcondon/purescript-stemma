@@ -1,0 +1,4 @@
+digraph dag051 {
+  n0 -> n2;
+  n0 -> n1 [weight=1, label=L1];
+}

@@ -1,0 +1,15 @@
+strict graph "g 2" {
+k="line\nbreak";
+é:n -- e:p:sw [style=<b>, style="line\nbreak", color=""];
+c -- 3.5:p -- e -- n2:n [style=2; k="line\nbreak"; label=red];
+subgraph s { graph [weight=""; k=box]
+node [color=blue; color=<b>]
+d
+{  } };
+n1 [k=blue];
+graph [weight=box];
+{  };
+n2 -- { -1 [label="" weight=box]
+NODE [k=same] } -- é:p [weight=blue] [key=k2];
+3.5 -- "two words":p:sw [color=blue; label=same]
+}

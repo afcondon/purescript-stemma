@@ -1,0 +1,13 @@
+digraph dag006 {
+  n0 -> n1 [label=L6];
+  n0 -> n4 [minlen=0];
+  n1 -> n3 [minlen=0];
+  n1 -> n2 [minlen=0];
+  n1 -> n2 [label=L8];
+  n2 -> n4;
+  n3 -> n4 [weight=5, minlen=1, label=L3];
+  n2 -> n3 [weight=2];
+  n0 -> n4;
+  n0 -> n3 [weight=0];
+  n2 -> n3 [label=L8];
+}

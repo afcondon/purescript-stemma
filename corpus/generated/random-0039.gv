@@ -1,0 +1,3 @@
+graph "g 2" {
+edge [shape="line\nbreak"] { d -- d -- 3.5 [k=<b>, k=blue] } k=blue 3.5
+}

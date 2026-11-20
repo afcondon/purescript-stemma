@@ -1,0 +1,5 @@
+digraph {
+{ f;
+e -> é:p -> é:p:sw [k="x y"; color=<b>];
+e -> h:n [k="line\nbreak" weight=<b>] } node [label=box, rank=2] edge [shape="line\nbreak"; label=1] b -> "two words":n -> b:n -> 3.5 { _x -> n2 -> c } 3.5:p:sw -> _x:n -> h:p -> "q\"uote":p { 3.5 -> d -> b:n [style=1; k=<b>] _x -> g -> subgraph cluster_b { "q\"uote"; subgraph { rank=same } -> "two words":n -> "q\"uote":p [color=blue, color=2] } [style="line\nbreak"] graph [rank=1; style=box; color="x y"] e [shape=same] d -> _x:p [label=1] }
+}

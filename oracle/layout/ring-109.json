@@ -1,0 +1,85 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "minlen": "0"
+   },
+   "head": "n4",
+   "tail": "n3"
+  },
+  {
+   "attributes": {
+    "weight": "2"
+   },
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n0",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n5"
+  },
+  {
+   "attributes": {
+    "weight": "1"
+   },
+   "head": "n3",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {
+    "minlen": "2"
+   },
+   "head": "n0",
+   "tail": "n4"
+  },
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n4"
+  }
+ ],
+ "name": "ring109",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

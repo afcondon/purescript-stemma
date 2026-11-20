@@ -1,0 +1,4 @@
+digraph {
+{ subgraph s { weight=same;
+f:n -> é [rank=<b> rank="x y" color=box] } } n1 [rank=blue] subgraph cluster_b { b -> e -> 3.5 [color=2; style=1]; _x:p:sw -> e:n -> b:p:sw -> n1; k=""; e }
+}

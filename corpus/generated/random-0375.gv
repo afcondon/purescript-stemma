@@ -1,0 +1,3 @@
+digraph {
+_x subgraph cluster_a {  } { a [color=1, label="", rank=same] } -> é [color="" weight=1] {  } -> "q\"uote":p:sw [weight=box]
+}

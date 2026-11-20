@@ -1,0 +1,3 @@
+strict graph {
+"two words" -- c -- "two words":p -- a:p:sw [shape=""; rank=1] é g -- a [rank=1]
+}

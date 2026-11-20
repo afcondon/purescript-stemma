@@ -1,0 +1,3 @@
+digraph "g 2" {
+f [style="x y"] graph [weight=2] { c -> d -> "two words":p -> n1 [color=2, rank="x y", color=blue]; subgraph { a [shape=<b>, shape="line\nbreak", k=1]; { b:n -> c -> n1 [k="line\nbreak"] a -> e:p -> n1 n2:p:sw -> h:p -> 3.5:n }; e:p:sw -> n1 [rank="x y"]; -1 [k=box; color=same; style=blue] } } f [color=same, color="x y", label=1] { é [rank=box] }
+}

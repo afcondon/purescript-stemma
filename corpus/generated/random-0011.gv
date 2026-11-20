@@ -1,0 +1,12 @@
+digraph G {
+subgraph cluster_a { subgraph s { "q\"uote" [color="line\nbreak"; label=same; k=blue];
+weight=box;
+d -> b:p:sw -> g:p [label=red; k="x y"] } }
+style=2
+d:p:sw -> 3.5:p:sw
+{ _x -> "q\"uote" -> _x:p [label=box label=same weight=same] [key=k2] d [label=blue] }
+a:n -> "q\"uote" -> c -> 3.5:p [shape=same]
+n2 [weight="line\nbreak"]
+"q\"uote":n -> c -> a:n -> a:n
+{  } -> 3.5:p
+}

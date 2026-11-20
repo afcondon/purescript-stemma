@@ -1,0 +1,4 @@
+digraph G {
+"two words" -> subgraph { n1 [k="x y", rank=2];
+_x [style=box label=<b>] } [shape=same; rank="line\nbreak"] [key=k2] -1 -> c -> "q\"uote":p -> a:p:sw [k=1] graph [rank="x y", weight="line\nbreak"] e [color=""] shape="x y" { f [style=same] h [rank=<b>; style=""; style="x y"] } -> b:n [style=<b>] Edge [weight="x y" rank=same rank=""] NODE [rank=same] edge [weight=1 rank=<b>] c [shape=blue; k="line\nbreak"]
+}

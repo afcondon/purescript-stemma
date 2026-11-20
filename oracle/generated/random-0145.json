@@ -1,0 +1,106 @@
+{
+ "attributes": {
+  "color": "red",
+  "shape": "2",
+  "style": "1"
+ },
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "shape": "x y",
+    "style": "red"
+   },
+   "head": "g",
+   "tail": "f"
+  },
+  {
+   "attributes": {
+    "headport": "n",
+    "label": "box",
+    "rank": "x y"
+   },
+   "head": "two words",
+   "tail": "c"
+  },
+  {
+   "attributes": {
+    "headport": "p",
+    "tailport": "n"
+   },
+   "head": "_x",
+   "tail": "two words"
+  },
+  {
+   "attributes": {
+    "headport": "p:sw",
+    "tailport": "p"
+   },
+   "head": "h",
+   "tail": "_x"
+  },
+  {
+   "attributes": {
+    "tailport": "p:sw"
+   },
+   "head": "_x",
+   "tail": "h"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "é"
+  }
+ ],
+ "name": "%1",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "f"
+  },
+  {
+   "attributes": {},
+   "name": "g"
+  },
+  {
+   "attributes": {},
+   "name": "c"
+  },
+  {
+   "attributes": {},
+   "name": "two words"
+  },
+  {
+   "attributes": {
+    "label": "line\\nbreak",
+    "style": "x y",
+    "weight": "2"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {
+    "label": "line\\nbreak",
+    "style": "x y"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "label": "line\\nbreak",
+    "style": "x y"
+   },
+   "name": "é"
+  },
+  {
+   "attributes": {
+    "label": "line\\nbreak",
+    "style": "x y"
+   },
+   "name": "n1"
+  }
+ ],
+ "strict": true,
+ "subgraphs": []
+}

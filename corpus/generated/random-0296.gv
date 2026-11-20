@@ -1,0 +1,14 @@
+strict graph G {
+subgraph t { edge [k=same; color=same; style=blue] };
+b [style=blue];
+"q\"uote" -- subgraph s { subgraph cluster_b { n1 [rank=box; k=<b>; shape=2] -1 } } -- e -- h [style=2];
+edge [rank=box; k=<b>];
+subgraph { style=1
+{  } } -- e -- f;
+node [rank=blue, weight="x y", rank=<b>];
+shape="line\nbreak";
+NODE [color=""];
+"two words";
+{ b [rank=same; weight=1; rank=box] Edge [shape=box] "two words" [color="line\nbreak"; style=<b>] { node [color=1] } NODE [label=<b> color=same label=1] };
+edge [color=box color=blue]
+}

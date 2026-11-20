@@ -1,0 +1,8 @@
+strict digraph G {
+c [label=red; k=box; weight="line\nbreak"]; 3.5 -> n1:n [label=red, color=1, rank=1]; subgraph {  } -> h:p -> g [rank=box; k=blue; shape=box]; NODE [label=red, color=blue, style=2]; n2 [k=<b>]; { subgraph t {  }; subgraph { { f
+NODE [style=same shape=red weight=red] } -> 3.5:p:sw [style=blue]; 3.5 [rank=red] }; { subgraph s { "two words" b [style="", k=box] } -> n2;
+n2:p -> c -> d -> 3.5 [shape=2, shape=<b>, style=""];
+f -> b -> -1 -> n1:p:sw;
+_x -> g -> h [style=box; label=""; shape=<b>];
+weight="" }; subgraph { f [rank=blue]; style=<b> } }; NODE [label="x y", shape="line\nbreak", weight=same]; g [k="x y"]; graph [color="", rank=same]; Edge [label="" k=blue label="x y"]
+}

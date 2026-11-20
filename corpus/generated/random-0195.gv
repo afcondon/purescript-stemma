@@ -1,0 +1,12 @@
+graph {
+"two words":n -- b -- n1:p -- g [style=red; shape=""; style=blue]
+{ d -- _x [label=blue] [key=k1] label=same NODE [weight=1] 3.5:p:sw -- -1 -- c:p:sw -- { a d -- { b:p -- a -- b [rank=box rank=same] _x [style="" rank=1 rank="line\nbreak"] } [weight=<b> style="x y"] } [k=1, k=blue, k="line\nbreak"] "q\"uote" }
+"q\"uote"
+3.5 [shape=same, k="x y"]
+subgraph { n1 -- c -- f:n -- subgraph {  } [color="x y"];
+"two words" [weight=box weight=1 style=1] }
+"q\"uote" -- b [color=red rank="" style=2]
+b -- -1
+node [weight=same, k=blue]
+b [style=blue; color=2]
+}

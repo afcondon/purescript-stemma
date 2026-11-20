@@ -1,0 +1,6 @@
+digraph G {
+"q\"uote"; NODE [color="line\nbreak", shape=blue, color=same]; "q\"uote":p -> f:p -> -1:n [shape=1 rank=2]; subgraph cluster_a { subgraph { { b [rank=blue, color=""];
+é;
+a:p -> a [rank=red];
+c }; Edge [weight=""; color=<b>]; k=1; node [rank=red] } }; e -> g -> é [label=blue, weight=<b>]; node [rank=<b>]; { graph [k=same shape=same color=blue] } -> é [rank=red, label=""]; {  } -> é:p:sw -> n2 -> a [shape=red; rank="line\nbreak"]
+}

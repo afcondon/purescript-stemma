@@ -1,0 +1,37 @@
+{
+ "attributes": {
+  "color": "same",
+  "rank": "blue"
+ },
+ "directed": false,
+ "edges": [],
+ "name": "g 2",
+ "nodes": [
+  {
+   "attributes": {
+    "label": "same"
+   },
+   "name": "h"
+  },
+  {
+   "attributes": {
+    "color": "2",
+    "shape": "box"
+   },
+   "name": "g"
+  },
+  {
+   "attributes": {
+    "rank": "same",
+    "weight": "2"
+   },
+   "name": "_x"
+  },
+  {
+   "attributes": {},
+   "name": "é"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

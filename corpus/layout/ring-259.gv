@@ -1,0 +1,12 @@
+digraph ring259 {
+  n1 -> n2 [label=L9];
+  n7 -> n0 [minlen=3, label=L5];
+  n2 -> n3;
+  n6 -> n7;
+  n5 -> n6;
+  n6 -> n6 [weight=1];
+  n6 -> n3 [minlen=1];
+  n0 -> n1 [constraint=false];
+  n4 -> n5;
+  n3 -> n4 [minlen=0];
+}

@@ -1,0 +1,22 @@
+{
+ "attributes": {
+  "color": "line\\nbreak"
+ },
+ "directed": false,
+ "edges": [],
+ "name": "G",
+ "nodes": [
+  {
+   "attributes": {
+    "k": "same"
+   },
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "é"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

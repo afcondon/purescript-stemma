@@ -1,0 +1,11 @@
+graph "g 2" {
+subgraph { n1 [label=<b>, shape="x y", k="line\nbreak"] graph [color="x y" style="x y"] a -- h:p [rank=2, label=2, color=1] }; b [rank=""; shape=same; color=2]; n2 [style=same; weight="x y"]; d [style=<b>; rank=same]; a [rank="line\nbreak", color="x y"]; { { edge [label="x y"]
+graph [shape=red; label=same; weight="line\nbreak"] } { n2:p -- h -- a n2 } -- n1 -- f:p -- { h [style=""; weight=same; k=box] } [weight="x y" weight=1 rank=box] subgraph cluster_b { subgraph { label=same } "q\"uote":p -- e [style="", shape=2] e:n -- h -- 3.5:n [shape=red] n1 { é é [rank=1; color="line\nbreak"; shape=red] } } { { style="";
+style=blue;
+g };
+subgraph cluster_b { n1 -- "q\"uote" -- b:p:sw [color=""; k=blue; label="line\nbreak"];
+graph [weight=2 style=same style=box] };
+graph [label="line\nbreak" weight=same label=red];
+n2 [color=1] } n1 -- f:p:sw [label=box] }; subgraph u { g -- é -- b [color=blue; color=""; label=blue];
+subgraph cluster_b {  } }; _x [color=""]
+}

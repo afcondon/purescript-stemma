@@ -1,0 +1,8 @@
+strict digraph "g 2" {
+"two words" -> d:p -> b:p [color=2; rank=red; shape=""]
+-1:n -> e -> "two words":p -> b [weight=box] [key=k1]
+{ label=same;
+graph [rank=box] }
+subgraph { n2 [weight=<b>; rank=box; color=""] shape=1 edge [label=<b> rank=red] n1:p -> d -> f:n -> "q\"uote":p [color="", color=blue, label=2] }
+_x [label=box, color=<b>, style=box]
+}

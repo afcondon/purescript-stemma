@@ -1,0 +1,1 @@
+digraph { a:n -> b:p:s; c:w -> d:"x y" }

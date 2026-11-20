@@ -1,0 +1,5 @@
+digraph G {
+subgraph cluster_b { e [weight=box, rank=same, k=2] } n1 [label="x y"; weight=box; weight=2] NODE [color=2, weight=<b>] b:n -> n2 -> n2 -> a:p [label=""] NODE [shape="x y" rank=2 label=<b>] style="line\nbreak" { NODE [k=blue] edge [weight=<b>, rank=red, style=red] } style=<b> "q\"uote" [k="", color=blue, k=blue] -1 [style=red] { b [style=blue]
+h [k=<b> color=1 style=""] } _x -> é:p:sw "two words":n -> b:p -> b -> subgraph { n2 [label=box; shape=1; style="line\nbreak"];
+3.5 [rank="", color="line\nbreak"] } [rank="line\nbreak"; label="x y"; k=1] edge [color=2]
+}

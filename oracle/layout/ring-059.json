@@ -1,0 +1,202 @@
+{
+ "attributes": {},
+ "directed": true,
+ "edges": [
+  {
+   "attributes": {
+    "weight": "10"
+   },
+   "head": "n12",
+   "tail": "n11"
+  },
+  {
+   "attributes": {
+    "minlen": "3",
+    "weight": "1"
+   },
+   "head": "n4",
+   "tail": "n3"
+  },
+  {
+   "attributes": {},
+   "head": "n3",
+   "tail": "n2"
+  },
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n7",
+   "tail": "n2"
+  },
+  {
+   "attributes": {},
+   "head": "n6",
+   "tail": "n5"
+  },
+  {
+   "attributes": {},
+   "head": "n7",
+   "tail": "n6"
+  },
+  {
+   "attributes": {},
+   "head": "n14",
+   "tail": "n13"
+  },
+  {
+   "attributes": {},
+   "head": "n1",
+   "tail": "n13"
+  },
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n11",
+   "tail": "n10"
+  },
+  {
+   "attributes": {},
+   "head": "n9",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "weight": "5"
+   },
+   "head": "n1",
+   "tail": "n0"
+  },
+  {
+   "attributes": {
+    "weight": "0"
+   },
+   "head": "n9",
+   "tail": "n8"
+  },
+  {
+   "attributes": {},
+   "head": "n8",
+   "tail": "n7"
+  },
+  {
+   "attributes": {
+    "constraint": "false"
+   },
+   "head": "n15",
+   "tail": "n14"
+  },
+  {
+   "attributes": {},
+   "head": "n10",
+   "tail": "n9"
+  },
+  {
+   "attributes": {
+    "minlen": "1"
+   },
+   "head": "n4",
+   "tail": "n9"
+  },
+  {
+   "attributes": {},
+   "head": "n2",
+   "tail": "n1"
+  },
+  {
+   "attributes": {},
+   "head": "n13",
+   "tail": "n12"
+  },
+  {
+   "attributes": {
+    "minlen": "3"
+   },
+   "head": "n0",
+   "tail": "n15"
+  },
+  {
+   "attributes": {},
+   "head": "n5",
+   "tail": "n4"
+  },
+  {
+   "attributes": {
+    "constraint": "false",
+    "weight": "2"
+   },
+   "head": "n5",
+   "tail": "n4"
+  }
+ ],
+ "name": "ring059",
+ "nodes": [
+  {
+   "attributes": {},
+   "name": "n11"
+  },
+  {
+   "attributes": {},
+   "name": "n3"
+  },
+  {
+   "attributes": {},
+   "name": "n2"
+  },
+  {
+   "attributes": {},
+   "name": "n5"
+  },
+  {
+   "attributes": {},
+   "name": "n6"
+  },
+  {
+   "attributes": {},
+   "name": "n13"
+  },
+  {
+   "attributes": {},
+   "name": "n10"
+  },
+  {
+   "attributes": {},
+   "name": "n0"
+  },
+  {
+   "attributes": {},
+   "name": "n8"
+  },
+  {
+   "attributes": {},
+   "name": "n7"
+  },
+  {
+   "attributes": {},
+   "name": "n14"
+  },
+  {
+   "attributes": {},
+   "name": "n9"
+  },
+  {
+   "attributes": {},
+   "name": "n1"
+  },
+  {
+   "attributes": {},
+   "name": "n12"
+  },
+  {
+   "attributes": {},
+   "name": "n15"
+  },
+  {
+   "attributes": {},
+   "name": "n4"
+  }
+ ],
+ "strict": false,
+ "subgraphs": []
+}

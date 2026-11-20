@@ -1,0 +1,3 @@
+digraph G {
+subgraph cluster_a { "two words":p -> { subgraph u {  } } -> subgraph s { h } -> _x:p }; b [color=blue; label="x y"; shape=blue]; f -> n2:n -> subgraph cluster_b { subgraph s {  } } -> c [weight=blue]; b -> n2 -> n1 -> n1:p [rank=<b> k=red]; subgraph t { n2 [label=""; color=blue; rank=box]; rank=same } -> "q\"uote"; { { "q\"uote" [weight=<b>, shape=box, label="x y"] } }; rank="x y"; c -> e:p:sw -> b:p [shape=1]; e:p:sw -> { {  } -> e -> f:p } -> f -> {  } [shape="", weight=box, label=same]; 3.5 [rank=blue]
+}

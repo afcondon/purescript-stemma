@@ -1,0 +1,3 @@
+graph {
+{  } -- g -- f:n [k="x y" color="" label=box] h:n -- -1 -- "q\"uote":p:sw -- b [rank="line\nbreak"; k=1; weight=same] h:p -- d -- subgraph t {  } [label=blue, rank=<b>, rank=red] n2 -- a -- c:p -- f [rank=2] weight=<b> NODE [color="line\nbreak"; label=1] c:p -- n1:n -- subgraph s { b -- a:p -- b [label="" label=same rank="x y"] } [style=1; shape="x y"; weight=<b>]
+}
