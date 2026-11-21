@@ -1,7 +1,7 @@
 -- | DOT text in, a drawing out.
 -- |
 -- | This is the front door: `layout` runs every pass and returns where
--- | things go, as plain data. It draws nothing itself; `Graphviz.Svg` turns
+-- | things go, as plain data. It draws nothing itself; `Stemma.Svg` turns
 -- | a `Drawing` into SVG text, and a caller with its own renderer can use
 -- | the `Drawing` directly.
 -- |
@@ -9,14 +9,14 @@
 -- | left corner and y grows downwards.
 -- |
 -- | Ranks, the order within each rank and the place of everything across
--- | the page come from the real passes (`Graphviz.Layout.Rank`,
--- | `Graphviz.Layout.Order`, and the coordinates in this module).
+-- | the page come from the real passes (`Stemma.Layout.Rank`,
+-- | `Stemma.Layout.Order`, and the coordinates in this module).
 -- |
 -- | An edge is a smooth curve from its tail's outline to its head's,
 -- | through the places the ordering kept for it in the ranks between. It
 -- | is not yet routed round what lies beside those places, so a curve can
 -- | clip a node or a cluster it passes.
-module Graphviz.Layout
+module Stemma.Layout
   ( Drawing
   , Point
   , Box
@@ -56,16 +56,16 @@ import Data.String.Regex.Flags (global, ignoreCase)
 import Data.List (List(..))
 import Data.List as List
 import Data.Tuple (Tuple(..))
-import Graphviz.Attributes (Attributes)
-import Graphviz.Attributes as Attributes
-import Graphviz.Dot.Parser (parse)
-import Graphviz.Dot.Syntax (Text(..), text)
-import Graphviz.Graph (EdgeId, Graph, NodeName(..), SubgraphId, fromDot)
-import Graphviz.Graph as Graph
-import Graphviz.Label as Label
-import Graphviz.Layout.NetworkSimplex (Requirement, solve, value)
-import Graphviz.Layout.Order (Link, Vertex(..), layered, order)
-import Graphviz.Layout.Rank (Rank(..), describe, rank, rankOf, ranking, reversed)
+import Stemma.Attributes (Attributes)
+import Stemma.Attributes as Attributes
+import Stemma.Dot.Parser (parse)
+import Stemma.Dot.Syntax (Text(..), text)
+import Stemma.Graph (EdgeId, Graph, NodeName(..), SubgraphId, fromDot)
+import Stemma.Graph as Graph
+import Stemma.Label as Label
+import Stemma.Layout.NetworkSimplex (Requirement, solve, value)
+import Stemma.Layout.Order (Link, Vertex(..), layered, order)
+import Stemma.Layout.Rank (Rank(..), describe, rank, rankOf, ranking, reversed)
 
 type Point = { x :: Number, y :: Number }
 

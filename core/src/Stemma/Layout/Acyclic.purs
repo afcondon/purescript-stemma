@@ -17,7 +17,7 @@
 -- |     the gap it leaves is filled by the last edge of its old tail's.
 -- |
 -- | These are Graphviz's rules, found by experiment against `dot`.
-module Graphviz.Layout.Acyclic
+module Stemma.Layout.Acyclic
   ( Fast
   , empty
   , connect

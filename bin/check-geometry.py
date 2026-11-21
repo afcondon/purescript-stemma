@@ -42,7 +42,7 @@ FOUND = ROOT / "found" / "geometry"
 def ask_dot(path):
     done = subprocess.run(["dot", "-Tjson", str(path)], capture_output=True)
     if done.returncode != 0:
-        return {"error": done.stderr.decode(errors="replace").strip()[:200]}
+        return {"error": done.stderr.decode(errors="replace").replace(str(ROOT) + "/", "").strip()[:200]}
     try:
         graph = json.loads(done.stdout.decode(errors="replace"))
     except ValueError:

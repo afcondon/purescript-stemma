@@ -1,7 +1,7 @@
 package:
-  name: graphviz-site
+  name: stemma-site
   description: >
-    A one-page demonstrator for the graphviz package: DOT text in, the
+    A one-page demonstrator for the stemma package: DOT text in, the
     library's drawing out, beside Graphviz's own drawing of the bundled
     examples. Halogen, in the browser.
   dependencies:
@@ -12,7 +12,7 @@ package:
     - either
     - foldable-traversable
     - functions
-    - graphviz
+    - stemma
     - halogen
     - halogen-svg-elems
     - integers

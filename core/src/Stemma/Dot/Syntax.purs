@@ -1,6 +1,6 @@
 -- | The DOT language as written: what a file says, before anything is made
--- | of it. `Graphviz.Graph` turns this into nodes and edges.
-module Graphviz.Dot.Syntax
+-- | of it. `Stemma.Graph` turns this into nodes and edges.
+module Stemma.Dot.Syntax
   ( Dot
   , Text(..)
   , text

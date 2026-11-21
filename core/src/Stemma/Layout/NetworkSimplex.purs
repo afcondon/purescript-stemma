@@ -26,7 +26,7 @@
 -- |
 -- | It works over any type of variable that can be ordered, so the caller
 -- | passes its own names and nothing has to be numbered.
-module Graphviz.Layout.NetworkSimplex
+module Stemma.Layout.NetworkSimplex
   ( Requirement
   , Assignment
   , value

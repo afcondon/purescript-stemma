@@ -3,7 +3,7 @@
 // since Node has no canvas), the page's picture of it must build, and
 // Graphviz's drawing of it must be in public/. Exits non-zero on a failure.
 //
-// Run after `spago build -p graphviz-site`, from anywhere:
+// Run after `spago build -p stemma-site`, from anywhere:
 //   node site/scripts/check-examples.mjs
 
 import { existsSync, statSync } from "node:fs";
@@ -14,7 +14,7 @@ const site = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const output = join(site, "..", "output");
 
 const { examples, graphvizVersion } = await import(join(output, "Site.Corpus", "index.js"));
-const { layout, layoutWith, defaults } = await import(join(output, "Graphviz.Layout", "index.js"));
+const { layout, layoutWith, defaults } = await import(join(output, "Stemma.Layout", "index.js"));
 const { picture, Marked } = await import(join(output, "Site.Picture", "index.js"));
 const Label = await import(join(output, "Site.Label", "index.js"));
 

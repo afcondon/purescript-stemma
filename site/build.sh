@@ -16,8 +16,8 @@ set -euo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
 cd "$here/.."
 node site/scripts/bundle-examples.mjs
-spago build -p graphviz-site
-spago bundle -p graphviz-site --platform browser --module Site.Main --minify --outfile public/bundle.js   # relative to the package, site/
+spago build -p stemma-site
+spago bundle -p stemma-site --platform browser --module Site.Main --minify --outfile public/bundle.js   # relative to the package, site/
 
 if [[ "${1:-}" == "--docs" ]]; then
   rm -rf docs

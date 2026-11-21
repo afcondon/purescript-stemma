@@ -15,7 +15,7 @@ runs gave one and one gave the other).
 
 The file is a `strict` graph that comes to hold two edges between the same
 two nodes, which the rules for `key` allow (see `connect` in
-`core/src/Graphviz/Graph.purs`). A later statement with no key then has to
+`core/src/Stemma/Graph.purs`). A later statement with no key then has to
 join one of them, and which one Graphviz joins varies from run to run. The
 likely reason is that an edge made with a key is identified inside Graphviz
 by a memory address, so the order it searches in changes with where the

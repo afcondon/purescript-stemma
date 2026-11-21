@@ -1,10 +1,10 @@
 -- | A `Drawing` as Halogen SVG.
 -- |
--- | This draws only what `Graphviz.Layout` hands over, and reads a few
+-- | This draws only what `Stemma.Layout` hands over, and reads a few
 -- | attributes for what the eye needs: a node's shape, its fill and
 -- | outline colours, `style` (filled, dashed, dotted, bold, rounded,
 -- | invis), `fontsize`, an edge's direction and colour. Anything else in
--- | the DOT file is ignored, as `Graphviz.Svg` ignores it.
+-- | the DOT file is ignored, as `Stemma.Svg` ignores it.
 module Site.Picture
   ( picture
   , TurnedEdges(..)
@@ -26,12 +26,12 @@ import Data.Set as Set
 import Data.String (Pattern(..), split, trim)
 import Data.String.CodeUnits as CodeUnits
 import Data.Tuple (Tuple(..))
-import Graphviz.Attributes (Attributes)
-import Graphviz.Attributes as Attributes
-import Graphviz.Dot.Syntax (Text(..), text)
-import Graphviz.Graph (NodeName(..))
-import Graphviz.Label as Markup
-import Graphviz.Layout (DrawnCluster, DrawnEdge, DrawnNode, Drawing, Outline(..), Point, outlineOf)
+import Stemma.Attributes (Attributes)
+import Stemma.Attributes as Attributes
+import Stemma.Dot.Syntax (Text(..), text)
+import Stemma.Graph (NodeName(..))
+import Stemma.Label as Markup
+import Stemma.Layout (DrawnCluster, DrawnEdge, DrawnNode, Drawing, Outline(..), Point, outlineOf)
 import Halogen.HTML as HH
 import Halogen.HTML.Core (AttrName(..), ClassName(..))
 import Halogen.HTML.Properties as HP

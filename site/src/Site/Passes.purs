@@ -1,7 +1,7 @@
 -- | The family tree, with a scrubber through the passes of the layout.
 -- |
 -- | Graphviz hands back a finished picture. Here each pass is a separate
--- | value (`Graphviz.Layout.drawAt`), so the page can show the drawing as
+-- | value (`Stemma.Layout.drawAt`), so the page can show the drawing as
 -- | it stands after each one, and move the boxes from one to the next.
 module Site.Passes
   ( component
@@ -19,9 +19,9 @@ import Data.Time.Duration (Milliseconds(..))
 import Data.Tuple (Tuple(..))
 import Effect.Aff (delay)
 import Effect.Aff.Class (class MonadAff)
-import Graphviz.Dot.Parser (parse)
-import Graphviz.Graph (fromDot)
-import Graphviz.Layout (Drawing, DrawnNode, Stage(..), drawAt)
+import Stemma.Dot.Parser (parse)
+import Stemma.Graph (fromDot)
+import Stemma.Layout (Drawing, DrawnNode, Stage(..), drawAt)
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Core (AttrName(..), ClassName(..), Namespace(..), ElemName(..))

@@ -80,7 +80,9 @@ def ask_graphviz(path):
         text = done.stdout.decode("utf-8")
     except UnicodeDecodeError:
         text = done.stdout.decode("latin-1")
-    errors = [l for l in done.stderr.decode("utf-8", "replace").splitlines() if l.startswith("Error")]
+    # Graphviz names the file by its whole path; what is kept names it from
+    # the top of the repository, so that no machine's folders are recorded.
+    errors = [l.replace(str(ROOT) + "/", "") for l in done.stderr.decode("utf-8", "replace").splitlines() if l.startswith("Error")]
     if errors or not text:
         return {"error": errors[0] if errors else "gvpr printed nothing"}
     graph = {"nodes": [], "edges": [], "subgraphs": []}
@@ -271,7 +273,7 @@ def ask_dot_ranks(path):
     leaves the rank on each node."""
     done = subprocess.run(["dot", "-Gphase=1", "-Tdot_json", str(path)], capture_output=True)
     if done.returncode != 0:
-        lines = done.stderr.decode("utf-8", "replace").strip().splitlines()
+        lines = done.stderr.decode("utf-8", "replace").replace(str(ROOT) + "/", "").strip().splitlines()
         return {"error": lines[0] if lines else "dot failed"}
     try:
         raw = json.loads(done.stdout.decode("utf-8", "replace"))

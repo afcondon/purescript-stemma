@@ -6,7 +6,7 @@
 -- | attributes that change what is seen at that level (`shape=box`, colours,
 -- | `style=dashed` or `invis`) and ignores the rest. A caller that wants
 -- | more draws the `Drawing` itself.
-module Graphviz.Svg
+module Stemma.Svg
   ( render
   ) where
 
@@ -17,11 +17,11 @@ import Data.Maybe (Maybe(..))
 import Data.Number.Format (fixed, toStringWith)
 import Data.Number as Number
 import Data.String (Pattern(..), Replacement(..), joinWith, replaceAll, split)
-import Graphviz.Dot.Syntax (Text(..))
-import Graphviz.Label as Label
-import Graphviz.Attributes (Attributes)
-import Graphviz.Attributes as Attributes
-import Graphviz.Layout (Box, Drawing, Outline(..), Point, outlineOf)
+import Stemma.Dot.Syntax (Text(..))
+import Stemma.Label as Label
+import Stemma.Attributes (Attributes)
+import Stemma.Attributes as Attributes
+import Stemma.Layout (Box, Drawing, Outline(..), Point, outlineOf)
 
 render :: Drawing -> String
 render drawing = joinWith "\n"

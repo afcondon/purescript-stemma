@@ -18,7 +18,7 @@
 -- | Keywords are matched whatever their case, and only when unquoted. The
 -- | edge operator must suit the graph: `->` in a digraph, `--` in a graph.
 -- | Quoted strings joined by `+` are one ID.
-module Graphviz.Dot.Parser
+module Stemma.Dot.Parser
   ( parse
   ) where
 
@@ -33,9 +33,9 @@ import Data.List (List(..))
 import Data.List as List
 import Data.Maybe (Maybe(..))
 import Data.String (toLower)
-import Graphviz.Dot.Lexer (Located, Token(Name, Quoted, OpenBrace, CloseBrace, OpenBracket, CloseBracket, Equals, Semicolon, Comma, Colon, Plus, Arrow, Line), tokens)
-import Graphviz.Dot.Lexer as Lexer
-import Graphviz.Dot.Syntax (Attribute, Dot, Endpoint(..), GraphKind(..), NodeReference, Statement(..), Subgraph(..), Target(..), Text(..), text)
+import Stemma.Dot.Lexer (Located, Token(Name, Quoted, OpenBrace, CloseBrace, OpenBracket, CloseBracket, Equals, Semicolon, Comma, Colon, Plus, Arrow, Line), tokens)
+import Stemma.Dot.Lexer as Lexer
+import Stemma.Dot.Syntax (Attribute, Dot, Endpoint(..), GraphKind(..), NodeReference, Statement(..), Subgraph(..), Target(..), Text(..), text)
 
 -- | Parse the first graph in a DOT file.
 parse :: String -> Either String Dot

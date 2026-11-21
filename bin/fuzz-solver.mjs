@@ -7,7 +7,7 @@
 // Run from the repository root after `spago build`. It prints each problem
 // that fails or takes more than three seconds, then a count.
 const root = process.cwd() + "/output/";
-const NS = await import(root + "Graphviz.Layout.NetworkSimplex/index.js");
+const NS = await import(root + "Stemma.Layout.NetworkSimplex/index.js");
 const Ord = await import(root + "Data.Ord/index.js");
 let seed = Number(process.argv[2] ?? 1);
 const rnd = () => (seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648;

@@ -37,7 +37,7 @@
 -- | Unlike ranking, this has no optimum to be held to. `dot`'s own order is
 -- | a different run of a similar search, so the two are compared by the
 -- | number of crossings each leaves.
-module Graphviz.Layout.Order
+module Stemma.Layout.Order
   ( Vertex(..)
   , Link
   , Layered
@@ -63,11 +63,11 @@ import Data.Maybe (Maybe(..))
 import Data.Set (Set)
 import Data.Set as Set
 import Data.Tuple (Tuple(..))
-import Graphviz.Attributes as Attributes
-import Graphviz.Graph (Graph, NodeName, SubgraphId)
-import Graphviz.Graph as Graph
-import Graphviz.Layout.Acyclic as Acyclic
-import Graphviz.Layout.Rank (Rank(..), clusterPaths)
+import Stemma.Attributes as Attributes
+import Stemma.Graph (Graph, NodeName, SubgraphId)
+import Stemma.Graph as Graph
+import Stemma.Layout.Acyclic as Acyclic
+import Stemma.Layout.Rank (Rank(..), clusterPaths)
 
 -- | Something with a place in a rank: a node, or a bend in the edges from
 -- | one node down to another, on the rank given.

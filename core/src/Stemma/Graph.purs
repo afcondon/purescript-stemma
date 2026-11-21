@@ -33,7 +33,7 @@
 -- | A `Graph` can only be made by `fromDot`, so what it promises holds:
 -- | every edge joins two of its nodes, and every member of a subgraph is
 -- | one of its nodes or edges.
-module Graphviz.Graph
+module Stemma.Graph
   ( Graph
   , NodeName(..)
   , EdgeId(..)
@@ -70,10 +70,10 @@ import Data.Traversable (traverse)
 import Data.Tuple (Tuple(..))
 import Data.String (toLower)
 import Data.String as String
-import Graphviz.Attributes (Attributes, Port)
-import Graphviz.Attributes as Attributes
-import Graphviz.Dot.Syntax (Attribute, Dot, Endpoint(..), GraphKind(..), NodeReference, Statement(..), Target(..), Text(..), text)
-import Graphviz.Dot.Syntax as Syntax
+import Stemma.Attributes (Attributes, Port)
+import Stemma.Attributes as Attributes
+import Stemma.Dot.Syntax (Attribute, Dot, Endpoint(..), GraphKind(..), NodeReference, Statement(..), Target(..), Text(..), text)
+import Stemma.Dot.Syntax as Syntax
 
 -- | A node's name. `<b>` and `b` are different names.
 newtype NodeName = NodeName Text

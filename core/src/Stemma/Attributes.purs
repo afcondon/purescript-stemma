@@ -9,7 +9,7 @@
 -- | An attribute set to the empty string still overrides a default, but
 -- | reads as absent. That is Graphviz's rule, and `lookup` is where it
 -- | lives.
-module Graphviz.Attributes
+module Stemma.Attributes
   ( Attributes
   , empty
   , set
@@ -41,7 +41,7 @@ import Data.String (Pattern(..), toLower, trim)
 import Data.String as String
 import Data.String.CodeUnits as CodeUnits
 import Data.Tuple (Tuple)
-import Graphviz.Dot.Syntax (Text, text)
+import Stemma.Dot.Syntax (Text, text)
 
 newtype Attributes = Attributes (Map String Text)
 

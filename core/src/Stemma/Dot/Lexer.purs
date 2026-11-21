@@ -16,7 +16,7 @@
 -- |     escapes; every other backslash stays, for whoever reads the label;
 -- |   - `<...>` is an HTML string, closed by its matching `>`;
 -- |   - `/* */`, `//` and lines starting with `#` are comments.
-module Graphviz.Dot.Lexer
+module Stemma.Dot.Lexer
   ( Token(..)
   , Located
   , tokens

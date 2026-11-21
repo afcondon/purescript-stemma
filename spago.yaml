@@ -1,5 +1,5 @@
 package:
-  name: graphviz-harness
+  name: stemma-harness
   description: >
     Runs the core over a corpus of DOT files on Node and writes what it
     found, for bin/check.py to compare with what Graphviz itself reports.
@@ -13,7 +13,7 @@ package:
     - either
     - foldable-traversable
     - foreign-object
-    - graphviz
+    - stemma
     - maybe
     - node-buffer
     - node-fs

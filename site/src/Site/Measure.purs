@@ -1,4 +1,4 @@
--- | Text measured by the browser, for `Graphviz.Layout.layoutWith`.
+-- | Text measured by the browser, for `Stemma.Layout.layoutWith`.
 module Site.Measure
   ( measure
   , options
@@ -10,7 +10,7 @@ import Data.Array as Array
 import Data.Foldable (foldl)
 import Data.Function.Uncurried (Fn2, runFn2)
 import Data.Int (toNumber)
-import Graphviz.Layout (Options, defaults)
+import Stemma.Layout (Options, defaults)
 import Site.Label as Label
 
 -- | The width of a line of text in a CSS font, from a canvas's

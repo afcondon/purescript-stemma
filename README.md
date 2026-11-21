@@ -1,4 +1,4 @@
-# Graphviz in PureScript
+# Stemma: Graphviz in PureScript
 
 Graphviz's DOT language and its `dot` layout, written in PureScript from the
 published algorithms. A graph can be laid out wherever PureScript runs, a
@@ -7,7 +7,7 @@ is a value you can take hold of.
 
 ![A family tree of Fairport Convention, 1967 to 1980, drawn by this library](site/screenshot.png)
 
-**Demo:** <https://afcondon.github.io/purescript-graphviz/>. A family tree
+**Demo:** <https://afcondon.github.io/purescript-stemma/>. A family tree
 of Fairport Convention and the bands around it, drawn in your browser, with
 a control that steps through the four passes of the layout; and below it an
 editor that draws DOT as you type, beside Graphviz's own drawing of the
@@ -32,21 +32,24 @@ same file.
 
 ## Using it
 
+The package is `stemma`, and its modules are `Stemma.*`. (A stemma is a
+family tree, of people or of manuscripts. The registry already has a
+`graphviz` package, which is a different thing by another author.)
 It is not in the PureScript registry yet. Until it is, add it to a spago
 workspace from git:
 
 ```yaml
 workspace:
   extraPackages:
-    graphviz:
-      git: https://github.com/afcondon/purescript-graphviz.git
+    stemma:
+      git: https://github.com/afcondon/purescript-stemma.git
       ref: main
       subdir: core
 ```
 
 ```purescript
-import Graphviz.Layout (layout)
-import Graphviz.Svg (render)
+import Stemma.Layout (layout)
+import Stemma.Svg (render)
 
 svg :: String -> Either String String
 svg dot = render <$> layout dot
@@ -54,7 +57,7 @@ svg dot = render <$> layout dot
 
 `layout` takes DOT text and returns a `Drawing`: boxes for the nodes,
 curves for the edges with the place of each label, boxes for the clusters,
-all in points. `Graphviz.Svg.render` turns that into plain SVG text; a
+all in points. `Stemma.Svg.render` turns that into plain SVG text; a
 caller with its own renderer uses the `Drawing` itself, as the demo page
 does.
 
@@ -64,10 +67,10 @@ does.
   canvas (`site/src/Site/Measure.purs` is such a function).
 - `drawAt` gives the drawing as it stands after one pass: `Ranked`,
   `Ordered`, `Positioned` or `Routed`.
-- `Graphviz.Dot.Parser.parse` and `Graphviz.Graph.fromDot` give the graph a
+- `Stemma.Dot.Parser.parse` and `Stemma.Graph.fromDot` give the graph a
   DOT file describes, with no layout, for a program that wants to read DOT
   and do something else with it. See "The graph a caller gets" below.
-- `Graphviz.Layout.Rank` and `Graphviz.Layout.Order` are the first two
+- `Stemma.Layout.Rank` and `Stemma.Layout.Order` are the first two
   passes by themselves.
 
 ## What it does, and what it does not
@@ -115,7 +118,7 @@ ordering; that size is for a batch run and not for a live page.
 which defaults were in force where and when it was first mentioned, a named
 subgraph mentioned twice is one subgraph, and in a `strict` graph whether a
 second edge between two nodes is merged, ignored or kept depends on its key
-and on which subgraph the statement is in. `core/src/Graphviz/Graph.purs`
+and on which subgraph the statement is in. `core/src/Stemma/Graph.purs`
 states the rules; they were found by experiment against Graphviz, and some
 of them are not what its documentation says.
 
@@ -128,7 +131,7 @@ value remembers which it was. The comparison includes that.
 
 ## The graph a caller gets
 
-`Graphviz.Graph` is what the layout passes work on, and what another
+`Stemma.Graph` is what the layout passes work on, and what another
 library would use:
 
 - `Graph` is opaque and made only by `fromDot`, so every edge joins two of
@@ -141,7 +144,7 @@ library would use:
 - Subgraphs form a tree (`parent`), each says whether it is a cluster, and
   `clusters` and `enclosingCluster` give the clusters and their nesting.
 - Attributes stay text, since a file may set anything, and
-  `Graphviz.Attributes` is the one place that reads a value as a number, a
+  `Stemma.Attributes` is the one place that reads a value as a number, a
   boolean, a port or a rank kind.
 
 Known differences from Graphviz are in `known-differences/`, each with its
@@ -168,7 +171,7 @@ A further 9,000 random files from three other seeds were compared on
 Ranking is an optimisation: put every edge's head at least `minlen` ranks
 below its tail, at the least total of weight times length. The core solves
 it with the network simplex of Gansner, Koutsofios, North and Vo (1993), in
-`core/src/Graphviz/Layout/NetworkSimplex.purs`, and returns with each answer
+`core/src/Stemma/Layout/NetworkSimplex.purs`, and returns with each answer
 the spanning tree that proves it optimal. `bin/check.py` checks that proof
 itself, in a few lines that use nothing of the core but its answer.
 
@@ -197,7 +200,7 @@ first and then moves as a rigid block, and an edge that crosses a cluster's
 border is a preference and not a requirement: it may fail, at ten times its
 weight per rank. So the ranking is a tree of problems, one per level (the
 graph, each cluster, each cluster within a cluster), and each level's answer
-carries its own proof. `core/src/Graphviz/Layout/Rank.purs` states the
+carries its own proof. `core/src/Stemma/Layout/Rank.purs` states the
 rules; like the reading rules they were found by experiment against `dot`.
 
 For each level the judge also checks that dot's ranking fits the model: the
@@ -215,7 +218,7 @@ both the top and the bottom rank makes dot itself fail.
 A ranking needs every edge to point down, so in each cycle some edge has to
 be turned round, and it is then drawn pointing up the page. Any choice gives
 a valid ranking; the choice shows in the picture. This follows dot's:
-`core/src/Graphviz/Layout/Acyclic.purs` walks the graph depth first as dot
+`core/src/Stemma/Layout/Acyclic.purs` walks the graph depth first as dot
 does, and matching it took three details found by experiment: where the walk
 starts, that a node's edges are taken in the order of the nodes they lead
 to, and that when an edge is turned round the last edge in its node's list
@@ -226,7 +229,7 @@ also sets `rank=same`.
 
 Long edges are cut into chains with a bend on every rank they pass, and
 then the nodes and bends of each rank are ordered to leave few crossings:
-`core/src/Graphviz/Layout/Order.purs`, the median-and-swap search of the
+`core/src/Stemma/Layout/Order.purs`, the median-and-swap search of the
 1993 paper, run on dot's schedule.
 
 Two things hold in every order: the nodes of a cluster that share a rank
@@ -327,7 +330,7 @@ constraint) started from that knowledge and not from a blank sheet. So this
 is an independent implementation checked against behaviour, and not a
 clean-room one in the strict sense of the term. The clearest case is the
 solver's way of repairing cut values after a swap
-(`core/src/Graphviz/Layout/NetworkSimplex.purs`): the paper describes it in
+(`core/src/Stemma/Layout/NetworkSimplex.purs`): the paper describes it in
 a paragraph, and the steps written here follow the model's recollection of
 how Graphviz carries them out.
 

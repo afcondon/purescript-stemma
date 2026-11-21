@@ -1,11 +1,11 @@
 -- | The little of Graphviz's HTML-like labels that is about lines of text:
 -- | `<br/>` ends a line, `<b>` makes text bold, and `<font point-size="9">`
 -- | sets its size. That is enough for a title over a list. Tables are not
--- | read here; `Graphviz.Layout` sizes those roughly and by itself.
+-- | read here; `Stemma.Layout` sizes those roughly and by itself.
 -- |
 -- | The layout uses this to size a node and a renderer to draw its label,
 -- | so that the two agree on what the lines are.
-module Graphviz.Label
+module Stemma.Label
   ( Line
   , markupLines
   , hasTable

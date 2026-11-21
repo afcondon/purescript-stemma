@@ -26,17 +26,17 @@ import Data.Tuple (Tuple(..))
 import Effect (Effect)
 import Effect.Console (log)
 import Foreign.Object as Object
-import Graphviz.Dot.Parser (parse)
-import Graphviz.Attributes (Attributes)
-import Graphviz.Attributes as Attributes
-import Graphviz.Dot.Syntax (Text(..))
-import Graphviz.Graph (EdgeId(..), Graph, NodeName(..), SubgraphId(..), fromDot)
-import Graphviz.Graph as Graph
-import Graphviz.Layout (DrawnCluster, DrawnEdge, DrawnNode, Stage(..), defaults, drawAt, layout)
-import Graphviz.Layout.NetworkSimplex (value)
-import Graphviz.Layout.Order (Vertex(..), backwards, backwardsBetweenClusters, crossings, layered, order, split)
-import Graphviz.Svg (render)
-import Graphviz.Layout.Rank (Rank(..), Solved(..), Variable(..), describe, levels, rank, rankGiven, rankOf, ranking, reversed)
+import Stemma.Dot.Parser (parse)
+import Stemma.Attributes (Attributes)
+import Stemma.Attributes as Attributes
+import Stemma.Dot.Syntax (Text(..))
+import Stemma.Graph (EdgeId(..), Graph, NodeName(..), SubgraphId(..), fromDot)
+import Stemma.Graph as Graph
+import Stemma.Layout (DrawnCluster, DrawnEdge, DrawnNode, Stage(..), defaults, drawAt, layout)
+import Stemma.Layout.NetworkSimplex (value)
+import Stemma.Layout.Order (Vertex(..), backwards, backwardsBetweenClusters, crossings, layered, order, split)
+import Stemma.Svg (render)
+import Stemma.Layout.Rank (Rank(..), Solved(..), Variable(..), describe, levels, rank, rankGiven, rankOf, ranking, reversed)
 import Node.Encoding (Encoding(..))
 import Node.Buffer (Buffer)
 import Node.Buffer as Buffer

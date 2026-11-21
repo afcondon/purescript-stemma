@@ -38,10 +38,10 @@ const option = (name) => {
   return at >= 0 ? argumentsGiven[at + 1] : undefined;
 };
 const offline = argumentsGiven.includes("--offline");
-const cache = option("--cache") ?? join(tmpdir(), "purescript-graphviz-musicbrainz");
+const cache = option("--cache") ?? join(tmpdir(), "stemma-musicbrainz");
 
 // A name for the program and nothing else: no person, address or URL.
-const userAgent = "purescript-graphviz-demo/0.1";
+const userAgent = "stemma-demo/0.1";
 
 const fairport = "cc60d937-e80b-4c66-8aa2-e89cb57c8b08";
 

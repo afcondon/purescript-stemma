@@ -1,5 +1,5 @@
 package:
-  name: graphviz
+  name: stemma
   description: >
     Graphviz's DOT language and its `dot` layout, written in PureScript from
     the published algorithms. Pure: no foreign code, so it runs wherever

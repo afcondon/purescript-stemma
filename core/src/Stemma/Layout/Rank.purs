@@ -4,7 +4,7 @@
 -- | tail, and pulls the two together with a strength of `weight`. Where the
 -- | edges form a cycle some must be turned round first, since no ranking
 -- | can put every head below its tail. What is left is exactly the problem
--- | `Graphviz.Layout.NetworkSimplex` solves.
+-- | `Stemma.Layout.NetworkSimplex` solves.
 -- |
 -- | An edge with `constraint=false` asks for nothing, and so does an edge
 -- | from a node to itself. If any edge has a label, every `minlen` is
@@ -38,7 +38,7 @@
 -- | clusters side by side belongs to the first.
 -- |
 -- | These rules are Graphviz's, found by experiment against `dot`.
-module Graphviz.Layout.Rank
+module Stemma.Layout.Rank
   ( Rank(..)
   , Ranking
   , rankOf
@@ -69,12 +69,12 @@ import Data.Maybe (Maybe(..), isJust)
 import Data.Set as Set
 import Data.Traversable (traverse)
 import Data.Tuple (Tuple(..))
-import Graphviz.Attributes (RankKind(..))
-import Graphviz.Attributes as Attributes
-import Graphviz.Graph (EdgeId, Graph, NodeName, Subgraph, SubgraphId)
-import Graphviz.Graph as Graph
-import Graphviz.Layout.Acyclic as Acyclic
-import Graphviz.Layout.NetworkSimplex (Assignment, Requirement, solve, value)
+import Stemma.Attributes (RankKind(..))
+import Stemma.Attributes as Attributes
+import Stemma.Graph (EdgeId, Graph, NodeName, Subgraph, SubgraphId)
+import Stemma.Graph as Graph
+import Stemma.Layout.Acyclic as Acyclic
+import Stemma.Layout.NetworkSimplex (Assignment, Requirement, solve, value)
 
 -- | The top rank is 0.
 newtype Rank = Rank Int

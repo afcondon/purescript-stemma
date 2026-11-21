@@ -13,7 +13,7 @@ import Data.Maybe (Maybe(..))
 import Data.Time.Duration (Milliseconds(..))
 import Effect.Aff (delay)
 import Effect.Aff.Class (class MonadAff)
-import Graphviz.Layout (Drawing, layoutWith)
+import Stemma.Layout (Drawing, layoutWith)
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Events as HE
@@ -112,13 +112,13 @@ handleAction = case _ of
       }
 
 repository :: String
-repository = "https://github.com/afcondon/purescript-graphviz"
+repository = "https://github.com/afcondon/purescript-stemma"
 
 render :: forall m. MonadAff m => State -> H.ComponentHTML Action Slots m
 render state =
   HH.div [ HP.class_ (H.ClassName "page") ]
     [ HH.header [ HP.class_ (H.ClassName "masthead") ]
-        [ HH.h1 [ HP.class_ (H.ClassName "title") ] [ HH.text "Graphviz in PureScript" ]
+        [ HH.h1 [ HP.class_ (H.ClassName "title") ] [ HH.text "Stemma: Graphviz in PureScript" ]
         , HH.p [ HP.class_ (H.ClassName "subtitle") ]
             [ HH.text "Graphviz’s DOT language and its dot layout, rewritten in PureScript from the published algorithms, so a graph can be laid out in the browser with no C and no WebAssembly. Each pass of the layout is a separate value, so you can watch a drawing being made." ]
         , HH.p [ HP.class_ (H.ClassName "masthead__links") ]
@@ -156,7 +156,7 @@ render state =
             ]
         , HH.p_
             [ HH.text "The other examples are this project’s own. The drawings marked Graphviz are made by the installed Graphviz at build time, from those same files. "
-            , HH.a [ HP.href repository ] [ HH.text "github.com/afcondon/purescript-graphviz" ]
+            , HH.a [ HP.href repository ] [ HH.text "github.com/afcondon/purescript-stemma" ]
             ]
         ]
     ]
