@@ -199,7 +199,9 @@ layered graph rankOf =
       Nothing -> Alone vertex
     -- One level of one rank: its vertices, and the requests among them.
     level depth vertices asked =
-      let
+      -- Nothing asked is by far the usual case, and needs none of this.
+      if Array.null asked then []
+      else let
         across = Array.filter (\(Tuple l r) -> thing depth l /= thing depth r) asked
         asWritten = foldl (\fast (Tuple l r) -> Acyclic.connect (thing depth l) (thing depth r) fast) Acyclic.empty across
         things = Array.nub (map (thing depth) vertices)
@@ -236,7 +238,7 @@ layered graph rankOf =
           )
           things
       in
-        if Array.null asked then [] else here <> inside
+        here <> inside
 
   reachable = foldl (\soFar (Tuple l r) -> Map.insertWith Set.union l (Set.singleton r) soFar) Map.empty settled
 
@@ -337,16 +339,48 @@ members = case _ of
 -- | something every rank must keep.
 order :: Layered -> Layered
 order given =
-  if all Array.null given.clusters || agrees first.ranks then first
-  else if agrees again.ranks then again
-  else again { ranks = map (straighten 0) again.ranks }
+  if all Array.null given.clusters || inLine given first.ranks then first
+  else lineUp given first
   where
   first = orderOnce given
-  agrees ranks =
-    let
-      found = Set.fromFoldable (map (\parted -> Tuple parted.left parted.right) (Array.concatMap apart ranks))
-    in
-      not (any (\(Tuple a b) -> Set.member (Tuple b a) found) found)
+
+-- The two clusters, side by side in some larger one, that part two
+-- vertices.
+parting' :: Layered -> Vertex -> Vertex -> Maybe { left :: SubgraphId, right :: SubgraphId, l :: Vertex, r :: Vertex }
+parting' given l r =
+  let
+    pathOf vertex = case Map.lookup vertex given.clusters of
+      Just found -> found
+      Nothing -> []
+    agreed = Array.length (Array.takeWhile identity (Array.zipWith eq (pathOf l) (pathOf r)))
+  in
+    case Array.index (pathOf l) agreed, Array.index (pathOf r) agreed of
+      Just a, Just b -> Just { left: a, right: b, l, r }
+      _, _ -> Nothing
+
+-- Every two vertices of a rank that clusters part, left one first. Only
+-- vertices in clusters can be parted, so the rest are left out.
+sideBySide :: Layered -> Array Vertex -> Array { left :: SubgraphId, right :: SubgraphId, l :: Vertex, r :: Vertex }
+sideBySide given rank = Array.concat (Array.mapWithIndex (\place l -> Array.mapMaybe (parting' given l) (Array.drop (place + 1) clustered)) clustered)
+  where
+  clustered = Array.filter (\vertex -> any (not <<< Array.null) (Map.lookup vertex given.clusters)) rank
+
+-- Whether no two clusters stand one way round in one rank and the other
+-- way round in another.
+inLine :: Layered -> Array (Array Vertex) -> Boolean
+inLine given ranks = not (any (\(Tuple a b) -> Set.member (Tuple b a) found) found)
+  where
+  found = Set.fromFoldable (map (\parted -> Tuple parted.left parted.right) (Array.concatMap (sideBySide given) ranks))
+
+-- The second ordering, with the clusters in one line.
+lineUp :: Layered -> Layered -> Layered
+lineUp given first =
+  if inLine given again.ranks then again
+  else again { ranks = map (straighten 0) again.ranks }
+  where
+  pathOf vertex = case Map.lookup vertex given.clusters of
+    Just found -> found
+    Nothing -> []
   -- The line comes before an edge along a rank that asks otherwise.
   withLine = foldl (\m (Tuple l r) -> Map.insertWith Set.union l (Set.singleton r) m)
     (map (\_ -> Set.empty) given.leftOf)
@@ -375,19 +409,8 @@ order given =
           Nothing -> state { placed = state.placed <> run }
     in
       (foldl fill { next: 0, placed: [] } runs).placed
-  pathOf vertex = case Map.lookup vertex given.clusters of
-    Just found -> found
-    Nothing -> []
-  -- The two clusters, side by side in some larger one, that part two
-  -- vertices.
-  parting l r =
-    let
-      agreed = Array.length (Array.takeWhile identity (Array.zipWith eq (pathOf l) (pathOf r)))
-    in
-      case Array.index (pathOf l) agreed, Array.index (pathOf r) agreed of
-        Just a, Just b -> Just { left: a, right: b, l, r }
-        _, _ -> Nothing
-  apart rank = Array.concat (Array.mapWithIndex (\place l -> Array.mapMaybe (parting l) (Array.drop (place + 1) rank)) rank)
+  parting = parting' given
+  apart = sideBySide given
   -- Which must be left of which, because of an edge along a rank.
   asked = Set.fromFoldable
     ( Array.concatMap
