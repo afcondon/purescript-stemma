@@ -41,16 +41,20 @@ edges that pass through a node.
 
 | Stage | State | Held to |
 |---|---|---|
-| Reading DOT: lexer, parser, and what the file means | done | 871 of 871 corpus files read exactly as Graphviz 14.1.2 reads them (866 the same, 5 rejected by both) |
-| Which subgraphs are clusters | done | the same as dot draws, on 865 of 865 files (1,939 subgraphs) |
-| Ranking (which layer each node is on), with `rank=same` and its relatives and with clusters | done, bar the cases below | 864 of 864 rankings proved optimal at every level; dot's own ranking equals the optimum on 860 and is worse on 4 |
+| Reading DOT: lexer, parser, and what the file means | done | 890 of 890 corpus files read exactly as Graphviz 14.1.2 reads them (885 the same, 5 rejected by both) |
+| Which subgraphs are clusters | done | the same as dot draws, on 884 of 884 files (1,957 subgraphs) |
+| Ranking (which layer each node is on), with `rank=same` and its relatives and with clusters | done, bar the cases below | 883 of 883 rankings proved optimal at every level; dot's own ranking equals the optimum on 879 and is worse on 4 |
 | Turning cycles round before ranking | done | the same edges as dot on 328 of 329 graphs with cycles |
-| Ordering within ranks, with clusters kept together and same-rank edges left to right | done; slow on large graphs | of 884 graphs, the same number of crossings as dot on 709, fewer on 92, more on 83; 12,391 crossings in all against dot's 12,855 |
-| Coordinates | by network simplex: nodes, bends, cluster sides, room for labels and loops | rules, and size against dot's (`bin/check-geometry.py`) |
-| Edge routing | curves pulled tight between the nodes they pass, ending on the node outlines; cluster boxes not kept clear | rules, and edges through nodes against dot's |
+| Ordering within ranks, with clusters kept together and in one order, and same-rank edges left to right | done; slow on large graphs | of 884 graphs, the same number of crossings as dot on 709, fewer on 92, more on 83; 12,346 crossings in all against dot's 12,855 |
+| Coordinates | by network simplex: nodes, bends, cluster sides, room for labels and loops | 883 of 883 drawings keep every rule of `bin/check-geometry.py`; area 1.11 times dot's at the median |
+| Edge routing | curves pulled tight between the nodes they pass, ending on the node outlines; cluster boxes not kept clear | of 16,598 edges, 52 pass through a node that is not theirs (dot: 1); length 1.10 times dot's at the median |
 
-`bin/check.py` prints the current figure; this table is only as fresh as its
-last edit.
+`bin/check.py` and `bin/check-geometry.py` print the current figures; this
+table is only as fresh as its last edit (2026-11-21).
+
+Speed: a graph of a few dozen nodes lays out as you type. One of 200
+nodes and 300 edges takes about five seconds in Node, most of it in the
+ordering; that size is for a batch run and not for a live page.
 
 ## Reading DOT
 
@@ -90,7 +94,9 @@ library would use:
 Known differences from Graphviz are in `known-differences/`, each with its
 reason.
 
-- `corpus/graphviz/`: the 60 example graphs that ship with Graphviz.
+- `corpus/graphviz/`: the 60 example graphs that ship with Graphviz. They
+  are not kept here; `bin/fetch-examples.py` copies them from the Graphviz
+  installed on the machine.
 - `corpus/semantics/`: about 60 small files, one per rule.
 - `corpus/generated/`: 400 random files that lean on the order-dependent
   parts of the language (`bin/generate.py`, seeded).
@@ -176,7 +182,15 @@ moved and swapped as single things), and an edge between two nodes on one
 rank has its tail on the left. The second cannot always be had: such edges
 can go round in a circle, or ask for a node to stand between two nodes of
 one cluster. Then one request is given up, and what remains is consistent
-by construction. The judge checks both on every graph: 884 of 884.
+by construction.
+
+A third thing holds across ranks: two clusters that stand side by side
+keep the same order in every rank they share, since otherwise no box could
+be drawn round each. When the first ordering leaves two clusters both ways
+round, the clusters are put in one line and the ranks are ordered again
+with that line kept. An edge along a rank between two such clusters then
+runs right to left if the line says so; dot gives way in the same place.
+The judge checks all of this on every graph: 884 of 884.
 
 An edge marked `constraint=false` has no say in the order and its crossings
 are not counted, which is dot's rule too.
@@ -203,16 +217,26 @@ it can end up drawn across the cluster's box. dot discourages it heavily.
 
 ```bash
 spago build
-bin/check.py            # compare with the answers recorded in oracle/
+bin/fetch-examples.py   # once: Graphviz's own examples, and its answers to them
+bin/check.py            # reading, clusters, ranking, ordering: about four minutes
 bin/check.py --record   # re-ask the installed Graphviz first
+bin/check-geometry.py   # coordinates and edges: about twenty minutes
+bin/check-geometry.py clusters semantics   # or only some corpus folders
 ```
+
+`bin/check-geometry.py` does not ask for dot's coordinates, since a drawing
+has no single right answer. It checks rules (no two nodes overlap, nothing
+reaches outside the drawing, every edge ends on its nodes' outlines, no
+edge label lies on a node) and holds each drawing beside dot's for area,
+edge length and edges that pass through a node that is not theirs.
 
 Graphviz is asked through `gvpr` and `bin/read.gvpr`, which walk the graph
 as Graphviz's own library holds it, with no layout run. (`dot -Tdot_json`
 looks like the obvious oracle and is not one: it reports the graph after
 dot's layout has added edges to clusters and removed nodes from them.) The
 answers are kept in `oracle/` with the version that gave them, so the
-comparison runs without Graphviz installed.
+comparison runs without Graphviz installed, except for Graphviz's own
+examples, whose answers are made by `bin/fetch-examples.py`.
 
 `bin/show.py FILE` prints one file with both readings. `bin/shrink.py FILE`
 reduces a file the two disagree on to a small one they still disagree on.
@@ -220,13 +244,14 @@ reduces a file the two disagree on to a small one they still disagree on.
 ## Layout
 
 - `core/`: the library. Pure PureScript, no foreign code.
+- `site/`: a page that draws DOT as you type, beside Graphviz's drawing.
 - `src/Main.purs`: a Node program that runs the core over files and writes
   what it found, for `bin/check.py`.
 
 ## Licence and provenance
 
-MIT; see `LICENSE`. That covers everything here except the files in
-`corpus/graphviz/`, which are Graphviz's (see below).
+MIT; see `LICENSE`. Graphviz's own example graphs are used as test input
+and are not in this repository (see below).
 
 No code here is copied from Graphviz, and Graphviz's source was not read
 while writing it. The algorithms come from the 1993 paper; the rules for
@@ -240,8 +265,16 @@ from its training. Some of the guesses that the experiments then confirmed
 (for instance, that an edge crossing a cluster's border is a soft
 constraint) started from that knowledge and not from a blank sheet. So this
 is an independent implementation checked against behaviour, and not a
-clean-room one in the strict sense of the term.
+clean-room one in the strict sense of the term. The clearest case is the
+solver's way of repairing cut values after a swap
+(`core/src/Graphviz/Layout/NetworkSimplex.purs`): the paper describes it in
+a paragraph, and the steps written here follow the model's recollection of
+how Graphviz carries them out.
 
-The files in `corpus/graphviz/` are Graphviz's own example graphs and carry
-its licence (EPL 1.0); see the notice there. They are test input, and could
-equally be fetched from Graphviz when the tests run.
+Graphviz's own example graphs carry its licence (EPL 1.0). They are copied
+into `corpus/graphviz/` from the installed Graphviz by
+`bin/fetch-examples.py` and are ignored by git, as are Graphviz's answers
+to them and its drawings of them. `corpus/graphviz/FILES` lists the ones
+used. The demonstrator page, once built, contains the text of twelve of
+them; anyone publishing a built copy of it should carry Graphviz's notice
+with it.

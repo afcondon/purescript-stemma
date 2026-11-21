@@ -4,3 +4,8 @@ node_modules/
 /found/
 __pycache__/
 /site/public/bundle.js
+# Graphviz's own examples and its answers to them: see corpus/graphviz/NOTICE.
+/corpus/graphviz/*.gv
+/oracle/graphviz/
+/oracle/geometry/graphviz.json
+/site/public/graphviz/graphvizgallery-*.svg
