@@ -28,9 +28,10 @@ what draws it.
 The ranks, the order within each rank and the place of everything across
 the page come from the real passes. Edges are smooth curves that end on the
 node outlines, with room kept for their labels and for loops, and the
-graph's `size` is reported as a scale for whoever draws. **Edges are not yet
-routed round what they pass**, so a curve can clip a node or a cluster, and
-edges between the same two nodes are drawn on one line. None of the geometry
+graph's `size` is reported as a scale for whoever draws. Each edge takes the
+shortest way through the free room beside the nodes it passes, and edges
+between the same two nodes are spread apart. **Cluster boxes are not kept
+clear**, so an edge can cut across a cluster it is not in. None of the geometry
 is judged against Graphviz yet; it has been checked by eye on a few graphs.
 
 ## Where it stands
@@ -43,7 +44,7 @@ is judged against Graphviz yet; it has been checked by eye on a few graphs.
 | Turning cycles round before ranking | done | the same edges as dot on 328 of 329 graphs with cycles |
 | Ordering within ranks, with clusters kept together and same-rank edges left to right | done; slow on large graphs | of 884 graphs, the same number of crossings as dot on 709, fewer on 92, more on 83; 12,391 crossings in all against dot's 12,855 |
 | Coordinates | by network simplex: nodes, bends, cluster sides, room for labels and loops | nothing yet |
-| Edge routing | curves through the bends to the node outlines; not routed round obstacles | nothing yet |
+| Edge routing | curves pulled tight between the nodes they pass, ending on the node outlines; cluster boxes not kept clear | nothing yet |
 
 `bin/check.py` prints the current figure; this table is only as fresh as its
 last edit.

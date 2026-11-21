@@ -249,10 +249,60 @@ curved options sideways drawing = drawing { edges = map bend drawing.edges }
         [ start ] <> Array.slice 1 (Array.length found.path - 1) found.path <> [ end ]
     _, _ -> found.path
 
+-- The shortest way from one point to another that crosses each gate, a
+-- level stretch of the page, in turn: a string pulled tight. Each
+-- crossing is moved in turn to where a straight line between the ones
+-- either side would cross, or as near as its gate allows, until they
+-- settle. Only the corners are returned, where the string is held off
+-- the straight by the end of a gate.
+taut :: Point -> Array { y :: Number, low :: Number, high :: Number } -> Point -> Array Point
+taut start gates end = [ start ] <> corners <> [ end ]
+  where
+  count = Array.length gates
+  first = map (\gate -> max gate.low (min gate.high start.x)) gates
+  settled = foldl (\crossings _ -> sweep crossings) first (Array.range 1 60)
+
+  pointAt crossings index =
+    if index < 0 then start
+    else if index >= count then end
+    else case Array.index crossings index, Array.index gates index of
+      Just x, Just gate -> { x, y: gate.y }
+      _, _ -> end
+
+  -- Where the straight line between two points is at a height.
+  straight before after y =
+    if after.y == before.y then before.x
+    else before.x + (after.x - before.x) * (y - before.y) / (after.y - before.y)
+
+  -- One pass: each crossing uses the new place of the one before it and
+  -- the old place of the one after.
+  sweep crossings = foldl
+    ( \moved index -> case Array.index gates index of
+        Just gate ->
+          Array.snoc moved
+            (max gate.low (min gate.high (straight (if index == 0 then start else pointAt moved (index - 1)) (pointAt crossings (index + 1)) gate.y)))
+        Nothing -> moved
+    )
+    []
+    (Array.range 0 (count - 1))
+
+  corners = Array.mapMaybe
+    ( \index ->
+        let
+          here = pointAt settled index
+          before = pointAt settled (index - 1)
+          after = pointAt settled (index + 1)
+        in
+          if abs (here.x - straight before after here.y) > 0.5 then Just here else Nothing
+    )
+    (Array.range 0 (count - 1))
+
 -- A curve through every point given. At each point it heads the way from
 -- the point before to the point after, and each piece steers by a third
--- of its own length, so a short piece beside a long one does not swing
--- wide. A run of points in a line gives a straight line.
+-- of its own length and no more than half an inch, so that a long piece
+-- runs nearly straight and turns near its ends, and does not swing wide
+-- of the room it was given. A run of points in a line gives a straight
+-- line.
 smooth :: Array Point -> Array Point
 smooth points = case Array.head points of
   Nothing -> []
@@ -274,7 +324,7 @@ smooth points = case Array.head points of
     else
       let
         from = at index
-        third = sqrt ((end.x - from.x) * (end.x - from.x) + (end.y - from.y) * (end.y - from.y)) / 3.0
+        third = min 36.0 (sqrt ((end.x - from.x) * (end.x - from.x) + (end.y - from.y) * (end.y - from.y)) / 3.0)
       in
         [ { x: from.x + (heading index).x * third, y: from.y + (heading index).y * third }
         , { x: end.x - (heading (index + 1)).x * third, y: end.y - (heading (index + 1)).y * third }
@@ -329,8 +379,8 @@ place options graph rankNumber turned ranks links inClusters =
     Just written ->
       let
         enlarge = String.contains (String.Pattern "!") written
-        inches = Array.mapMaybe (String.trim >>> Number.fromString) (String.split (String.Pattern ",") (String.replaceAll (String.Pattern "!") (String.Replacement "") written))
-        fit = case inches of
+        asked = Array.mapMaybe (String.trim >>> Number.fromString) (String.split (String.Pattern ",") (String.replaceAll (String.Pattern "!") (String.Replacement "") written))
+        fit = case asked of
           [ both ] -> Just (min (both * 72.0 / drawing.width) (both * 72.0 / drawing.height))
           [ wide, high ] -> Just (min (wide * 72.0 / drawing.width) (high * 72.0 / drawing.height))
           _ -> Nothing
@@ -384,7 +434,39 @@ place options graph rankNumber turned ranks links inClusters =
         let
           needed = options.measure (labelOf node)
         in
-          lying { width: max 54.0 (needed.width + 16.0), height: max 36.0 (needed.height + 16.0) }
+          lying (shaped node.attributes
+            { width: max (inches "width" 54.0 node.attributes) (needed.width + 16.0)
+            , height: max (inches "height" 36.0 node.attributes) (needed.height + 16.0)
+            })
+
+  -- `width` and `height` are the least a node may be, in inches.
+  inches key otherwise attributes = case Attributes.lookup key attributes >>= Number.fromString of
+    Just given -> given * 72.0
+    Nothing -> otherwise
+  -- A circle is as wide as it is high, and a double one has a second
+  -- outline four points outside the first.
+  shaped attributes size = case Attributes.lookup "shape" attributes of
+    Just "circle" -> { width: max size.width size.height, height: max size.width size.height }
+    Just "Mcircle" -> { width: max size.width size.height, height: max size.width size.height }
+    Just "doublecircle" -> { width: max size.width size.height + 8.0, height: max size.width size.height + 8.0 }
+    _ -> size
+
+  -- Edges that join the same two nodes, either way round, would lie on
+  -- one line. They are spread out instead: this is how many such edges
+  -- there are for an edge, and which of them it is.
+  together :: Map (Tuple NodeName NodeName) (Array EdgeId)
+  together = foldl
+    (\soFar found -> if found.tail == found.head then soFar else Map.insertWith (flip append) (pairOf found) [ found.id ] soFar)
+    Map.empty
+    (Graph.edges graph)
+  pairOf found = Tuple (min found.tail found.head) (max found.tail found.head)
+  placeAmong found = case Map.lookup (pairOf found) together of
+    Just ids -> { count: Array.length ids, index: Array.length (Array.takeWhile (_ /= found.id) ids) }
+    Nothing -> { count: 1, index: 0 }
+  spread = 10
+  sharing upper lower = case Map.lookup (Tuple (min upper lower) (max upper lower)) together of
+    Just ids -> Array.length ids
+    Nothing -> 1
 
   -- How far a vertex reaches each side of its centre. A node is centred,
   -- with room on one side for edges from it to itself. A bend with labels
@@ -399,7 +481,8 @@ place options graph rankNumber turned ranks links inClusters =
     )
   leftHalf = case _ of
     Node name -> ceil ((sizeOf (Node name)).width / 2.0) + (if sideways then loopRoom name else 0)
-    Bend _ _ _ -> 0
+    -- Edges sharing a bend are spread out to its left.
+    Bend upper lower _ -> spread * (sharing upper lower - 1)
   rightHalf = case _ of
     Node name -> ceil ((sizeOf (Node name)).width / 2.0) + (if sideways then 0 else loopRoom name)
     bend -> ceil (sizeOf bend).width
@@ -517,6 +600,35 @@ place options graph rankNumber turned ranks links inClusters =
     , height: max (2.0 * margin) (stacked.top - rankGap + margin)
     }
 
+  -- The room an edge has where it passes through a rank: from the top of
+  -- the rank to the bottom, between whatever is on either side of its
+  -- bend there. Beside a node it may come within eight points; beside
+  -- another edge's bend, half way. A bend that carries labels stays put,
+  -- since the labels were placed beside it.
+  lanes :: Map Vertex { top :: Number, bottom :: Number, low :: Number, high :: Number }
+  lanes = Map.fromFoldable (Array.concatMap (\row -> Array.mapWithIndex (lane row) row.vertices) stacked.found)
+  lane row index vertex =
+    let
+      here = (boxOf vertex).centre.x
+      limit side beside = case beside of
+        Nothing -> side * 1.0e9
+        Just (Node name) -> (boxOf (Node name)).centre.x - side * ((boxOf (Node name)).width / 2.0 + 8.0)
+        Just bend -> ((boxOf bend).centre.x + here) / 2.0
+      fixed = Map.member vertex carried
+    in
+      Tuple vertex
+        { top: row.top
+        , bottom: row.top + row.height
+        , low: if fixed then here else min here (limit (-1.0) (Array.index row.vertices (index - 1)))
+        , high: if fixed then here else max here (limit 1.0 (Array.index row.vertices (index + 1)))
+        }
+  gatesAt goingDown vertex = case Map.lookup vertex lanes of
+    Nothing -> []
+    Just found ->
+      if found.top == found.bottom then [ { y: found.top, low: found.low, high: found.high } ]
+      else if goingDown then [ { y: found.top, low: found.low, high: found.high }, { y: found.bottom, low: found.low, high: found.high } ]
+      else [ { y: found.bottom, low: found.low, high: found.high }, { y: found.top, low: found.low, high: found.high } ]
+
   -- An edge goes from its tail to its head through the bends between
   -- them. An edge from a node to itself is a small loop on its right.
   edge found =
@@ -555,8 +667,29 @@ place options graph rankNumber turned ranks links inClusters =
             passed = if max from to - min from to > 1 then Array.range (min from to + 1) (max from to - 1) else []
             downwards = [ Node upper ] <> map (Bend upper lower) passed <> [ Node lower ]
             between = if from == to then [ Node found.tail, Node found.head ] else if from < to then downwards else Array.reverse downwards
+            among = placeAmong found
+            centres = map (boxOf >>> _.centre) between
+            ends = Array.length centres - 1
           in
-            map (boxOf >>> _.centre) between
+            if among.count < 2 then
+              case Array.head centres, Array.last centres of
+                Just first, Just last | ends >= 2 ->
+                  taut first (Array.concatMap (gatesAt (from < to)) (Array.slice 1 ends between)) last
+                _, _ -> centres
+            else if ends < 2 then
+              -- No bend to move: bow out through a point half way.
+              case Array.head centres, Array.last centres of
+                Just first, Just last ->
+                  [ first
+                  , { x: (first.x + last.x) / 2.0 + (if from == to then 0.0 else 14.0 * (toNumber among.index - toNumber (among.count - 1) / 2.0))
+                    , y: (first.y + last.y) / 2.0 + (if from == to then 14.0 * (toNumber among.index - toNumber (among.count - 1) / 2.0) else 0.0)
+                    }
+                  , last
+                  ]
+                _, _ -> centres
+            else Array.mapWithIndex
+              (\index point -> if index == 0 || index == ends then point else point { x = point.x - toNumber (spread * (among.count - 1 - among.index)) })
+              centres
     }
   -- A cluster's box goes round everything in it, with a little room, and
   -- more room the more clusters it has inside it.

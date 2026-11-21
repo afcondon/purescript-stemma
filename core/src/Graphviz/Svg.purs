@@ -14,7 +14,6 @@ import Prelude
 
 import Data.Array as Array
 import Data.Maybe (Maybe(..))
-import Data.Number (sqrt)
 import Data.Number.Format (fixed, toStringWith)
 import Data.String (Pattern(..), Replacement(..), joinWith, replaceAll)
 import Graphviz.Attributes (Attributes)
@@ -68,17 +67,6 @@ render drawing = joinWith "\n"
   curve path = case Array.uncons path of
     Just first -> "M " <> point first.head <> " C " <> joinWith " " (map point first.tail)
     Nothing -> ""
-
--- A point moved a distance towards another, or not at all if they are
--- closer than that.
-towards :: Point -> Point -> Number -> Point
-towards from to distance =
-  if length <= distance then from
-  else { x: from.x + (to.x - from.x) * distance / length, y: from.y + (to.y - from.y) * distance / length }
-  where
-  across = to.x - from.x
-  down = to.y - from.y
-  length = sqrt (across * across + down * down)
 
 rectangle :: Box -> String -> String
 rectangle box rest =
