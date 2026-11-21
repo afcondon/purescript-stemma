@@ -25,10 +25,13 @@ itself. `layoutWith` takes the spacing and, more to the point, a function
 that measures text, since how wide a label is depends on the font and on
 what draws it.
 
-The ranks and the order within each rank are the real thing. **The
-coordinates and the edge paths are interim**: each rank is spaced out and
-centred, and edges are straight pieces through their bends. The passes that
-will replace them fill the same `Drawing`.
+The ranks, the order within each rank and the place of everything across
+the page come from the real passes. Edges are smooth curves that end on the
+node outlines, with room kept for their labels and for loops, and the
+graph's `size` is reported as a scale for whoever draws. **Edges are not yet
+routed round what they pass**, so a curve can clip a node or a cluster, and
+edges between the same two nodes are drawn on one line. None of the geometry
+is judged against Graphviz yet; it has been checked by eye on a few graphs.
 
 ## Where it stands
 
@@ -39,8 +42,8 @@ will replace them fill the same `Drawing`.
 | Ranking (which layer each node is on), with `rank=same` and its relatives and with clusters | done, bar the cases below | 864 of 864 rankings proved optimal at every level; dot's own ranking equals the optimum on 860 and is worse on 4 |
 | Turning cycles round before ranking | done | the same edges as dot on 328 of 329 graphs with cycles |
 | Ordering within ranks, with clusters kept together and same-rank edges left to right | done; slow on large graphs | of 884 graphs, the same number of crossings as dot on 709, fewer on 92, more on 83; 12,391 crossings in all against dot's 12,855 |
-| Coordinates | interim: ranks spaced out and centred | nothing yet |
-| Edge routing | interim: straight pieces through the bends | nothing yet |
+| Coordinates | by network simplex: nodes, bends, cluster sides, room for labels and loops | nothing yet |
+| Edge routing | curves through the bends to the node outlines; not routed round obstacles | nothing yet |
 
 `bin/check.py` prints the current figure; this table is only as fresh as its
 last edit.

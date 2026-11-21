@@ -18,10 +18,11 @@
 -- |   4. Swap such an edge for the tightest requirement crossing the same
 -- |      split the other way, and repeat until no cut value is negative.
 -- |
--- | This is the plain version: it recomputes cut values from their
--- | definition on every round, which is slow on a large graph and easy to
--- | see is right. The minimum it reaches is the same whatever order it
--- | pivots in.
+-- | Each round works out every cut value afresh, in one pass up the tree,
+-- | so a round costs about as much as reading the requirements once. The
+-- | faster method of the paper, which repairs only the cut values a swap
+-- | changes, is not here yet. The minimum reached is the same whatever
+-- | order it pivots in.
 -- |
 -- | It works over any type of variable that can be ordered, so the caller
 -- | passes its own names and nothing has to be numbered.
@@ -38,13 +39,12 @@ module Graphviz.Layout.NetworkSimplex
 import Prelude
 
 import Data.Array as Array
-import Data.Foldable (foldl, minimum, minimumBy, sum)
+import Data.Foldable (class Foldable, foldl, minimum, minimumBy, sum)
 import Data.List (List(..))
 import Data.List as List
 import Data.Map (Map)
 import Data.Map as Map
 import Data.Maybe (Maybe(..))
-import Data.Set (Set)
 import Data.Set as Set
 import Data.Tuple (Tuple(..))
 
@@ -148,7 +148,7 @@ groups requirements = (foldl start { seen: Set.empty, found: [] } requirements).
 slack :: forall v. Ord v => Assignment v -> Placed v -> Int
 slack assignment r = value assignment r.head - value assignment r.tail - r.minimum
 
-shift :: forall v. Ord v => Int -> Set v -> Assignment v -> Assignment v
+shift :: forall f v. Foldable f => Ord v => Int -> f v -> Assignment v -> Assignment v
 shift by variables (Assignment values) =
   Assignment (foldl (\soFar variable -> Map.insertWith add variable by soFar) values variables)
 
@@ -194,7 +194,7 @@ optimise requirements = case Array.head requirements of
   Just first ->
     let
       feasible = tightTree first.tail (earliest requirements)
-      settled = pivot limit feasible.tree feasible.values
+      settled = pivot first.tail limit feasible.tree feasible.values
     in
       { values: settled.values, tree: Array.fromFoldable (Map.values settled.tree) }
   where
@@ -204,81 +204,150 @@ optimise requirements = case Array.head requirements of
   -- round in circles, which the caller's check of the tree would catch.
   limit = 20 + 4 * size * Array.length requirements
 
+  -- What each variable adds to a cut it is on the tail side of: the weight
+  -- of the requirements out of it, less the weight of those into it.
+  net :: Map v Int
+  net = foldl (\m r -> Map.insertWith add r.tail r.weight (Map.insertWith add r.head (negate r.weight) m)) Map.empty requirements
+
   -- Step 2. Grow a tree of tight requirements from one variable; when it
   -- stops short, move the whole tree up to the nearest requirement that
-  -- leaves it and carry on.
+  -- leaves it and carry on from the variable that requirement reaches.
+  --
+  -- Moving the tree does not touch its variables. `moved` is how far the
+  -- tree has travelled in all, and each variable remembers how far it had
+  -- travelled when that variable joined, so where a variable now stands is
+  -- its first value plus the difference.
   tightTree :: v -> Assignment v -> { tree :: Map Int (Placed v), values :: Assignment v }
-  tightTree first values =
-    let
-      grown = grow values (Cons first Nil) (Set.singleton first) Map.empty
-    in
-      if Set.size grown.reached == size then { tree: grown.tree, values }
-      else
-        case minimumBy (comparing (slack values)) (Array.filter (leaves grown.reached) requirements) of
-          Nothing -> { tree: grown.tree, values }
-          Just nearest ->
-            tightTree first
-              ( shift (if Set.member nearest.tail grown.reached then slack values nearest else negate (slack values nearest))
-                  grown.reached
-                  values
-              )
-
-  leaves reached r = Set.member r.tail reached /= Set.member r.head reached
-
-  grow :: Assignment v -> List v -> Set v -> Map Int (Placed v) -> { reached :: Set v, tree :: Map Int (Placed v) }
-  grow values pending reached tree = case pending of
-    Nil -> { reached, tree }
-    Cons variable rest ->
-      let
-        step state link =
-          if Set.member link.other state.reached || slack values link.requirement /= 0 then state
-          else
-            { pending: Cons link.other state.pending
-            , reached: Set.insert link.other state.reached
-            , tree: Map.insert link.requirement.place link.requirement state.tree
-            }
-        after = foldl step { pending: rest, reached, tree } (linksOf neighbours variable)
-      in
-        grow values after.pending after.reached after.tree
-
-  -- The variables on the tail's side of a tree edge.
-  tailSide :: Map Int (Placed v) -> Placed v -> Set v
-  tailSide tree edge = spread (Cons edge.tail Nil) (Set.singleton edge.tail)
+  tightTree first (Assignment start) = extend 0 (grow 0 (Cons first Nil) { joined: Map.singleton first 0, tree: Map.empty })
     where
-    spread pending reached = case pending of
-      Nil -> reached
+    stands moved joined variable = case Map.lookup variable joined of
+      Just since -> value (Assignment start) variable + moved - since
+      Nothing -> value (Assignment start) variable
+
+    gap moved joined r = stands moved joined r.head - stands moved joined r.tail - r.minimum
+
+    extend moved grown =
+      if Map.size grown.joined == size then finished
+      else case minimumBy (comparing (gap moved grown.joined)) (Array.filter (leaves grown.joined) requirements) of
+        Nothing -> finished
+        Just nearest ->
+          let
+            fromTree = Map.member nearest.tail grown.joined
+            further = if fromTree then moved + gap moved grown.joined nearest else moved - gap moved grown.joined nearest
+            reached = if fromTree then nearest.head else nearest.tail
+          in
+            extend further
+              ( grow further (Cons reached Nil)
+                  { joined: Map.insert reached further grown.joined
+                  , tree: Map.insert nearest.place nearest grown.tree
+                  }
+              )
+      where
+      finished =
+        { tree: grown.tree
+        , values: Assignment (Map.mapMaybeWithKey (\variable _ -> Just (stands moved grown.joined variable)) start)
+        }
+
+    grow moved pending grown = case pending of
+      Nil -> grown
       Cons variable rest ->
         let
-          fresh = Array.filter
-            (\link -> link.requirement.place /= edge.place && Map.member link.requirement.place tree && not (Set.member link.other reached))
+          step state link =
+            if Map.member link.other state.grown.joined || gap moved state.grown.joined link.requirement /= 0 then state
+            else
+              { pending: Cons link.other state.pending
+              , grown:
+                  { joined: Map.insert link.other moved state.grown.joined
+                  , tree: Map.insert link.requirement.place link.requirement state.grown.tree
+                  }
+              }
+          after = foldl step { pending: rest, grown } (linksOf neighbours variable)
+        in
+          grow moved after.pending after.grown
+
+  leaves joined r = Map.member r.tail joined /= Map.member r.head joined
+
+  -- The tree hung from one variable. `order` lists the variables so that
+  -- each comes after everything below it, `number` counts them from the
+  -- top so that the variables below any one are a run of numbers, and
+  -- `above` is the tree edge from each variable towards the top.
+  hung :: v -> Map Int (Placed v) -> { order :: List v, number :: Map v Int, above :: Map v (Placed v) }
+  hung top tree = walk (Cons { variable: top, by: Nothing } Nil) { order: Nil, number: Map.empty, above: Map.empty }
+    where
+    walk pending state = case pending of
+      Nil -> state
+      Cons { variable, by } rest ->
+        let
+          numbered =
+            { order: Cons variable state.order
+            , number: Map.insert variable (Map.size state.number) state.number
+            , above: case by of
+                Just edge -> Map.insert variable edge state.above
+                Nothing -> state.above
+            }
+          below = Array.filter
+            (\link -> Map.member link.requirement.place tree && not (Map.member link.other numbered.number))
             (linksOf neighbours variable)
         in
-          spread (foldl (\p link -> Cons link.other p) rest fresh) (foldl (\r link -> Set.insert link.other r) reached fresh)
+          walk (foldl (\p link -> Cons { variable: link.other, by: Just link.requirement } p) rest below) numbered
 
-  -- Step 3, for one tree edge.
-  cutValue :: Set v -> Int
-  cutValue side = foldl crossing 0 requirements
+  -- Step 3, for every tree edge in one pass from the bottom up. The cut
+  -- value of the edge above a variable is the sum of `net` over that
+  -- variable and everything below it, with the sign turned when the edge
+  -- points down into them. Of the edges with a negative cut value, the one
+  -- given first by the caller is returned, with the variable under it and
+  -- how many variables that makes.
+  firstNegative :: forall r. { order :: List v, above :: Map v (Placed v) | r } -> Maybe { edge :: Placed v, under :: v, count :: Int }
+  firstNegative tree = (foldl visit { carried: Map.empty, found: Nothing } tree.order).found
     where
-    crossing total r = case Set.member r.tail side, Set.member r.head side of
-      true, false -> total + r.weight
-      false, true -> total - r.weight
-      _, _ -> total
+    visit state variable =
+      let
+        mine = case Map.lookup variable state.carried of
+          Just below -> { total: below.total + own, count: below.count + 1 }
+          Nothing -> { total: own, count: 1 }
+        own = case Map.lookup variable net of
+          Just found -> found
+          Nothing -> 0
+      in
+        case Map.lookup variable tree.above of
+          Nothing -> state
+          Just edge ->
+            let
+              parent = if edge.tail == variable then edge.head else edge.tail
+              cut = if edge.tail == variable then mine.total else negate mine.total
+              better = case state.found of
+                Just kept -> edge.place < kept.edge.place
+                Nothing -> true
+            in
+              { carried: Map.insertWith (\old new -> { total: old.total + new.total, count: old.count + new.count }) parent mine state.carried
+              , found: if cut < 0 && better then Just { edge, under: variable, count: mine.count } else state.found
+              }
 
   -- Step 4.
-  pivot :: Int -> Map Int (Placed v) -> Assignment v -> { values :: Assignment v, tree :: Map Int (Placed v) }
-  pivot rounds tree values =
+  pivot :: v -> Int -> Map Int (Placed v) -> Assignment v -> { values :: Assignment v, tree :: Map Int (Placed v) }
+  pivot top rounds tree values =
     if rounds <= 0 then { values, tree }
-    else case List.findMap negative (Map.values tree) of
+    else case firstNegative shape of
       Nothing -> { values, tree }
       Just leaving ->
-        case minimumBy (comparing (slack values)) (Array.filter (\r -> not (Set.member r.tail leaving.side) && Set.member r.head leaving.side) requirements) of
-          Nothing -> { values, tree }
-          Just entering ->
-            pivot (rounds - 1) (Map.insert entering.place entering (Map.delete leaving.edge.place tree))
-              (shift (negate (slack values entering)) leaving.side values)
+        let
+          from = numberOf leaving.under
+          below variable = numberOf variable >= from && numberOf variable < from + leaving.count
+          -- The leaving edge's tail may be the variable under it or the
+          -- one over it.
+          tailIsBelow = leaving.edge.tail == leaving.under
+          tailSide variable = below variable == tailIsBelow
+        in
+          case minimumBy (comparing (slack values)) (Array.filter (\r -> not (tailSide r.tail) && tailSide r.head) requirements) of
+            Nothing -> { values, tree }
+            Just entering ->
+              pivot top (rounds - 1) (Map.insert entering.place entering (Map.delete leaving.edge.place tree))
+                ( shift (if tailIsBelow then negate (slack values entering) else slack values entering)
+                    (Array.filter below (Array.fromFoldable shape.order))
+                    values
+                )
     where
-    negative edge =
-      let
-        side = tailSide tree edge
-      in
-        if cutValue side < 0 then Just { edge, side } else Nothing
+    shape = hung top tree
+    numberOf variable = case Map.lookup variable shape.number of
+      Just found -> found
+      Nothing -> -1

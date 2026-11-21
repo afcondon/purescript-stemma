@@ -18,10 +18,7 @@ import Prelude
 
 import Data.Array as Array
 import Data.Int as Int
-import Data.Map (Map)
-import Data.Map as Map
 import Data.Maybe (Maybe(..), fromMaybe)
-import Data.Number (abs, sqrt)
 import Data.Set (Set)
 import Data.Set as Set
 import Data.String (Pattern(..), split, trim)
@@ -31,7 +28,7 @@ import Graphviz.Attributes (Attributes)
 import Graphviz.Attributes as Attributes
 import Graphviz.Dot.Syntax (Text(..), text)
 import Graphviz.Graph (NodeName(..))
-import Graphviz.Layout (Box, DrawnCluster, DrawnEdge, DrawnNode, Drawing, Point)
+import Graphviz.Layout (DrawnCluster, DrawnEdge, DrawnNode, Drawing, Outline(..), Point, outlineOf)
 import Halogen.HTML as HH
 import Halogen.HTML.Core (AttrName(..), ClassName(..))
 import Halogen.HTML.Properties as HP
@@ -51,17 +48,17 @@ picture :: forall w i. TurnedEdges -> Drawing -> HH.HTML w i
 picture turnedEdges drawing =
   SE.svg
     [ SA.viewBox 0.0 0.0 drawing.width drawing.height
-    , SA.width drawing.width
-    , SA.height drawing.height
+    -- The drawing is in points, and the page counts in CSS pixels, of
+    -- which there are 96 to the inch against 72.
+    , SA.width (drawing.width * drawing.scale * 96.0 / 72.0)
+    , SA.height (drawing.height * drawing.scale * 96.0 / 72.0)
     , SA.class_ (ClassName "drawing")
     ]
     ( [ SE.defs [] [ arrowhead ] ]
         <> map cluster drawing.clusters
-        <> map (edge turnedEdges nodesByName drawing.directed) (Array.filter (\found -> not (hidden found.attributes)) drawing.edges)
+        <> map (edge turnedEdges drawing.directed) (Array.filter (\found -> not (hidden found.attributes)) drawing.edges)
         <> map node (Array.filter (\found -> not (hidden found.attributes)) drawing.nodes)
     )
-  where
-  nodesByName = Map.fromFoldable (map (\found -> Tuple found.name found) drawing.nodes)
 
 -- The palette. Colours are set as attributes, never left to the
 -- stylesheet, because CSS would override the colours a DOT file asks for.
@@ -144,32 +141,6 @@ strokeProperties found strokeColour =
     | otherwise = []
 
 -- Nodes ----------------------------------------------------------------
-
--- | The outlines the page can draw. Graphviz has many more shapes; each
--- | is drawn as the nearest of these.
-data Outline = Ellipse | DoubleEllipse | Rectangle | Diamond | NoOutline
-
-outlineOf :: Attributes -> Outline
-outlineOf attributes = case Attributes.lookup "shape" attributes of
-  Just "box" -> Rectangle
-  Just "rect" -> Rectangle
-  Just "rectangle" -> Rectangle
-  Just "square" -> Rectangle
-  Just "Msquare" -> Rectangle
-  Just "record" -> Rectangle
-  Just "Mrecord" -> Rectangle
-  Just "component" -> Rectangle
-  Just "folder" -> Rectangle
-  Just "tab" -> Rectangle
-  Just "note" -> Rectangle
-  Just "diamond" -> Diamond
-  Just "Mdiamond" -> Diamond
-  Just "doublecircle" -> DoubleEllipse
-  Just "doubleoctagon" -> DoubleEllipse
-  Just "plaintext" -> NoOutline
-  Just "plain" -> NoOutline
-  Just "none" -> NoOutline
-  _ -> Ellipse
 
 node :: forall w i. DrawnNode -> HH.HTML w i
 node found =
@@ -292,17 +263,17 @@ directionOf directed attributes = case Attributes.lookup "dir" attributes of
   Just "none" -> Neither
   _ -> if directed then Forward else Neither
 
-edge :: forall w i. TurnedEdges -> Map NodeName DrawnNode -> Boolean -> DrawnEdge -> HH.HTML w i
-edge turnedEdges nodesByName directed found =
+edge :: forall w i. TurnedEdges -> Boolean -> DrawnEdge -> HH.HTML w i
+edge turnedEdges directed found =
   SE.g [ SA.class_ (ClassName (if picked then "edge edge--turned" else "edge")) ]
     ( [ SE.title [] [ HH.text description ]
-      , SE.polyline
-          ( [ SA.points (map (\point -> Tuple point.x point.y) trimmed) ]
+      , SE.path
+          ( [ SA.d (curve found.path), SA.fill SA.NoColor ]
               <> strokeProperties (styles found.attributes) strokeColour
               <> arrows
           )
       ]
-        <> case Attributes.lookup "label" found.attributes, middle trimmed of
+        <> case Attributes.lookup "label" found.attributes, found.labelAt of
           Just written, Just centre -> labelText (ClassName "edge-label") (0.8 * Label.lineHeight) centre (if picked then accent else ink) written
           _, _ -> []
     )
@@ -317,67 +288,13 @@ edge turnedEdges nodesByName directed found =
     Back -> [ SA.markerStart "url(#arrowhead)" ]
     BothWays -> [ SA.markerStart "url(#arrowhead)", SA.markerEnd "url(#arrowhead)" ]
     Neither -> []
-  trimmed = trimEnds (Map.lookup found.tail nodesByName) (Map.lookup found.head nodesByName) found.path
-
--- | The layout's paths run from centre to centre. Cut each end back to
--- | where it crosses its node's outline, so that arrowheads touch the
--- | node instead of hiding under it. An end that does not start at its
--- | node's centre (a loop) is left alone.
-trimEnds :: Maybe DrawnNode -> Maybe DrawnNode -> Array Point -> Array Point
-trimEnds tail head path = case Array.uncons path, Array.unsnoc path of
-  Just first, Just last | Array.length path >= 2 ->
-    let
-      start = case tail, Array.head first.tail of
-        Just tailNode, Just next | atCentre tailNode first.head -> leaving tailNode next
-        _, _ -> first.head
-      end = case head, Array.last last.init of
-        Just headNode, Just previous | atCentre headNode last.last -> leaving headNode previous
-        _, _ -> last.last
-    in
-      [ start ] <> Array.slice 1 (Array.length path - 1) path <> [ end ]
-  _, _ -> path
-  where
-  atCentre found point = abs (point.x - found.box.centre.x) < 0.5 && abs (point.y - found.box.centre.y) < 0.5
-
--- | Where a line from a node's centre towards a point leaves its outline.
-leaving :: DrawnNode -> Point -> Point
-leaving found towards =
-  let
-    box = found.box
-    across = towards.x - box.centre.x
-    down = towards.y - box.centre.y
-    halfWidth = box.width / 2.0
-    halfHeight = box.height / 2.0
-    reach = case outlineOf found.attributes of
-      Diamond -> 1.0 / (abs across / halfWidth + abs down / halfHeight)
-      Rectangle -> boxReach box across down
-      NoOutline -> boxReach box across down
-      _ -> 1.0 / sqrt ((across / halfWidth) * (across / halfWidth) + (down / halfHeight) * (down / halfHeight))
-  in
-    if across == 0.0 && down == 0.0 || reach >= 1.0 then box.centre
-    else { x: box.centre.x + across * reach, y: box.centre.y + down * reach }
-
-boxReach :: Box -> Number -> Number -> Number
-boxReach box across down =
-  min (if across == 0.0 then infinity else box.width / 2.0 / abs across)
-    (if down == 0.0 then infinity else box.height / 2.0 / abs down)
-  where
-  infinity = 1.0e300
-
--- | The middle of a path by its points: the middle point, or halfway
--- | along the middle piece.
-middle :: Array Point -> Maybe Point
-middle path =
-  let
-    count = Array.length path
-    half = count / 2
-  in
-    if count == 0 then Nothing
-    else if Int.odd count then Array.index path half
-    else do
-      before <- Array.index path (half - 1)
-      after <- Array.index path half
-      pure { x: (before.x + after.x) / 2.0, y: (before.y + after.y) / 2.0 }
+  -- The start, then three points for each piece of the curve.
+  curve path = case Array.uncons path of
+    Nothing -> []
+    Just first -> [ SA.m Abs first.head.x first.head.y ] <> pieces first.tail
+  pieces rest = case Array.take 3 rest of
+    [ one, two, end ] -> [ SA.c Abs one.x one.y two.x two.y end.x end.y ] <> pieces (Array.drop 3 rest)
+    _ -> []
 
 -- Clusters -------------------------------------------------------------
 

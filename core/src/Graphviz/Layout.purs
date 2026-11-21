@@ -8,13 +8,14 @@
 -- | Units are points, 72 to the inch, as in Graphviz. The origin is the top
 -- | left corner and y grows downwards.
 -- |
--- | **The geometry is interim.** Ranks and the order within each rank come
--- | from the real passes (`Graphviz.Layout.Rank`, `Graphviz.Layout.Order`).
--- | The coordinates do not yet: each rank is simply spaced out left to
--- | right and centred, and an edge is straight pieces from node to bend to
--- | node. The passes that will replace this (coordinates by network
--- | simplex, edges as curves routed round the nodes) will fill the same
--- | `Drawing`, so what is built on this type should not need to change.
+-- | Ranks, the order within each rank and the place of everything across
+-- | the page come from the real passes (`Graphviz.Layout.Rank`,
+-- | `Graphviz.Layout.Order`, and the coordinates in this module).
+-- |
+-- | An edge is a smooth curve from its tail's outline to its head's,
+-- | through the places the ordering kept for it in the ranks between. It
+-- | is not yet routed round what lies beside those places, so a curve can
+-- | clip a node or a cluster it passes.
 module Graphviz.Layout
   ( Drawing
   , Point
@@ -27,17 +28,23 @@ module Graphviz.Layout
   , layout
   , layoutWith
   , draw
+  , Outline(..)
+  , outlineOf
+  , leaving
   ) where
 
 import Prelude
 
 import Data.Array as Array
 import Data.Either (Either(..))
-import Data.Foldable (foldl, maximum, minimum)
-import Data.Int (toNumber)
+import Data.Foldable (any, foldl, maximum, minimum, sum)
+import Data.Int (ceil, toNumber)
 import Data.Map (Map)
 import Data.Map as Map
 import Data.Maybe (Maybe(..))
+import Data.Number (abs, sqrt)
+import Data.Number as Number
+import Data.Set as Set
 import Data.String as String
 import Data.Tuple (Tuple(..))
 import Graphviz.Attributes (Attributes)
@@ -46,7 +53,8 @@ import Graphviz.Dot.Parser (parse)
 import Graphviz.Dot.Syntax (text)
 import Graphviz.Graph (EdgeId, Graph, NodeName(..), SubgraphId, fromDot)
 import Graphviz.Graph as Graph
-import Graphviz.Layout.Order (Vertex(..), layered, order)
+import Graphviz.Layout.NetworkSimplex (Requirement, solve, value)
+import Graphviz.Layout.Order (Link, Vertex(..), layered, order)
 import Graphviz.Layout.Rank (Rank(..), describe, rank, rankOf, ranking, reversed)
 
 type Point = { x :: Number, y :: Number }
@@ -58,7 +66,11 @@ type Box = { centre :: Point, width :: Number, height :: Number }
 -- | one, otherwise its name.
 type DrawnNode = { name :: NodeName, label :: String, box :: Box, attributes :: Attributes }
 
--- | `path` runs from the tail node to the head node. `turned` says the
+-- | `path` runs from the tail node's outline to the head node's, as the
+-- | control points of cubic Bezier pieces joined end to end: the start,
+-- | then three points for each piece (two to steer by and the point where
+-- | the piece ends), which is how Graphviz writes an edge's `pos`.
+-- | `labelAt` is the centre of the edge's label, if it has one. `turned` says the
 -- | layout had to run this edge against the flow to break a cycle, so it
 -- | points up the page; it is still drawn from tail to head.
 type DrawnEdge =
@@ -66,17 +78,26 @@ type DrawnEdge =
   , tail :: NodeName
   , head :: NodeName
   , path :: Array Point
+  , labelAt :: Maybe Point
   , turned :: Boolean
   , attributes :: Attributes
   }
 
 type DrawnCluster = { id :: SubgraphId, label :: Maybe String, box :: Box, attributes :: Attributes }
 
+-- | `width`, `height` and every place in the drawing are in points at
+-- | full size. `scale` is what the graph's `size` attribute asks the whole
+-- | picture to be shown at, 1 when it asks nothing: Graphviz shrinks a
+-- | drawing that is larger than `size` (in inches) to fit it, and with
+-- | `size="w,h!"` enlarges a smaller one too. The layout leaves that to
+-- | whoever draws, so that text is still measured at its real size.
+-- |
 -- | Clusters are in drawing order: an outer cluster comes before the ones
 -- | inside it.
 type Drawing =
   { width :: Number
   , height :: Number
+  , scale :: Number
   , directed :: Boolean
   , nodes :: Array DrawnNode
   , edges :: Array DrawnEdge
@@ -121,21 +142,170 @@ draw options graph = case rank graph of
       arranged = order (layered graph (rankOf ranks))
     in
       Right (place options graph (\node -> case rankOf ranks node of
-        Rank r -> r) (reversed solved) arranged.ranks arranged.clusters)
+        Rank r -> r) (reversed solved) arranged.ranks arranged.links arranged.clusters)
 
--- The interim geometry.
+-- | The outlines an edge can end on. Graphviz has many more shapes; each
+-- | is taken as the nearest of these.
+data Outline = Ellipse | DoubleEllipse | Rectangle | Diamond | NoOutline
+
+outlineOf :: Attributes -> Outline
+outlineOf attributes = case Attributes.lookup "shape" attributes of
+  Just "box" -> Rectangle
+  Just "rect" -> Rectangle
+  Just "rectangle" -> Rectangle
+  Just "square" -> Rectangle
+  Just "Msquare" -> Rectangle
+  Just "record" -> Rectangle
+  Just "Mrecord" -> Rectangle
+  Just "component" -> Rectangle
+  Just "folder" -> Rectangle
+  Just "tab" -> Rectangle
+  Just "note" -> Rectangle
+  Just "diamond" -> Diamond
+  Just "Mdiamond" -> Diamond
+  Just "doublecircle" -> DoubleEllipse
+  Just "doubleoctagon" -> DoubleEllipse
+  Just "plaintext" -> NoOutline
+  Just "plain" -> NoOutline
+  Just "none" -> NoOutline
+  _ -> Ellipse
+
+-- | Where a line from a node's centre towards a point leaves its outline.
+-- | A point inside the outline gives the centre.
+leaving :: DrawnNode -> Point -> Point
+leaving found towards =
+  let
+    box = found.box
+    across = towards.x - box.centre.x
+    down = towards.y - box.centre.y
+    halfWidth = box.width / 2.0
+    halfHeight = box.height / 2.0
+    boxReach = min (if across == 0.0 then 1.0e300 else halfWidth / abs across) (if down == 0.0 then 1.0e300 else halfHeight / abs down)
+    reach = case outlineOf found.attributes of
+      Diamond -> 1.0 / (abs across / halfWidth + abs down / halfHeight)
+      Rectangle -> boxReach
+      NoOutline -> boxReach
+      Ellipse -> 1.0 / sqrt ((across / halfWidth) * (across / halfWidth) + (down / halfHeight) * (down / halfHeight))
+      DoubleEllipse -> 1.0 / sqrt ((across / halfWidth) * (across / halfWidth) + (down / halfHeight) * (down / halfHeight))
+  in
+    if across == 0.0 && down == 0.0 || reach >= 1.0 then box.centre
+    else { x: box.centre.x + across * reach, y: box.centre.y + down * reach }
+
+-- The last pass: each edge's run of points, node centre to bends to node
+-- centre, becomes a curve between the two outlines. An edge from a node
+-- to itself is a curve already.
+curved :: Options -> Boolean -> Drawing -> Drawing
+curved options sideways drawing = drawing { edges = map bend drawing.edges }
+  where
+  nodesByName = Map.fromFoldable (map (\node -> Tuple node.name node) drawing.nodes)
+
+  bend found =
+    if found.tail == found.head then case Map.lookup found.tail nodesByName of
+      Just node -> loop node found
+      Nothing -> found
+    else found { path = smooth (trimmed found) }
+
+  -- An edge from a node to itself: a loop on the node's right, or on top
+  -- when the drawing runs left to right. A node's loops are put one
+  -- outside the other, and the label goes just beyond its loop.
+  loop node found =
+    let
+      earlier = Array.length (Array.takeWhile (\other -> other.id /= found.id) (Array.filter (\other -> other.tail == found.tail && other.head == found.tail) drawing.edges))
+      reach = 18.0 + 22.0 * toNumber earlier
+      box = node.box
+      written = Attributes.lookup "label" found.attributes
+    in
+      if sideways then
+        let
+          top = box.centre.y - box.height / 2.0
+          start = leaving node { x: box.centre.x - box.width / 4.0, y: box.centre.y - box.height }
+          end = leaving node { x: box.centre.x + box.width / 4.0, y: box.centre.y - box.height }
+        in
+          found
+            { path = [ start, { x: start.x - 6.0, y: top - reach * 1.3 }, { x: end.x + 6.0, y: top - reach * 1.3 }, end ]
+            , labelAt = map (\text -> { x: box.centre.x, y: top - reach - (options.measure text).height / 2.0 }) written
+            }
+      else
+        let
+          right = box.centre.x + box.width / 2.0
+          start = leaving node { x: box.centre.x + box.width, y: box.centre.y - box.height / 2.0 }
+          end = leaving node { x: box.centre.x + box.width, y: box.centre.y + box.height / 2.0 }
+        in
+          found
+            { path = [ start, { x: right + reach * 1.3, y: start.y - 6.0 }, { x: right + reach * 1.3, y: end.y + 6.0 }, end ]
+            , labelAt = map (\text -> { x: right + reach + 4.0 + (options.measure text).width / 2.0, y: box.centre.y }) written
+            }
+
+  trimmed found = case Array.uncons found.path, Array.unsnoc found.path of
+    Just first, Just last | Array.length found.path >= 2 ->
+      let
+        start = case Map.lookup found.tail nodesByName, Array.head first.tail of
+          Just node, Just next -> leaving node next
+          _, _ -> first.head
+        end = case Map.lookup found.head nodesByName, Array.last last.init of
+          Just node, Just previous -> leaving node previous
+          _, _ -> last.last
+      in
+        [ start ] <> Array.slice 1 (Array.length found.path - 1) found.path <> [ end ]
+    _, _ -> found.path
+
+-- A curve through every point given. At each point it heads the way from
+-- the point before to the point after, and each piece steers by a third
+-- of its own length, so a short piece beside a long one does not swing
+-- wide. A run of points in a line gives a straight line.
+smooth :: Array Point -> Array Point
+smooth points = case Array.head points of
+  Nothing -> []
+  Just start -> [ start ] <> Array.concat (Array.zipWith piece (Array.range 0 (count - 2)) (Array.drop 1 points))
+  where
+  count = Array.length points
+  at index = case Array.index points (max 0 (min (count - 1) index)) of
+    Just found -> found
+    Nothing -> { x: 0.0, y: 0.0 }
+  heading index =
+    let
+      across = (at (index + 1)).x - (at (index - 1)).x
+      down = (at (index + 1)).y - (at (index - 1)).y
+      length = sqrt (across * across + down * down)
+    in
+      if length == 0.0 then { x: 0.0, y: 0.0 } else { x: across / length, y: down / length }
+  piece index end =
+    if count < 2 then []
+    else
+      let
+        from = at index
+        third = sqrt ((end.x - from.x) * (end.x - from.x) + (end.y - from.y) * (end.y - from.y)) / 3.0
+      in
+        [ { x: from.x + (heading index).x * third, y: from.y + (heading index).y * third }
+        , { x: end.x - (heading (index + 1)).x * third, y: end.y - (heading (index + 1)).y * third }
+        , end
+        ]
+
+-- What the optimisation across the page chooses a number for.
+data Across
+  = Centre Vertex
+  | Pull Int Int
+  | LeftSide SubgraphId
+  | RightSide SubgraphId
+
+derive instance eqAcross :: Eq Across
+derive instance ordAcross :: Ord Across
+
+-- The geometry.
 place
   :: Options
   -> Graph
   -> (NodeName -> Int)
   -> Array EdgeId
   -> Array (Array Vertex)
+  -> Array (Array Link)
   -> Map Vertex (Array SubgraphId)
   -> Drawing
-place options graph rankNumber turned ranks inClusters =
-  turnedRound
+place options graph rankNumber turned ranks links inClusters =
+  fitted $ curved options sideways $ turnedRound
     { width: extent.width
     , height: extent.height
+    , scale: 1.0
     , directed: Graph.isDirected graph
     , nodes: map (\node -> { name: node.name, label: labelOf node, box: boxOf (Node node.name), attributes: node.attributes }) (Graph.nodes graph)
     , edges: map edge (Graph.edges graph)
@@ -152,65 +322,190 @@ place options graph rankNumber turned ranks inClusters =
     Nothing -> nameOf node.name
   nameOf (NodeName written) = text written
 
+  -- `size`: one number of inches for both ways or two with a comma, and
+  -- an exclamation mark to say the drawing should be enlarged to it too.
+  fitted drawing = case Attributes.lookup "size" (Graph.attributes graph) of
+    Nothing -> drawing
+    Just written ->
+      let
+        enlarge = String.contains (String.Pattern "!") written
+        inches = Array.mapMaybe (String.trim >>> Number.fromString) (String.split (String.Pattern ",") (String.replaceAll (String.Pattern "!") (String.Replacement "") written))
+        fit = case inches of
+          [ both ] -> Just (min (both * 72.0 / drawing.width) (both * 72.0 / drawing.height))
+          [ wide, high ] -> Just (min (wide * 72.0 / drawing.width) (high * 72.0 / drawing.height))
+          _ -> Nothing
+      in
+        case fit of
+          Just factor | factor > 0.0 && (factor < 1.0 || enlarge) -> drawing { scale = factor }
+          _ -> drawing
+
+  -- The drawing is made top to bottom and turned afterwards if `rankdir`
+  -- asks, so until then a size is held the way it will lie once turned.
+  sideways = case Attributes.lookup "rankdir" (Graph.attributes graph) of
+    Just "LR" -> true
+    Just "RL" -> true
+    _ -> false
+  lying size = if sideways then { width: size.height, height: size.width } else size
+
+  -- Labelled edges, by the bend that makes room for their labels: the one
+  -- in the middle rank of the edge. (When any edge has a label the
+  -- ranking puts a rank between every two, so each labelled edge has one.)
+  -- Edges between the same two nodes share a bend and their labels are
+  -- stacked beside it.
+  carried :: Map Vertex (Array { id :: EdgeId, size :: { width :: Number, height :: Number } })
+  carried = foldl carry Map.empty (Graph.edges graph)
+    where
+    carry soFar found = case Attributes.lookup "label" found.attributes of
+      Just written | abs (toNumber (rankNumber found.tail - rankNumber found.head)) >= 2.0 ->
+        Map.insertWith (flip append) (labelBend found) [ { id: found.id, size: options.measure written } ] soFar
+      _ -> soFar
+  labelBend found =
+    let
+      from = rankNumber found.tail
+      to = rankNumber found.head
+    in
+      Bend (if from <= to then found.tail else found.head) (if from <= to then found.head else found.tail) ((from + to) / 2)
+
+  loopsOn name = Array.filter (\found -> found.tail == name && found.head == name) (Graph.edges graph)
+
   -- A node is as big as Graphviz's default (three quarters of an inch by
   -- half an inch) or as its label needs, whichever is more. A bend takes
-  -- up no room of its own.
+  -- up no room unless it carries labels.
   sizeOf = case _ of
-    Bend _ _ _ -> { width: 0.0, height: 0.0 }
+    Bend upper lower at -> case Map.lookup (Bend upper lower at) carried of
+      Just labels -> lying
+        { width: foldl (\widest label -> max widest label.size.width) 0.0 labels + 6.0
+        , height: sum (map (_.size.height) labels)
+        }
+      Nothing -> { width: 0.0, height: 0.0 }
     Node name -> case Map.lookup name nodesByName of
-      Nothing -> { width: 54.0, height: 36.0 }
+      Nothing -> lying { width: 54.0, height: 36.0 }
       Just node ->
         let
           needed = options.measure (labelOf node)
         in
-          { width: max 54.0 (needed.width + 16.0), height: max 36.0 (needed.height + 16.0) }
+          lying { width: max 54.0 (needed.width + 16.0), height: max 36.0 (needed.height + 16.0) }
 
-  -- Each rank is laid out left to right from 0, then centred on the
-  -- widest; ranks are stacked with the rank separation between them.
-  rows = map
-    ( \vertices ->
+  -- How far a vertex reaches each side of its centre. A node is centred,
+  -- with room on one side for edges from it to itself. A bend with labels
+  -- has them all on its right, so that the edge runs down their left.
+  loopRoom name = sum
+    ( map
+        ( \found -> 22 + case Attributes.lookup "label" found.attributes of
+            Just written | not sideways -> ceil (options.measure written).width
+            _ -> 0
+        )
+        (loopsOn name)
+    )
+  leftHalf = case _ of
+    Node name -> ceil ((sizeOf (Node name)).width / 2.0) + (if sideways then loopRoom name else 0)
+    Bend _ _ _ -> 0
+  rightHalf = case _ of
+    Node name -> ceil ((sizeOf (Node name)).width / 2.0) + (if sideways then 0 else loopRoom name)
+    bend -> ceil (sizeOf bend).width
+
+  -- Across the page. Every vertex gets a whole number of points for its
+  -- centre, chosen by the same optimisation that chose the ranks (section
+  -- 4.2 of the paper):
+  --
+  --   - neighbours in a rank stay apart by half their widths and the node
+  --     separation, and keep their order;
+  --   - each edge between two ranks pulls its ends towards being one above
+  --     the other, harder between two bends than between two nodes, so
+  --     that long edges run straight;
+  --   - each cluster has a left and a right side, which stay outside
+  --     everything in it and outside its neighbours, and pull together.
+  separation = ceil options.nodeSeparation
+  room = 8
+  pathOf vertex = case Map.lookup vertex inClusters of
+    Just path -> path
+    Nothing -> []
+
+  requirements :: Array (Requirement Across)
+  requirements = Array.concat
+    [ Array.concatMap (\vertices -> Array.zipWith neighbours vertices (Array.drop 1 vertices)) ranks
+    , Array.concat (Array.mapWithIndex (\upper -> Array.concat <<< Array.mapWithIndex (pull upper)) links)
+    , Array.concatMap within (Map.toUnfoldable inClusters)
+    , Array.concatMap nested (Set.toUnfoldable nestings)
+    , map (\inner -> { tail: LeftSide inner, head: RightSide inner, weight: 4, minimum: 0 }) (Set.toUnfoldable (Set.fromFoldable (Array.concat (Array.fromFoldable (Map.values inClusters)))))
+    ]
+
+  -- Where the two part company in the nesting of clusters decides whose
+  -- sides have to stay apart.
+  neighbours left right =
+    let
+      shared = Array.length (Array.takeWhile identity (Array.zipWith eq (pathOf left) (pathOf right)))
+    in
+      case Array.index (pathOf left) shared, Array.index (pathOf right) shared of
+        Just from, Just entering -> { tail: RightSide from, head: LeftSide entering, weight: 0, minimum: separation }
+        Just from, Nothing -> { tail: RightSide from, head: Centre right, weight: 0, minimum: leftHalf right + separation }
+        Nothing, Just entering -> { tail: Centre left, head: LeftSide entering, weight: 0, minimum: rightHalf left + separation }
+        Nothing, Nothing -> { tail: Centre left, head: Centre right, weight: 0, minimum: rightHalf left + leftHalf right + separation }
+
+  -- A variable that must be left of both ends: the cost of its two
+  -- requirements together is how far apart the ends are.
+  pull upper index link =
+    let
+      weight = stiffness link * max 1 link.count
+    in
+      [ { tail: Pull upper index, head: Centre link.upper, weight, minimum: 0 }
+      , { tail: Pull upper index, head: Centre link.lower, weight, minimum: 0 }
+      ]
+  stiffness link = case link.upper, link.lower of
+    Bend _ _ _, Bend _ _ _ -> 8
+    Node _, Node _ -> 1
+    _, _ -> 2
+
+  within (Tuple vertex path) = case Array.last path of
+    Just innermost ->
+      [ { tail: LeftSide innermost, head: Centre vertex, weight: 0, minimum: leftHalf vertex + room }
+      , { tail: Centre vertex, head: RightSide innermost, weight: 0, minimum: rightHalf vertex + room }
+      ]
+    Nothing -> []
+  nestings = Set.fromFoldable (Array.concatMap (\path -> Array.zip path (Array.drop 1 path)) (Array.fromFoldable (Map.values inClusters)))
+  nested (Tuple outer inner) =
+    [ { tail: LeftSide outer, head: LeftSide inner, weight: 0, minimum: room }
+    , { tail: RightSide inner, head: RightSide outer, weight: 0, minimum: room }
+    ]
+
+  across = (solve requirements).assignment
+  -- Everything is moved so that the leftmost thing sits at the margin.
+  leftmost = foldl min 0
+    ( map (\vertex -> value across (Centre vertex) - leftHalf vertex) (Array.concat ranks)
+        <> map (\inner -> value across (LeftSide inner)) (Array.concat (Array.fromFoldable (Map.values inClusters)))
+    )
+  rightmost = foldl max 0
+    ( map (\vertex -> value across (Centre vertex) + rightHalf vertex) (Array.concat ranks)
+        <> map (\inner -> value across (RightSide inner)) (Array.concat (Array.fromFoldable (Map.values inClusters)))
+    )
+  xOf variable = margin + toNumber (value across variable - leftmost)
+
+  -- Down the page: ranks are stacked with the rank separation between
+  -- them, each as tall as its tallest node. When edges have labels there
+  -- are twice the ranks, at half the separation.
+  rankGap = if any (_.attributes >>> Attributes.hasLabel) (Graph.edges graph) then options.rankSeparation / 2.0 else options.rankSeparation
+  stacked = foldl
+    ( \state vertices ->
         let
-          laid = foldl
-            ( \state vertex ->
-                let
-                  size = sizeOf vertex
-                in
-                  { next: state.next + size.width + options.nodeSeparation
-                  , found: Array.snoc state.found { vertex, left: state.next, size }
-                  }
-            )
-            { next: 0.0, found: [] }
-            vertices
+          height = foldl (\tallest vertex -> max tallest (sizeOf vertex).height) 0.0 vertices
         in
-          { items: laid.found
-          , width: max 0.0 (laid.next - options.nodeSeparation)
-          , height: foldl (\tallest item -> max tallest item.size.height) 0.0 laid.found
+          { top: state.top + height + rankGap
+          , found: Array.snoc state.found { vertices, top: state.top, height }
           }
     )
-    ranks
-  widest = foldl (\most row -> max most row.width) 0.0 rows
-  stacked = foldl
-    ( \state row ->
-        { top: state.top + row.height + options.rankSeparation
-        , found: Array.snoc state.found { row, top: state.top }
-        }
-    )
     { top: margin, found: [] }
-    rows
+    ranks
   boxes :: Map Vertex Box
   boxes = Map.fromFoldable
     ( Array.concatMap
-        ( \placed -> map
-            ( \item -> Tuple item.vertex
-                { centre:
-                    { x: margin + (widest - placed.row.width) / 2.0 + item.left + item.size.width / 2.0
-                    , y: placed.top + placed.row.height / 2.0
-                    }
-                , width: item.size.width
-                , height: item.size.height
+        ( \row -> map
+            ( \vertex -> Tuple vertex
+                { centre: { x: xOf (Centre vertex), y: row.top + row.height / 2.0 }
+                , width: (sizeOf vertex).width
+                , height: (sizeOf vertex).height
                 }
             )
-            placed.row.items
+            row.vertices
         )
         stacked.found
     )
@@ -218,8 +513,8 @@ place options graph rankNumber turned ranks inClusters =
     Just found -> found
     Nothing -> { centre: { x: 0.0, y: 0.0 }, width: 0.0, height: 0.0 }
   extent =
-    { width: widest + 2.0 * margin
-    , height: max (2.0 * margin) (stacked.top - options.rankSeparation + margin)
+    { width: toNumber (rightmost - leftmost) + 2.0 * margin
+    , height: max (2.0 * margin) (stacked.top - rankGap + margin)
     }
 
   -- An edge goes from its tail to its head through the bends between
@@ -230,8 +525,27 @@ place options graph rankNumber turned ranks inClusters =
     , head: found.head
     , turned: Array.elem found.id turned
     , attributes: found.attributes
+    , labelAt:
+        if found.tail == found.head || not (Attributes.hasLabel found.attributes) then Nothing
+        else case Map.lookup (labelBend found) carried of
+          Just labels ->
+            let
+              bend = boxOf (labelBend found)
+              before = sum (map (_.size.height) (Array.takeWhile (\label -> label.id /= found.id) labels))
+              mine = sum (map (_.size.height) (Array.filter (\label -> label.id == found.id) labels))
+            in
+              Just
+                ( if sideways then { x: bend.centre.x + before + mine / 2.0, y: bend.centre.y }
+                  else { x: bend.centre.x + bend.width / 2.0, y: bend.centre.y - bend.height / 2.0 + before + mine / 2.0 }
+                )
+          Nothing ->
+            let
+              from = (boxOf (Node found.tail)).centre
+              to = (boxOf (Node found.head)).centre
+            in
+              Just { x: (from.x + to.x) / 2.0, y: (from.y + to.y) / 2.0 - 8.0 }
     , path:
-        if found.tail == found.head then loop (boxOf (Node found.tail))
+        if found.tail == found.head then []
         else
           let
             from = rankNumber found.tail
@@ -244,13 +558,6 @@ place options graph rankNumber turned ranks inClusters =
           in
             map (boxOf >>> _.centre) between
     }
-  loop box =
-    [ { x: box.centre.x + box.width / 2.0, y: box.centre.y - box.height / 4.0 }
-    , { x: box.centre.x + box.width / 2.0 + 18.0, y: box.centre.y - box.height / 4.0 }
-    , { x: box.centre.x + box.width / 2.0 + 18.0, y: box.centre.y + box.height / 4.0 }
-    , { x: box.centre.x + box.width / 2.0, y: box.centre.y + box.height / 4.0 }
-    ]
-
   -- A cluster's box goes round everything in it, with a little room, and
   -- more room the more clusters it has inside it.
   cluster subgraph =
@@ -263,8 +570,8 @@ place options graph rankNumber turned ranks inClusters =
       padding item = 8.0 * toNumber (item.depth - own + 1)
     in
       do
-        left <- minimum (map (\item -> item.box.centre.x - item.box.width / 2.0 - padding item) inside)
-        right <- maximum (map (\item -> item.box.centre.x + item.box.width / 2.0 + padding item) inside)
+        let left = xOf (LeftSide subgraph.id)
+        let right = xOf (RightSide subgraph.id)
         top <- minimum (map (\item -> item.box.centre.y - item.box.height / 2.0 - padding item) inside)
         bottom <- maximum (map (\item -> item.box.centre.y + item.box.height / 2.0 + padding item) inside)
         pure
@@ -277,17 +584,14 @@ place options graph rankNumber turned ranks inClusters =
   -- `rankdir`: the drawing is made top to bottom and then turned.
   turnedRound drawing = case Attributes.lookup "rankdir" (Graph.attributes graph) of
     Just "BT" -> mapPoints (\point -> point { y = drawing.height - point.y }) identity drawing
-    Just "LR" -> sideways (mapPoints (\point -> { x: point.y, y: point.x }) swap drawing)
-    Just "RL" -> sideways (mapPoints (\point -> { x: drawing.height - point.y, y: point.x }) swap drawing)
+    Just "LR" -> onItsSide (mapPoints (\point -> { x: point.y, y: point.x }) swap drawing)
+    Just "RL" -> onItsSide (mapPoints (\point -> { x: drawing.height - point.y, y: point.x }) swap drawing)
     _ -> drawing
-  sideways drawing = drawing { width = drawing.height, height = drawing.width }
+  onItsSide drawing = drawing { width = drawing.height, height = drawing.width }
   swap box = box { width = box.height, height = box.width }
   mapPoints move reshape drawing = drawing
-    { nodes = map (\node -> node { box = keepSize (moveBox move node.box) }) drawing.nodes
-    , edges = map (\found -> found { path = map move found.path }) drawing.edges
+    { nodes = map (\node -> node { box = reshape (moveBox move node.box) }) drawing.nodes
+    , edges = map (\found -> found { path = map move found.path, labelAt = map move found.labelAt }) drawing.edges
     , clusters = map (\found -> found { box = reshape (moveBox move found.box) }) drawing.clusters
     }
   moveBox move box = box { centre = move box.centre }
-  -- A node keeps its shape when the drawing is turned; only its place
-  -- changes.
-  keepSize = identity

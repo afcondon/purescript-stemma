@@ -23,7 +23,7 @@ import Graphviz.Layout (Box, Drawing, Point)
 
 render :: Drawing -> String
 render drawing = joinWith "\n"
-  ( [ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"" <> number drawing.width <> "\" height=\"" <> number drawing.height
+  ( [ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"" <> number (drawing.width * drawing.scale) <> "pt\" height=\"" <> number (drawing.height * drawing.scale) <> "pt"
         <> "\" viewBox=\"0 0 " <> number drawing.width <> " " <> number drawing.height <> "\" font-family=\"Helvetica, Arial, sans-serif\" font-size=\"14\">"
     , "<defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"10\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M 0 0 L 10 5 L 0 10 z\"/></marker></defs>"
     ]
@@ -45,10 +45,13 @@ render drawing = joinWith "\n"
     ]
 
   edge found =
-    "<polyline fill=\"none\" stroke=\"" <> colour "color" "#333" found.attributes <> "\""
+    "<path fill=\"none\" stroke=\"" <> colour "color" "#333" found.attributes <> "\""
       <> (if dashed found.attributes then " stroke-dasharray=\"5,4\"" else "")
       <> (if drawing.directed then " marker-end=\"url(#arrow)\"" else "")
-      <> " points=\"" <> joinWith " " (map point (shortened found.path)) <> "\"/>"
+      <> " d=\"" <> curve found.path <> "\"/>"
+      <> case Attributes.lookup "label" found.attributes, found.labelAt of
+        Just written, Just at -> "<text x=\"" <> number at.x <> "\" y=\"" <> number (at.y + 4.0) <> "\" text-anchor=\"middle\" font-size=\"12\">" <> escape written <> "</text>"
+        _, _ -> ""
 
   node found =
     [ if Attributes.lookup "shape" found.attributes == Just "box" || Attributes.lookup "shape" found.attributes == Just "record" then
@@ -61,16 +64,10 @@ render drawing = joinWith "\n"
 
   paint attributes = "fill=\"" <> colour "fillcolor" "white" attributes <> "\" stroke=\"" <> colour "color" "#333" attributes <> "\""
 
-  -- An edge's path runs centre to centre; stop it a node's half-height
-  -- short at each end so that the arrowhead is not under the node. Good
-  -- enough until edges are routed to the node's outline.
-  shortened path = case Array.uncons path, Array.unsnoc path of
-    Just first, Just last | Array.length path >= 2 ->
-      case Array.head first.tail, Array.last last.init of
-        Just second, Just beforeLast ->
-          [ towards first.head second 18.0 ] <> Array.drop 1 (Array.dropEnd 1 path) <> [ towards last.last beforeLast 18.0 ]
-        _, _ -> path
-    _, _ -> path
+  -- The path is the start and then three points for each piece.
+  curve path = case Array.uncons path of
+    Just first -> "M " <> point first.head <> " C " <> joinWith " " (map point first.tail)
+    Nothing -> ""
 
 -- A point moved a distance towards another, or not at all if they are
 -- closer than that.
