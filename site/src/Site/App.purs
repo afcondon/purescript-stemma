@@ -1,4 +1,5 @@
--- | The page: DOT text on the left, the library's drawing of it on the
+-- | The page: the family tree with its scrubber through the passes, then
+-- | an editor with DOT text on the left, the library's drawing of it on the
 -- | right, and Graphviz's own drawing of a bundled example beside it.
 module Site.App
   ( component
@@ -17,10 +18,12 @@ import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Events as HE
 import Halogen.HTML.Properties as HP
-import Site.Corpus (examples, graphvizVersion)
+import Site.Corpus (examples, familyTree, graphvizVersion)
 import Site.Example (Example, ExampleName(..), Group, groupTitle, groups)
 import Site.Measure as Measure
+import Site.Passes as Passes
 import Site.Picture (TurnedEdges(..), picture)
+import Type.Proxy (Proxy(..))
 
 -- | `generation` counts edits, so that a delayed re-layout can tell
 -- | whether another edit has come in since it was asked for.
@@ -56,6 +59,8 @@ comparison state = case state.chosen of
 settleTime :: Milliseconds
 settleTime = Milliseconds 250.0
 
+type Slots = (passes :: forall query. H.Slot query Void Unit)
+
 component :: forall query input output m. MonadAff m => H.Component query input output m
 component =
   H.mkComponent
@@ -71,7 +76,7 @@ initialState = case Array.head examples of
   Nothing ->
     { written: "", chosen: Nothing, outcome: layoutWith Measure.options "", generation: 0, turnedEdges: Marked }
 
-handleAction :: forall slots output m. MonadAff m => Action -> H.HalogenM State Action slots output m Unit
+handleAction :: forall output m. MonadAff m => Action -> H.HalogenM State Action Slots output m Unit
 handleAction = case _ of
   Choose example -> load example
   Revert -> do
@@ -106,47 +111,72 @@ handleAction = case _ of
       , generation = state.generation + 1
       }
 
-render :: forall m. State -> H.ComponentHTML Action () m
+repository :: String
+repository = "https://github.com/afcondon/purescript-graphviz"
+
+render :: forall m. MonadAff m => State -> H.ComponentHTML Action Slots m
 render state =
   HH.div [ HP.class_ (H.ClassName "page") ]
     [ HH.header [ HP.class_ (H.ClassName "masthead") ]
         [ HH.h1 [ HP.class_ (H.ClassName "title") ] [ HH.text "Graphviz in PureScript" ]
         , HH.p [ HP.class_ (H.ClassName "subtitle") ]
-            [ HH.text "Graphviz’s DOT language and its dot layout, written in PureScript and checked stage by stage against Graphviz. Edit the text; the drawing follows." ]
+            [ HH.text "Graphviz’s DOT language and its dot layout, rewritten in PureScript from the published algorithms, so a graph can be laid out in the browser with no C and no WebAssembly. Each pass of the layout is a separate value, so you can watch a drawing being made." ]
+        , HH.p [ HP.class_ (H.ClassName "masthead__links") ]
+            [ HH.a [ HP.href repository ] [ HH.text "Source on GitHub" ]
+            , HH.text " · MIT licence"
+            ]
         ]
-    -- Outside the masthead so that it can stay pinned to the top of the
-    -- window while the title scrolls away.
-    , status
-    , picker state
-    , HH.main [ HP.class_ (H.ClassName "workspace") ]
-        [ editor state
-        , ourPanel state
-        , graphvizPanel (comparison state)
+    , HH.section [ HP.class_ (H.ClassName "feature") ]
+        [ HH.div [ HP.class_ (H.ClassName "section-head") ]
+            [ HH.h2 [ HP.class_ (H.ClassName "section-title") ] [ HH.text "Fairport Convention, 1967 to 1980" ]
+            , HH.p [ HP.class_ (H.ClassName "section-lede") ]
+                [ HH.text "A rock family tree, drawn by this library in your browser. Step through the four passes of the layout, or press play, and watch the boxes move as each pass does its work." ]
+            ]
+        , HH.slot_ (Proxy :: Proxy "passes") unit Passes.component familyTree
+        ]
+    , HH.section [ HP.class_ (H.ClassName "playground") ]
+        [ HH.div [ HP.class_ (H.ClassName "section-head") ]
+            [ HH.h2 [ HP.class_ (H.ClassName "section-title") ] [ HH.text "Try it" ]
+            , HH.p [ HP.class_ (H.ClassName "section-lede") ]
+                [ HH.text "Choose an example or write your own DOT. The drawing follows as you type." ]
+            ]
+        , status
+        , picker state
+        , HH.div [ HP.class_ (H.ClassName "workspace") ]
+            [ editor state
+            , ourPanel state
+            , graphvizPanel (comparison state)
+            ]
         ]
     , HH.footer [ HP.class_ (H.ClassName "colophon") ]
-        [ HH.text "The bundled examples are from the library’s test corpus; those under “Graphviz’s examples” ship with Graphviz and carry its licence (EPL 1.0)." ]
+        [ HH.p_
+            [ HH.text "Band membership data from "
+            , HH.a [ HP.href "https://musicbrainz.org/" ] [ HH.text "MusicBrainz" ]
+            , HH.text ", whose core data is in the public domain (CC0); thank you to its editors. The idea of a rock family tree is Pete Frame’s, whose hand-drawn trees of the 1970s onwards drew the comings and goings of bands; this one is drawn by a program and makes no attempt to look like his."
+            ]
+        , HH.p_
+            [ HH.text "The other examples are this project’s own. The drawings marked Graphviz are made by the installed Graphviz at build time, from those same files. "
+            , HH.a [ HP.href repository ] [ HH.text "github.com/afcondon/purescript-graphviz" ]
+            ]
+        ]
     ]
 
--- | Always visible: what the reader is looking at, from the README.
+-- | What the reader is looking at, from the README.
 status :: forall w i. HH.HTML w i
 status =
   HH.div [ HP.class_ (H.ClassName "status") ]
     [ HH.p [ HP.class_ (H.ClassName "status__main") ]
-        [ HH.strong_ [ HH.text "Real: " ]
-        , HH.text "which rank each node is on, and the order within each rank, come from the real passes. "
-        , HH.strong_ [ HH.text "Interim: " ]
-        , HH.text "coordinates and edge routing. Each rank is spaced out and centred, and edges are straight pieces through their bends, so node positions and edge shapes will differ from Graphviz’s for now."
-        ]
+        [ HH.text "Ranks, the order within each rank, coordinates and edge routing all come from the real passes. Not yet: cluster boxes are not kept clear of edges, node shapes are reduced to five outlines, and record and HTML labels are sized but not laid out inside." ]
     , HH.p [ HP.class_ (H.ClassName "status__figures") ]
-        [ HH.text "On the library’s corpus, per its README: 864 of 864 rankings proved optimal at every level. Ordering, of 884 graphs: the same number of crossings as dot on 709, fewer on 92, more on 83." ]
+        [ HH.text "On the library’s test corpus of 884 graphs, per its README: every ranking proved optimal; as few crossings as dot or fewer on 801; every drawing keeps the geometry rules (no overlaps, edges end on outlines)." ]
     ]
 
-picker :: forall m. State -> H.ComponentHTML Action () m
+picker :: forall m. State -> H.ComponentHTML Action Slots m
 picker state =
   HH.nav [ HP.class_ (H.ClassName "picker") ]
     (map pickerGroup groups)
   where
-  pickerGroup :: Group -> H.ComponentHTML Action () m
+  pickerGroup :: Group -> H.ComponentHTML Action Slots m
   pickerGroup group =
     HH.div [ HP.class_ (H.ClassName "picker__group") ]
       [ HH.h2 [ HP.class_ (H.ClassName "picker__title") ] [ HH.text (groupTitle group) ]
@@ -169,7 +199,7 @@ picker state =
 nameText :: ExampleName -> String
 nameText (ExampleName written) = written
 
-editor :: forall m. State -> H.ComponentHTML Action () m
+editor :: forall m. State -> H.ComponentHTML Action Slots m
 editor state =
   HH.section [ HP.class_ (H.ClassName "panel panel--editor") ]
     [ HH.div [ HP.class_ (H.ClassName "panel__head") ]
@@ -192,7 +222,7 @@ editor state =
       ]
     NothingChosen -> []
 
-ourPanel :: forall m. State -> H.ComponentHTML Action () m
+ourPanel :: forall m. State -> H.ComponentHTML Action Slots m
 ourPanel state =
   HH.section [ HP.class_ (H.ClassName "panel panel--ours") ]
     ( [ HH.div [ HP.class_ (H.ClassName "panel__head") ]
@@ -220,7 +250,7 @@ ourPanel state =
                     , HH.text "Mark edges turned round to break a cycle (they point up the page)"
                     ]
                 , HH.p [ HP.class_ (H.ClassName "legend__note") ]
-                    [ HH.text "Edge labels are put at the middle of each path by this page; the layout does not place them yet. Hover over a node or edge for its name." ]
+                    [ HH.text "Hover over a node or edge for its name." ]
                 ]
             ]
     )
@@ -238,7 +268,7 @@ ourPanel state =
         )
   count number one many = show number <> " " <> if number == 1 then one else many
 
-graphvizPanel :: forall m. Comparison -> H.ComponentHTML Action () m
+graphvizPanel :: forall m. Comparison -> H.ComponentHTML Action Slots m
 graphvizPanel shown =
   HH.section [ HP.class_ (H.ClassName "panel panel--graphviz") ]
     ( [ HH.div [ HP.class_ (H.ClassName "panel__head") ]

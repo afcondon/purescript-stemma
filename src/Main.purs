@@ -32,7 +32,7 @@ import Graphviz.Attributes as Attributes
 import Graphviz.Dot.Syntax (Text(..))
 import Graphviz.Graph (EdgeId(..), Graph, NodeName(..), SubgraphId(..), fromDot)
 import Graphviz.Graph as Graph
-import Graphviz.Layout (DrawnCluster, DrawnEdge, DrawnNode, layout)
+import Graphviz.Layout (DrawnCluster, DrawnEdge, DrawnNode, Stage(..), defaults, drawAt, layout)
 import Graphviz.Layout.NetworkSimplex (value)
 import Graphviz.Layout.Order (Vertex(..), backwards, backwardsBetweenClusters, crossings, layered, order, split)
 import Graphviz.Svg (render)
@@ -69,6 +69,12 @@ main = do
       writeTextFile UTF8 (directory <> "/" <> baseName file <> ".svg") case layout text of
         Left problem -> "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"600\" height=\"40\"><text x=\"8\" y=\"24\">" <> problem <> "</text></svg>"
         Right drawing -> render drawing
+    [ "stages", directory ], files -> for_ files \file -> do
+      text <- readText file
+      for_ [ Tuple "1-ranked" Ranked, Tuple "2-ordered" Ordered, Tuple "3-positioned" Positioned, Tuple "4-routed" Routed ] \(Tuple name stage) ->
+        writeTextFile UTF8 (directory <> "/" <> baseName file <> "." <> name <> ".svg") case parse text >>= (fromDot >>> drawAt stage defaults) of
+          Left problem -> "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"600\" height=\"40\"><text x=\"8\" y=\"24\">" <> problem <> "</text></svg>"
+          Right drawing -> render drawing
     [ "geometry", directory ], files -> for_ files \file -> do
       text <- readText file
       write directory file case layout text of
@@ -91,7 +97,7 @@ main = do
               drawing.edges))
           , Tuple "clusters" (fromArray (map (\(found :: DrawnCluster) -> boxJson found.box) drawing.clusters))
           ]
-    _, _ -> log "usage: (read | rank | order | draw | geometry) <output directory> <file.gv>..."
+    _, _ -> log "usage: (read | rank | order | draw | stages | geometry) <output directory> <file.gv>..."
   where
   nameJson (NodeName written) = textJson written
   pointJson at = fromArray [ fromNumber at.x, fromNumber at.y ]

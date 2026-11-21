@@ -1,9 +1,11 @@
 /* Swiss style: one sans-serif family, a strict grid, black on white, one
-   accent. Hierarchy comes from size and weight, not from boxes or shadows. */
+   accent. Hierarchy comes from size and weight, not from boxes or shadows.
+   System fonts only: the layout measures text with the page's own font, and
+   a web font arriving late would change the sizes under a finished drawing. */
 
 :root {
   --ink: #1a1a1a;
-  --quiet: #6b6b6b;
+  --quiet: #666666;
   --rule: #d9d9d9;
   --paper: #ffffff;
   --wash: #f5f5f3;
@@ -25,42 +27,244 @@ html, body {
   line-height: 1.45;
 }
 
+a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--accent); }
+
 .page {
-  max-width: 1800px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 var(--gutter) var(--gutter);
 }
 
+/* Masthead ---------------------------------------------------------- */
+
 .masthead {
-  padding: 28px 0 0;
+  padding: 48px 0 32px;
+  border-bottom: 2px solid var(--ink);
 }
 
 .title {
   margin: 0;
-  font-size: 40px;
+  font-size: 56px;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
+  letter-spacing: -0.025em;
+  line-height: 1;
 }
 
 .subtitle {
-  margin: 8px 0 16px;
-  max-width: 62em;
-  font-size: 17px;
-  color: var(--ink);
+  margin: 20px 0 0;
+  max-width: 40em;
+  font-size: 19px;
+  line-height: 1.4;
 }
 
-/* Pinned, so that what the reader is looking at is always stated. */
-.status {
+.masthead__links {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: var(--quiet);
+}
+
+.masthead__links a { font-weight: 700; }
+
+/* Sections ---------------------------------------------------------- */
+
+.feature,
+.playground {
+  padding-top: 40px;
+}
+
+.playground {
+  margin-top: 56px;
+  border-top: 2px solid var(--ink);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--gutter);
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.section-lede {
+  margin: 0;
+  max-width: 34em;
+  font-size: 16px;
+}
+
+/* The passes -------------------------------------------------------- */
+
+/* The tree is taller than a screen, so the steps and what each one did
+   stay at the top of the window while it scrolls beneath them. */
+.passes__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 12px;
   position: sticky;
   top: 0;
   z-index: 2;
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 8px var(--gutter);
-  padding: 10px 0;
+  padding-top: 8px;
   background: var(--paper);
-  border-top: 2px solid var(--ink);
+}
+
+.play {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 96px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+}
+
+.play:hover { background: var(--accent); }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  flex: 1 1 480px;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.step {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  padding: 10px 12px 10px 0;
+  font: inherit;
+  font-size: 15px;
+  text-align: left;
+  border: 0;
+  border-top: 3px solid transparent;
+  margin-top: -2px;
+  border-radius: 0;
+  background: none;
+  color: var(--quiet);
+  cursor: pointer;
+}
+
+.step:hover { color: var(--ink); }
+
+.step--shown {
+  border-top-color: var(--ink);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.step__number {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.passes__caption {
+  min-height: 3em;
+  margin: 0;
+  padding: 14px 0;
+  font-size: 17px;
+  line-height: 1.4;
+  position: sticky;
+  top: 50px;
+  z-index: 2;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.passes__frame {
+  overflow-x: auto;
+  border-bottom: 1px solid var(--rule);
+  padding: 16px 0;
+}
+
+/* Drawn a little under full size, so that more of it is in view. */
+.passes__frame svg {
+  display: block;
+  margin: 0 auto;
+  max-width: min(100%, 880px);
+  height: auto;
+}
+
+/* Each box glides to its place in the next pass. The lines of a pass are
+   new elements, and fade in once the boxes have mostly arrived. */
+.glide {
+  transition: transform 900ms cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.passes__lines {
+  animation: arrive 450ms ease-out 650ms both;
+}
+
+@keyframes arrive {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glide { transition: none; }
+  .passes__lines { animation: none; }
+}
+
+.passes__legend {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--gutter);
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.bands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.band {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.band__swatch {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  border: 2px solid;
+  border-radius: 3px;
+}
+
+.passes__note {
+  margin: 0;
+  color: var(--quiet);
+}
+
+/* Status ------------------------------------------------------------ */
+
+.status {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px var(--gutter);
+  padding: 12px 0;
+  border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
 }
 
@@ -68,15 +272,13 @@ html, body {
 
 .status__main { font-size: 14px; }
 
-.status__main strong { font-weight: 700; }
-
 .status__figures { font-size: 13px; color: var(--quiet); }
 
 /* Picker ------------------------------------------------------------ */
 
 .picker {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 1.4fr) minmax(0, 1.4fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--gutter);
   padding: 20px 0;
   border-bottom: 1px solid var(--rule);
@@ -96,7 +298,7 @@ html, body {
 .picker__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 4px;
+  gap: 4px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -122,25 +324,43 @@ html, body {
   color: var(--paper);
 }
 
-/* Workspace: editor | ours | Graphviz's, two columns at laptop width. */
+/* Workspace: editor | ours | Graphviz's at full width, two columns below. */
 
 .workspace {
   display: grid;
-  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr) minmax(0, 1.2fr);
   gap: var(--gutter);
   padding-top: 20px;
   align-items: start;
 }
 
-@media (max-width: 1500px) {
-  .workspace { grid-template-columns: minmax(300px, 1fr) minmax(0, 2fr); }
+@media (max-width: 1300px) {
+  .workspace { grid-template-columns: minmax(280px, 1fr) minmax(0, 2fr); }
   .panel--editor { grid-row: span 2; }
 }
 
 @media (max-width: 860px) {
-  .workspace, .status, .picker { grid-template-columns: minmax(0, 1fr); }
+  :root { --gutter: 16px; }
+  .workspace, .status, .picker, .section-head, .passes__legend { grid-template-columns: minmax(0, 1fr); }
   .panel--editor { grid-row: auto; }
-  .title { font-size: 30px; }
+  .masthead { padding: 28px 0 20px; }
+  .title { font-size: 36px; }
+  .subtitle { font-size: 17px; }
+  .section-title { font-size: 26px; }
+  .section-head { gap: 8px; }
+  .editor { min-height: 40vh; }
+  .playground { margin-top: 40px; }
+  /* Too small to read at the width of a phone: shown at a legible size,
+     and the frame scrolls sideways. */
+  .passes__frame svg { max-width: none; width: 720px; }
+}
+
+@media (max-width: 520px) {
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* The steps take two rows here, so only they stay in view. */
+  .passes__caption { position: static; }
+  .play { width: 100%; }
+  .step { font-size: 14px; }
 }
 
 .panel { min-width: 0; }
@@ -210,11 +430,11 @@ html, body {
 
 .arrowhead { fill: var(--ink); fill: context-stroke; }
 
-.node-label { font-size: 14px; }
+/* Label sizes are set on each element from the DOT file's fontsize, to
+   match the room the layout made; only the weight is the stylesheet's. */
+.cluster-label { font-weight: 700; }
 
-.edge-label { font-size: 11px; }
-
-.cluster-label { font-size: 12px; font-weight: 700; }
+.edge-label { fill-opacity: 0.85; }
 
 .edge--turned polyline { stroke-width: 1.6; }
 
@@ -263,9 +483,18 @@ html, body {
 }
 
 .colophon {
-  margin-top: 40px;
-  padding-top: 12px;
-  border-top: 1px solid var(--rule);
-  font-size: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--gutter);
+  margin-top: 56px;
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+  font-size: 13px;
   color: var(--quiet);
+}
+
+.colophon p { margin: 0; max-width: 40em; }
+
+@media (max-width: 860px) {
+  .colophon { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 }

@@ -1,0 +1,63 @@
+// The ancestors of Charles II of Spain (1661-1700), five generations up.
+//
+// A family tree drawn upwards from one person should double at every
+// generation: 2 parents, 4 grandparents, 8, 16, 32. This one does not.
+// His parents were uncle and niece, and the same few couples turn up again
+// and again, so the "tree" folds back on itself into a net. Each small dot
+// is a marriage; the lines below it go to its children.
+//
+// Charles II's inbreeding coefficient, computed over a pedigree sixteen
+// generations deep, is 0.254: about what a child of a brother and sister
+// would have (Alvarez, Ceballos and Quinteiro, "The Role of Inbreeding in
+// the Extinction of a European Royal Dynasty", PLoS ONE 4(4): e5174, 2009).
+//
+// Parents and great-great-grandparents as in the ancestry table of
+// https://en.wikipedia.org/wiki/Charles_II_of_Spain; the parents of
+// Charles V and Ferdinand I, of Maria of Austria, of Maximilian II, of
+// Anna of Austria (1528) and of William V from their own Wikipedia pages.
+digraph habsburg {
+  ranksep=0.35; nodesep=0.2;
+  node [shape=box, style=rounded, fontsize=11];
+  edge [dir=none, color="#666666"];
+
+  "Charles II"      [label="Charles II of Spain\n1661–1700", style="rounded,filled,bold", color="#c0392b", fillcolor="#fbe9e7"];
+  "Philip IV"       [label="Philip IV of Spain\n1605–1665"];
+  "Mariana"         [label="Mariana of Austria\n1634–1696"];
+  "Philip III"      [label="Philip III of Spain\n1578–1621"];
+  "Margaret"        [label="Margaret of Austria\n1584–1611"];
+  "Ferdinand III"   [label="Ferdinand III, Emperor\n1608–1657"];
+  "Maria Anna S"    [label="Maria Anna of Spain\n1606–1646"];
+  "Philip II"       [label="Philip II of Spain\n1527–1598"];
+  "Anna 1549"       [label="Anna of Austria\n1549–1580"];
+  "Charles Arch"    [label="Charles II, Archduke\nof Austria, 1540–1590"];
+  "Maria Anna 1551" [label="Maria Anna of Bavaria\n1551–1608"];
+  "Ferdinand II"    [label="Ferdinand II, Emperor\n1578–1637"];
+  "Maria Anna 1574" [label="Maria Anna of Bavaria\n1574–1616"];
+  "Charles V"       [label="Charles V, Emperor\n1500–1558"];
+  "Isabella"        [label="Isabella of Portugal\n1503–1539"];
+  "Maximilian II"   [label="Maximilian II, Emperor\n1527–1576"];
+  "Maria 1528"      [label="Maria of Austria\n1528–1603"];
+  "Ferdinand I"     [label="Ferdinand I, Emperor\n1503–1564"];
+  "Anna BH"         [label="Anna of Bohemia\nand Hungary, 1503–1547"];
+  "Albert V"        [label="Albert V, Duke\nof Bavaria, 1528–1579"];
+  "Anna 1528"       [label="Anna of Austria\n1528–1590"];
+  "William V"       [label="William V, Duke\nof Bavaria, 1548–1626"];
+  "Renata"          [label="Renata of Lorraine\n1544–1602"];
+  "Philip I"        [label="Philip I of Castile\n1478–1506"];
+  "Joanna"          [label="Joanna of Castile\n1479–1555"];
+
+  // Marriages, as points: husband and wife above, children below.
+  node [shape=point, width=0.08, color="#666666"];
+  { "Philip I" "Joanna" } -> m1;            m1 -> { "Charles V" "Ferdinand I" };
+  { "Charles V" "Isabella" } -> m2;         m2 -> { "Philip II" "Maria 1528" };
+  { "Ferdinand I" "Anna BH" } -> m3;        m3 -> { "Maximilian II" "Anna 1528" "Charles Arch" };
+  { "Maximilian II" "Maria 1528" } -> m4;   m4 -> "Anna 1549";
+  { "Albert V" "Anna 1528" } -> m5;         m5 -> { "Maria Anna 1551" "William V" };
+  { "Philip II" "Anna 1549" } -> m6;        m6 -> "Philip III";
+  { "Charles Arch" "Maria Anna 1551" } -> m7; m7 -> { "Margaret" "Ferdinand II" };
+  { "William V" "Renata" } -> m8;           m8 -> "Maria Anna 1574";
+  { "Philip III" "Margaret" } -> m9;        m9 -> { "Philip IV" "Maria Anna S" };
+  { "Ferdinand II" "Maria Anna 1574" } -> m10; m10 -> "Ferdinand III";
+  { "Ferdinand III" "Maria Anna S" } -> m11; m11 -> "Mariana";
+  { "Philip IV" "Mariana" } -> m12;         m12 -> "Charles II";
+}

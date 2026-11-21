@@ -1,0 +1,52 @@
+// Where PureScript comes from: the languages its design descends from,
+// and the compile-to-JavaScript projects around it.
+//
+// A solid line is an influence that a source states: the "Influenced by"
+// lists of each language's Wikipedia page, and PureScript's own
+// documentation for Roy. Dashed lines are the Haskell-to-JavaScript
+// compilers whose shortcomings PureScript's author set out to avoid; they
+// were the occasion for it, not its ancestors.
+//
+//   https://en.wikipedia.org/wiki/ISWIM
+//   https://en.wikipedia.org/wiki/ML_(programming_language)
+//   https://en.wikipedia.org/wiki/Standard_ML
+//   https://en.wikipedia.org/wiki/Miranda_(programming_language)
+//   https://en.wikipedia.org/wiki/Haskell
+//   https://en.wikipedia.org/wiki/Elm_(programming_language)
+//   https://en.wikipedia.org/wiki/PureScript
+//   https://github.com/purescript/documentation/blob/master/Related-Projects.md
+//     "Roy is probably the most similar language on the list, and was a
+//     large influence on the development of PureScript."
+//   https://github.com/puffnfresh/roy (Brian McKenna)
+digraph purescript {
+  ranksep=0.4; nodesep=0.3;
+  node [shape=box, style=rounded, fontsize=11];
+  edge [color="#555555", arrowsize=0.6];
+
+  "Lisp"        [label="Lisp\n1958"];
+  "ALGOL 60"    [label="ALGOL 60\n1960"];
+  "ISWIM"       [label="ISWIM\nPeter Landin, 1966"];
+  "ML"          [label="ML\nRobin Milner, 1973"];
+  "Standard ML" [label="Standard ML\n1983"];
+  "Miranda"     [label="Miranda\nDavid Turner, 1985"];
+  "Haskell"     [label="Haskell\n1990"];
+  "JavaScript"  [label="JavaScript\n1995"];
+  "Roy"         [label="Roy\nBrian McKenna, 2011"];
+  "Elm"         [label="Elm\nEvan Czaplicki, 2012"];
+  "PureScript"  [label="PureScript\nPhil Freeman, 2013", style="rounded,filled,bold", color="#1d222d", fillcolor="#e8eaf0"];
+
+  node [style="rounded,dashed", color="#888888"];
+  "Fay"; "Haste"; "GHCJS";
+
+  "Lisp" -> "ISWIM";
+  "ALGOL 60" -> "ISWIM";
+  "ISWIM" -> { "ML" "Miranda" "Haskell" };
+  "ML" -> { "Standard ML" "Miranda" "Haskell" "Elm" };
+  "Standard ML" -> { "Haskell" "Elm" };
+  "Miranda" -> "Haskell";
+  "Haskell" -> { "Elm" "PureScript" };
+  "JavaScript" -> "PureScript";
+  "Roy" -> "PureScript" [label="a large influence"];
+  "Haskell" -> { "Fay" "Haste" "GHCJS" } [style=dashed, color="#999999"];
+  { "Fay" "Haste" "GHCJS" } -> "PureScript" [style=dashed, color="#999999"];
+}

@@ -7,7 +7,7 @@ drawing beside dot's on measures where smaller is better.
 
 Rules, checked on the core's drawing:
   - no two nodes overlap;
-  - every node and cluster is inside the drawing;
+  - every node, cluster and edge is inside the drawing;
   - every edge starts at its tail and ends at its head;
   - no edge label lies on a node.
 
@@ -145,6 +145,11 @@ def broken(drawing):
                 adrift += 1
     if adrift:
         found.append(f"{adrift} edge ends are not on their node's outline")
+    astray = sum(1 for edge in drawing["edges"]
+                 if any(x < -0.5 or y < -0.5 or x > drawing["width"] + 0.5 or y > drawing["height"] + 0.5
+                        for x, y in along(edge["path"])))
+    if astray:
+        found.append(f"{astray} edges reach outside the drawing")
     covered = sum(1 for edge in drawing["edges"] if edge["labelAt"] and any(inside(edge["labelAt"], box) for box in boxes))
     if covered:
         found.append(f"{covered} edge labels lie on a node")

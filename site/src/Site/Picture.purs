@@ -3,15 +3,16 @@
 -- | This draws only what `Graphviz.Layout` hands over, and reads a few
 -- | attributes for what the eye needs: a node's shape, its fill and
 -- | outline colours, `style` (filled, dashed, dotted, bold, rounded,
--- | invis), an edge's direction and colour. Anything else in the DOT file
--- | is ignored, as `Graphviz.Svg` ignores it.
--- |
--- | Two things are the page's own and not the layout's: where an edge
--- | stops at a node's outline, and where an edge's label is put (at the
--- | middle of its path, since the layout does not place edge labels yet).
+-- | invis), `fontsize`, an edge's direction and colour. Anything else in
+-- | the DOT file is ignored, as `Graphviz.Svg` ignores it.
 module Site.Picture
   ( picture
   , TurnedEdges(..)
+  , arrowhead
+  , node
+  , edge
+  , cluster
+  , nameOf
   ) where
 
 import Prelude
@@ -19,6 +20,7 @@ import Prelude
 import Data.Array as Array
 import Data.Int as Int
 import Data.Maybe (Maybe(..), fromMaybe)
+import Data.Number as Number
 import Data.Set (Set)
 import Data.Set as Set
 import Data.String (Pattern(..), split, trim)
@@ -28,6 +30,7 @@ import Graphviz.Attributes (Attributes)
 import Graphviz.Attributes as Attributes
 import Graphviz.Dot.Syntax (Text(..), text)
 import Graphviz.Graph (NodeName(..))
+import Graphviz.Label as Markup
 import Graphviz.Layout (DrawnCluster, DrawnEdge, DrawnNode, Drawing, Outline(..), Point, outlineOf)
 import Halogen.HTML as HH
 import Halogen.HTML.Core (AttrName(..), ClassName(..))
@@ -147,15 +150,27 @@ node found =
   SE.g [ SA.class_ (ClassName "node") ]
     ( [ SE.title [] [ HH.text (nodeDescription found) ] ]
         <> outline (outlineOf found.attributes)
-        <> labelText (ClassName "node-label") Label.lineHeight found.box.centre
-          (fromMaybe ink (colourOf [ "fontcolor" ] found.attributes))
-          (shownLabel found)
+        <> if point then []
+          else case Attributes.lookupText "label" found.attributes of
+            -- Lines that may each be bold or have a size of their own.
+            Just (Html markup) | not (Markup.hasTable markup) ->
+              markedLabel (ClassName "node-label") (fontSizeOf Label.fontSize found.attributes) found.box.centre
+                (fromMaybe ink (colourOf [ "fontcolor" ] found.attributes))
+                (Markup.markupLines markup)
+            _ ->
+              labelText (ClassName "node-label") (fontSizeOf Label.fontSize found.attributes) found.box.centre
+                (fromMaybe ink (colourOf [ "fontcolor" ] found.attributes))
+                (shownLabel found)
     )
   where
   box = found.box
   drawnStyles = styles found.attributes
+  -- Graphviz draws a `point` as a dot filled with its colour, and shows
+  -- no label on it.
+  point = Attributes.lookup "shape" found.attributes == Just "point"
   fillColour =
-    if Set.member Filled drawnStyles then fromMaybe filledByDefault (colourOf [ "fillcolor", "color" ] found.attributes)
+    if point then fromMaybe ink (colourOf [ "fillcolor", "color" ] found.attributes)
+    else if Set.member Filled drawnStyles then fromMaybe filledByDefault (colourOf [ "fillcolor", "color" ] found.attributes)
     else paper
   strokeColour = fromMaybe ink (colourOf [ "color" ] found.attributes)
   outline = case _ of
@@ -230,12 +245,47 @@ nodeDescription found =
 nameOf :: NodeName -> String
 nameOf (NodeName written) = text written
 
--- | One `text` element per line, centred as a block on the point.
+-- | A label's size in points: its `fontsize`, as the layout reads it when
+-- | it makes room for the label, so that the text drawn fits that room.
+fontSizeOf :: Number -> Attributes -> Number
+fontSizeOf otherwise attributes = fromMaybe otherwise (Attributes.lookup "fontsize" attributes >>= Number.fromString)
+
+-- | One `text` element per line, centred as a block on the point, at the
+-- | given size in points with Label's spacing between lines. The size is
+-- | set on the element, where it overrides the stylesheet.
+-- | The lines of an HTML-like label, each at its own size and weight, one
+-- | under another and centred as a block on the point. `usual` is the size
+-- | of a line that gives none.
+markedLabel :: forall w i. ClassName -> Number -> Point -> Color -> Array Markup.Line -> Array (HH.HTML w i)
+markedLabel className usual centre fillColour lines =
+  (Array.foldl place { top: centre.y - total / 2.0, drawn: [] } lines).drawn
+  where
+  sizeOf line = fromMaybe usual line.size
+  heightOf line = Label.lineHeight * sizeOf line / Label.fontSize
+  total = Array.foldl (\soFar line -> soFar + heightOf line) 0.0 lines
+  place state line =
+    { top: state.top + heightOf line
+    , drawn: Array.snoc state.drawn
+        ( SE.text
+            [ SA.class_ className
+            , SA.x centre.x
+            , SA.y (state.top + heightOf line / 2.0)
+            , SA.textAnchor AnchorMiddle
+            , SA.dominantBaseline Central
+            , SA.fill fillColour
+            , HP.attr (AttrName "font-size") (show (sizeOf line))
+            , HP.attr (AttrName "font-weight") (if line.bold then "700" else "400")
+            ]
+            [ HH.text line.text ]
+        )
+    }
+
 labelText :: forall w i. ClassName -> Number -> Point -> Color -> String -> Array (HH.HTML w i)
-labelText className spacing centre fillColour written =
+labelText className size centre fillColour written =
   let
     lines = Label.lines written
     count = Array.length lines
+    spacing = Label.lineHeight * size / Label.fontSize
   in
     Array.mapWithIndex
       ( \position line ->
@@ -246,6 +296,7 @@ labelText className spacing centre fillColour written =
             , SA.textAnchor AnchorMiddle
             , SA.dominantBaseline Central
             , SA.fill fillColour
+            , HP.attr (AttrName "font-size") (show size)
             ]
             [ HH.text line ]
       )
@@ -274,7 +325,7 @@ edge turnedEdges directed found =
           )
       ]
         <> case Attributes.lookup "label" found.attributes, found.labelAt of
-          Just written, Just centre -> labelText (ClassName "edge-label") (0.8 * Label.lineHeight) centre (if picked then accent else ink) written
+          Just written, Just centre -> labelText (ClassName "edge-label") (fontSizeOf Label.fontSize found.attributes) centre (if picked then accent else ink) written
           _, _ -> []
     )
   where
@@ -312,7 +363,7 @@ cluster found =
           )
       ]
         <> case found.label of
-          Just written -> labelText (ClassName "cluster-label") (0.85 * Label.lineHeight) { x: box.centre.x, y: top + 9.0 }
+          Just written -> labelText (ClassName "cluster-label") (fontSizeOf 12.0 found.attributes) { x: box.centre.x, y: top + 9.0 }
             (fromMaybe ink (colourOf [ "fontcolor" ] found.attributes))
             written
           Nothing -> []

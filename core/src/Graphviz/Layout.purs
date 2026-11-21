@@ -28,6 +28,8 @@ module Graphviz.Layout
   , layout
   , layoutWith
   , draw
+  , Stage(..)
+  , drawAt
   , Outline(..)
   , outlineOf
   , leaving
@@ -60,6 +62,7 @@ import Graphviz.Dot.Parser (parse)
 import Graphviz.Dot.Syntax (Text(..), text)
 import Graphviz.Graph (EdgeId, Graph, NodeName(..), SubgraphId, fromDot)
 import Graphviz.Graph as Graph
+import Graphviz.Label as Label
 import Graphviz.Layout.NetworkSimplex (Requirement, solve, value)
 import Graphviz.Layout.Order (Link, Vertex(..), layered, order)
 import Graphviz.Layout.Rank (Rank(..), describe, rank, rankOf, ranking, reversed)
@@ -148,14 +151,36 @@ layoutWith options written = parse written >>= (fromDot >>> draw options)
 
 -- | Lay out a graph already read.
 draw :: Options -> Graph -> Either String Drawing
-draw options graph = case rank graph of
+draw = drawAt Routed
+
+-- | How far through the layout a drawing has come. The passes are separate
+-- | values, so a drawing can be made after any of them, with something
+-- | plain standing in for the passes not yet run:
+-- |
+-- |   - `Ranked`: every node is on its rank, in the order the file gave.
+-- |   - `Ordered`: each rank has been put in order to leave few crossings.
+-- |   - `Positioned`: everything has its place across the page.
+-- |   - `Routed`: the edges have been pulled tight and curved. This is the
+-- |     finished drawing.
+-- |
+-- | Until `Positioned` each rank is packed left to right and centred, and
+-- | clusters have no boxes. Until `Routed` an edge is straight pieces
+-- | through the place kept for it on each rank it passes.
+data Stage = Ranked | Ordered | Positioned | Routed
+
+derive instance eqStage :: Eq Stage
+derive instance ordStage :: Ord Stage
+
+-- | The drawing as it stands after one of the passes.
+drawAt :: Stage -> Options -> Graph -> Either String Drawing
+drawAt stage options graph = case rank graph of
   Left reason -> Left ("this graph cannot be laid out yet: " <> describe reason)
   Right solved ->
     let
       ranks = ranking solved
-      arranged = order (layered graph (rankOf ranks))
+      arranged = if stage == Ranked then layered graph (rankOf ranks) else order (layered graph (rankOf ranks))
     in
-      Right (place options graph (\node -> case rankOf ranks node of
+      Right (place stage options graph (\node -> case rankOf ranks node of
         Rank r -> r) (reversed solved) arranged.ranks arranged.links arranged.clusters)
 
 -- The size of a record label: fields side by side, and each pair of
@@ -280,8 +305,8 @@ leaving found towards =
 -- The last pass: each edge's run of points, node centre to bends to node
 -- centre, becomes a curve between the two outlines. An edge from a node
 -- to itself is a curve already.
-curved :: Options -> Boolean -> Drawing -> Drawing
-curved options sideways drawing = drawing { edges = map bend drawing.edges }
+curved :: Boolean -> Options -> Boolean -> Drawing -> Drawing
+curved bendy options sideways drawing = drawing { edges = map bend drawing.edges }
   where
   nodesByName = Map.fromFoldable (map (\node -> Tuple node.name node) drawing.nodes)
 
@@ -289,7 +314,7 @@ curved options sideways drawing = drawing { edges = map bend drawing.edges }
     if found.tail == found.head then case Map.lookup found.tail nodesByName of
       Just node -> loop node found
       Nothing -> found
-    else found { path = smooth (trimmed found) }
+    else found { path = (if bendy then smooth else inStraightPieces) (trimmed found) }
 
   -- An edge from a node to itself: a loop on the node's right, or on top
   -- when the drawing runs left to right. A node's loops are put one
@@ -390,6 +415,55 @@ taut start gates end = [ start ] <> corners <> [ end ]
     )
     (Array.range 0 (count - 1))
 
+-- A curve may swing a little outside the room the nodes take up, and a
+-- label may stand beyond the last node. The drawing is made large enough
+-- to hold them, and everything is moved if it has to grow to the left or
+-- upwards. A curve lies within its control points, so they are what is
+-- measured.
+enclosed :: Options -> Drawing -> Drawing
+enclosed options drawing =
+  if left >= 0.0 && top >= 0.0 && right <= drawing.width && bottom <= drawing.height then drawing
+  else
+    { width: max right drawing.width - min left 0.0
+    , height: max bottom drawing.height - min top 0.0
+    , scale: drawing.scale
+    , directed: drawing.directed
+    , nodes: map (\node -> node { box = moved node.box }) drawing.nodes
+    , edges: map (\found -> found { path = map shifted found.path, labelAt = map shifted found.labelAt }) drawing.edges
+    , clusters: map (\found -> found { box = moved found.box }) drawing.clusters
+    }
+  where
+  room = 4.0
+  spots = Array.concatMap
+    ( \found -> map (\point -> { low: point, high: point }) found.path <> case found.labelAt, Attributes.lookup "label" found.attributes of
+        Just at, Just written ->
+          let
+            size = options.measure written
+          in
+            [ { low: { x: at.x - size.width / 2.0, y: at.y - size.height / 2.0 }, high: { x: at.x + size.width / 2.0, y: at.y + size.height / 2.0 } } ]
+        _, _ -> []
+    )
+    drawing.edges
+  left = foldl (\least spot -> min least (spot.low.x - room)) 0.0 spots
+  top = foldl (\least spot -> min least (spot.low.y - room)) 0.0 spots
+  right = foldl (\most spot -> max most (spot.high.x + room)) drawing.width spots
+  bottom = foldl (\most spot -> max most (spot.high.y + room)) drawing.height spots
+  shifted point = { x: point.x - min left 0.0, y: point.y - min top 0.0 }
+  moved box = box { centre = shifted box.centre }
+
+-- Straight pieces from point to point, written as curves so that every
+-- path is the same kind of thing.
+inStraightPieces :: Array Point -> Array Point
+inStraightPieces points = case Array.head points of
+  Nothing -> []
+  Just start -> [ start ] <> Array.concat (Array.zipWith piece points (Array.drop 1 points))
+  where
+  piece from to =
+    [ { x: from.x + (to.x - from.x) / 3.0, y: from.y + (to.y - from.y) / 3.0 }
+    , { x: from.x + 2.0 * (to.x - from.x) / 3.0, y: from.y + 2.0 * (to.y - from.y) / 3.0 }
+    , to
+    ]
+
 -- A curve through every point given. At each point it heads the way from
 -- the point before to the point after, and each piece steers by a third
 -- of its own length and no more than half an inch, so that a long piece
@@ -436,7 +510,8 @@ derive instance ordAcross :: Ord Across
 
 -- The geometry.
 place
-  :: Options
+  :: Stage
+  -> Options
   -> Graph
   -> (NodeName -> Int)
   -> Array EdgeId
@@ -444,15 +519,15 @@ place
   -> Array (Array Link)
   -> Map Vertex (Array SubgraphId)
   -> Drawing
-place options graph rankNumber turned ranks links inClusters =
-  fitted $ curved options sideways $ turnedRound
+place stage options graph rankNumber turned ranks links inClusters =
+  fitted $ enclosed options $ curved (stage == Routed) options sideways $ turnedRound
     { width: extent.width
     , height: extent.height
     , scale: 1.0
     , directed: Graph.isDirected graph
     , nodes: map (\node -> { name: node.name, label: labelOf node, box: boxOf (Node node.name), attributes: node.attributes }) (Graph.nodes graph)
     , edges: map edge (Graph.edges graph)
-    , clusters: Array.sortWith (\found -> negate (found.box.width * found.box.height)) (Array.mapMaybe cluster (Graph.clusters graph))
+    , clusters: if packed then [] else Array.sortWith (\found -> negate (found.box.width * found.box.height)) (Array.mapMaybe cluster (Graph.clusters graph))
     }
   where
   -- Room round the outside, enough for the boxes of nested clusters.
@@ -563,12 +638,34 @@ place options graph rankNumber turned ranks links inClusters =
   -- The room a node's label needs. A record is a row of fields, and an
   -- HTML label a table of cells, so their written text is far longer
   -- than what is shown.
-  labelSize node = if labelOf node == "" then { width: 0.0, height: 0.0 } else inType node.attributes case Attributes.lookupText "label" node.attributes of
-    Just (Html markup) -> markupSize options.measure markup
-    _ -> case Attributes.lookup "shape" node.attributes of
+  labelSize node = if labelOf node == "" then { width: 0.0, height: 0.0 } else case Attributes.lookupText "label" node.attributes of
+    Just (Html markup) | not (Label.hasTable markup) -> linesSize node.attributes (Label.markupLines markup)
+    Just (Html markup) -> inType node.attributes (markupSize options.measure markup)
+    _ -> inType node.attributes case Attributes.lookup "shape" node.attributes of
       Just "record" -> recordSize options.measure (not sideways) (labelOf node)
       Just "Mrecord" -> recordSize options.measure (not sideways) (labelOf node)
       _ -> options.measure (labelOf node)
+
+  -- Lines of a label that may each have their own size, one under
+  -- another. Bold text is a little wider than what was measured.
+  linesSize attributes lines =
+    let
+      usual = case Attributes.lookup "fontsize" attributes >>= Number.fromString of
+        Just points -> points
+        Nothing -> 14.0
+      sizes = map
+        ( \line ->
+            let
+              points = case line.size of
+                Just given -> given
+                Nothing -> usual
+              measured = options.measure line.text
+            in
+              { width: measured.width * points / 14.0 * (if line.bold then 1.08 else 1.0), height: measured.height * points / 14.0 }
+        )
+        lines
+    in
+      { width: foldl (\widest size -> max widest size.width) 0.0 sizes, height: sum (map _.height sizes) }
 
   -- `width` and `height` are the least a node may be, in inches.
   inches key otherwise attributes = case Attributes.lookup key attributes >>= Number.fromString of
@@ -686,17 +783,41 @@ place options graph rankNumber turned ranks links inClusters =
     , { tail: RightSide inner, head: RightSide outer, weight: 0, minimum: room }
     ]
 
-  across = (solve requirements).assignment
+  -- Before the coordinates pass each rank is simply packed left to right
+  -- and centred on the widest.
+  packed = stage < Positioned
+  packing = map
+    ( \vertices -> foldl
+        ( \state vertex ->
+            { next: state.next + leftHalf vertex + rightHalf vertex + separation
+            , found: Array.snoc state.found (Tuple vertex (state.next + leftHalf vertex))
+            }
+        )
+        { next: 0, found: [] }
+        vertices
+    )
+    ranks
+  widestPacked = foldl (\most row -> max most (row.next - separation)) 0 packing
+  packedAt :: Map Vertex Int
+  packedAt = Map.fromFoldable (Array.concatMap (\row -> map (\(Tuple vertex at) -> Tuple vertex (at + (widestPacked - (row.next - separation)) / 2)) row.found) packing)
+
+  across = (solve (if packed then [] else requirements)).assignment
   -- Everything is moved so that the leftmost thing sits at the margin.
-  leftmost = foldl min 0
+  leftmost = if packed then 0 else foldl min 0
     ( map (\vertex -> value across (Centre vertex) - leftHalf vertex) (Array.concat ranks)
         <> map (\inner -> value across (LeftSide inner)) (Array.concat (Array.fromFoldable (Map.values inClusters)))
     )
-  rightmost = foldl max 0
+  rightmost = if packed then widestPacked else foldl max 0
     ( map (\vertex -> value across (Centre vertex) + rightHalf vertex) (Array.concat ranks)
         <> map (\inner -> value across (RightSide inner)) (Array.concat (Array.fromFoldable (Map.values inClusters)))
     )
-  xOf variable = margin + toNumber (value across variable - leftmost)
+  xOf variable =
+    if packed then case variable of
+      Centre vertex -> margin + toNumber (case Map.lookup vertex packedAt of
+        Just at -> at
+        Nothing -> 0)
+      _ -> margin
+    else margin + toNumber (value across variable - leftmost)
 
   -- Down the page: ranks are stacked with the rank separation between
   -- them, each as tall as its tallest node. When edges have labels there
@@ -745,17 +866,22 @@ place options graph rankNumber turned ranks links inClusters =
   lane row index vertex =
     let
       here = (boxOf vertex).centre.x
-      limit side beside = case beside of
-        Nothing -> side * 1.0e9
-        Just (Node name) -> (boxOf (Node name)).centre.x - side * ((boxOf (Node name)).width / 2.0 + 8.0)
-        Just bend -> ((boxOf bend).centre.x + here) / 2.0
-      -- Labels beside the edge here come with it, so it stops short of
-      -- its right-hand neighbour by their width.
-      kept = case vertex of
+      -- Labels beside an edge come with it, on its right. So the room
+      -- between two bends is shared out from the right-hand end of the
+      -- left one's labels, and an edge stops short of its right-hand
+      -- neighbour by the width of its own.
+      keptBy = case _ of
         Bend upper lower _ -> case Map.lookup (Tuple upper lower) labelRoom of
           Just beside -> beside
           Nothing -> 0.0
         Node _ -> 0.0
+      kept = keptBy vertex
+      limit side beside = case beside of
+        Nothing -> side * 1.0e9
+        Just (Node name) -> (boxOf (Node name)).centre.x - side * ((boxOf (Node name)).width / 2.0 + 8.0)
+        Just bend ->
+          if side < 0.0 then ((boxOf bend).centre.x + keptBy bend + here) / 2.0
+          else ((boxOf bend).centre.x + here + kept) / 2.0
     in
       Tuple vertex
         { top: row.top
@@ -865,7 +991,8 @@ place options graph rankNumber turned ranks links inClusters =
               Just gate -> if from == 0 then gate.bottom + share else gate.top - share
               Nothing -> tailBox.centre.y
           in
-            if blocked then
+            if stage /= Routed then centres
+            else if blocked then
               [ tailBox.centre, { x: tailBox.centre.x, y: level }, { x: headBox.centre.x, y: level }, headBox.centre ]
             else if among.count < 2 then
               case Array.head centres, Array.last centres of

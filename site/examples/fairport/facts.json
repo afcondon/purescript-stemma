@@ -1,0 +1,1080 @@
+{
+  "source": "MusicBrainz web service, https://musicbrainz.org/ws/2/ (core data, CC0)",
+  "fetched": "2026-11-21",
+  "relationship": "member of band",
+  "bands": [
+    {
+      "name": "Fairport Convention",
+      "mbid": "cc60d937-e80b-4c66-8aa2-e89cb57c8b08",
+      "begin": "1967",
+      "end": null
+    },
+    {
+      "name": "Eclection",
+      "mbid": "14a82daf-2b80-4317-9e84-99f92f0a96b4",
+      "begin": "1967",
+      "end": "1969"
+    },
+    {
+      "name": "Steeleye Span",
+      "mbid": "68c6926c-03e0-4afc-9f54-2190b2c8d468",
+      "begin": "1969",
+      "end": null
+    },
+    {
+      "name": "Matthews’ Southern Comfort",
+      "mbid": "dcc682d6-f7cb-4863-8a34-aaea25d84e2f",
+      "begin": null,
+      "end": null
+    },
+    {
+      "name": "Fotheringay",
+      "mbid": "bc383eff-8ddc-488a-8a92-2e638c708c7f",
+      "begin": "1970",
+      "end": "1971"
+    },
+    {
+      "name": "The Albion Band",
+      "mbid": "a63b0be7-151d-497c-b564-dd6a3d8c6dc0",
+      "begin": "1971-04",
+      "end": "2014"
+    },
+    {
+      "name": "The Bunch",
+      "mbid": "07c174b0-bf87-4b94-a31d-ef9172300d31",
+      "begin": null,
+      "end": null
+    },
+    {
+      "name": "Plainsong",
+      "mbid": "28043a28-73ac-4bf4-b051-79f28df9351e",
+      "begin": "1972",
+      "end": "2012"
+    },
+    {
+      "name": "Jethro Tull",
+      "mbid": "ece57992-dc2e-4f67-a269-fa43626c1a3d",
+      "begin": "1967-12",
+      "end": null
+    }
+  ],
+  "memberships": [
+    {
+      "band": "Fairport Convention",
+      "person": "Judy Dyble",
+      "personId": "fee8c95b-e3f7-4949-8b36-5705e874cbd6",
+      "begin": "1967",
+      "end": "1968"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Martin Lamble",
+      "personId": "d88f0a73-5fdf-486c-b9c5-5c5be627371f",
+      "begin": "1967",
+      "end": "1969-05-12"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Iain Matthews",
+      "personId": "17c3cfb3-0f55-4734-b9c8-1ee5683cca19",
+      "begin": "1967",
+      "end": "1969"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Ashley Hutchings",
+      "personId": "41b79e6f-9621-45c9-836c-9f08bedba4eb",
+      "begin": "1967",
+      "end": "1970"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Simon Nicol",
+      "personId": "8c775df2-15b5-449d-b669-2754229129af",
+      "begin": "1967",
+      "end": "1971"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Richard Thompson",
+      "personId": "ecfeacaf-0399-470f-8207-d1c646569fd0",
+      "begin": "1967",
+      "end": "1971"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Sandy Denny",
+      "personId": "08d86aab-8e58-4d9f-90e4-cfc3d2f0b867",
+      "begin": "1968",
+      "end": "1970"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Dave Mattacks",
+      "personId": "88eedc67-59e4-4054-ba12-823542088a9e",
+      "begin": "1969",
+      "end": "1974"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Dave Swarbrick",
+      "personId": "db2776d1-a0f7-43c0-b332-a717859673b5",
+      "begin": "1969",
+      "end": "1979"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Dave Pegg",
+      "personId": "58a6aa14-9c27-42d1-8667-859892cb3a29",
+      "begin": "1970",
+      "end": null
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Tom Farnell",
+      "personId": "0d2e4d0b-ca38-4bc2-940b-7dd7c2726feb",
+      "begin": "1972",
+      "end": "1972"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Roger Hill",
+      "personId": "fc1ef2d0-2f41-4ab3-b341-b9b351e90bd0",
+      "begin": "1972",
+      "end": "1972"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "David Rea",
+      "personId": "5c6e3420-b6ec-49f3-8971-dc2a2b302a5d",
+      "begin": "1972",
+      "end": "1972"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Paul Warren",
+      "personId": "9bf5a1ff-bb1c-409f-a938-ebc4f19c5fd2",
+      "begin": "1972",
+      "end": "1972"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Jerry Donahue",
+      "personId": "f4935252-8d4d-4af8-ae96-4b95df8c601e",
+      "begin": "1972",
+      "end": "1975"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Trevor Lucas",
+      "personId": "6cdf7f59-3b70-4df4-8076-8ff46bfba2b3",
+      "begin": "1972",
+      "end": "1975"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Sandy Denny",
+      "personId": "08d86aab-8e58-4d9f-90e4-cfc3d2f0b867",
+      "begin": "1974",
+      "end": "1976"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Bruce Rowland",
+      "personId": "02c42f93-769d-47b3-95b4-bebe235eecb4",
+      "begin": "1975",
+      "end": "1984"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Dan Ar Braz",
+      "personId": "e8cf2e66-2952-4006-a1ce-538a28062c70",
+      "begin": "1976",
+      "end": "1976"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Bob Brady",
+      "personId": "c1052b00-0afd-4f75-a564-decf530a36fa",
+      "begin": "1976",
+      "end": "1976"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Roger Burridge",
+      "personId": "a2a97f3a-e293-44af-bfd6-537810174f99",
+      "begin": "1976",
+      "end": "1976"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Simon Nicol",
+      "personId": "8c775df2-15b5-449d-b669-2754229129af",
+      "begin": "1976",
+      "end": null
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Maartin Allcock",
+      "personId": "035b180f-0a7c-4454-b862-8d68bd2178c5",
+      "begin": "1985",
+      "end": "1996"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Dave Mattacks",
+      "personId": "88eedc67-59e4-4054-ba12-823542088a9e",
+      "begin": "1985",
+      "end": "1998-03"
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Ric Sanders",
+      "personId": "bf8176d7-48e8-4cc0-adde-ccc0a4cac757",
+      "begin": "1985",
+      "end": null
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Chris Leslie",
+      "personId": "e9d6c577-1b45-4163-a5a1-0a78dc52ee12",
+      "begin": "1995",
+      "end": null
+    },
+    {
+      "band": "Fairport Convention",
+      "person": "Gerry Conway",
+      "personId": "cf0fe6db-86a8-48c9-89c1-b8dd26f712f0",
+      "begin": "1998",
+      "end": null
+    },
+    {
+      "band": "Eclection",
+      "person": "Gerry Conway",
+      "personId": "cf0fe6db-86a8-48c9-89c1-b8dd26f712f0",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Eclection",
+      "person": "Dorris Henderson",
+      "personId": "cb0cf62b-4dd4-4aa5-b2d4-9694af3b4434",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Eclection",
+      "person": "George Hultgreen",
+      "personId": "e351516b-3a3e-4a77-90d6-4605c895afd9",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Eclection",
+      "person": "Trevor Lucas",
+      "personId": "6cdf7f59-3b70-4df4-8076-8ff46bfba2b3",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Eclection",
+      "person": "Kerrilee Male",
+      "personId": "8efa2d1e-0235-4d4e-b03a-09a718108292",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Eclection",
+      "person": "Michael Rosen",
+      "personId": "0da2b5ee-d299-4b6c-9002-7f15f8efc5fa",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Gay Woods",
+      "personId": "1abc1ad0-ac04-4c5c-9407-3d3d38774b69",
+      "begin": "1969",
+      "end": "1970"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Terry Woods",
+      "personId": "cd243535-5af3-41cf-a389-3c900707019f",
+      "begin": "1969",
+      "end": "1970"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Ashley Hutchings",
+      "personId": "41b79e6f-9621-45c9-836c-9f08bedba4eb",
+      "begin": "1969",
+      "end": "1972"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Tim Hart",
+      "personId": "6a155da7-237c-49d8-afb6-095306dbbc22",
+      "begin": "1969",
+      "end": "1982"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Maddy Prior",
+      "personId": "49bbd690-3520-4d6e-b0af-1fcdc12d8062",
+      "begin": "1969",
+      "end": null
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Bob Johnson",
+      "personId": "3d74e58e-3994-409d-99b4-417e871144de",
+      "begin": "1972",
+      "end": "2001"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Tim Harries",
+      "personId": "1769ab37-7859-4971-bba8-4d1736651aab",
+      "begin": "1988",
+      "end": "2002"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Martin Carthy",
+      "personId": "16bf7aa1-7b25-427c-8d5b-aeb5b5da4896",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Rick Kemp",
+      "personId": "78d26269-e505-46b4-b240-6f5f69dd383f",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "John Kirkpatrick",
+      "personId": "cce8cdcc-294d-4f83-8f38-5e1b10573910",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Peter Knight",
+      "personId": "8d8f8845-abb8-4b98-8712-62ab7b67276c",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Nigel Pegrum",
+      "personId": "fd6d7c75-3967-429a-ae4b-1fd5d965af5d",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Andrew Sinclair",
+      "personId": "653d0921-13da-4faa-bbb8-41e588d1c804",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Eric Devries",
+      "personId": "210ee019-9d42-47d7-ac6a-aeb2dbb5230b",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Ray Duffy",
+      "personId": "56e5f311-3918-41b5-bf5e-247d278ec542",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Mark Griffiths",
+      "personId": "aff7deb6-6acc-4524-b16d-92870b134b5f",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Gordon Huntley",
+      "personId": "c1a87b77-8e1c-4755-97ea-467fb507cbb1",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Andy Leigh",
+      "personId": "5f26631e-ce74-421b-9d5d-61c034692ee9",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Iain Matthews",
+      "personId": "17c3cfb3-0f55-4734-b9c8-1ee5683cca19",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Bart de Win",
+      "personId": "cd033061-c47f-41ea-9d54-1393702db87a",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Fotheringay",
+      "person": "Gerry Conway",
+      "personId": "cf0fe6db-86a8-48c9-89c1-b8dd26f712f0",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Fotheringay",
+      "person": "Sandy Denny",
+      "personId": "08d86aab-8e58-4d9f-90e4-cfc3d2f0b867",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Fotheringay",
+      "person": "Jerry Donahue",
+      "personId": "f4935252-8d4d-4af8-ae96-4b95df8c601e",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Fotheringay",
+      "person": "Pat Donaldson",
+      "personId": "7bb07099-77ac-48ec-b785-5d8aedb0b68b",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Fotheringay",
+      "person": "Trevor Lucas",
+      "personId": "6cdf7f59-3b70-4df4-8076-8ff46bfba2b3",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Sue Draheim",
+      "personId": "704692bd-2512-4335-95cf-1c73034b1a15",
+      "begin": "1972",
+      "end": null
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Martin Carthy",
+      "personId": "16bf7aa1-7b25-427c-8d5b-aeb5b5da4896",
+      "begin": "1973",
+      "end": "1973-08"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Sue Harris",
+      "personId": "546a70f7-3950-47d1-8482-bfcdf330e207",
+      "begin": "1973",
+      "end": "1973-08"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "John Kirkpatrick",
+      "personId": "cce8cdcc-294d-4f83-8f38-5e1b10573910",
+      "begin": "1973",
+      "end": "1973-08"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Roger Swallow",
+      "personId": "d108b6ed-802e-41cf-be49-2a21f3907364",
+      "begin": "1973",
+      "end": "1973-08"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Phil Pickett",
+      "personId": "16634cec-377f-4222-a2ab-0a3328c98d8f",
+      "begin": "1977",
+      "end": "1979"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "John Sothcott",
+      "personId": "e23a1d43-d4ab-44ad-81d4-0970540476a9",
+      "begin": "1977",
+      "end": "1979"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Graeme Taylor",
+      "personId": "be18576f-f1b7-43a8-a7cb-60c457e9ac0c",
+      "begin": "1977",
+      "end": "1979"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Simon Nicol",
+      "personId": "8c775df2-15b5-449d-b669-2754229129af",
+      "begin": "1977",
+      "end": null
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Cathy Lesurf",
+      "personId": "839563a0-2a32-4566-8d7d-3a8deddd78d1",
+      "begin": "1980",
+      "end": "1988"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "John-Pierre Rasle",
+      "personId": "9edb67a9-e7ae-4c3d-8e6c-7295fc65ba57",
+      "begin": "1980",
+      "end": null
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Dave Whetstone",
+      "personId": "7517358e-f97b-47c0-a732-2bd946478362",
+      "begin": "1980",
+      "end": null
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Simon Care",
+      "personId": "964a5da2-d36b-4b50-af96-3a5c22624e14",
+      "begin": "1988",
+      "end": null
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Jean Shepard",
+      "personId": "149a04e5-a72c-44eb-8266-51e65147446e",
+      "begin": "1988",
+      "end": null
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Julie Matthews",
+      "personId": "6c3e43a8-2d45-43d5-b464-ccac1826dc58",
+      "begin": "1990",
+      "end": "1993"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Keith Hinchliffe",
+      "personId": "6fe4092a-f32e-4fd0-b237-0e77ddf2ca52",
+      "begin": "1991",
+      "end": "1993"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Chris While",
+      "personId": "c5979b4a-12c1-4e22-ae72-132f4916d428",
+      "begin": "1993",
+      "end": "1997"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Julie Matthews",
+      "personId": "6c3e43a8-2d45-43d5-b464-ccac1826dc58",
+      "begin": "1995",
+      "end": "1997"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Chris Leslie",
+      "personId": "e9d6c577-1b45-4163-a5a1-0a78dc52ee12",
+      "begin": "1996",
+      "end": "1997"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Ken Nicol",
+      "personId": "12853c76-145a-40d6-8114-5f548a829999",
+      "begin": "1997",
+      "end": "2002"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Pete Zorn",
+      "personId": "6fd4e675-1b3d-4265-ab6d-6f2863394010",
+      "begin": "2002",
+      "end": "2002"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Blair Dunlop",
+      "personId": "8c6f35d3-13b9-4e28-a3e1-28e6760fc0c1",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Ashley Hutchings",
+      "personId": "41b79e6f-9621-45c9-836c-9f08bedba4eb",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Tim Renwick",
+      "personId": "962b21ee-72ea-4ada-b506-7bb541b91225",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Bunch",
+      "person": "Gerry Conway",
+      "personId": "cf0fe6db-86a8-48c9-89c1-b8dd26f712f0",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Bunch",
+      "person": "Tony Cox",
+      "personId": "c970f3eb-14b1-49f6-ba89-3c9314d3fbf3",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Bunch",
+      "person": "Sandy Denny",
+      "personId": "08d86aab-8e58-4d9f-90e4-cfc3d2f0b867",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Bunch",
+      "person": "Pat Donaldson",
+      "personId": "7bb07099-77ac-48ec-b785-5d8aedb0b68b",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Bunch",
+      "person": "Ashley Hutchings",
+      "personId": "41b79e6f-9621-45c9-836c-9f08bedba4eb",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Bunch",
+      "person": "Trevor Lucas",
+      "personId": "6cdf7f59-3b70-4df4-8076-8ff46bfba2b3",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Bunch",
+      "person": "Dave Mattacks",
+      "personId": "88eedc67-59e4-4054-ba12-823542088a9e",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Bunch",
+      "person": "Linda Thompson",
+      "personId": "30792486-de7c-458a-873c-ca6931540a70",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Bunch",
+      "person": "Richard Thompson",
+      "personId": "ecfeacaf-0399-470f-8207-d1c646569fd0",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "The Bunch",
+      "person": "Ian Whiteman",
+      "personId": "e95aedba-99e8-4f76-8455-d32930fe1b02",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Plainsong",
+      "person": "Iain Matthews",
+      "personId": "17c3cfb3-0f55-4734-b9c8-1ee5683cca19",
+      "begin": "1972",
+      "end": "2012"
+    },
+    {
+      "band": "Plainsong",
+      "person": "Andy Roberts",
+      "personId": "c62fda0f-65eb-409a-ba2e-6df41a22557b",
+      "begin": "1972",
+      "end": "2012"
+    },
+    {
+      "band": "Plainsong",
+      "person": "Julian Dawson",
+      "personId": "b22c4d74-29da-476c-8bec-d337c780548a",
+      "begin": "1991",
+      "end": "1996"
+    },
+    {
+      "band": "Plainsong",
+      "person": "Mark Griffiths",
+      "personId": "aff7deb6-6acc-4524-b16d-92870b134b5f",
+      "begin": "1991",
+      "end": "2012"
+    },
+    {
+      "band": "Plainsong",
+      "person": "Clive Gregson",
+      "personId": "2311cb27-22f2-451e-8af3-f9ab594f15a9",
+      "begin": "1996",
+      "end": "2000"
+    },
+    {
+      "band": "Plainsong",
+      "person": "Julian Dawson",
+      "personId": "b22c4d74-29da-476c-8bec-d337c780548a",
+      "begin": "2003",
+      "end": "2012"
+    },
+    {
+      "band": "Plainsong",
+      "person": "Bob Ronga",
+      "personId": "43eac88a-2d85-41da-a15c-5fde87134e5a",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Mick Abrahams",
+      "personId": "88503676-d31b-458f-80a7-c38d758688b2",
+      "begin": "1967-11",
+      "end": "1968-11"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Glenn Cornick",
+      "personId": "d7546c3b-8e41-41bf-a046-d2c366d3568c",
+      "begin": "1967-11",
+      "end": "1970-12"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Clive Bunker",
+      "personId": "727640ec-95f5-4d0e-82c0-ab334c20a3ac",
+      "begin": "1967-11",
+      "end": "1971-05"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Ian Anderson",
+      "personId": "12fffb1f-39af-4efe-9426-92e05bb651d1",
+      "begin": "1967",
+      "end": null
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Martin Barre",
+      "personId": "6c68bf5a-88cb-4b46-ac06-306b327b03e1",
+      "begin": "1968-12",
+      "end": "2011"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Tony Iommi",
+      "personId": "e5fa0175-2e93-4ca7-90c3-33f239381252",
+      "begin": "1968",
+      "end": "1969-01"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "John Evan",
+      "personId": "16d9683a-6e64-4163-a56a-fa351d56b13d",
+      "begin": "1970-04",
+      "end": "1980-06"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Jeffrey Hammond Hammond",
+      "personId": "bf2fdd63-37ff-4263-a32c-2833dc43a780",
+      "begin": "1971-01",
+      "end": "1975-12"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Barriemore Barlow",
+      "personId": "ab99a5a7-26cb-42e8-abbd-9eebb6c2d40a",
+      "begin": "1971-05",
+      "end": "1980-06"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "John Glascock",
+      "personId": "301986e2-cfb6-436a-8178-124b13c11d8e",
+      "begin": "1975-12",
+      "end": "1979-08"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Dee Palmer",
+      "personId": "e54203ac-f4ee-4970-a54f-78993f8b91a1",
+      "begin": "1976-10",
+      "end": "1980-06"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Dave Pegg",
+      "personId": "58a6aa14-9c27-42d1-8667-859892cb3a29",
+      "begin": "1979-08",
+      "end": "1995"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Mark Craney",
+      "personId": "8006ec85-aed2-499a-b3d8-1b02cac9782b",
+      "begin": "1980-06",
+      "end": "1981-05"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Eddie Jobson",
+      "personId": "824dcca4-d658-41b3-95c5-07d0d183b5c6",
+      "begin": "1980-06",
+      "end": "1981-05"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Gerry Conway",
+      "personId": "cf0fe6db-86a8-48c9-89c1-b8dd26f712f0",
+      "begin": "1981-06",
+      "end": "1983"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Peter-John Vettese",
+      "personId": "33c63780-77b2-47dd-9098-9432b1e9ea66",
+      "begin": "1981-06",
+      "end": "1987"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Paul Burgess",
+      "personId": "78da9bf1-8429-4003-89a2-5c5efa63da7b",
+      "begin": "1982",
+      "end": "1983"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Doane Perry",
+      "personId": "de28c0d5-12c9-42c2-a392-49a556e0c888",
+      "begin": "1984",
+      "end": "1991"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Maartin Allcock",
+      "personId": "035b180f-0a7c-4454-b862-8d68bd2178c5",
+      "begin": "1988-01",
+      "end": "1991"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Dave Mattacks",
+      "personId": "88eedc67-59e4-4054-ba12-823542088a9e",
+      "begin": "1992",
+      "end": "1993"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Andrew Giddings",
+      "personId": "e167a5fc-778e-44ec-a4dd-d3f1b5d61558",
+      "begin": "1992",
+      "end": "2006"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Doane Perry",
+      "personId": "de28c0d5-12c9-42c2-a392-49a556e0c888",
+      "begin": "1994",
+      "end": null
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Jonathan Noyce",
+      "personId": "d1b05469-8012-4030-b47f-f5653d624ca9",
+      "begin": "1995",
+      "end": "2006"
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "David Goodier",
+      "personId": "da425855-131b-4034-9bbc-99c92bbd8331",
+      "begin": "2006",
+      "end": null
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "John O’Hara",
+      "personId": "7d53fcb9-4189-4bb1-a8cb-9fd29d1b87c1",
+      "begin": "2006",
+      "end": null
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Anna Phoebe",
+      "personId": "1dd8ad82-84f7-4e24-98b7-8d9db2a0f76d",
+      "begin": "2007",
+      "end": null
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Scott Hammond",
+      "personId": "ef43b433-5f3b-4478-adc7-fa5dad5a81e8",
+      "begin": null,
+      "end": null
+    },
+    {
+      "band": "Jethro Tull",
+      "person": "Tony Williams",
+      "personId": "e6c537dc-0776-47e9-8e52-38a30d515f04",
+      "begin": null,
+      "end": null
+    }
+  ],
+  "supplement": [
+    {
+      "band": "Steeleye Span",
+      "person": "Martin Carthy",
+      "begin": "1970",
+      "end": "1972",
+      "source": "https://en.wikipedia.org/wiki/Steeleye_Span"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Peter Knight",
+      "begin": "1970",
+      "end": "1977",
+      "source": "https://en.wikipedia.org/wiki/Steeleye_Span"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Rick Kemp",
+      "begin": "1972",
+      "end": null,
+      "source": "https://en.wikipedia.org/wiki/Steeleye_Span"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Nigel Pegrum",
+      "begin": "1973",
+      "end": null,
+      "source": "https://en.wikipedia.org/wiki/Steeleye_Span"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "Martin Carthy",
+      "begin": "1977",
+      "end": "1978",
+      "source": "https://en.wikipedia.org/wiki/Steeleye_Span"
+    },
+    {
+      "band": "Steeleye Span",
+      "person": "John Kirkpatrick",
+      "begin": "1977",
+      "end": "1978",
+      "source": "https://en.wikipedia.org/wiki/Steeleye_Span"
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Iain Matthews",
+      "begin": "1970",
+      "end": "1971",
+      "source": "https://en.wikipedia.org/wiki/Matthews_Southern_Comfort"
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Mark Griffiths",
+      "begin": "1970",
+      "end": "1971",
+      "source": "https://en.wikipedia.org/wiki/Matthews_Southern_Comfort"
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Gordon Huntley",
+      "begin": "1970",
+      "end": "1971",
+      "source": "https://en.wikipedia.org/wiki/Matthews_Southern_Comfort"
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Andy Leigh",
+      "begin": "1970",
+      "end": "1971",
+      "source": "https://en.wikipedia.org/wiki/Matthews_Southern_Comfort"
+    },
+    {
+      "band": "Matthews’ Southern Comfort",
+      "person": "Ray Duffy",
+      "begin": "1970",
+      "end": "1971",
+      "source": "https://en.wikipedia.org/wiki/Matthews_Southern_Comfort"
+    },
+    {
+      "band": "The Albion Band",
+      "person": "Ashley Hutchings",
+      "begin": "1971",
+      "end": null,
+      "source": "https://en.wikipedia.org/wiki/The_Albion_Band"
+    },
+    {
+      "band": "The Bunch",
+      "person": "Trevor Lucas",
+      "begin": "1972",
+      "end": "1972",
+      "source": "https://en.wikipedia.org/wiki/The_Bunch"
+    },
+    {
+      "band": "The Bunch",
+      "person": "Sandy Denny",
+      "begin": "1972",
+      "end": "1972",
+      "source": "https://en.wikipedia.org/wiki/The_Bunch"
+    },
+    {
+      "band": "The Bunch",
+      "person": "Gerry Conway",
+      "begin": "1972",
+      "end": "1972",
+      "source": "https://en.wikipedia.org/wiki/The_Bunch"
+    },
+    {
+      "band": "The Bunch",
+      "person": "Ashley Hutchings",
+      "begin": "1972",
+      "end": "1972",
+      "source": "https://en.wikipedia.org/wiki/The_Bunch"
+    },
+    {
+      "band": "The Bunch",
+      "person": "Dave Mattacks",
+      "begin": "1972",
+      "end": "1972",
+      "source": "https://en.wikipedia.org/wiki/The_Bunch"
+    },
+    {
+      "band": "The Bunch",
+      "person": "Richard Thompson",
+      "begin": "1972",
+      "end": "1972",
+      "source": "https://en.wikipedia.org/wiki/The_Bunch"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
--- | A bundled example: a DOT file from the corpus, embedded at build time
--- | with the path of Graphviz's own drawing of it.
+-- | A bundled example: one of this project's own DOT files, embedded at
+-- | build time with the path of Graphviz's own drawing of it.
 module Site.Example
   ( Example
   , ExampleName(..)
@@ -15,9 +15,10 @@ newtype ExampleName = ExampleName String
 
 derive newtype instance eqExampleName :: Eq ExampleName
 
--- | Where in the corpus an example comes from, which is also how the
--- | picker groups them.
-data Group = GraphvizGallery | Clusters | RankSets
+-- | What an example shows, which is how the picker groups them: whole
+-- | pictures written for this page, and small files from the test corpus
+-- | that each show one rule.
+data Group = FamilyTrees | Clusters | RankSets
 
 derive instance eqGroup :: Eq Group
 
@@ -33,10 +34,10 @@ type Example =
 
 -- | The groups in the order the picker shows them.
 groups :: Array Group
-groups = [ GraphvizGallery, Clusters, RankSets ]
+groups = [ FamilyTrees, Clusters, RankSets ]
 
 groupTitle :: Group -> String
 groupTitle = case _ of
-  GraphvizGallery -> "Graphviz’s examples"
+  FamilyTrees -> "Family trees"
   Clusters -> "Clusters"
   RankSets -> "Rank sets"
