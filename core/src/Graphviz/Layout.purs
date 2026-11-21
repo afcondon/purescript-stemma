@@ -854,7 +854,7 @@ place options graph rankNumber turned ranks links inClusters =
               (Graph.nodes graph)
             share = rankGap * toNumber (among.index + 1) / toNumber (among.count + 1)
             level = case Map.lookup (Node found.tail) lanes of
-              Just room -> if from == 0 then room.bottom + share else room.top - share
+              Just gate -> if from == 0 then gate.bottom + share else gate.top - share
               Nothing -> tailBox.centre.y
           in
             if blocked then

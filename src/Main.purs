@@ -34,7 +34,7 @@ import Graphviz.Graph (EdgeId(..), Graph, NodeName(..), SubgraphId(..), fromDot)
 import Graphviz.Graph as Graph
 import Graphviz.Layout (DrawnCluster, DrawnEdge, DrawnNode, layout)
 import Graphviz.Layout.NetworkSimplex (value)
-import Graphviz.Layout.Order (Vertex(..), backwards, crossings, layered, order, split)
+import Graphviz.Layout.Order (Vertex(..), backwards, backwardsBetweenClusters, crossings, layered, order, split)
 import Graphviz.Svg (render)
 import Graphviz.Layout.Rank (Rank(..), Solved(..), Variable(..), describe, levels, rank, rankGiven, rankOf, ranking, reversed)
 import Node.Encoding (Encoding(..))
@@ -225,10 +225,12 @@ orderJson oracle graph = case oracle of
         [ Tuple "crossings" (int (crossings ordered))
         , Tuple "split" (int (split ordered))
         , Tuple "backwards" (int (backwards ordered))
+        , Tuple "backwardsBetweenClusters" (int (backwardsBetweenClusters ordered))
         , Tuple "bends" (int bends)
         , Tuple "dots" (if bends == 0 then int (crossings dots) else jsonNull)
         , Tuple "dotsSplit" (int (split dots))
         , Tuple "dotsBackwards" (int (backwards dots))
+        , Tuple "dotsBackwardsBetweenClusters" (int (backwardsBetweenClusters dots))
         ]
   _ -> record [ Tuple "error" (fromString "no ranks from dot to order by") ]
   where

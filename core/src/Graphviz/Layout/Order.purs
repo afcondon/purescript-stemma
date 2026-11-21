@@ -46,11 +46,13 @@ module Graphviz.Layout.Order
   , crossings
   , split
   , backwards
+  , backwardsBetweenClusters
   ) where
 
 import Prelude
 
 import Data.Array as Array
+import Data.Array.NonEmpty as NonEmptyArray
 import Data.Foldable (all, any, foldl, sum)
 import Data.Int (toNumber)
 import Data.List (List(..))
@@ -286,12 +288,31 @@ split arranged = sum (map onRank arranged.ranks)
 
 -- | How many same-rank edges an order has with the tail on the right.
 backwards :: Layered -> Int
-backwards arranged = sum (map wrong (Map.toUnfoldable arranged.leftOf :: Array (Tuple Vertex (Set Vertex))))
+backwards = wrongWay (\_ _ -> true)
+
+-- | Of those, the ones whose two vertices are in different clusters that
+-- | stand side by side. These cannot always be kept: the clusters have one
+-- | order for the whole drawing, and edges along two ranks can ask for
+-- | both orders.
+backwardsBetweenClusters :: Layered -> Int
+backwardsBetweenClusters arranged = wrongWay parted arranged
+  where
+  pathOf vertex = case Map.lookup vertex arranged.clusters of
+    Just found -> found
+    Nothing -> []
+  parted l r =
+    let
+      agreed = Array.length (Array.takeWhile identity (Array.zipWith eq (pathOf l) (pathOf r)))
+    in
+      Array.length (pathOf l) > agreed && Array.length (pathOf r) > agreed
+
+wrongWay :: (Vertex -> Vertex -> Boolean) -> Layered -> Int
+wrongWay counts arranged = sum (map wrong (Map.toUnfoldable arranged.leftOf :: Array (Tuple Vertex (Set Vertex))))
   where
   places = positions arranged.ranks
   wrong (Tuple left rights) = case Map.lookup left places of
     Nothing -> 0
-    Just here -> Array.length (Array.filter (\right -> any (_ < here) (Map.lookup right places)) (Array.fromFoldable rights))
+    Just here -> Array.length (Array.filter (\right -> counts left right && any (_ < here) (Map.lookup right places)) (Array.fromFoldable rights))
 
 -- The place of every vertex in its rank, counting from 0 at the left.
 positions :: Array (Array Vertex) -> Map Vertex Int
@@ -306,8 +327,106 @@ members = case _ of
   Group _ inner -> Array.concatMap members inner
 
 -- | Order the ranks to leave few crossings.
+-- |
+-- | Each rank keeps a cluster's vertices together, but ordering the ranks
+-- | freely can leave cluster A left of cluster B in one rank and right of
+-- | it in another, and then no box can be drawn round each. When that
+-- | happens the clusters are put in one line for the whole drawing, by
+-- | where their vertices came to stand, without going against any edge
+-- | along a rank, and the ranks are ordered again with that line as
+-- | something every rank must keep.
 order :: Layered -> Layered
-order given = arranged best
+order given =
+  if all Array.null given.clusters || agrees first.ranks then first
+  else if agrees again.ranks then again
+  else again { ranks = map (straighten 0) again.ranks }
+  where
+  first = orderOnce given
+  agrees ranks =
+    let
+      found = Set.fromFoldable (map (\parted -> Tuple parted.left parted.right) (Array.concatMap apart ranks))
+    in
+      not (any (\(Tuple a b) -> Set.member (Tuple b a) found) found)
+  -- The line comes before an edge along a rank that asks otherwise.
+  withLine = foldl (\m (Tuple l r) -> Map.insertWith Set.union l (Set.singleton r) m)
+    (map (\_ -> Set.empty) given.leftOf)
+    (kept <> Array.concatMap
+      ( \(Tuple l rights) -> Array.mapMaybe
+          ( \r -> case parting l r of
+              Just parted | Map.lookup parted.left placeInLine > Map.lookup parted.right placeInLine -> Nothing
+              _ -> Just (Tuple l r)
+          )
+          (Set.toUnfoldable rights)
+      )
+      (Map.toUnfoldable given.leftOf :: Array (Tuple Vertex (Set Vertex))))
+  again = (orderOnce (given { leftOf = withLine })) { leftOf = given.leftOf }
+  -- If the ranks still disagree, the clusters standing side by side in a
+  -- rank change places among themselves until they are in line.
+  straighten depth rank =
+    let
+      at vertex = Array.index (pathOf vertex) depth
+      runs = map NonEmptyArray.toArray (Array.groupBy (\a b -> at a == at b && at a /= Nothing) rank)
+      clusterOf run = Array.head run >>= at
+      groups = Array.sortWith (\run -> clusterOf run >>= \cluster -> Map.lookup cluster placeInLine) (Array.filter (\run -> clusterOf run /= Nothing) runs)
+      fill state run = case clusterOf run of
+        Nothing -> state { placed = state.placed <> run }
+        Just _ -> case Array.index groups state.next of
+          Just group -> { next: state.next + 1, placed: state.placed <> straighten (depth + 1) group }
+          Nothing -> state { placed = state.placed <> run }
+    in
+      (foldl fill { next: 0, placed: [] } runs).placed
+  pathOf vertex = case Map.lookup vertex given.clusters of
+    Just found -> found
+    Nothing -> []
+  -- The two clusters, side by side in some larger one, that part two
+  -- vertices.
+  parting l r =
+    let
+      agreed = Array.length (Array.takeWhile identity (Array.zipWith eq (pathOf l) (pathOf r)))
+    in
+      case Array.index (pathOf l) agreed, Array.index (pathOf r) agreed of
+        Just a, Just b -> Just { left: a, right: b, l, r }
+        _, _ -> Nothing
+  apart rank = Array.concat (Array.mapWithIndex (\place l -> Array.mapMaybe (parting l) (Array.drop (place + 1) rank)) rank)
+  -- Which must be left of which, because of an edge along a rank.
+  asked = Set.fromFoldable
+    ( Array.concatMap
+        (\(Tuple l rights) -> map (\found -> Tuple found.left found.right) (Array.mapMaybe (parting l) (Set.toUnfoldable rights)))
+        (Map.toUnfoldable given.leftOf :: Array (Tuple Vertex (Set Vertex)))
+    )
+  standing = foldl
+    ( \soFar rank -> foldl
+        ( \m (Tuple place vertex) -> foldl
+            ( \inner cluster -> Map.insertWith (\old new -> { total: old.total + new.total, count: old.count + new.count }) cluster
+                { total: toNumber place / toNumber (max 1 (Array.length rank - 1)), count: 1.0 }
+                inner
+            )
+            m
+            (pathOf vertex)
+        )
+        soFar
+        (Array.mapWithIndex Tuple rank)
+    )
+    Map.empty
+    first.ranks
+  score cluster = case Map.lookup cluster standing of
+    Just found -> Tuple (found.total / found.count) cluster
+    Nothing -> Tuple 0.0 cluster
+  -- The line: the leftmost-standing cluster that nothing still waiting
+  -- must be left of, again and again.
+  line remaining = case Array.head (Array.sortWith score (Array.filter free remaining)), Array.head (Array.sortWith score remaining) of
+    Just next, _ -> Array.cons next (line (Array.delete next remaining))
+    Nothing, Just next -> Array.cons next (line (Array.delete next remaining))
+    Nothing, Nothing -> []
+    where
+    free cluster = not (any (\other -> other /= cluster && Set.member (Tuple other cluster) asked) remaining)
+  placeInLine = Map.fromFoldable (Array.mapWithIndex (\place cluster -> Tuple cluster place) (line (Array.nub (Array.concat (Array.fromFoldable (Map.values given.clusters))))))
+  kept = map
+    (\found -> if Map.lookup found.left placeInLine <= Map.lookup found.right placeInLine then Tuple found.l found.r else Tuple found.r found.l)
+    (Array.concatMap apart given.ranks)
+
+orderOnce :: Layered -> Layered
+orderOnce given = arranged best
   where
   arranged ranks = given { ranks = ranks }
 
