@@ -271,10 +271,20 @@ solver's way of repairing cut values after a swap
 a paragraph, and the steps written here follow the model's recollection of
 how Graphviz carries them out.
 
+While this was being written, Graphviz's own example graphs were kept in
+the repository as test input, with Graphviz's answers to them, its drawings
+of twelve of them, and a generated source file for the demonstrator page
+that held the text of those twelve. On 2026-11-21, before anything was
+published, they were taken out, and out of every earlier commit, so that
+all that is published here is this project's own work under its own
+licence. Nothing else in the history was changed: the commits are the
+steps the work was done in, with their original messages and dates. Their
+hashes differ from the ones the private repository had before that day.
+
 Graphviz's own example graphs carry its licence (EPL 1.0). They are copied
 into `corpus/graphviz/` from the installed Graphviz by
 `bin/fetch-examples.py` and are ignored by git, as are Graphviz's answers
-to them and its drawings of them. `corpus/graphviz/FILES` lists the ones
+to them, its drawings of them, and the page's generated `Site/Corpus.purs`. `corpus/graphviz/FILES` lists the ones
 used. The demonstrator page, once built, contains the text of twelve of
 them; anyone publishing a built copy of it should carry Graphviz's notice
 with it.

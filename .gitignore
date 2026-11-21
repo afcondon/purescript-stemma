@@ -9,3 +9,4 @@ __pycache__/
 /oracle/graphviz/
 /oracle/geometry/graphviz.json
 /site/public/graphviz/graphvizgallery-*.svg
+/site/src/Site/Corpus.purs
