@@ -86,7 +86,25 @@ type Link v = { requirement :: Placed v, other :: v }
 -- | that no chain of requirements joins are solved apart, and the smallest
 -- | value in each such group is 0.
 solve :: forall v. Ord v => Array (Requirement v) -> Solution v
-solve given = foldl include { assignment: Assignment Map.empty, tree: [] } (groups placed)
+solve given =
+  { assignment: Assignment (map (value numbered.assignment) numbers)
+  , tree: numbered.tree
+  }
+  where
+  -- The work is done on the variables' numbers, which are quicker to
+  -- compare than the variables. They are numbered in their own order, so
+  -- nothing is decided differently for it.
+  numbers :: Map v Int
+  numbers = Map.fromFoldable
+    (Array.mapWithIndex (\place variable -> Tuple variable place)
+      (Set.toUnfoldable (foldl (\found r -> Set.insert r.head (Set.insert r.tail found)) Set.empty given)))
+  numberOf variable = case Map.lookup variable numbers of
+    Just found -> found
+    Nothing -> -1
+  numbered = solveInOrder (map (\r -> { tail: numberOf r.tail, head: numberOf r.head, weight: r.weight, minimum: r.minimum }) given)
+
+solveInOrder :: forall v. Ord v => Array (Requirement v) -> Solution v
+solveInOrder given = foldl include { assignment: Assignment Map.empty, tree: [] } (groups placed)
   where
   -- A requirement from a variable to itself says nothing.
   placed = Array.filter (\r -> r.tail /= r.head)

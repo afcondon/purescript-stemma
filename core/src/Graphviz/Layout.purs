@@ -39,6 +39,7 @@ import Data.Array as Array
 import Data.Either (Either(..))
 import Data.Foldable (any, foldl, maximum, minimum, sum)
 import Data.Int (ceil, toNumber)
+import Data.Int as Int
 import Data.Map (Map)
 import Data.Map as Map
 import Data.Maybe (Maybe(..))
@@ -815,12 +816,19 @@ place options graph rankNumber turned ranks links inClusters =
                     Nothing -> bend.centre.x
                 , y: bend.centre.y
                 }
+          -- An edge along a rank: the label goes over the middle of the
+          -- way the edge takes, which may be round by the gap beside the
+          -- rank and not straight across.
           Nothing ->
             let
-              from = (boxOf (Node found.tail)).centre
-              to = (boxOf (Node found.head)).centre
+              route = routeOf found
+              half = Array.length route / 2
             in
-              Just { x: (from.x + to.x) / 2.0, y: (from.y + to.y) / 2.0 - 8.0 }
+              -- The middle point of the way, or half way between the two
+              -- middle points when there is an even number.
+              case Array.index route (if Int.odd (Array.length route) then half else half - 1), Array.index route half of
+                Just before, Just after -> Just { x: (before.x + after.x) / 2.0, y: (before.y + after.y) / 2.0 - 8.0 }
+                _, _ -> Nothing
     , path: routeOf found
     }
 

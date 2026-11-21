@@ -30,6 +30,7 @@ import math
 import statistics
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -166,9 +167,11 @@ def main():
         out.mkdir(parents=True, exist_ok=True)
         for old in out.glob("*.json"):
             old.unlink()
-        for start in range(0, len(files), 100):
-            subprocess.run(["node", "run.mjs", "geometry", str(out)] + [str(p) for p in files[start:start + 100]],
-                           cwd=ROOT, check=True)
+        # Four at a time: the large graphs take seconds each.
+        batches = [files[start:start + 10] for start in range(0, len(files), 10)]
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            list(pool.map(lambda batch: subprocess.run(["node", "run.mjs", "geometry", str(out)] + [str(p) for p in batch],
+                                                       cwd=ROOT, check=True), batches))
         for path in files:
             found = json.loads((out / (path.name + ".json")).read_text())
             dot = theirs.get(path.name, {"error": "not recorded"})
