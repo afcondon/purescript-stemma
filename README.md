@@ -31,8 +31,11 @@ node outlines, with room kept for their labels and for loops, and the
 graph's `size` is reported as a scale for whoever draws. Each edge takes the
 shortest way through the free room beside the nodes it passes, and edges
 between the same two nodes are spread apart. **Cluster boxes are not kept
-clear**, so an edge can cut across a cluster it is not in. None of the geometry
-is judged against Graphviz yet; it has been checked by eye on a few graphs.
+clear**, so an edge can cut across a cluster it is not in. The geometry has
+its own judge, `bin/check-geometry.py`, which checks rules any drawing
+should keep (no nodes overlapping, edge ends on their outlines, labels off
+the nodes) and holds each drawing beside dot's for size, edge length and
+edges that pass through a node.
 
 ## Where it stands
 
@@ -43,8 +46,8 @@ is judged against Graphviz yet; it has been checked by eye on a few graphs.
 | Ranking (which layer each node is on), with `rank=same` and its relatives and with clusters | done, bar the cases below | 864 of 864 rankings proved optimal at every level; dot's own ranking equals the optimum on 860 and is worse on 4 |
 | Turning cycles round before ranking | done | the same edges as dot on 328 of 329 graphs with cycles |
 | Ordering within ranks, with clusters kept together and same-rank edges left to right | done; slow on large graphs | of 884 graphs, the same number of crossings as dot on 709, fewer on 92, more on 83; 12,391 crossings in all against dot's 12,855 |
-| Coordinates | by network simplex: nodes, bends, cluster sides, room for labels and loops | nothing yet |
-| Edge routing | curves pulled tight between the nodes they pass, ending on the node outlines; cluster boxes not kept clear | nothing yet |
+| Coordinates | by network simplex: nodes, bends, cluster sides, room for labels and loops | rules, and size against dot's (`bin/check-geometry.py`) |
+| Edge routing | curves pulled tight between the nodes they pass, ending on the node outlines; cluster boxes not kept clear | rules, and edges through nodes against dot's |
 
 `bin/check.py` prints the current figure; this table is only as fresh as its
 last edit.

@@ -4,6 +4,7 @@
 -- |     node run.mjs read found/graphviz corpus/graphviz/unix.gv ...
 -- |     node run.mjs rank found/graphviz corpus/graphviz/unix.gv ...
 -- |     node run.mjs draw found/svg corpus/graphviz/unix.gv ...
+-- |     node run.mjs geometry found/geometry corpus/graphviz/unix.gv ...
 -- |
 -- | `bin/check.py` compares those files with what Graphviz reports.
 module Main where
@@ -31,7 +32,7 @@ import Graphviz.Attributes as Attributes
 import Graphviz.Dot.Syntax (Text(..))
 import Graphviz.Graph (EdgeId(..), Graph, NodeName(..), SubgraphId(..), fromDot)
 import Graphviz.Graph as Graph
-import Graphviz.Layout (layout)
+import Graphviz.Layout (DrawnCluster, DrawnEdge, DrawnNode, layout)
 import Graphviz.Layout.NetworkSimplex (value)
 import Graphviz.Layout.Order (Vertex(..), backwards, crossings, layered, order, split)
 import Graphviz.Svg (render)
@@ -68,8 +69,33 @@ main = do
       writeTextFile UTF8 (directory <> "/" <> baseName file <> ".svg") case layout text of
         Left problem -> "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"600\" height=\"40\"><text x=\"8\" y=\"24\">" <> problem <> "</text></svg>"
         Right drawing -> render drawing
-    _, _ -> log "usage: (read | rank | order | draw) <output directory> <file.gv>..."
+    [ "geometry", directory ], files -> for_ files \file -> do
+      text <- readText file
+      write directory file case layout text of
+        Left problem -> record [ Tuple "error" (fromString problem) ]
+        Right drawing -> record
+          [ Tuple "width" (fromNumber drawing.width)
+          , Tuple "height" (fromNumber drawing.height)
+          , Tuple "scale" (fromNumber drawing.scale)
+          , Tuple "nodes" (fromArray (map (\(found :: DrawnNode) -> record [ Tuple "name" (nameJson found.name), Tuple "box" (boxJson found.box) ]) drawing.nodes))
+          , Tuple "edges" (fromArray (map
+              ( \(found :: DrawnEdge) -> record
+                  [ Tuple "tail" (nameJson found.tail)
+                  , Tuple "head" (nameJson found.head)
+                  , Tuple "path" (fromArray (map pointJson found.path))
+                  , Tuple "labelAt" (case found.labelAt of
+                      Just at -> pointJson at
+                      Nothing -> jsonNull)
+                  ]
+              )
+              drawing.edges))
+          , Tuple "clusters" (fromArray (map (\(found :: DrawnCluster) -> boxJson found.box) drawing.clusters))
+          ]
+    _, _ -> log "usage: (read | rank | order | draw | geometry) <output directory> <file.gv>..."
   where
+  nameJson (NodeName written) = textJson written
+  pointJson at = fromArray [ fromNumber at.x, fromNumber at.y ]
+  boxJson box = fromArray [ fromNumber box.centre.x, fromNumber box.centre.y, fromNumber box.width, fromNumber box.height ]
   write directory file found =
     writeTextFile UTF8 (directory <> "/" <> baseName file <> ".json") (stringify found)
 

@@ -46,11 +46,17 @@ import Data.Number (abs, sqrt)
 import Data.Number as Number
 import Data.Set as Set
 import Data.String as String
+import Data.String.CodeUnits (singleton, toCharArray)
+import Data.String.Regex (regex)
+import Data.String.Regex as Regex
+import Data.String.Regex.Flags (global, ignoreCase)
+import Data.List (List(..))
+import Data.List as List
 import Data.Tuple (Tuple(..))
 import Graphviz.Attributes (Attributes)
 import Graphviz.Attributes as Attributes
 import Graphviz.Dot.Parser (parse)
-import Graphviz.Dot.Syntax (text)
+import Graphviz.Dot.Syntax (Text(..), text)
 import Graphviz.Graph (EdgeId, Graph, NodeName(..), SubgraphId, fromDot)
 import Graphviz.Graph as Graph
 import Graphviz.Layout.NetworkSimplex (Requirement, solve, value)
@@ -117,10 +123,17 @@ type Options =
   }
 
 -- | Graphviz's own spacing, and a rough guess at text: 14 point type at a
--- | little over half its height per character.
+-- | little under half its height per character, which is about what
+-- | Graphviz's Times comes to, and a line for each `\n` or `\l`.
 defaults :: Options
 defaults =
-  { measure: \written -> { width: 7.5 * toNumber (String.length written), height: 14.0 }
+  { measure: \written ->
+      let
+        lines = Array.concatMap (String.split (String.Pattern "\\l")) (String.split (String.Pattern "\\n") written)
+      in
+        { width: 6.5 * toNumber (foldl (\longest line -> max longest (String.length line)) 0 lines)
+        , height: 17.0 * toNumber (Array.length lines)
+        }
   , nodeSeparation: 18.0
   , rankSeparation: 36.0
   }
@@ -143,6 +156,78 @@ draw options graph = case rank graph of
     in
       Right (place options graph (\node -> case rankOf ranks node of
         Rank r -> r) (reversed solved) arranged.ranks arranged.links arranged.clusters)
+
+-- The size of a record label: fields side by side, and each pair of
+-- braces turns the fields inside it the other way.
+recordSize :: (String -> { width :: Number, height :: Number }) -> Boolean -> String -> { width :: Number, height :: Number }
+recordSize measure acrossFirst written = (fields acrossFirst (List.fromFoldable (toCharArray written))).size
+  where
+  fields across input =
+    let
+      first = field across input
+    in
+      case List.dropWhile (_ == ' ') first.rest of
+        Cons '|' rest ->
+          let
+            others = fields across rest
+          in
+            { size: beside across first.size others.size, rest: others.rest }
+        _ -> first
+
+  field across input = case List.dropWhile (_ == ' ') input of
+    Cons '{' rest ->
+      let
+        within = fields (not across) rest
+      in
+        { size: within.size
+        , rest: case List.dropWhile (_ == ' ') within.rest of
+            Cons '}' after -> after
+            other -> other
+        }
+    other -> leaf other ""
+
+  -- A field's text, without the name of its port.
+  leaf input soFar = case input of
+    Cons '\\' (Cons escaped rest) -> leaf rest (soFar <> "\\" <> singleton escaped)
+    Cons '<' rest -> leaf (List.drop 1 (List.dropWhile (_ /= '>') rest)) soFar
+    Cons '|' _ -> ended input soFar
+    Cons '}' _ -> ended input soFar
+    Nil -> ended input soFar
+    Cons character rest -> leaf rest (soFar <> singleton character)
+  ended input soFar =
+    let
+      needed = measure (String.trim soFar)
+    in
+      { size: { width: needed.width + 16.0, height: max 24.0 (needed.height + 8.0) }, rest: input }
+
+  beside across one other =
+    if across then { width: one.width + other.width, height: max one.height other.height }
+    else { width: max one.width other.width, height: one.height + other.height }
+
+-- The size of an HTML label, roughly: a table is as wide as its widest
+-- row of cells and as high as its rows together, and anything else is its
+-- text with the tags taken out.
+markupSize :: (String -> { width :: Number, height :: Number }) -> String -> { width :: Number, height :: Number }
+markupSize measure markup = case Array.drop 1 (pieces "<tr[^>]*>" markup) of
+  [] -> measure (shown markup)
+  rows ->
+    let
+      sizes = map row rows
+    in
+      { width: foldl (\widest size -> max widest size.width) 0.0 sizes, height: sum (map _.height sizes) }
+  where
+  row written =
+    let
+      cells = map (shown >>> measure) (Array.drop 1 (pieces "<td[^>]*>" written))
+    in
+      { width: sum (map (\cell -> cell.width + 12.0) cells), height: foldl (\tallest cell -> max tallest cell.height) 0.0 cells + 10.0 }
+  pieces pattern written = case regex pattern ignoreCase of
+    Right found -> Regex.split found written
+    Left _ -> [ written ]
+  swap pattern with written = case regex pattern (ignoreCase <> global) of
+    Right found -> Regex.replace found with written
+    Left _ -> written
+  shown = swap "<br[^>]*>" "\\n" >>> swap "<[^>]*>" "" >>> String.trim
 
 -- | The outlines an edge can end on. Graphviz has many more shapes; each
 -- | is taken as the nearest of these.
@@ -236,18 +321,25 @@ curved options sideways drawing = drawing { edges = map bend drawing.edges }
             , labelAt = map (\text -> { x: right + reach + 4.0 + (options.measure text).width / 2.0, y: box.centre.y }) written
             }
 
-  trimmed found = case Array.uncons found.path, Array.unsnoc found.path of
-    Just first, Just last | Array.length found.path >= 2 ->
+  -- The ends are cut back to the outlines. A point of the way that lies
+  -- inside the node at either end is dropped first, so that the edge
+  -- leaves towards the first place it is going that is outside.
+  trimmed found = case Array.head found.path, Array.last found.path, Map.lookup found.tail nodesByName, Map.lookup found.head nodesByName of
+    Just first, Just last, Just tail, Just head | Array.length found.path >= 2 ->
       let
-        start = case Map.lookup found.tail nodesByName, Array.head first.tail of
-          Just node, Just next -> leaving node next
-          _, _ -> first.head
-        end = case Map.lookup found.head nodesByName, Array.last last.init of
-          Just node, Just previous -> leaving node previous
-          _, _ -> last.last
+        between = Array.slice 1 (Array.length found.path - 1) found.path
+        clear = Array.reverse (Array.dropWhile (covers head) (Array.reverse (Array.dropWhile (covers tail) between)))
+        start = case Array.head clear of
+          Just next -> leaving tail next
+          Nothing -> leaving tail last
+        end = case Array.last clear of
+          Just previous -> leaving head previous
+          Nothing -> leaving head first
       in
-        [ start ] <> Array.slice 1 (Array.length found.path - 1) found.path <> [ end ]
-    _, _ -> found.path
+        [ start ] <> clear <> [ end ]
+    _, _, _, _ -> found.path
+
+  covers node point = leaving node point == node.box.centre
 
 -- The shortest way from one point to another that crosses each gate, a
 -- level stretch of the page, in turn: a string pulled tight. Each
@@ -407,7 +499,7 @@ place options graph rankNumber turned ranks links inClusters =
     where
     carry soFar found = case Attributes.lookup "label" found.attributes of
       Just written | abs (toNumber (rankNumber found.tail - rankNumber found.head)) >= 2.0 ->
-        Map.insertWith (flip append) (labelBend found) [ { id: found.id, size: options.measure written } ] soFar
+        Map.insertWith (flip append) (labelBend found) [ { id: found.id, size: inType found.attributes (options.measure written) } ] soFar
       _ -> soFar
   labelBend found =
     let
@@ -416,6 +508,29 @@ place options graph rankNumber turned ranks links inClusters =
     in
       Bend (if from <= to then found.tail else found.head) (if from <= to then found.head else found.tail) ((from + to) / 2)
 
+  -- How much of the rank a label takes up, across the page as it is being
+  -- made: its width and a gap, or its height if the drawing is to be
+  -- turned on its side.
+  along label = if sideways then label.size.height else label.size.width + 6.0
+  -- Each labelled edge of a bend runs down the left of its own label, so
+  -- it is moved right past the labels before it. This is how far, for an
+  -- edge that has a label there.
+  pastLabels found = case Map.lookup (labelBend found) carried of
+    Just labels | Array.any (\label -> label.id == found.id) labels ->
+      Just (sum (map along (Array.takeWhile (\label -> label.id /= found.id) labels)))
+    _ -> Nothing
+  -- The room that takes, kept beside every bend of those edges and not
+  -- only the one with the labels.
+  labelRoom :: Map (Tuple NodeName NodeName) Number
+  labelRoom = Map.fromFoldable
+    ( Array.mapMaybe
+        ( \(Tuple bend labels) -> case bend of
+            Bend upper lower _ -> Just (Tuple (Tuple upper lower) (sum (map along labels)))
+            Node _ -> Nothing
+        )
+        (Map.toUnfoldable carried)
+    )
+
   loopsOn name = Array.filter (\found -> found.tail == name && found.head == name) (Graph.edges graph)
 
   -- A node is as big as Graphviz's default (three quarters of an inch by
@@ -423,21 +538,36 @@ place options graph rankNumber turned ranks links inClusters =
   -- up no room unless it carries labels.
   sizeOf = case _ of
     Bend upper lower at -> case Map.lookup (Bend upper lower at) carried of
-      Just labels -> lying
-        { width: foldl (\widest label -> max widest label.size.width) 0.0 labels + 6.0
-        , height: sum (map (_.size.height) labels)
+      Just labels ->
+        { width: sum (map along labels)
+        , height: foldl (\most label -> max most (if sideways then label.size.width else label.size.height)) 0.0 labels
         }
       Nothing -> { width: 0.0, height: 0.0 }
     Node name -> case Map.lookup name nodesByName of
       Nothing -> lying { width: 54.0, height: 36.0 }
       Just node ->
         let
-          needed = options.measure (labelOf node)
+          needed = labelSize node
         in
           lying (shaped node.attributes
             { width: max (inches "width" 54.0 node.attributes) (needed.width + 16.0)
-            , height: max (inches "height" 36.0 node.attributes) (needed.height + 16.0)
+            , height: max (inches "height" 36.0 node.attributes) (needed.height + 8.0)
             })
+
+  -- Text is measured at Graphviz's 14 points; `fontsize` says otherwise.
+  inType attributes size = case Attributes.lookup "fontsize" attributes >>= Number.fromString of
+    Just points -> { width: size.width * points / 14.0, height: size.height * points / 14.0 }
+    Nothing -> size
+
+  -- The room a node's label needs. A record is a row of fields, and an
+  -- HTML label a table of cells, so their written text is far longer
+  -- than what is shown.
+  labelSize node = if labelOf node == "" then { width: 0.0, height: 0.0 } else inType node.attributes case Attributes.lookupText "label" node.attributes of
+    Just (Html markup) -> markupSize options.measure markup
+    _ -> case Attributes.lookup "shape" node.attributes of
+      Just "record" -> recordSize options.measure (not sideways) (labelOf node)
+      Just "Mrecord" -> recordSize options.measure (not sideways) (labelOf node)
+      _ -> options.measure (labelOf node)
 
   -- `width` and `height` are the least a node may be, in inches.
   inches key otherwise attributes = case Attributes.lookup key attributes >>= Number.fromString of
@@ -446,6 +576,8 @@ place options graph rankNumber turned ranks links inClusters =
   -- A circle is as wide as it is high, and a double one has a second
   -- outline four points outside the first.
   shaped attributes size = case Attributes.lookup "shape" attributes of
+    -- A point is a dot a twentieth of an inch across, whatever its label.
+    Just "point" -> { width: inches "width" 3.6 attributes, height: inches "width" 3.6 attributes }
     Just "circle" -> { width: max size.width size.height, height: max size.width size.height }
     Just "Mcircle" -> { width: max size.width size.height, height: max size.width size.height }
     Just "doublecircle" -> { width: max size.width size.height + 8.0, height: max size.width size.height + 8.0 }
@@ -485,7 +617,9 @@ place options graph rankNumber turned ranks links inClusters =
     Bend upper lower _ -> spread * (sharing upper lower - 1)
   rightHalf = case _ of
     Node name -> ceil ((sizeOf (Node name)).width / 2.0) + (if sideways then 0 else loopRoom name)
-    bend -> ceil (sizeOf bend).width
+    Bend upper lower _ -> case Map.lookup (Tuple upper lower) labelRoom of
+      Just kept -> ceil kept
+      Nothing -> 0
 
   -- Across the page. Every vertex gets a whole number of points for its
   -- centre, chosen by the same optimisation that chose the ranks (section
@@ -498,7 +632,7 @@ place options graph rankNumber turned ranks links inClusters =
   --     that long edges run straight;
   --   - each cluster has a left and a right side, which stay outside
   --     everything in it and outside its neighbours, and pull together.
-  separation = ceil options.nodeSeparation
+  separation = ceil (inches "nodesep" options.nodeSeparation (Graph.attributes graph))
   room = 8
   pathOf vertex = case Map.lookup vertex inClusters of
     Just path -> path
@@ -566,7 +700,8 @@ place options graph rankNumber turned ranks links inClusters =
   -- Down the page: ranks are stacked with the rank separation between
   -- them, each as tall as its tallest node. When edges have labels there
   -- are twice the ranks, at half the separation.
-  rankGap = if any (_.attributes >>> Attributes.hasLabel) (Graph.edges graph) then options.rankSeparation / 2.0 else options.rankSeparation
+  rankGap = if any (_.attributes >>> Attributes.hasLabel) (Graph.edges graph) then rankSeparation / 2.0 else rankSeparation
+  rankSeparation = inches "ranksep" options.rankSeparation (Graph.attributes graph)
   stacked = foldl
     ( \state vertices ->
         let
@@ -603,8 +738,7 @@ place options graph rankNumber turned ranks links inClusters =
   -- The room an edge has where it passes through a rank: from the top of
   -- the rank to the bottom, between whatever is on either side of its
   -- bend there. Beside a node it may come within eight points; beside
-  -- another edge's bend, half way. A bend that carries labels stays put,
-  -- since the labels were placed beside it.
+  -- another edge's bend, half way.
   lanes :: Map Vertex { top :: Number, bottom :: Number, low :: Number, high :: Number }
   lanes = Map.fromFoldable (Array.concatMap (\row -> Array.mapWithIndex (lane row) row.vertices) stacked.found)
   lane row index vertex =
@@ -614,13 +748,19 @@ place options graph rankNumber turned ranks links inClusters =
         Nothing -> side * 1.0e9
         Just (Node name) -> (boxOf (Node name)).centre.x - side * ((boxOf (Node name)).width / 2.0 + 8.0)
         Just bend -> ((boxOf bend).centre.x + here) / 2.0
-      fixed = Map.member vertex carried
+      -- Labels beside the edge here come with it, so it stops short of
+      -- its right-hand neighbour by their width.
+      kept = case vertex of
+        Bend upper lower _ -> case Map.lookup (Tuple upper lower) labelRoom of
+          Just beside -> beside
+          Nothing -> 0.0
+        Node _ -> 0.0
     in
       Tuple vertex
         { top: row.top
         , bottom: row.top + row.height
-        , low: if fixed then here else min here (limit (-1.0) (Array.index row.vertices (index - 1)))
-        , high: if fixed then here else max here (limit 1.0 (Array.index row.vertices (index + 1)))
+        , low: min here (limit (-1.0) (Array.index row.vertices (index - 1)))
+        , high: max here (limit 1.0 (Array.index row.vertices (index + 1)) - kept)
         }
   gatesAt goingDown vertex = case Map.lookup vertex lanes of
     Nothing -> []
@@ -628,6 +768,14 @@ place options graph rankNumber turned ranks links inClusters =
       if found.top == found.bottom then [ { y: found.top, low: found.low, high: found.high } ]
       else if goingDown then [ { y: found.top, low: found.low, high: found.high }, { y: found.bottom, low: found.low, high: found.high } ]
       else [ { y: found.bottom, low: found.low, high: found.high }, { y: found.top, low: found.low, high: found.high } ]
+
+  -- An edge leaves its own rank, and comes into the rank of its other
+  -- end, between that node's neighbours, so that it cannot cut through
+  -- one of them on a long slant. `below` says the edge is on the side of
+  -- the node that is further down the page.
+  doorOf below vertex = case Map.lookup vertex lanes of
+    Nothing -> []
+    Just found -> [ { y: if below then found.bottom else found.top, low: found.low, high: found.high } ]
 
   -- An edge goes from its tail to its head through the bends between
   -- them. An edge from a node to itself is a small loop on its right.
@@ -643,20 +791,41 @@ place options graph rankNumber turned ranks links inClusters =
           Just labels ->
             let
               bend = boxOf (labelBend found)
-              before = sum (map (_.size.height) (Array.takeWhile (\label -> label.id /= found.id) labels))
-              mine = sum (map (_.size.height) (Array.filter (\label -> label.id == found.id) labels))
+              mine = sum (map along (Array.filter (\label -> label.id == found.id) labels))
+              deep = sum (map (\label -> if sideways then label.size.width else label.size.height) (Array.filter (\label -> label.id == found.id) labels))
+              route = routeOf found
+              -- Where the edge is as it passes the middle of that rank.
+              passing = Array.findMap
+                ( \(Tuple before after) ->
+                    if (before.y - bend.centre.y) * (after.y - bend.centre.y) > 0.0 then Nothing
+                    else if after.y == before.y then Just { x: before.x, lean: 0.0 }
+                    else Just
+                      { x: before.x + (after.x - before.x) * (bend.centre.y - before.y) / (after.y - before.y)
+                      , lean: abs ((after.x - before.x) / (after.y - before.y))
+                      }
+                )
+                (Array.zip route (Array.drop 1 route))
             in
               Just
-                ( if sideways then { x: bend.centre.x + before + mine / 2.0, y: bend.centre.y }
-                  else { x: bend.centre.x + bend.width / 2.0, y: bend.centre.y - bend.height / 2.0 + before + mine / 2.0 }
-                )
+                -- An edge that leans is further over at the label's top or
+                -- bottom than at its middle, so the label stands off by
+                -- that much more.
+                { x: mine / 2.0 + case passing of
+                    Just at -> at.x + min 24.0 (at.lean * deep / 2.0)
+                    Nothing -> bend.centre.x
+                , y: bend.centre.y
+                }
           Nothing ->
             let
               from = (boxOf (Node found.tail)).centre
               to = (boxOf (Node found.head)).centre
             in
               Just { x: (from.x + to.x) / 2.0, y: (from.y + to.y) / 2.0 - 8.0 }
-    , path:
+    , path: routeOf found
+    }
+
+  -- The way an edge goes, before it is made into a curve.
+  routeOf found =
         if found.tail == found.head then []
         else
           let
@@ -670,27 +839,57 @@ place options graph rankNumber turned ranks links inClusters =
             among = placeAmong found
             centres = map (boxOf >>> _.centre) between
             ends = Array.length centres - 1
+            tailBox = boxOf (Node found.tail)
+            headBox = boxOf (Node found.head)
+            -- An edge along a rank with a node standing between its ends
+            -- goes round by the gap beside the rank: above it, or below
+            -- for the first rank, which has nothing above.
+            blocked = from == to && Array.any
+              ( \node ->
+                  let
+                    box = boxOf (Node node.name)
+                  in
+                    box.centre.y == tailBox.centre.y && box.centre.x > min tailBox.centre.x headBox.centre.x && box.centre.x < max tailBox.centre.x headBox.centre.x
+              )
+              (Graph.nodes graph)
+            share = rankGap * toNumber (among.index + 1) / toNumber (among.count + 1)
+            level = case Map.lookup (Node found.tail) lanes of
+              Just room -> if from == 0 then room.bottom + share else room.top - share
+              Nothing -> tailBox.centre.y
           in
-            if among.count < 2 then
+            if blocked then
+              [ tailBox.centre, { x: tailBox.centre.x, y: level }, { x: headBox.centre.x, y: level }, headBox.centre ]
+            else if among.count < 2 then
               case Array.head centres, Array.last centres of
-                Just first, Just last | ends >= 2 ->
-                  taut first (Array.concatMap (gatesAt (from < to)) (Array.slice 1 ends between)) last
+                Just first, Just last | from /= to ->
+                  taut first
+                    ( doorOf (from < to) (Node found.tail)
+                        <> Array.concatMap (gatesAt (from < to)) (Array.slice 1 ends between)
+                        <> doorOf (from > to) (Node found.head)
+                    )
+                    last
                 _, _ -> centres
             else if ends < 2 then
-              -- No bend to move: bow out through a point half way.
+              -- No bend to move: bow out through a point half way. Edges
+              -- along a rank share the gap to the next rank between them.
               case Array.head centres, Array.last centres of
                 Just first, Just last ->
                   [ first
                   , { x: (first.x + last.x) / 2.0 + (if from == to then 0.0 else 14.0 * (toNumber among.index - toNumber (among.count - 1) / 2.0))
-                    , y: (first.y + last.y) / 2.0 + (if from == to then 14.0 * (toNumber among.index - toNumber (among.count - 1) / 2.0) else 0.0)
+                    , y: (first.y + last.y) / 2.0 + (if from == to then min 14.0 (rankGap / toNumber among.count) * (toNumber among.index - toNumber (among.count - 1) / 2.0) else 0.0)
                     }
                   , last
                   ]
                 _, _ -> centres
             else Array.mapWithIndex
-              (\index point -> if index == 0 || index == ends then point else point { x = point.x - toNumber (spread * (among.count - 1 - among.index)) })
+              ( \index point ->
+                  if index == 0 || index == ends then point
+                  else case pastLabels found of
+                    Just past -> point { x = point.x + past }
+                    Nothing -> point { x = point.x - toNumber (spread * (among.count - 1 - among.index)) }
+              )
               centres
-    }
+
   -- A cluster's box goes round everything in it, with a little room, and
   -- more room the more clusters it has inside it.
   cluster subgraph =
