@@ -383,17 +383,16 @@ optimise requirements = case Array.head requirements of
           -- Whether the second is the first or below it.
           holds over variable = numberOf variable >= numberOf over && numberOf variable < numberOf over + sizeOf over
           tailIsBelow = leaving.tail == under
-          members = (hang hung.edges under (Just leaving) 0).order
-          crossing = List.concatMap
-            ( \variable -> List.fromFoldable
-                ( Array.mapMaybe
-                    ( \link ->
-                        if holds under link.other then Nothing
-                        else if (if tailIsBelow then link.requirement.head == variable else link.requirement.tail == variable) then Just link.requirement
-                        else Nothing
-                    )
-                    (linksOf neighbours variable)
+          -- As an array: a list this long is not safe to map over.
+          members = Array.fromFoldable (hang hung.edges under (Just leaving) 0).order
+          crossing = Array.concatMap
+            ( \variable -> Array.mapMaybe
+                ( \link ->
+                    if holds under link.other then Nothing
+                    else if (if tailIsBelow then link.requirement.head == variable else link.requirement.tail == variable) then Just link.requirement
+                    else Nothing
                 )
+                (linksOf neighbours variable)
             )
             members
         in
