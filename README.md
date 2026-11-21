@@ -1,14 +1,48 @@
 # Graphviz in PureScript
 
 Graphviz's DOT language and its `dot` layout, written in PureScript from the
-published algorithms, so that a graph can be laid out wherever PureScript
-runs (a browser included) with no C and no WASM.
+published algorithms. A graph can be laid out wherever PureScript runs, a
+browser included, with no C and no WebAssembly, and each pass of the layout
+is a value you can take hold of.
 
-The installed Graphviz is the judge. Each stage is compared with what
-Graphviz itself does on a corpus of DOT files, and a stage is not claimed
-until that comparison says so.
+![A family tree of Fairport Convention, 1967 to 1980, drawn by this library](site/screenshot.png)
+
+**Demo:** <https://afcondon.github.io/purescript-graphviz/>. A family tree
+of Fairport Convention and the bands around it, drawn in your browser, with
+a control that steps through the four passes of the layout; and below it an
+editor that draws DOT as you type, beside Graphviz's own drawing of the
+same file.
+
+## Why
+
+- **A drop-in for the browser.** The usual way to get Graphviz on a web
+  page is a WebAssembly build of the C. This is a few hundred kilobytes of
+  JavaScript compiled from PureScript, and nothing else.
+- **The passes are separate.** Graphviz gives you a finished picture. Here
+  ranking, ordering, placing and routing are functions with plain data
+  between them, so a program can stop after any of them, show it, or put
+  something of its own in a pass's place. That is what the demo's
+  step-through shows, and it is the point of the project: a layered layout
+  whose stages can be combined with other layouts, a force simulation among
+  them.
+- **Held to Graphviz.** The installed Graphviz is the judge. Each stage is
+  compared with what Graphviz itself does on a corpus of nearly 900 DOT
+  files, and a stage is not claimed until that comparison says so. The
+  figures are in the table below.
 
 ## Using it
+
+It is not in the PureScript registry yet. Until it is, add it to a spago
+workspace from git:
+
+```yaml
+workspace:
+  extraPackages:
+    graphviz:
+      git: https://github.com/afcondon/purescript-graphviz.git
+      ref: main
+      subdir: core
+```
 
 ```purescript
 import Graphviz.Layout (layout)
@@ -18,24 +52,43 @@ svg :: String -> Either String String
 svg dot = render <$> layout dot
 ```
 
-`layout` takes DOT text and returns a `Drawing`: boxes for the nodes, paths
-for the edges, boxes for the clusters, in points. `Graphviz.Svg.render` turns
-that into plain SVG text; a caller with its own renderer uses the `Drawing`
-itself. `layoutWith` takes the spacing and, more to the point, a function
-that measures text, since how wide a label is depends on the font and on
-what draws it.
+`layout` takes DOT text and returns a `Drawing`: boxes for the nodes,
+curves for the edges with the place of each label, boxes for the clusters,
+all in points. `Graphviz.Svg.render` turns that into plain SVG text; a
+caller with its own renderer uses the `Drawing` itself, as the demo page
+does.
 
-The ranks, the order within each rank and the place of everything across
-the page come from the real passes. Edges are smooth curves that end on the
-node outlines, with room kept for their labels and for loops, and the
-graph's `size` is reported as a scale for whoever draws. Each edge takes the
-shortest way through the free room beside the nodes it passes, and edges
-between the same two nodes are spread apart. **Cluster boxes are not kept
-clear**, so an edge can cut across a cluster it is not in. The geometry has
-its own judge, `bin/check-geometry.py`, which checks rules any drawing
-should keep (no nodes overlapping, edge ends on their outlines, labels off
-the nodes) and holds each drawing beside dot's for size, edge length and
-edges that pass through a node.
+- `layoutWith` takes the spacing and a function that measures text. How
+  wide a label is depends on the font and on what draws it, so the caller
+  says; the built-in guess is rough. In a browser, pass one that asks a
+  canvas (`site/src/Site/Measure.purs` is such a function).
+- `drawAt` gives the drawing as it stands after one pass: `Ranked`,
+  `Ordered`, `Positioned` or `Routed`.
+- `Graphviz.Dot.Parser.parse` and `Graphviz.Graph.fromDot` give the graph a
+  DOT file describes, with no layout, for a program that wants to read DOT
+  and do something else with it. See "The graph a caller gets" below.
+- `Graphviz.Layout.Rank` and `Graphviz.Layout.Order` are the first two
+  passes by themselves.
+
+## What it does, and what it does not
+
+It reads the whole DOT language as Graphviz reads it, and lays out with
+`dot`'s method: ranks by network simplex (with `rank=same` and its
+relatives, `minlen`, `weight`, `constraint`), cycles broken as dot breaks
+them, each rank ordered to leave few crossings, clusters kept together and
+boxed, coordinates by network simplex again, and edges drawn as curves
+that end on the node outlines. It honours `rankdir`, `nodesep`, `ranksep`,
+`size`, `fontsize`, `width` and `height`, edge labels, loops, several edges
+between the same two nodes, and record and HTML-like labels as far as
+sizing them and showing their lines of text.
+
+It does not do the other layouts (`neato`, `fdp`, `circo`, `twopi`), most
+of the node shapes (each is drawn as the nearest of five outlines), ports
+on edge ends, tables inside HTML labels, `splines=ortho`, or `concentrate`.
+An edge may cross the box of a cluster it is not in. It is not fast on
+large graphs: a few dozen nodes draw as you type, a few hundred take
+seconds. `known-differences/README.md` lists every standing difference
+from Graphviz, each with its reason.
 
 ## Where it stands
 
@@ -244,7 +297,13 @@ reduces a file the two disagree on to a small one they still disagree on.
 ## Layout
 
 - `core/`: the library. Pure PureScript, no foreign code.
-- `site/`: a page that draws DOT as you type, beside Graphviz's drawing.
+- `site/`: the demo page, in Halogen with plain SVG. `site/build.sh` builds
+  it into `site/public/`, and `site/build.sh --docs` also writes the
+  finished site to `docs/`, which is what GitHub Pages serves.
+  `site/scripts/fairport.mjs` fetches the Fairport Convention memberships
+  from MusicBrainz (whose core data is CC0) and writes the DOT in
+  `site/examples/fairport/`; some memberships MusicBrainz has no dates for
+  are filled in by hand there, each marked and sourced.
 - `src/Main.purs`: a Node program that runs the core over files and writes
   what it found, for `bin/check.py`.
 

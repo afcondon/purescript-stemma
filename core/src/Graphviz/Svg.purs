@@ -15,10 +15,13 @@ import Prelude
 import Data.Array as Array
 import Data.Maybe (Maybe(..))
 import Data.Number.Format (fixed, toStringWith)
-import Data.String (Pattern(..), Replacement(..), joinWith, replaceAll)
+import Data.Number as Number
+import Data.String (Pattern(..), Replacement(..), joinWith, replaceAll, split)
+import Graphviz.Dot.Syntax (Text(..))
+import Graphviz.Label as Label
 import Graphviz.Attributes (Attributes)
 import Graphviz.Attributes as Attributes
-import Graphviz.Layout (Box, Drawing, Point)
+import Graphviz.Layout (Box, Drawing, Outline(..), Point, outlineOf)
 
 render :: Drawing -> String
 render drawing = joinWith "\n"
@@ -49,17 +52,61 @@ render drawing = joinWith "\n"
       <> (if drawing.directed then " marker-end=\"url(#arrow)\"" else "")
       <> " d=\"" <> curve found.path <> "\"/>"
       <> case Attributes.lookup "label" found.attributes, found.labelAt of
-        Just written, Just at -> "<text x=\"" <> number at.x <> "\" y=\"" <> number (at.y + 4.0) <> "\" text-anchor=\"middle\" font-size=\"12\">" <> escape written <> "</text>"
+        Just _, Just at -> joinWith "" (stacked at (linesOf found.attributes (case Attributes.lookup "label" found.attributes of
+          Just written -> written
+          Nothing -> "")))
         _, _ -> ""
 
   node found =
-    [ if Attributes.lookup "shape" found.attributes == Just "box" || Attributes.lookup "shape" found.attributes == Just "record" then
-        rectangle found.box (paint found.attributes)
-      else
-        "<ellipse cx=\"" <> number found.box.centre.x <> "\" cy=\"" <> number found.box.centre.y
-          <> "\" rx=\"" <> number (found.box.width / 2.0) <> "\" ry=\"" <> number (found.box.height / 2.0) <> "\" " <> paint found.attributes <> "/>"
-    , "<text x=\"" <> number found.box.centre.x <> "\" y=\"" <> number (found.box.centre.y + 5.0) <> "\" text-anchor=\"middle\">" <> escape found.label <> "</text>"
+    [ let
+        box = found.box
+        ellipse grow =
+          "<ellipse cx=\"" <> number box.centre.x <> "\" cy=\"" <> number box.centre.y
+            <> "\" rx=\"" <> number (box.width / 2.0 - grow) <> "\" ry=\"" <> number (box.height / 2.0 - grow) <> "\" " <> paint found.attributes <> "/>"
+      in
+        case outlineOf found.attributes of
+          Rectangle -> rectangle box (paint found.attributes)
+          NoOutline -> ""
+          Diamond ->
+            "<polygon points=\"" <> number box.centre.x <> "," <> number (box.centre.y - box.height / 2.0) <> " "
+              <> number (box.centre.x + box.width / 2.0) <> "," <> number box.centre.y <> " "
+              <> number box.centre.x <> "," <> number (box.centre.y + box.height / 2.0) <> " "
+              <> number (box.centre.x - box.width / 2.0) <> "," <> number box.centre.y <> "\" " <> paint found.attributes <> "/>"
+          DoubleEllipse -> ellipse 0.0 <> ellipse 4.0
+          Ellipse -> ellipse 0.0
+    , joinWith "" (stacked found.box.centre (linesOf found.attributes found.label))
     ]
+
+  -- A label as lines, each with its size in points and whether it is
+  -- bold: an HTML-like label by its markup, any other by its `\n`s.
+  linesOf attributes written =
+    let
+      usual = case Attributes.lookup "fontsize" attributes >>= Number.fromString of
+        Just points -> points
+        Nothing -> 14.0
+    in
+      case Attributes.lookupText "label" attributes of
+        Just (Html markup) | not (Label.hasTable markup) ->
+          map (\line -> { text: line.text, bold: line.bold, size: case line.size of
+            Just given -> given
+            Nothing -> usual }) (Label.markupLines markup)
+        _ -> map (\text -> { text, bold: false, size: usual })
+          (Array.concatMap (split (Pattern "\\l")) (split (Pattern "\\n") written))
+
+  -- The lines one under another, centred as a block on a point.
+  stacked centre lines =
+    let
+      heightOf line = 1.2 * line.size
+      total = Array.foldl (\soFar line -> soFar + heightOf line) 0.0 lines
+      place state line =
+        { top: state.top + heightOf line
+        , drawn: Array.snoc state.drawn
+            ( "<text x=\"" <> number centre.x <> "\" y=\"" <> number (state.top + heightOf line * 0.75) <> "\" text-anchor=\"middle\" font-size=\""
+                <> number line.size <> "\"" <> (if line.bold then " font-weight=\"bold\"" else "") <> ">" <> escape line.text <> "</text>"
+            )
+        }
+    in
+      (Array.foldl place { top: centre.y - total / 2.0, drawn: [] } lines).drawn
 
   paint attributes = "fill=\"" <> colour "fillcolor" "white" attributes <> "\" stroke=\"" <> colour "color" "#333" attributes <> "\""
 
