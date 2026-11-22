@@ -350,24 +350,49 @@ curved bendy options sideways drawing = drawing { edges = map bend drawing.edges
             }
 
   -- The ends are cut back to the outlines. A point of the way that lies
-  -- inside the node at either end is dropped first, so that the edge
-  -- leaves towards the first place it is going that is outside.
+  -- inside the node at either end is dropped, and the edge then starts
+  -- where the way from the last such point to the first place outside
+  -- crosses the outline. (Starting again from the centre would take the
+  -- edge off the way it was given, and that way is what keeps it clear of
+  -- the node's neighbours.)
   trimmed found = case Array.head found.path, Array.last found.path, Map.lookup found.tail nodesByName, Map.lookup found.head nodesByName of
     Just first, Just last, Just tail, Just head | Array.length found.path >= 2 ->
       let
         between = Array.slice 1 (Array.length found.path - 1) found.path
-        clear = Array.reverse (Array.dropWhile (covers head) (Array.reverse (Array.dropWhile (covers tail) between)))
-        start = case Array.head clear of
-          Just next -> leaving tail next
-          Nothing -> leaving tail last
-        end = case Array.last clear of
-          Just previous -> leaving head previous
-          Nothing -> leaving head first
+        atTail = Array.span (covers tail) between
+        atHead = Array.span (covers head) (Array.reverse atTail.rest)
+        clear = Array.reverse atHead.rest
+        start = crossing tail (Array.last atTail.init) (case Array.head clear of
+          Just next -> next
+          Nothing -> case Array.last atHead.init of
+            Just inside -> inside
+            Nothing -> last)
+        end = crossing head (Array.last atHead.init) (case Array.last clear of
+          Just previous -> previous
+          Nothing -> case Array.last atTail.init of
+            Just inside -> inside
+            Nothing -> first)
       in
         [ start ] <> clear <> [ end ]
     _, _, _, _ -> found.path
 
   covers node point = leaving node point == node.box.centre
+
+  -- Where the way out of a node crosses its outline: from the centre, or
+  -- from a point of the way that is inside the node.
+  crossing node inside towards = case inside of
+    Nothing -> leaving node towards
+    Just from ->
+      if covers node towards then leaving node towards
+      else (foldl
+        ( \span _ ->
+            let
+              middle = { x: (span.in.x + span.out.x) / 2.0, y: (span.in.y + span.out.y) / 2.0 }
+            in
+              if covers node middle then span { in = middle } else span { out = middle }
+        )
+        { in: from, out: towards }
+        (Array.range 1 40)).out
 
 -- The shortest way from one point to another that crosses each gate, a
 -- level stretch of the page, in turn: a string pulled tight. Each
@@ -1056,23 +1081,56 @@ place stage options graph rankNumber turned ranks links inClusters =
             else if ends < 2 then
               -- No bend to move: bow out through a point half way. Edges
               -- along a rank share the gap to the next rank between them.
+              -- Edges from one rank to the next first take the way a
+              -- single edge would, which keeps them between the
+              -- neighbours of the nodes at their ends, and bow out from
+              -- the middle of its longest stretch.
               case Array.head centres, Array.last centres of
                 Just first, Just last ->
-                  [ first
-                  , { x: (first.x + last.x) / 2.0 + (if from == to then 0.0 else 14.0 * (toNumber among.index - toNumber (among.count - 1) / 2.0))
-                    , y: (first.y + last.y) / 2.0 + (if from == to then min 14.0 (rankGap / toNumber among.count) * (toNumber among.index - toNumber (among.count - 1) / 2.0) else 0.0)
-                    }
-                  , last
-                  ]
+                  if from == to then
+                    [ first
+                    , { x: (first.x + last.x) / 2.0
+                      , y: (first.y + last.y) / 2.0 + min 14.0 (rankGap / toNumber among.count) * (toNumber among.index - toNumber (among.count - 1) / 2.0)
+                      }
+                    , last
+                    ]
+                  else
+                    let
+                      way = taut first (doorOf (from < to) (Node found.tail) <> doorOf (from > to) (Node found.head)) last
+                      stretches = Array.zip way (Array.drop 1 way)
+                      long (Tuple a b) = (b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y)
+                      longest = foldl (\best index -> if map long (Array.index stretches index) > map long (Array.index stretches best) then index else best) 0 (Array.range 0 (Array.length stretches - 1))
+                      bowed = Array.concat $ Array.mapWithIndex
+                        ( \index (Tuple a b) ->
+                            if index == longest then
+                              [ a, { x: (a.x + b.x) / 2.0 + 14.0 * (toNumber among.index - toNumber (among.count - 1) / 2.0), y: (a.y + b.y) / 2.0 } ]
+                            else [ a ]
+                        )
+                        stretches
+                    in
+                      bowed <> [ last ]
                 _, _ -> centres
-            else Array.mapWithIndex
-              ( \index point ->
-                  if index == 0 || index == ends then point
-                  else case pastLabels found of
-                    Just past -> point { x = point.x + past }
-                    Nothing -> point { x = point.x - toNumber (spread * (among.count - 1 - among.index)) }
-              )
-              centres
+            else
+              -- Several edges between the same two nodes: each goes by its
+              -- own place beside the bends they share. Like any edge, each
+              -- leaves its own rank and comes into the rank of its other
+              -- end between that node's neighbours.
+              let
+                beside vertex = case pastLabels found of
+                  Just past -> (boxOf vertex).centre.x + past
+                  Nothing -> (boxOf vertex).centre.x - toNumber (spread * (among.count - 1 - among.index))
+                -- through each rank between, straight down at its place
+                kept vertex = map (\gate -> gate { low = beside vertex, high = beside vertex }) (gatesAt (from < to) vertex)
+              in
+                case Array.head centres, Array.last centres of
+                  Just first, Just last ->
+                    taut first
+                      ( doorOf (from < to) (Node found.tail)
+                          <> Array.concatMap kept (Array.slice 1 ends between)
+                          <> doorOf (from > to) (Node found.head)
+                      )
+                      last
+                  _, _ -> centres
 
   -- A cluster's box goes round everything in it, with a little room, and
   -- more room the more clusters it has inside it.

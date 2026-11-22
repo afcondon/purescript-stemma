@@ -74,7 +74,7 @@ too.
 
 **Edges through nodes.** Each edge takes the shortest way through the free
 room beside the nodes it passes, where dot fits a curve inside a corridor
-of boxes. On the corpus, 54 of 16,598 edges still pass through a node that
+of boxes. On the corpus, 4 of 16,598 edges still pass through a node that
 is not one of their ends; dot has 1.
 
 **Same-rank edges between clusters.** Described under "Ordering within

@@ -105,7 +105,7 @@ from Graphviz, each with its reason.
 | Turning cycles round before ranking | done | the same edges as dot on 328 of 329 graphs with cycles |
 | Ordering within ranks, with clusters kept together and in one order, and same-rank edges left to right | done; slow on large graphs | of 884 graphs, the same number of crossings as dot on 709, fewer on 92, more on 83; 12,346 crossings in all against dot's 12,855 |
 | Coordinates | by network simplex: nodes, bends, cluster sides, room for labels and loops | 883 of 883 drawings keep every rule of `bin/check-geometry.py`; area 1.12 times dot's at the median |
-| Edge routing | curves pulled tight between the nodes they pass, ending on the node outlines; cluster boxes not kept clear | of 16,598 edges, 54 pass through a node that is not theirs (dot: 1); length 1.10 times dot's at the median |
+| Edge routing | curves pulled tight between the nodes they pass, ending on the node outlines; cluster boxes not kept clear | of 16,598 edges, 4 pass through a node that is not theirs (dot: 1); length 1.10 times dot's at the median |
 
 `bin/check.py` and `bin/check-geometry.py` print the current figures; this
 table is only as fresh as its last edit (2026-11-21).
