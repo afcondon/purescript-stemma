@@ -56,7 +56,7 @@ a point.
 **Text.** The layout does not know fonts; the caller says how big a piece
 of text is. Graphviz measures in the font named, Times by default. So node
 sizes differ a little everywhere, and with them the size of the drawing:
-1.11 times dot's area at the median with the rough built-in guess.
+1.12 times dot's area at the median with the rough built-in guess.
 
 **HTML and record labels.** A record's fields and a table's cells are
 sized, so that the node is about the right size, but the layout places

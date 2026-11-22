@@ -23,4 +23,12 @@ package:
     - tuples
 workspace:
   packageSet:
-    registry: 57.1.0
+    registry: 77.13.1
+  extraPackages:
+    # For flow/ (the adapter to hylograph-flow-render). None of these is in
+    # the package set at the version the renderer asks for.
+    hylograph-flow-render: "0.3.0"
+    hylograph-flow: "0.2.0"
+    hylograph-graph: "0.3.1"
+    hylograph-layout: "0.6.0"
+    hylograph-selection: "0.6.0"

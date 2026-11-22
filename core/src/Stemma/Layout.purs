@@ -81,8 +81,10 @@ type DrawnNode = { name :: NodeName, label :: String, box :: Box, attributes :: 
 -- | then three points for each piece (two to steer by and the point where
 -- | the piece ends), which is how Graphviz writes an edge's `pos`.
 -- | `labelAt` is the centre of the edge's label, if it has one. `turned` says the
--- | layout had to run this edge against the flow to break a cycle, so it
--- | points up the page; it is still drawn from tail to head.
+-- | layout ran this edge against the flow, so it points up the page: to
+-- | break a cycle, or because its ends are in different clusters and the
+-- | clusters' own ranks left it no room to point down. It is still drawn
+-- | from tail to head.
 type DrawnEdge =
   { id :: EdgeId
   , tail :: NodeName
@@ -825,16 +827,61 @@ place stage options graph rankNumber turned ranks links inClusters =
   rankGap = if any (_.attributes >>> Attributes.hasLabel) (Graph.edges graph) then rankSeparation / 2.0 else rankSeparation
   rankSeparation = inches "ranksep" options.rankSeparation (Graph.attributes graph)
   stacked = foldl
-    ( \state vertices ->
+    ( \state (Tuple index vertices) ->
         let
           height = foldl (\tallest vertex -> max tallest (sizeOf vertex).height) 0.0 vertices
+          top = state.bottom + (if index == 0 then margin + namesAbove vertices else rankGap + max 0.0 (state.below + roomAbove index vertices + 8.0 - rankGap))
         in
-          { top: state.top + height + rankGap
-          , found: Array.snoc state.found { vertices, top: state.top, height }
+          { bottom: top + height
+          , below: roomBelow index vertices
+          , found: Array.snoc state.found { vertices, top, height }
           }
     )
-    { top: margin, found: [] }
-    ranks
+    { bottom: 0.0, below: 0.0, found: [] }
+    (Array.mapWithIndex Tuple ranks)
+
+  -- A cluster with a name keeps a strip along its top for it, as Graphviz
+  -- does, so nothing inside the cluster is under the name. The ranks move
+  -- apart where a cluster's top and the bottom of whatever is above it
+  -- would not otherwise both fit between them.
+  strips :: Map SubgraphId Number
+  strips = Map.fromFoldable
+    ( Array.mapMaybe
+        ( \subgraph -> case Attributes.lookup "label" subgraph.attributes of
+            Just written | written /= "" -> Just (Tuple subgraph.id ((options.measure written).height + 8.0))
+            _ -> Nothing
+        )
+        (Graph.clusters graph)
+    )
+  stripOf id = case Map.lookup id strips of
+    Just strip -> strip
+    Nothing -> 0.0
+  clustersOf vertex = case Map.lookup vertex inClusters of
+    Just path -> path
+    Nothing -> []
+  -- The first and last rank each cluster has something in.
+  spans :: Map SubgraphId { first :: Int, last :: Int }
+  spans = foldl
+    ( \found (Tuple index vertices) -> foldl
+        ( \known id -> Map.alter
+            ( case _ of
+                Just span -> Just (span { last = index })
+                Nothing -> Just { first: index, last: index }
+            )
+            id
+            known
+        )
+        found
+        (Array.concatMap clustersOf vertices)
+    )
+    Map.empty
+    (Array.mapWithIndex Tuple ranks)
+  startsAt index id = map _.first (Map.lookup id spans) == Just index
+  endsAt index id = map _.last (Map.lookup id spans) == Just index
+  greatest = foldl max 0.0
+  namesAbove vertices = greatest (map (\vertex -> sum (map stripOf (clustersOf vertex))) vertices)
+  roomAbove index vertices = greatest (map (\vertex -> sum (map (\id -> 8.0 + stripOf id) (Array.filter (startsAt index) (clustersOf vertex)))) vertices)
+  roomBelow index vertices = greatest (map (\vertex -> 8.0 * toNumber (Array.length (Array.filter (endsAt index) (clustersOf vertex)))) vertices)
   boxes :: Map Vertex Box
   boxes = Map.fromFoldable
     ( Array.concatMap
@@ -854,7 +901,7 @@ place stage options graph rankNumber turned ranks links inClusters =
     Nothing -> { centre: { x: 0.0, y: 0.0 }, width: 0.0, height: 0.0 }
   extent =
     { width: toNumber (rightmost - leftmost) + 2.0 * margin
-    , height: max (2.0 * margin) (stacked.top - rankGap + margin)
+    , height: max (2.0 * margin) (stacked.bottom + margin)
     }
 
   -- The room an edge has where it passes through a rank: from the top of
@@ -910,7 +957,9 @@ place stage options graph rankNumber turned ranks links inClusters =
     { id: found.id
     , tail: found.tail
     , head: found.head
-    , turned: Array.elem found.id turned
+    -- An edge across a cluster's edge is never turned round by the ranking
+    -- (see `Stemma.Layout.Rank`), and can still come out pointing up.
+    , turned: Array.elem found.id turned || rankNumber found.head < rankNumber found.tail
     , attributes: found.attributes
     , labelAt:
         if found.tail == found.head || not (Attributes.hasLabel found.attributes) then Nothing
@@ -1029,18 +1078,22 @@ place stage options graph rankNumber turned ranks links inClusters =
   -- more room the more clusters it has inside it.
   cluster subgraph =
     let
-      inside = Array.mapMaybe (\(Tuple vertex path) -> if Array.elem subgraph.id path then Just { box: boxOf vertex, depth: Array.length path } else Nothing)
+      -- each thing in the cluster, with the clusters from this one inwards
+      -- that it is in
+      inside = Array.mapMaybe
+        ( \(Tuple vertex path) -> case Array.elemIndex subgraph.id path of
+            Just own -> Just { box: boxOf vertex, within: Array.drop own path }
+            Nothing -> Nothing
+        )
         (Map.toUnfoldable inClusters)
-      own = Array.length (Array.takeWhile (_ /= subgraph.id) (case Array.find (\(Tuple _ path) -> Array.elem subgraph.id path) (Map.toUnfoldable inClusters :: Array (Tuple Vertex (Array SubgraphId))) of
-        Just (Tuple _ path) -> path
-        Nothing -> [])) + 1
-      padding item = 8.0 * toNumber (item.depth - own + 1)
+      above item = sum (map (\id -> 8.0 + stripOf id) item.within)
+      below item = 8.0 * toNumber (Array.length item.within)
     in
       do
         let left = xOf (LeftSide subgraph.id)
         let right = xOf (RightSide subgraph.id)
-        top <- minimum (map (\item -> item.box.centre.y - item.box.height / 2.0 - padding item) inside)
-        bottom <- maximum (map (\item -> item.box.centre.y + item.box.height / 2.0 + padding item) inside)
+        top <- minimum (map (\item -> item.box.centre.y - item.box.height / 2.0 - above item) inside)
+        bottom <- maximum (map (\item -> item.box.centre.y + item.box.height / 2.0 + below item) inside)
         pure
           { id: subgraph.id
           , label: Attributes.lookup "label" subgraph.attributes

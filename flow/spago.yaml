@@ -1,0 +1,27 @@
+package:
+  name: stemma-flow
+  description: >
+    Stemma as a layout engine of hylograph-flow-render: a flow's projection
+    in, the renderer's Layout out, with open groups as clusters. The
+    renderer does not depend on Stemma and Stemma's core does not depend on
+    the renderer; this package depends on both.
+  dependencies:
+    - prelude
+    - arrays
+    - either
+    - foldable-traversable
+    - hylograph-flow
+    - hylograph-flow-render
+    - integers
+    - maybe
+    - numbers
+    - ordered-collections
+    - stemma
+    - strings
+    - tuples
+  test:
+    main: Test.Main
+    dependencies:
+      - console
+      - effect
+      - exceptions

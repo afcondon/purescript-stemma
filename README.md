@@ -88,7 +88,9 @@ sizing them and showing their lines of text.
 It does not do the other layouts (`neato`, `fdp`, `circo`, `twopi`), most
 of the node shapes (each is drawn as the nearest of five outlines), ports
 on edge ends, tables inside HTML labels, `splines=ortho`, or `concentrate`.
-An edge may cross the box of a cluster it is not in. It is not fast on
+A cluster with a `label` keeps a strip along its top for it, so nothing
+in the cluster is under its name; the cluster is not made wider for a name
+longer than it is. An edge may cross the box of a cluster it is not in. It is not fast on
 large graphs: a few dozen nodes draw as you type, a few hundred take
 seconds. `known-differences/README.md` lists every standing difference
 from Graphviz, each with its reason.
@@ -102,7 +104,7 @@ from Graphviz, each with its reason.
 | Ranking (which layer each node is on), with `rank=same` and its relatives and with clusters | done, bar the cases below | 883 of 883 rankings proved optimal at every level; dot's own ranking equals the optimum on 879 and is worse on 4 |
 | Turning cycles round before ranking | done | the same edges as dot on 328 of 329 graphs with cycles |
 | Ordering within ranks, with clusters kept together and in one order, and same-rank edges left to right | done; slow on large graphs | of 884 graphs, the same number of crossings as dot on 709, fewer on 92, more on 83; 12,346 crossings in all against dot's 12,855 |
-| Coordinates | by network simplex: nodes, bends, cluster sides, room for labels and loops | 883 of 883 drawings keep every rule of `bin/check-geometry.py`; area 1.11 times dot's at the median |
+| Coordinates | by network simplex: nodes, bends, cluster sides, room for labels and loops | 883 of 883 drawings keep every rule of `bin/check-geometry.py`; area 1.12 times dot's at the median |
 | Edge routing | curves pulled tight between the nodes they pass, ending on the node outlines; cluster boxes not kept clear | of 16,598 edges, 54 pass through a node that is not theirs (dot: 1); length 1.10 times dot's at the median |
 
 `bin/check.py` and `bin/check-geometry.py` print the current figures; this
@@ -310,6 +312,13 @@ reduces a file the two disagree on to a small one they still disagree on.
   are filled in by hand there, each marked and sourced.
 - `src/Main.purs`: a Node program that runs the core over files and writes
   what it found, for `bin/check.py`.
+- `flow/`: the package `stemma-flow`. `Stemma.Flow.stemma` is Stemma as a
+  layout engine of
+  [`hylograph-flow-render`](https://github.com/afcondon/purescript-hylograph-flow-render):
+  a flow's projection in, that renderer's `Layout` out, with open groups
+  drawn as clusters. It places no ports. Its tests hold it to the
+  renderer's own laws (`spago test -p stemma-flow`). The core does not
+  depend on the renderer, and the renderer does not depend on Stemma.
 
 ## Licence and provenance
 
